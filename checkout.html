@@ -44,6 +44,56 @@
         <!-- CUSTOM -->
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/checkout.css">
+        <style>
+            .table-quantity .plus {
+                cursor: pointer;
+                display: inline-block;
+                vertical-align: top;
+                color: white;
+                width: 30px;
+                height: 30px;
+                font: 30px/1 Arial,sans-serif;
+                text-align: center;
+                border-radius: 50%;
+                background-color: #119744!important;
+                }
+            .table-quantity .minus {
+                cursor: pointer;
+                display: inline-block;
+                vertical-align: top;
+                color: white;
+                width: 30px;
+                height: 30px;
+                font: 30px/1 Arial,sans-serif;
+                text-align: center;
+                border-radius: 50%;
+                background-clip: padding-box;
+                background-color: #119744!important;
+            }
+            .table-quantity .count {
+                color: #000;
+                display: inline-block;
+                vertical-align: top;
+                font-size: 25px;
+                font-weight: 700;
+                line-height: 30px;
+                padding: 0 2px
+                ;min-width: 35px;
+                text-align: center;
+            }
+            input{  
+                border: 0;
+                width: 2%;
+            }
+            nput::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+            input:disabled{
+                background-color:white;
+            }
+        </style>
         <!--=====================================
                     CSS LINK PART END
         =======================================-->
@@ -994,9 +1044,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="alert-info">
-                            <p>Returning customer? <a href="login.html">Click here to login</a></p>
-                        </div>
+                        <!-- <div class="alert-info">
+                            <p>Your Cart</p>
+                        </div> -->
                     </div>
                     <div class="col-lg-12">
                         <div class="account-card">
@@ -1008,71 +1058,71 @@
                                     <table class="table-list">
                                         <thead>
                                             <tr>
-                                                <th scope="col">Serial</th>
+                                                <!-- <th scope="col">Serial</th> -->
                                                 <th scope="col">Product</th>
                                                 <th scope="col">Name</th>
                                                 <th scope="col">Price</th>
-                                                <th scope="col">brand</th>
+                                                <!-- <th scope="col">brand</th> -->
                                                 <th scope="col">quantity</th>
                                                 <th scope="col">action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td class="table-serial"><h6>01</h6></td>
+                                                <!-- <td class="table-serial"><h6>01</h6></td> -->
                                                 <td class="table-image"><img src="images/product/01.jpg" alt="product"></td>
                                                 <td class="table-name"><h6>product name</h6></td>
                                                 <td class="table-price"><h6>$19<small>/kilo</small></h6></td>
-                                                <td class="table-brand"><h6>Fresh Company</h6></td>
-                                                <td class="table-quantity"><h6>3</h6></td>
+                                                <!-- <td class="table-brand"><h6>Fresh Company</h6></td> -->
+                                                <td class="table-quantity"><h6> <span class="minus bg-dark">-</span><input type="number" class="count" name="qty" value="1"><span class="plus bg-dark">+</span></h6></td>
                                                 <td class="table-action">
                                                     <a class="view" href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#product-view"><i class="fas fa-eye"></i></a>
                                                     <a class="trash" href="#" title="Remove Wishlist"><i class="icofont-trash"></i></a>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class="table-serial"><h6>02</h6></td>
+                                                <!-- <td class="table-serial"><h6>02</h6></td> -->
                                                 <td class="table-image"><img src="images/product/02.jpg" alt="product"></td>
                                                 <td class="table-name"><h6>product name</h6></td>
                                                 <td class="table-price"><h6>$19<small>/kilo</small></h6></td>
-                                                <td class="table-brand"><h6>Radhuni Masala</h6></td>
-                                                <td class="table-quantity"><h6>5</h6></td>
+                                                <!-- <td class="table-brand"><h6>Radhuni Masala</h6></td> -->
+                                                <td class="table-quantity"><h6><span class="minus bg-dark">-</span><input type="number" class="count" name="qty" value="6"><span class="plus bg-dark">+</span></h6></td>
                                                 <td class="table-action">
                                                     <a class="view" href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#product-view"><i class="fas fa-eye"></i></a>
                                                     <a class="trash" href="#" title="Remove Wishlist"><i class="icofont-trash"></i></a>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class="table-serial"><h6>03</h6></td>
+                                                <!-- <td class="table-serial"><h6>03</h6></td> -->
                                                 <td class="table-image"><img src="images/product/03.jpg" alt="product"></td>
                                                 <td class="table-name"><h6>product name</h6></td>
                                                 <td class="table-price"><h6>$19<small>/kilo</small></h6></td>
-                                                <td class="table-brand"><h6>Pran Prio</h6></td>
-                                                <td class="table-quantity"><h6>2</h6></td>
+                                                <!-- <td class="table-brand"><h6>Pran Prio</h6></td> -->
+                                                <td class="table-quantity"><h6><span class="minus bg-dark">-</span><input type="number" class="count" name="qty" value="7"><span class="plus bg-dark">+</span></h6></td>
                                                 <td class="table-action">
                                                     <a class="view" href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#product-view"><i class="fas fa-eye"></i></a>
                                                     <a class="trash" href="#" title="Remove Wishlist"><i class="icofont-trash"></i></a>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class="table-serial"><h6>04</h6></td>
+                                                <!-- <td class="table-serial"><h6>04</h6></td> -->
                                                 <td class="table-image"><img src="images/product/04.jpg" alt="product"></td>
                                                 <td class="table-name"><h6>product name</h6></td>
                                                 <td class="table-price"><h6>$19<small>/kilo</small></h6></td>
-                                                <td class="table-brand"><h6>Real Food</h6></td>
-                                                <td class="table-quantity"><h6>3</h6></td>
+                                                <!-- <td class="table-brand"><h6>Real Food</h6></td> -->
+                                                <td class="table-quantity"><h6><span class="minus bg-dark">-</span><input type="number" class="count" name="qty" value="4"><span class="plus bg-dark">+</span></h6></td>
                                                 <td class="table-action">
                                                     <a class="view" href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#product-view"><i class="fas fa-eye"></i></a>
                                                     <a class="trash" href="#" title="Remove Wishlist"><i class="icofont-trash"></i></a>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class="table-serial"><h6>05</h6></td>
+                                                <!-- <td class="table-serial"><h6>05</h6></td> -->
                                                 <td class="table-image"><img src="images/product/05.jpg" alt="product"></td>
                                                 <td class="table-name"><h6>product name</h6></td>
                                                 <td class="table-price"><h6>$19<small>/kilo</small></h6></td>
-                                                <td class="table-brand"><h6>Rdhuni Company</h6></td>
-                                                <td class="table-quantity"><h6>7</h6></td>
+                                                <!-- <td class="table-brand"><h6>Rdhuni Company</h6></td> -->
+                                                <td class="table-quantity"><h6><span class="minus bg-dark">-</span><input type="number" class="count" name="qty" value="1"><span class="plus bg-dark">+</span></h6></td>
                                                 <td class="table-action">
                                                     <a class="view" href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#product-view"><i class="fas fa-eye"></i></a>
                                                     <a class="trash" href="#" title="Remove Wishlist"><i class="icofont-trash"></i></a>
@@ -1111,7 +1161,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-12">
+                    <!-- <div class="col-lg-12">
                         <div class="account-card">
                             <div class="account-title">
                                 <h4>Delivery Schedule</h4>
@@ -1284,7 +1334,7 @@
                                 <a href="invoice.html" class="btn btn-inline">proced to checkout</a>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </section>

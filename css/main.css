@@ -1712,7 +1712,8 @@ tbody tr td:last-child {
 }
 
 .suggest-card:hover::before {
-  background: rgba(17, 151, 68, 0.9);
+  /* background: rgba(17, 151, 68, 0.9); */
+  background: rgb(17 151 68 / 47%);
 }
 
 .suggest-card img {

@@ -22,13 +22,13 @@
         =======================================-->
 
         <!-- WEBPAGE TITLE -->
-        <title>Greeny - Register</title>
+        <title>Greeny - Reset Password</title>
 
         <!--=====================================
                     CSS LINK PART START
         =======================================-->
         <!-- FAVICON -->
-        <link rel="icon" href="images/Favicon.svg">
+        <link rel="icon" href="images/favicon.png">
 
         <!-- FONTS -->
         <link rel="stylesheet" href="fonts/flaticon/flaticon.css">
@@ -55,57 +55,29 @@
         <section class="user-form-part">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-12 col-sm-10 col-md-12 col-lg-12 col-xl-8">
+                    <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
                         <div class="user-form-logo">
                             <a href="index.html"><img src="images/logo.png" alt="logo"></a>
                         </div>
                         <div class="user-form-card">
                             <div class="user-form-title">
-                                <h2>Join Now!</h2>
-                                <p>Setup A New Account In A Minute</p>
+                                <h2>worried?</h2>
+                                <p>No Problem! Just Follow The Simple Way</p>
                             </div>
-                            <div class="user-form-group">
-                                <!-- <ul class="user-form-social">
-                                    <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i>Join with facebook</a></li>
-                                    <li><a href="#" class="twitter"><i class="fab fa-twitter"></i>Join with twitter</a></li>
-                                    <li><a href="#" class="google"><i class="fab fa-google"></i>Join with google</a></li>
-                                    <li><a href="#" class="instagram"><i class="fab fa-instagram"></i>Join with instagram</a></li>
-                                </ul> -->
-                                <figure class="figure">
-                                    <img src="images.jpg" class="figure-img img-fluid rounded" alt="..." width="800" height="950">
-                                    <!-- <figcaption class="figure-caption text-end">A caption for the above image.</figcaption> -->
-                                  </figure>
-                                <div class="user-form-divider">
-                                    <p>or</p>
+                            <form class="user-form">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Enter your email">
                                 </div>
-                                <form class="user-form">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Enter your name">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="Enter your email">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Enter your password">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Enter repeat password">
-                                    </div>
-                                    <div class="form-check mb-3">
-                                        <input class="form-check-input" type="checkbox" value="" id="check">
-                                        <label class="form-check-label" for="check">Accept all the <a href="#">Terms & Conditions</a></label>
-                                    </div>
-                                    <div class="form-button">
-                                        <button type="submit">register</button>
-                                    </div>
-                                </form>
-                            </div>
+                                <div class="form-button">
+                                    <button type="submit">get reset link</button>
+                                </div>
+                            </form>
                         </div>
                         <div class="user-form-remind">
-                            <p>Already Have An Account?<a href="login.html">login here</a></p>
+                            <p>Go Back To<a href="login.php">login here</a></p>
                         </div>
                         <div class="user-form-footer">
-                            <p>Delight Hub | &COPY; Copyright by <a href="#">RinixWeb</a></p>
+                            <p>Delights Hub | &COPY; Copyright by <a href="#">Delights Hub</a></p>
                         </div>
                     </div>
                 </div>

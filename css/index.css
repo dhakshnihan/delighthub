@@ -28,8 +28,39 @@
   width: 100%;
   height: 100%;
   z-index: -1;
-  opacity: 0.05;
-  background: url(../images/banner-shape.png);
+  opacity: 1;
+  background: url(../images/ban-shape2.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.bann::before {
+  position: absolute;
+  content: "";
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 1;
+  background: url(../images/ban-shape1.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+
+.ban::before {
+  position: absolute;
+  content: "";
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 1;
+  background: url(../images/ban-shape.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

@@ -9,11 +9,11 @@
 	<link rel="icon" href="https://themekita.com/demo-atlantis-bootstrap/livepreview/examples/assets/img/icon.ico" type="image/x-icon"/>
 	
 	<!-- Fonts and icons -->
-	<script src="../../assets/js/plugin/webfont/webfont.min.js"></script>
+	<script src="../assets/js/plugin/webfont/webfont.min.js"></script>
 	<script>
 		WebFont.load({
 			google: {"families":["Lato:300,400,700,900"]},
-			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../../assets/css/fonts.min.css']},
+			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../assets/css/fonts.min.css']},
 			active: function() {
 				sessionStorage.fonts = true;
 			}
@@ -21,10 +21,10 @@
 	</script>
 
 	<!-- CSS Files -->
-	<link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../../assets/css/atlantis.css">
+	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../assets/css/atlantis.css">
 	<!-- CSS Just for demo purpose, don't include it in your project -->
-	<link rel="stylesheet" href="../../assets/css/demo.css">
+	<link rel="stylesheet" href="../assets/css/demo.css">
 </head>
 <body data-background-color="dark">
 	<div class="wrapper">
@@ -81,14 +81,14 @@
 						<li class="nav-item dropdown hidden-caret">
 							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
 								<div class="avatar-sm">
-									<img src="../../assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+									<img src="../assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
 								</div>
 							</a>
 							<ul class="dropdown-menu dropdown-user animated fadeIn">
 								<div class="dropdown-user-scroll scrollbar-outer">
 									<li>
 										<div class="user-box">
-											<div class="avatar-lg"><img src="../../assets/img/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
+											<div class="avatar-lg"><img src="../assets/img/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
 											<div class="u-text">
 												<h4>Hizrian</h4>
 												<p class="text-muted">hello@example.com</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
@@ -175,12 +175,12 @@
 											<span class="sub-item">Products View</span>
 										</a>
 									</li>
-                                    <li>
+                                    <li class="active">
 										<a href="brand_master_view.php">
 											<span class="sub-item">Product Brands</span>
 										</a>
 									</li>
-									<li class="active">
+                                    <li>
 										<a href="category_master_view.php">
 											<span class="sub-item">Product Category</span>
 										</a>
@@ -203,7 +203,7 @@
 			<div class="container">
 				<div class="page-inner">
 					<div class="page-header">
-						<h4 class="page-title">Product Category</h4>
+						<h4 class="page-title">Product Brands</h4>
 					</div>
 					
 
@@ -215,7 +215,7 @@
 											<thead>
 												<tr>
 													<th>S.No</th>
-													<th>Category Name</th>
+													<th>Brand Name</th>
                                                     <th>Status</th>
 													<th style="width: 10%">Action</th>
 												</tr>
@@ -224,7 +224,7 @@
 											<tbody>
 												<?php
 													$sno=1;
-													$sql="select * from tbl_category where CATEG02='Active' ";
+													$sql="select * from tbl_brands ";
 													// echo $sql;
 													$results=mysqli_query($con,$sql);
 													while($row=mysqli_fetch_array($results)){
@@ -232,13 +232,13 @@
 														
 													echo '<tr>
 															<td>'.$sno.'</td>
-															<td>'.$row['CATEG01'].'</td>
-                                                            <td>'.$row['CATEG02'].'</td>
+															<td>'.$row['BRAND01'].'</td>
+                                                            <td>'.$row['BRAND02'].'</td>
 															<td>
 																<div class="form-button-action">
-																	<a href="./category_master_edit.php?id='.$row['CATEGTID'].'" class="btn btn-success btn-sm">Edit</a>
+																	<a href="./brand_master_edit.php?id='.$row['BRANDTID'].'" class="btn btn-success btn-sm">Edit</a>
 																	
-																	<button onclick="delete_category('.$row['CATEGTID'].')" class="btn btn-info btn-sm">Delete!</button>
+																	<button onclick="delete_brands('.$row['BRANDTID'].')" class="btn btn-info btn-sm">Delete!</button>
 																</div>
 															</td>
 														</tr>';
@@ -255,38 +255,23 @@
 					</div>
 				</div>
 			</div>
+            <script>
 
-			<script>
-                function edit_category(){  
-                    var category_id = $("#id").val();
-                        $.ajax({
-                            url:'category_master_edit.php',
-                            method:'POST',
-                            data:{edit_category:'edit_category',category_id:category_id},
-                            cache: false,
-                            success: function(respose){
-								alert("Updated successfully.");
-								window.location="category_master_view.php";
-                            }
-                         });
-                }
-
-				function delete_category(val){  
+				function delete_brands(val){  
                   
                         $.ajax({
                             url:'controllerProdData.php',
                             method:'POST',
-                            data:{delete_category:'delete_category',category_id:val},
+                            data:{delete_brands:'delete_brands',brand_id:val},
                             cache: false,
                             success: function(respose){
 								alert("Recoed Deleted successfully.");
-								window.location="category_master_view.php";
+								window.location="brand_master_view.php";
                             }
                          });
                 }
 
             </script>
-			
 			<footer class="footer">
 				<div class="container-fluid">
 					<nav class="pull-left">
@@ -333,16 +318,16 @@
 									<span class="category-title mt-0">Contacts</span>
 									<div class="avatar-group">
 										<div class="avatar">
-											<img src="../../assets/img/jm_denis.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+											<img src="../assets/img/jm_denis.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 										</div>
 										<div class="avatar">
-											<img src="../../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+											<img src="../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 										</div>
 										<div class="avatar">
-											<img src="../../assets/img/mlane.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+											<img src="../assets/img/mlane.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 										</div>
 										<div class="avatar">
-											<img src="../../assets/img/talha.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+											<img src="../assets/img/talha.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 										</div>
 										<div class="avatar">
 											<span class="avatar-title rounded-circle border border-white">+</span>
@@ -353,7 +338,7 @@
 										<div class="user">
 											<a href="#">
 												<div class="avatar avatar-online">
-													<img src="../../assets/img/jm_denis.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+													<img src="../assets/img/jm_denis.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 												</div>
 												<div class="user-data">
 													<span class="name">Jimmy Denis</span>
@@ -364,7 +349,7 @@
 										<div class="user">
 											<a href="#">
 												<div class="avatar avatar-offline">
-													<img src="../../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+													<img src="../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 												</div>
 												<div class="user-data">
 													<span class="name">Chad</span>
@@ -375,7 +360,7 @@
 										<div class="user">
 											<a href="#">
 												<div class="avatar avatar-offline">
-													<img src="../../assets/img/mlane.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+													<img src="../assets/img/mlane.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 												</div>
 												<div class="user-data">
 													<span class="name">John Doe</span>
@@ -389,7 +374,7 @@
 										<div class="user">
 											<a href="#">
 												<div class="avatar avatar-online">
-													<img src="../../assets/img/jm_denis.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+													<img src="../assets/img/jm_denis.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 												</div>
 												<div class="user-data2">
 													<span class="name">Jimmy Denis</span>
@@ -400,7 +385,7 @@
 										<div class="user">
 											<a href="#">
 												<div class="avatar avatar-offline">
-													<img src="../../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+													<img src="../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 												</div>
 												<div class="user-data2">
 													<span class="name">Chad</span>
@@ -411,7 +396,7 @@
 										<div class="user">
 											<a href="#">
 												<div class="avatar avatar-away">
-													<img src="../../assets/img/talha.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+													<img src="../assets/img/talha.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 												</div>
 												<div class="user-data2">
 													<span class="name">Talha</span>
@@ -428,7 +413,7 @@
 						<div class="messages-title">
 							<div class="user">
 								<div class="avatar avatar-offline float-right ml-2">
-									<img src="../../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+									<img src="../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 								</div>
 								<span class="name">Chad</span>
 								<span class="last-active">Active 2h ago</span>
@@ -441,7 +426,7 @@
 							<div class="message-content-wrapper">
 								<div class="message message-in">
 									<div class="avatar avatar-sm">
-										<img src="../../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+										<img src="../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 									</div>
 									<div class="message-body">
 										<div class="message-content">
@@ -472,7 +457,7 @@
 							<div class="message-content-wrapper">
 								<div class="message message-in">
 									<div class="avatar avatar-sm">
-										<img src="../../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+										<img src="../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 									</div>
 									<div class="message-body">
 										<div class="message-content">
@@ -505,7 +490,7 @@
 							<div class="message-content-wrapper">
 								<div class="message message-in">
 									<div class="avatar avatar-sm">
-										<img src="../../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+										<img src="../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 									</div>
 									<div class="message-body">
 										<div class="message-content">
@@ -781,22 +766,22 @@
 		<!-- End Custom template -->
 	</div>
 	<!--   Core JS Files   -->
-	<script src="../../assets/js/core/jquery.3.2.1.min.js"></script>
-	<script src="../../assets/js/core/popper.min.js"></script>
-	<script src="../../assets/js/core/bootstrap.min.js"></script>
+	<script src="../assets/js/core/jquery.3.2.1.min.js"></script>
+	<script src="../assets/js/core/popper.min.js"></script>
+	<script src="../assets/js/core/bootstrap.min.js"></script>
 	<!-- jQuery UI -->
-	<script src="../../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-	<script src="../../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+	<script src="../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+	<script src="../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
 	<!-- Bootstrap Toggle -->
-	<script src="../../assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+	<script src="../assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
 	<!-- jQuery Scrollbar -->
-	<script src="../../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+	<script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
 	<!-- Datatables -->
-	<script src="../../assets/js/plugin/datatables/datatables.min.js"></script>
+	<script src="../assets/js/plugin/datatables/datatables.min.js"></script>
 	<!-- Atlantis JS -->
-	<script src="../../assets/js/atlantis.min.js"></script>
+	<script src="../assets/js/atlantis.min.js"></script>
 	<!-- Atlantis DEMO methods, don't include it in your project! -->
-	<script src="../../assets/js/setting-demo2.js"></script>
+	<script src="../assets/js/setting-demo2.js"></script>
 	<script >
 		$(document).ready(function() {
 			$('#basic-datatables').DataTable({

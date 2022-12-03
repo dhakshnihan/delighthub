@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include("./../dbconnection.php"); ?>
-<!-- Mirrored from themekita.com/demo-atlantis-bootstrap/livepreview/examples/demo2/tables/datatables.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Nov 2022 13:09:46 GMT -->
+<?php     include("./../dbconnection.php"); ?>
+<!-- Mirrored from themekita.com/demo-atlantis-bootstrap/livepreview/examples/demo2/forms/formvalidation.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Nov 2022 13:09:45 GMT -->
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Tables - Atlantis Bootstrap 4 Admin Dashboard</title>
+	<title>Forms - Atlantis Bootstrap 4 Admin Dashboard</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" href="https://themekita.com/demo-atlantis-bootstrap/livepreview/examples/assets/img/icon.ico" type="image/x-icon"/>
 	
 	<!-- Fonts and icons -->
-	<script src="../../assets/js/plugin/webfont/webfont.min.js"></script>
+	<script src="../assets/js/plugin/webfont/webfont.min.js"></script>
 	<script>
 		WebFont.load({
 			google: {"families":["Lato:300,400,700,900"]},
-			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../../assets/css/fonts.min.css']},
+			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../assets/css/fonts.min.css']},
 			active: function() {
 				sessionStorage.fonts = true;
 			}
@@ -21,10 +21,10 @@
 	</script>
 
 	<!-- CSS Files -->
-	<link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../../assets/css/atlantis.css">
+	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../assets/css/atlantis.css">
 	<!-- CSS Just for demo purpose, don't include it in your project -->
-	<link rel="stylesheet" href="../../assets/css/demo.css">
+	<link rel="stylesheet" href="../assets/css/demo.css">
 </head>
 <body data-background-color="dark">
 	<div class="wrapper">
@@ -71,24 +71,17 @@
 								<i class="fa fa-search"></i>
 							</a>
 						</li>
-						
-						
-						<li class="nav-item">
-							<a href="#" class="nav-link quick-sidebar-toggler">
-								<i class="fa fa-th"></i>
-							</a>
-						</li>
 						<li class="nav-item dropdown hidden-caret">
 							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
 								<div class="avatar-sm">
-									<img src="../../assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+									<img src="../assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
 								</div>
 							</a>
 							<ul class="dropdown-menu dropdown-user animated fadeIn">
 								<div class="dropdown-user-scroll scrollbar-outer">
 									<li>
 										<div class="user-box">
-											<div class="avatar-lg"><img src="../../assets/img/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
+											<div class="avatar-lg"><img src="../assets/img/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
 											<div class="u-text">
 												<h4>Hizrian</h4>
 												<p class="text-muted">hello@example.com</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
@@ -113,7 +106,7 @@
 			</nav>
 			<!-- End Navbar -->
 		</div>
-		<!-- Sidebar -->
+		
 		<!-- Sidebar -->
 		<div class="sidebar sidebar-style-2" data-background-color="dark2">
 			<div class="sidebar-wrapper scrollbar scrollbar-inner">
@@ -131,20 +124,20 @@
 								</ul>
 							</div>
 						</li>
-						<li class="nav-item">
+						<li class="nav-item active submenu">
 							<a data-toggle="collapse" href="#masters">
 								<i class="fas fa-pen-square"></i>
 								<p>Masters</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="masters">
+							<div class="collapse show" id="masters">
 								<ul class="nav nav-collapse">
-									<li>
+                                    <li>
 										<a href="brand_master_model.html">
 											<span class="sub-item">Product Brand</span>
 										</a>
 									</li>
-                                    <li>
+									<li>
 										<a href="category_master_model.html">
 											<span class="sub-item">Product Category</span>
 										</a>
@@ -154,7 +147,7 @@
 											<span class="sub-item">Product Sub Category</span>
 										</a>
 									</li>
-                                    <li>
+                                    <li class="active">
 										<a href="prod_master_model.php">
 											<span class="sub-item">Products</span>
 										</a>
@@ -162,25 +155,25 @@
 								</ul>
 							</div>
 						</li>
-						<li class="nav-item active submenu">
+						<li class="nav-item">
 							<a data-toggle="collapse" href="#views">
 								<i class="fas fa-pen-square"></i>
 								<p>Views <Table></Table></p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse show" id="views">
+							<div class="collapse" id="views">
 								<ul class="nav nav-collapse">
                                     <li>
 										<a href="prod_master_view.php">
 											<span class="sub-item">Products View</span>
 										</a>
 									</li>
-                                    <li class="active">
+									<li>
 										<a href="brand_master_view.php">
 											<span class="sub-item">Product Brands</span>
 										</a>
 									</li>
-                                    <li>
+									<li>
 										<a href="category_master_view.php">
 											<span class="sub-item">Product Category</span>
 										</a>
@@ -199,74 +192,138 @@
 		</div>
 		<!-- End Sidebar -->
 
+
 		<div class="main-panel">
 			<div class="container">
 				<div class="page-inner">
-					<div class="page-header">
-						<h4 class="page-title">Product Brands</h4>
-					</div>
-					
-
+					<!-- <div class="page-header">
+						<h4 class="page-title">Brand Master</h4>
+						
+					</div> -->
+					<div class="row">
 						<div class="col-md-12">
 							<div class="card">
-								<div class="card-body">
-									<div class="table-responsive">
-										<table id="add-row" class="display table table-striped table-hover" >
-											<thead>
-												<tr>
-													<th>S.No</th>
-													<th>Brand Name</th>
-                                                    <th>Status</th>
-													<th style="width: 10%">Action</th>
-												</tr>
-											</thead>
-											
-											<tbody>
-												<?php
-													$sno=1;
-													$sql="select * from tbl_brands ";
-													// echo $sql;
-													$results=mysqli_query($con,$sql);
-													while($row=mysqli_fetch_array($results)){
-														
-														
-													echo '<tr>
-															<td>'.$sno.'</td>
-															<td>'.$row['BRAND01'].'</td>
-                                                            <td>'.$row['BRAND02'].'</td>
-															<td>
-																<div class="form-button-action">
-																	<a href="./brand_master_edit.php?id='.$row['BRANDTID'].'" class="btn btn-success btn-sm">Edit</a>
-																	
-																	<button onclick="delete_brands('.$row['BRANDTID'].')" class="btn btn-info btn-sm">Delete!</button>
-																</div>
-															</td>
-														</tr>';
-														$sno++;
-													}
-												?>
-												
-											</tbody>
-										</table>
-									</div>
+								<div class="card-header">
+									<div class="card-title">product Master</div>
+									<!-- <div class="card-category">Form validation with jQuery from <a href="https://jqueryvalidation.org/">jQuery Validate</a></div> -->
 								</div>
+								<form id="exampleValidation" action="controllerProdData.php" method="POST" enctype="multipart/form-data">
+									<div class="card-body">
+										<div class="form-group form-show-validation row">
+											<label for="prod_name" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">product Name <span class="required-label">*</span></label>
+											<div class="col-lg-4 col-md-9 col-sm-8">
+												<input type="text" class="form-control" id="prod_name" name="prod_name" placeholder="Enter Productname" required>
+											</div>
+										</div>
+										<div class="form-group form-show-validation row">
+											<label for="prod_code" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">Product Code <span class="required-label">*</span></label>
+											<div class="col-lg-4 col-md-9 col-sm-8">
+												<input type="text" class="form-control" id="prod_code" name="prod_code" placeholder="Enter Product Code" required>
+											</div>
+										</div>
+										<div class="form-group form-show-validation row">
+											<label for="category_id" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">Category<span class="required-label">*</span></label>
+											<div class="col-lg-4 col-md-9 col-sm-8">
+												<div class="select2-input">
+													<select id="category_id" name="category_id" class="form-control" onchange="dropdown_category()" required>
+															<option value="">Please select Category</option>
+															<?php
+																$sql="select * from tbl_category where CATEG02='Active'";
+																// echo $sql;
+																$results=mysqli_query($con,$sql);
+																while($row=mysqli_fetch_array($results)){
+																	echo '<option value="'.$row['CATEGTID'].'">'.$row['CATEG01'].'</option>';
+																}
+															?>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="form-group form-show-validation row">
+											<label for="sub_category_id" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">Sub Category<span class="required-label">*</span></label>
+											<div class="col-lg-4 col-md-9 col-sm-8">
+												<div class="select2-input" id="view_sub_category">
+													<!-- <select id="sub_category_id" name="sub_category_id" class="form-control" required> -->
+															<!-- <option value="">Please select Category</option> -->
+															<!-- <?php
+																$sql="select * from tbl_subcategory where SUBCAT03='Active'";
+																echo $sql;
+																$results=mysqli_query($con,$sql);
+																while($row=mysqli_fetch_array($results)){
+																	echo '<option value="'.$row['SUBCATID'].'">'.$row['SUBCAT01'].'</option>';
+																}
+															?> -->
+													<!-- </select> -->
+												</div>
+											</div>
+										</div>
+										<div class="form-group form-show-validation row">
+											<label for="brand_id" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right"> Brand<span class="required-label">*</span></label>
+											<div class="col-lg-4 col-md-9 col-sm-8">
+												<div class="select2-input">
+													<select id="brand_id" name="brand_id" class="form-control" required>
+															<option value="">Please select Brand</option>
+															<?php
+																$sql="select * from tbl_brands where BRAND02='Active'";
+																echo $sql;
+																$results=mysqli_query($con,$sql);
+																while($row=mysqli_fetch_array($results)){
+																	echo '<option value="'.$row['BRANDTID'].'">'.$row['BRAND01'].'</option>';
+																}
+															?>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="form-group form-show-validation row">
+											<label for="name" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">Product Description <span class="required-label">*</span></label>
+											<div class="col-lg-4 col-md-9 col-sm-8">
+											<textarea id="prod_des"  class="form-control" name="prod_des" rows="4" cols="50" required></textarea>
+											</div>
+										</div>
+										<div class="form-group form-show-validation row">
+											<label for="name" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">Product Price <span class="required-label">*</span></label>
+											<div class="col-lg-4 col-md-9 col-sm-8">
+												<input type="number" class="form-control" id="prod_price" name="prod_price" placeholder="Enter Product Price" required>
+											</div>
+										</div>
+										<div class="separator-solid"></div>
+										<div class="form-group form-show-validation row">
+											<label class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">Upload Image <span class="required-label">*</span></label>
+											<div class="col-lg-4 col-md-9 col-sm-8">
+												<div class="input-file input-file-image">
+													<img class="img-upload-preview img-circle" width="100" height="100" src="" alt="preview">
+													<input type="file" class="form-control form-control-file" id="uploadImg" name="uploadImg" accept="image/*" required >
+													<label for="uploadImg" class="btn btn-primary btn-round btn-lg"><i class="fa fa-file-image"></i> Upload a Image</label>
+												</div>
+											</div>
+										</div>
+									<div class="card-action">
+										<div class="row">
+											<div class="col-md-12">
+												<input class="btn btn-success" type="submit" value="Submit" name="submit" >
+												<button class="btn btn-danger">Cancel</button>
+											</div>										
+										</div>
+									</div>
+								</form>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-            <script>
 
-				function delete_brands(val){  
-                  
+			<script>
+                function dropdown_category(){ 
+					// alert("test");
+					var category_id = $("#category_id").val();
                         $.ajax({
                             url:'controllerProdData.php',
                             method:'POST',
-                            data:{delete_brands:'delete_brands',brand_id:val},
+                            data:{dropdown_category:'dropdown_category',category_id:category_id},
                             cache: false,
                             success: function(respose){
-								alert("Recoed Deleted successfully.");
-								window.location="brand_master_view.php";
+								$('#view_sub_category').html(respose);
                             }
                          });
                 }
@@ -318,16 +375,16 @@
 									<span class="category-title mt-0">Contacts</span>
 									<div class="avatar-group">
 										<div class="avatar">
-											<img src="../../assets/img/jm_denis.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+											<img src="../assets/img/jm_denis.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 										</div>
 										<div class="avatar">
-											<img src="../../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+											<img src="../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 										</div>
 										<div class="avatar">
-											<img src="../../assets/img/mlane.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+											<img src="../assets/img/mlane.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 										</div>
 										<div class="avatar">
-											<img src="../../assets/img/talha.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+											<img src="../assets/img/talha.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 										</div>
 										<div class="avatar">
 											<span class="avatar-title rounded-circle border border-white">+</span>
@@ -338,7 +395,7 @@
 										<div class="user">
 											<a href="#">
 												<div class="avatar avatar-online">
-													<img src="../../assets/img/jm_denis.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+													<img src="../assets/img/jm_denis.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 												</div>
 												<div class="user-data">
 													<span class="name">Jimmy Denis</span>
@@ -349,7 +406,7 @@
 										<div class="user">
 											<a href="#">
 												<div class="avatar avatar-offline">
-													<img src="../../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+													<img src="../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 												</div>
 												<div class="user-data">
 													<span class="name">Chad</span>
@@ -360,7 +417,7 @@
 										<div class="user">
 											<a href="#">
 												<div class="avatar avatar-offline">
-													<img src="../../assets/img/mlane.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+													<img src="../assets/img/mlane.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 												</div>
 												<div class="user-data">
 													<span class="name">John Doe</span>
@@ -374,7 +431,7 @@
 										<div class="user">
 											<a href="#">
 												<div class="avatar avatar-online">
-													<img src="../../assets/img/jm_denis.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+													<img src="../assets/img/jm_denis.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 												</div>
 												<div class="user-data2">
 													<span class="name">Jimmy Denis</span>
@@ -385,7 +442,7 @@
 										<div class="user">
 											<a href="#">
 												<div class="avatar avatar-offline">
-													<img src="../../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+													<img src="../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 												</div>
 												<div class="user-data2">
 													<span class="name">Chad</span>
@@ -396,7 +453,7 @@
 										<div class="user">
 											<a href="#">
 												<div class="avatar avatar-away">
-													<img src="../../assets/img/talha.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+													<img src="../assets/img/talha.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 												</div>
 												<div class="user-data2">
 													<span class="name">Talha</span>
@@ -413,7 +470,7 @@
 						<div class="messages-title">
 							<div class="user">
 								<div class="avatar avatar-offline float-right ml-2">
-									<img src="../../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+									<img src="../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 								</div>
 								<span class="name">Chad</span>
 								<span class="last-active">Active 2h ago</span>
@@ -426,7 +483,7 @@
 							<div class="message-content-wrapper">
 								<div class="message message-in">
 									<div class="avatar avatar-sm">
-										<img src="../../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+										<img src="../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 									</div>
 									<div class="message-body">
 										<div class="message-content">
@@ -457,7 +514,7 @@
 							<div class="message-content-wrapper">
 								<div class="message message-in">
 									<div class="avatar avatar-sm">
-										<img src="../../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+										<img src="../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 									</div>
 									<div class="message-body">
 										<div class="message-content">
@@ -490,7 +547,7 @@
 							<div class="message-content-wrapper">
 								<div class="message message-in">
 									<div class="avatar avatar-sm">
-										<img src="../../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+										<img src="../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 									</div>
 									<div class="message-body">
 										<div class="message-content">
@@ -766,71 +823,72 @@
 		<!-- End Custom template -->
 	</div>
 	<!--   Core JS Files   -->
-	<script src="../../assets/js/core/jquery.3.2.1.min.js"></script>
-	<script src="../../assets/js/core/popper.min.js"></script>
-	<script src="../../assets/js/core/bootstrap.min.js"></script>
+	<script src="../assets/js/core/jquery.3.2.1.min.js"></script>
+	<script src="../assets/js/core/popper.min.js"></script>
+	<script src="../assets/js/core/bootstrap.min.js"></script>
 	<!-- jQuery UI -->
-	<script src="../../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-	<script src="../../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+	<script src="../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+	<script src="../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+	<!-- Moment JS -->
+	<script src="../assets/js/plugin/moment/moment.min.js"></script>
 	<!-- Bootstrap Toggle -->
-	<script src="../../assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+	<script src="../assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
 	<!-- jQuery Scrollbar -->
-	<script src="../../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
-	<!-- Datatables -->
-	<script src="../../assets/js/plugin/datatables/datatables.min.js"></script>
+	<script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+	<!-- DateTimePicker -->
+	<script src="../assets/js/plugin/datepicker/bootstrap-datetimepicker.min.js"></script>
+	<!-- Select2 -->
+	<script src="../assets/js/plugin/select2/select2.full.min.js"></script>
+	<!-- jQuery Validation -->
+	<script src="../assets/js/plugin/jquery.validate/jquery.validate.min.js"></script>
 	<!-- Atlantis JS -->
-	<script src="../../assets/js/atlantis.min.js"></script>
+	<script src="../assets/js/atlantis.min.js"></script>
 	<!-- Atlantis DEMO methods, don't include it in your project! -->
-	<script src="../../assets/js/setting-demo2.js"></script>
-	<script >
-		$(document).ready(function() {
-			$('#basic-datatables').DataTable({
-			});
+	<script src="../assets/js/setting-demo2.js"></script>
+	<script>
+		$('#birth').datetimepicker({
+			format: 'MM/DD/YYYY'
+		});
 
-			$('#multi-filter-select').DataTable( {
-				"pageLength": 5,
-				initComplete: function () {
-					this.api().columns().every( function () {
-						var column = this;
-						var select = $('<select class="form-control"><option value=""></option></select>')
-						.appendTo( $(column.footer()).empty() )
-						.on( 'change', function () {
-							var val = $.fn.dataTable.util.escapeRegex(
-								$(this).val()
-								);
+		$('#state').select2({
+			theme: "bootstrap"
+		});
 
-							column
-							.search( val ? '^'+val+'$' : '', true, false )
-							.draw();
-						} );
+		/* validate */
 
-						column.data().unique().sort().each( function ( d, j ) {
-							select.append( '<option value="'+d+'">'+d+'</option>' )
-						} );
-					} );
-				}
-			});
+		// validation when select change
+		$("#state").change(function(){
+			$(this).valid();
+		})
 
-			// Add Row
-			$('#add-row').DataTable({
-				"pageLength": 5,
-			});
+		// validation when inputfile change
+		$("#uploadImg").on("change", function(){
+			$(this).parent('form').validate();
+		})
 
-			var action = '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
-
-			$('#addRowButton').click(function() {
-				$('#add-row').dataTable().fnAddData([
-					$("#addName").val(),
-					$("#addPosition").val(),
-					$("#addOffice").val(),
-					action
-					]);
-				$('#addRowModal').modal('hide');
-
-			});
+		$("#exampleValidation").validate({
+			validClass: "success",
+			rules: {
+				gender: {required: true},
+				confirmpassword: {
+					equalTo: "#password"
+				},
+				birth: {
+					date: true
+				},
+				uploadImg: {
+					required: true, 
+				},
+			},
+			highlight: function(element) {
+				$(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+			},
+			success: function(element) {
+				$(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+			},
 		});
 	</script>
 </body>
 
-<!-- Mirrored from themekita.com/demo-atlantis-bootstrap/livepreview/examples/demo2/tables/datatables.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Nov 2022 13:09:46 GMT -->
+<!-- Mirrored from themekita.com/demo-atlantis-bootstrap/livepreview/examples/demo2/forms/formvalidation.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Nov 2022 13:09:45 GMT -->
 </html>

@@ -7,13 +7,17 @@
 	<title>Atlantis Bootstrap 4 Admin Dashboard</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" href="https://themekita.com/demo-atlantis-bootstrap/livepreview/examples/assets/img/icon.ico" type="image/x-icon"/>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css">   
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.0/css/all.css">
+	
 
 	<!-- Fonts and icons -->
-	<script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+	<script src="./assets/js/plugin/webfont/webfont.min.js"></script>
 	<script>
 		WebFont.load({
 			google: {"families":["Lato:300,400,700,900"]},
-			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../assets/css/fonts.min.css']},
+			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['./assets/css/fonts.min.css']},
 			active: function() {
 				sessionStorage.fonts = true;
 			}
@@ -21,11 +25,12 @@
 	</script>
 
 	<!-- CSS Files -->
-	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../assets/css/atlantis.css">
+	<!-- <link rel="stylesheet" href="./assets/css/fonts.min.css"> -->
+	<link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./assets/css/atlantis.css">
 
 	<!-- CSS Just for demo purpose, don't include it in your project -->
-	<link rel="stylesheet" href="../assets/css/demo.css">
+	<link rel="stylesheet" href="./assets/css/demo.css">
 </head>
 <body data-background-color="dark">
 	<div class="wrapper">
@@ -33,10 +38,11 @@
 			<!-- Logo Header -->
 			<div class="logo-header" data-background-color="dark2">
 				
-				<a href="index.html" class="logo">
-					<img src="https://themekita.com/demo-atlantis-bootstrap/livepreview/examples/assets/img/logo.svg" alt="navbar brand" class="navbar-brand">
+				<a href="index.php" class="logo">
+					<img src="./assets/img/example23.jpg" alt="navbar brand"  height="36" class="navbar-brand1">
+					<!-- <img src="./assets/img/logo.png" alt="..." height="36"> -->
 				</a>
-				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+				<button class="navbar-toggler sidenav-toggler ml-auto " type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon">
 						<i class="icon-menu"></i>
 					</span>
@@ -44,7 +50,7 @@
 				<button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>
 				<div class="nav-toggle">
 					<button class="btn btn-toggle toggle-sidebar">
-						<i class="icon-menu"></i>
+					<i class="fa fa-th-list" aria-hidden="true"></i>
 					</button>
 				</div>
 			</div>
@@ -88,7 +94,7 @@
 										<div class="notif-center">
 											<a href="#">
 												<div class="notif-img"> 
-													<img src="../assets/img/jm_denis.jpg" alt="Img Profile">
+													<img src="./assets/img/jm_denis.jpg" alt="Img Profile">
 												</div>
 												<div class="notif-content">
 													<span class="subject">Jimmy Denis</span>
@@ -100,7 +106,7 @@
 											</a>
 											<a href="#">
 												<div class="notif-img"> 
-													<img src="../assets/img/chadengle.jpg" alt="Img Profile">
+													<img src="./assets/img/chadengle.jpg" alt="Img Profile">
 												</div>
 												<div class="notif-content">
 													<span class="subject">Chad</span>
@@ -112,7 +118,7 @@
 											</a>
 											<a href="#">
 												<div class="notif-img"> 
-													<img src="../assets/img/mlane.jpg" alt="Img Profile">
+													<img src="./assets/img/mlane.jpg" alt="Img Profile">
 												</div>
 												<div class="notif-content">
 													<span class="subject">Jhon Doe</span>
@@ -124,7 +130,7 @@
 											</a>
 											<a href="#">
 												<div class="notif-img"> 
-													<img src="../assets/img/talha.jpg" alt="Img Profile">
+													<img src="./assets/img/talha.jpg" alt="Img Profile">
 												</div>
 												<div class="notif-content">
 													<span class="subject">Talha</span>
@@ -273,14 +279,14 @@
 						<li class="nav-item dropdown hidden-caret">
 							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
 								<div class="avatar-sm">
-									<img src="../assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+									<img src="./assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
 								</div>
 							</a>
 							<ul class="dropdown-menu dropdown-user animated fadeIn">
 								<div class="dropdown-user-scroll scrollbar-outer">
 									<li>
 										<div class="user-box">
-											<div class="avatar-lg"><img src="../assets/img/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
+											<div class="avatar-lg"><img src="./assets/img/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
 											<div class="u-text">
 												<h4>Hizrian</h4>
 												<p class="text-muted">hello@example.com</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
@@ -1378,84 +1384,84 @@
 		<!-- End Custom template -->
 	</div>
 	<!--   Core JS Files   -->
-	<script src="../assets/js/core/jquery.3.2.1.min.js"></script>
-	<script src="../assets/js/core/popper.min.js"></script>
-	<script src="../assets/js/core/bootstrap.min.js"></script>
+	<script src="./assets/js/core/jquery.3.2.1.min.js"></script>
+	<script src="./assets/js/core/popper.min.js"></script>
+	<script src="./assets/js/core/bootstrap.min.js"></script>
 
 	<!-- jQuery UI -->
-	<script src="../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-	<script src="../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+	<script src="./assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+	<script src="./assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
 
 	<!-- jQuery Scrollbar -->
-	<script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+	<script src="./assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
 
 	<!-- Moment JS -->
-	<script src="../assets/js/plugin/moment/moment.min.js"></script>
+	<script src="./assets/js/plugin/moment/moment.min.js"></script>
 
 	<!-- Chart JS -->
-	<script src="../assets/js/plugin/chart.js/chart.min.js"></script>
+	<script src="./assets/js/plugin/chart.js/chart.min.js"></script>
 
 	<!-- jQuery Sparkline -->
-	<script src="../assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+	<script src="./assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
 
 	<!-- Chart Circle -->
-	<script src="../assets/js/plugin/chart-circle/circles.min.js"></script>
+	<script src="./assets/js/plugin/chart-circle/circles.min.js"></script>
 
 	<!-- Datatables -->
-	<script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+	<script src="./assets/js/plugin/datatables/datatables.min.js"></script>
 
 	<!-- Bootstrap Notify -->
-	<script src="../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+	<script src="./assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
 
 	<!-- Bootstrap Toggle -->
-	<script src="../assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+	<script src="./assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
 
 	<!-- jQuery Vector Maps -->
-	<script src="../assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
-	<script src="../assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
+	<script src="./assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
+	<script src="./assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
 
 	<!-- Google Maps Plugin -->
-	<script src="../assets/js/plugin/gmaps/gmaps.js"></script>
+	<script src="./assets/js/plugin/gmaps/gmaps.js"></script>
 
 	<!-- Dropzone -->
-	<script src="../assets/js/plugin/dropzone/dropzone.min.js"></script>
+	<script src="./assets/js/plugin/dropzone/dropzone.min.js"></script>
 
 	<!-- Fullcalendar -->
-	<script src="../assets/js/plugin/fullcalendar/fullcalendar.min.js"></script>
+	<script src="./assets/js/plugin/fullcalendar/fullcalendar.min.js"></script>
 
 	<!-- DateTimePicker -->
-	<script src="../assets/js/plugin/datepicker/bootstrap-datetimepicker.min.js"></script>
+	<script src="./assets/js/plugin/datepicker/bootstrap-datetimepicker.min.js"></script>
 
 	<!-- Bootstrap Tagsinput -->
-	<script src="../assets/js/plugin/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
+	<script src="./assets/js/plugin/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
 
 	<!-- Bootstrap Wizard -->
-	<script src="../assets/js/plugin/bootstrap-wizard/bootstrapwizard.js"></script>
+	<script src="./assets/js/plugin/bootstrap-wizard/bootstrapwizard.js"></script>
 
 	<!-- jQuery Validation -->
-	<script src="../assets/js/plugin/jquery.validate/jquery.validate.min.js"></script>
+	<script src="./assets/js/plugin/jquery.validate/jquery.validate.min.js"></script>
 
 	<!-- Summernote -->
-	<script src="../assets/js/plugin/summernote/summernote-bs4.min.js"></script>
+	<script src="./assets/js/plugin/summernote/summernote-bs4.min.js"></script>
 
 	<!-- Select2 -->
-	<script src="../assets/js/plugin/select2/select2.full.min.js"></script>
+	<script src="./assets/js/plugin/select2/select2.full.min.js"></script>
 
 	<!-- Sweet Alert -->
-	<script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+	<script src="./assets/js/plugin/sweetalert/sweetalert.min.js"></script>
 
 	<!-- Owl Carousel -->
-	<script src="../assets/js/plugin/owl-carousel/owl.carousel.min.js"></script>
+	<script src="./assets/js/plugin/owl-carousel/owl.carousel.min.js"></script>
 
 	<!-- Magnific Popup -->
-	<script src="../assets/js/plugin/jquery.magnific-popup/jquery.magnific-popup.min.js"></script>
+	<script src="./assets/js/plugin/jquery.magnific-popup/jquery.magnific-popup.min.js"></script>
 
 	<!-- Atlantis JS -->
-	<script src="../assets/js/atlantis.min.js"></script>
+	<script src="./assets/js/atlantis.min.js"></script>
 
 	<!-- Atlantis DEMO methods, don't include it in your project! -->
-	<script src="../assets/js/setting-demo.js"></script>
-	<script src="../assets/js/demo.js"></script>
+	<script src="./assets/js/setting-demo.js"></script>
+	<script src="./assets/js/demo.js"></script>
 	<script>
 		$('#lineChart').sparkline([102,109,120,99,110,105,115], {
 			type: 'line',

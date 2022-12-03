@@ -222,20 +222,38 @@
 											</div>
 										</div>
 										<div class="form-group form-show-validation row">
-											<label for="sub_category_id" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">Category<span class="required-label">*</span></label>
+											<label for="category_id" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">Category<span class="required-label">*</span></label>
 											<div class="col-lg-4 col-md-9 col-sm-8">
 												<div class="select2-input">
-													<select id="sub_category_id" name="sub_category_id" class="form-control" required>
+													<select id="category_id" name="category_id" class="form-control" onchange="dropdown_category()" required>
 															<option value="">Please select Category</option>
 															<?php
+																$sql="select * from tbl_category where CATEG02='Active'";
+																// echo $sql;
+																$results=mysqli_query($con,$sql);
+																while($row=mysqli_fetch_array($results)){
+																	echo '<option value="'.$row['CATEGTID'].'">'.$row['CATEG01'].'</option>';
+																}
+															?>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="form-group form-show-validation row">
+											<label for="sub_category_id" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">Sub Category<span class="required-label">*</span></label>
+											<div class="col-lg-4 col-md-9 col-sm-8">
+												<div class="select2-input" id="view_sub_category">
+													<!-- <select id="sub_category_id" name="sub_category_id" class="form-control" required> -->
+															<!-- <option value="">Please select Category</option> -->
+															<!-- <?php
 																$sql="select * from tbl_subcategory where SUBCAT03='Active'";
 																echo $sql;
 																$results=mysqli_query($con,$sql);
 																while($row=mysqli_fetch_array($results)){
 																	echo '<option value="'.$row['SUBCATID'].'">'.$row['SUBCAT01'].'</option>';
 																}
-															?>
-													</select>
+															?> -->
+													<!-- </select> -->
 												</div>
 											</div>
 										</div>
@@ -296,24 +314,19 @@
 			</div>
 
 			<script>
-                // function add_products(){  
-                //     var prod_name = $("#prod_name").val();
-                //     var prod_code = $("#prod_code").val();
-				// 	var category_id = $("#category_id").val();
-				// 	var brand_id = $("#brand_id").val();
-				// 	var prod_des = $("#prod_des").val();
-				// 	var prod_des = $("#prod_des").val();
-					
-                //         $.ajax({
-                //             url:'controllerProdData.php',
-                //             method:'POST',
-                //             data:{type:'add_brands',prod_name:prod_name,prod_code:prod_code},
-                //             cache: false,
-                //             success: function(respose){
-                            
-                //             }
-                //          });
-                // }
+                function dropdown_category(){ 
+					// alert("test");
+					var category_id = $("#category_id").val();
+                        $.ajax({
+                            url:'controllerProdData.php',
+                            method:'POST',
+                            data:{dropdown_category:'dropdown_category',category_id:category_id},
+                            cache: false,
+                            success: function(respose){
+								$('#view_sub_category').html(respose);
+                            }
+                         });
+                }
 
             </script>
 			<footer class="footer">

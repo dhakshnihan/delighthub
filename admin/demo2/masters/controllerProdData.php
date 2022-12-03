@@ -78,7 +78,7 @@ error_reporting(0);
 		  // File is uploaded to temp dir
 		  if(move_uploaded_file($tempPath, $targetPath)) {
             $sql="insert into tbl_products(PRODN01,PRODN02,PRODN03,PRODN04,PRODN05,PRODN06,PRODN07,PRODN08,PRODN09) values
-            ('".$_POST['prod_name']."','".$_POST['prod_code']."','".$_POST['sub_category_id']."','".$_POST['brand_id']."','".$_POST['prod_des']."','".$_POST['prod_price']."','".$filename."','Active',now())";
+            ('".$_POST['prod_name']."','".$_POST['prod_code']."','".$_POST['brand_id']."','".$_POST['sub_category_id']."','".$_POST['prod_des']."','".$_POST['prod_price']."','".$filename."','Active',now())";
             // echo $sql;
             mysqli_query($con,$sql);
             echo "<script>
@@ -105,7 +105,7 @@ error_reporting(0);
 		
 		  // File is uploaded to temp dir
 		  if(move_uploaded_file($tempPath, $targetPath)) {
-            $sql="update tbl_products set PRODN01='".$_POST['prod_name']."',PRODN02='".$_POST['prod_code']."',PRODN03='".$_POST['sub_category_id']."',PRODN04='".$_POST['brand_id']."',
+            $sql="update tbl_products set PRODN01='".$_POST['prod_name']."',PRODN02='".$_POST['prod_code']."',PRODN03='".$_POST['brand_id']."',PRODN04='".$_POST['sub_category_id']."',
             PRODN05='".$_POST['prod_des']."',PRODN06='".$_POST['prod_price']."',PRODN07='".$filename."',PRODN08='".$_POST['status']."',PRODN09=now() where PRODTID='".$_POST['prod_id']."'";
             // echo $sql;
             mysqli_query($con,$sql);
@@ -126,4 +126,19 @@ error_reporting(0);
         mysqli_query($con,$sql);
     }
 
+
+    //drop dwon category
+
+    if(isset($_POST['dropdown_category'])){
+        $data="";
+        $sql="select * from tbl_subcategory where SUBCAT02='".$_POST['category_id']."' ";
+        $result = mysqli_query($con,$sql);
+        $data.='<select id="sub_category_id" name="sub_category_id" class="form-control" required>';
+        while($row = mysqli_fetch_array($result)){
+            $data.='<option value="'.$row['SUBCATID'].'">'.$row['SUBCAT01'].'</option>';
+        }
+        $data.='</select>';
+
+        echo $data;
+    }
 ?>

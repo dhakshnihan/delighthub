@@ -232,7 +232,7 @@
 													$sno=1;
 													$sql="select * from tbl_products
 													left join tbl_brands on  PRODN03=BRANDTID 
-													left join tbl_subcategory on SUBCATID=PRODN04 where PRODN08='Active'";
+													left join tbl_subcategory on SUBCATID=PRODN04";
 													// echo $sql;
 													$results=mysqli_query($con,$sql);
 													while($row=mysqli_fetch_array($results)){
@@ -243,7 +243,7 @@
 															<td>'.$row['PRODN01'].'</td>
 															<td>'.$row['PRODN02'].'</td>
 															<td>'.$row['BRAND01'].'</td>
-															<td>'.$row['SUBCAT02'].'</td>
+															<td>'.$row['SUBCAT01'].'</td>
 															<td>'.$row['PRODN05'].'</td>
 															<td>'.$row['PRODN06'].'</td>
 															<td><img src="'.$imageURL1.'" width="100" height="100"></td>

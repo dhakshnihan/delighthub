@@ -627,8 +627,8 @@ button:focus {
 .dropdown-megamenu:hover .megamenu {
   visibility: visible;
   opacity: 1;
-  top: 56px;
-  margin-left: 25rem;
+  top: 7rem;
+  /* margin-left: 25rem; */
 }
 
 .megamenu {

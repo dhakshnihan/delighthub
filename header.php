@@ -127,8 +127,8 @@
                         
                         
                         <!-- <a href="" class="header-widget ms-3 dropdown-arrow"><span>Products</span></a> -->
-                        <ul class="navbar-list">
-                            <li class=" header-widget ms-3 dropdown-megamenu">
+                        <ul class="navbar-list1 dropdown1">
+                            <li class=" header-widget1 ms-6 dropdown-megamenu">
                                 <a href="" class="header-widget ms-3 dropdown-arrow1"><span>Products</span></a>
                                 <div class="megamenu">
                                     <div class="container">
@@ -289,7 +289,7 @@
                                     </div>
                                 </div>
                             </li>
-                    
+</ul>
                     
                     </div>
                    
@@ -329,7 +329,7 @@
                                 </a>
                                     <ul class="dropdown-position-list">
                                         <li><a href="login.php">Log In</a></li>
-                                        <li><a href="register.php">Sign In</a></li>
+                                        <li><a href="register.php">Register</a></li>
                                         
                                     </ul>
                                

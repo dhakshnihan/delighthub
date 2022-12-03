@@ -806,7 +806,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="section-heading">
-                            <h2>collected new items</h2>
+                            <h2>Added new items</h2>
                         </div>
                     </div>
                 </div>
@@ -844,7 +844,6 @@
                                             <a href="product-video.html">fresh green chilis</a>
                                         </h6>
                                         <h6 class="product-price">
-                                            <del>$34</del>
                                             <span>$28<small>/piece</small></span>
                                         </h6>
                                         <button class="product-add" title="Add to Cart">
@@ -890,7 +889,6 @@
                                             <a href="product-video.html">fresh green chilis</a>
                                         </h6>
                                         <h6 class="product-price">
-                                            <del>$34</del>
                                             <span>$28<small>/piece</small></span>
                                         </h6>
                                         <button class="product-add" title="Add to Cart">
@@ -936,7 +934,6 @@
                                             <a href="product-video.html">fresh green chilis</a>
                                         </h6>
                                         <h6 class="product-price">
-                                            <del>$34</del>
                                             <span>$28<small>/piece</small></span>
                                         </h6>
                                         <button class="product-add" title="Add to Cart">
@@ -982,7 +979,6 @@
                                             <a href="product-video.html">fresh green chilis</a>
                                         </h6>
                                         <h6 class="product-price">
-                                            <del>$34</del>
                                             <span>$28<small>/piece</small></span>
                                         </h6>
                                         <button class="product-add" title="Add to Cart">
@@ -1028,7 +1024,6 @@
                                             <a href="product-video.html">fresh green chilis</a>
                                         </h6>
                                         <h6 class="product-price">
-                                            <del>$34</del>
                                             <span>$28<small>/piece</small></span>
                                         </h6>
                                         <button class="product-add" title="Add to Cart">
@@ -1074,7 +1069,6 @@
                                             <a href="product-video.html">fresh green chilis</a>
                                         </h6>
                                         <h6 class="product-price">
-                                            <del>$34</del>
                                             <span>$28<small>/piece</small></span>
                                         </h6>
                                         <button class="product-add" title="Add to Cart">
@@ -1222,7 +1216,6 @@
                                         <a href="product-video.html">fresh green chilis</a>
                                     </h6>
                                     <h6 class="product-price">
-                                        <del>$34</del>
                                         <span>$28<small>/piece</small></span>
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
@@ -1268,7 +1261,6 @@
                                         <a href="product-video.html">fresh green chilis</a>
                                     </h6>
                                     <h6 class="product-price">
-                                        <del>$34</del>
                                         <span>$28<small>/piece</small></span>
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
@@ -1314,7 +1306,6 @@
                                         <a href="product-video.html">fresh green chilis</a>
                                     </h6>
                                     <h6 class="product-price">
-                                        <del>$34</del>
                                         <span>$28<small>/piece</small></span>
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
@@ -1360,7 +1351,6 @@
                                         <a href="product-video.html">fresh green chilis</a>
                                     </h6>
                                     <h6 class="product-price">
-                                        <del>$34</del>
                                         <span>$28<small>/piece</small></span>
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
@@ -1406,7 +1396,6 @@
                                         <a href="product-video.html">fresh green chilis</a>
                                     </h6>
                                     <h6 class="product-price">
-                                        <del>$34</del>
                                         <span>$28<small>/piece</small></span>
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
@@ -1452,7 +1441,6 @@
                                         <a href="product-video.html">fresh green chilis</a>
                                     </h6>
                                     <h6 class="product-price">
-                                        <del>$34</del>
                                         <span>$28<small>/piece</small></span>
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
@@ -1498,7 +1486,6 @@
                                         <a href="product-video.html">fresh green chilis</a>
                                     </h6>
                                     <h6 class="product-price">
-                                        <del>$34</del>
                                         <span>$28<small>/piece</small></span>
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
@@ -1544,7 +1531,6 @@
                                         <a href="product-video.html">fresh green chilis</a>
                                     </h6>
                                     <h6 class="product-price">
-                                        <del>$34</del>
                                         <span>$28<small>/piece</small></span>
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
@@ -1590,7 +1576,6 @@
                                         <a href="product-video.html">fresh green chilis</a>
                                     </h6>
                                     <h6 class="product-price">
-                                        <del>$34</del>
                                         <span>$28<small>/piece</small></span>
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
@@ -1636,7 +1621,6 @@
                                         <a href="product-video.html">fresh green chilis</a>
                                     </h6>
                                     <h6 class="product-price">
-                                        <del>$34</del>
                                         <span>$28<small>/piece</small></span>
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
@@ -1687,7 +1671,6 @@
                                         <a href="product-video.html">fresh green chilis</a>
                                     </h6>
                                     <h6 class="product-price">
-                                        <del>$34</del>
                                         <span>$28<small>/piece</small></span>
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
@@ -1733,7 +1716,6 @@
                                         <a href="product-video.html">fresh green chilis</a>
                                     </h6>
                                     <h6 class="product-price">
-                                        <del>$34</del>
                                         <span>$28<small>/piece</small></span>
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
@@ -1779,7 +1761,6 @@
                                         <a href="product-video.html">fresh green chilis</a>
                                     </h6>
                                     <h6 class="product-price">
-                                        <del>$34</del>
                                         <span>$28<small>/piece</small></span>
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
@@ -1825,7 +1806,6 @@
                                         <a href="product-video.html">fresh green chilis</a>
                                     </h6>
                                     <h6 class="product-price">
-                                        <del>$34</del>
                                         <span>$28<small>/piece</small></span>
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
@@ -1871,7 +1851,6 @@
                                         <a href="product-video.html">fresh green chilis</a>
                                     </h6>
                                     <h6 class="product-price">
-                                        <del>$34</del>
                                         <span>$28<small>/piece</small></span>
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
@@ -1917,7 +1896,6 @@
                                         <a href="product-video.html">fresh green chilis</a>
                                     </h6>
                                     <h6 class="product-price">
-                                        <del>$34</del>
                                         <span>$28<small>/piece</small></span>
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
@@ -1963,7 +1941,6 @@
                                         <a href="product-video.html">fresh green chilis</a>
                                     </h6>
                                     <h6 class="product-price">
-                                        <del>$34</del>
                                         <span>$28<small>/piece</small></span>
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
@@ -2009,7 +1986,6 @@
                                         <a href="product-video.html">fresh green chilis</a>
                                     </h6>
                                     <h6 class="product-price">
-                                        <del>$34</del>
                                         <span>$28<small>/piece</small></span>
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
@@ -2055,7 +2031,6 @@
                                         <a href="product-video.html">fresh green chilis</a>
                                     </h6>
                                     <h6 class="product-price">
-                                        <del>$34</del>
                                         <span>$28<small>/piece</small></span>
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
@@ -2101,7 +2076,6 @@
                                         <a href="product-video.html">fresh green chilis</a>
                                     </h6>
                                     <h6 class="product-price">
-                                        <del>$34</del>
                                         <span>$28<small>/piece</small></span>
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
@@ -2152,7 +2126,6 @@
                                         <a href="product-video.html">fresh green chilis</a>
                                     </h6>
                                     <h6 class="product-price">
-                                        <del>$34</del>
                                         <span>$28<small>/piece</small></span>
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
@@ -2198,7 +2171,6 @@
                                         <a href="product-video.html">fresh green chilis</a>
                                     </h6>
                                     <h6 class="product-price">
-                                        <del>$34</del>
                                         <span>$28<small>/piece</small></span>
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
@@ -2244,7 +2216,6 @@
                                         <a href="product-video.html">fresh green chilis</a>
                                     </h6>
                                     <h6 class="product-price">
-                                        <del>$34</del>
                                         <span>$28<small>/piece</small></span>
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
@@ -2290,7 +2261,6 @@
                                         <a href="product-video.html">fresh green chilis</a>
                                     </h6>
                                     <h6 class="product-price">
-                                        <del>$34</del>
                                         <span>$28<small>/piece</small></span>
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
@@ -2336,7 +2306,6 @@
                                         <a href="product-video.html">fresh green chilis</a>
                                     </h6>
                                     <h6 class="product-price">
-                                        <del>$34</del>
                                         <span>$28<small>/piece</small></span>
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
@@ -2382,7 +2351,6 @@
                                         <a href="product-video.html">fresh green chilis</a>
                                     </h6>
                                     <h6 class="product-price">
-                                        <del>$34</del>
                                         <span>$28<small>/piece</small></span>
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
@@ -2428,7 +2396,6 @@
                                         <a href="product-video.html">fresh green chilis</a>
                                     </h6>
                                     <h6 class="product-price">
-                                        <del>$34</del>
                                         <span>$28<small>/piece</small></span>
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
@@ -2474,7 +2441,6 @@
                                         <a href="product-video.html">fresh green chilis</a>
                                     </h6>
                                     <h6 class="product-price">
-                                        <del>$34</del>
                                         <span>$28<small>/piece</small></span>
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
@@ -2520,7 +2486,6 @@
                                         <a href="product-video.html">fresh green chilis</a>
                                     </h6>
                                     <h6 class="product-price">
-                                        <del>$34</del>
                                         <span>$28<small>/piece</small></span>
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
@@ -2566,7 +2531,6 @@
                                         <a href="product-video.html">fresh green chilis</a>
                                     </h6>
                                     <h6 class="product-price">
-                                        <del>$34</del>
                                         <span>$28<small>/piece</small></span>
                                     </h6>
                                     <button class="product-add" title="Add to Cart">

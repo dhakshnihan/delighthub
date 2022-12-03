@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php     include("./../dbconnection.php"); ?>
 <!-- Mirrored from themekita.com/demo-atlantis-bootstrap/livepreview/examples/demo2/forms/formvalidation.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Nov 2022 13:09:45 GMT -->
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -9,11 +9,11 @@
 	<link rel="icon" href="https://themekita.com/demo-atlantis-bootstrap/livepreview/examples/assets/img/icon.ico" type="image/x-icon"/>
 	
 	<!-- Fonts and icons -->
-	<script src="../../assets/js/plugin/webfont/webfont.min.js"></script>
+	<script src="../assets/js/plugin/webfont/webfont.min.js"></script>
 	<script>
 		WebFont.load({
 			google: {"families":["Lato:300,400,700,900"]},
-			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../../assets/css/fonts.min.css']},
+			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../assets/css/fonts.min.css']},
 			active: function() {
 				sessionStorage.fonts = true;
 			}
@@ -21,10 +21,10 @@
 	</script>
 
 	<!-- CSS Files -->
-	<link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../../assets/css/atlantis.css">
+	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../assets/css/atlantis.css">
 	<!-- CSS Just for demo purpose, don't include it in your project -->
-	<link rel="stylesheet" href="../../assets/css/demo.css">
+	<link rel="stylesheet" href="../assets/css/demo.css">
 </head>
 <body data-background-color="dark">
 	<div class="wrapper">
@@ -74,14 +74,14 @@
 						<li class="nav-item dropdown hidden-caret">
 							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
 								<div class="avatar-sm">
-									<img src="../../assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+									<img src="../assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
 								</div>
 							</a>
 							<ul class="dropdown-menu dropdown-user animated fadeIn">
 								<div class="dropdown-user-scroll scrollbar-outer">
 									<li>
 										<div class="user-box">
-											<div class="avatar-lg"><img src="../../assets/img/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
+											<div class="avatar-lg"><img src="../assets/img/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
 											<div class="u-text">
 												<h4>Hizrian</h4>
 												<p class="text-muted">hello@example.com</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
@@ -132,17 +132,17 @@
 							</a>
 							<div class="collapse show" id="masters">
 								<ul class="nav nav-collapse">
-									<li class="active">
+                                    <li>
 										<a href="brand_master_model.html">
 											<span class="sub-item">Product Brand</span>
 										</a>
 									</li>
-                                    <li>
+									<li >
 										<a href="category_master_model.html">
 											<span class="sub-item">Product Category</span>
 										</a>
 									</li>
-									<li>
+                                    <li class="active">
 										<a href="sub_category_master_model.php">
 											<span class="sub-item">Product Sub Category</span>
 										</a>
@@ -178,7 +178,7 @@
 											<span class="sub-item">Product Category</span>
 										</a>
 									</li>
-									<li>
+                                    <li>
 										<a href="sub_category_master_view.php">
 											<span class="sub-item">Product Sub Category</span>
 										</a>
@@ -204,22 +204,39 @@
 						<div class="col-md-12">
 							<div class="card">
 								<div class="card-header">
-									<div class="card-title">Brand Master</div>
+									<div class="card-title">Product Sub Category</div>
 									<!-- <div class="card-category">Form validation with jQuery from <a href="https://jqueryvalidation.org/">jQuery Validate</a></div> -->
 								</div>
 								<!-- <form id="exampleValidation"> -->
 									<div class="card-body">
 										<div class="form-group form-show-validation row">
-											<label for="brand_name" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">Brand Name <span class="required-label">*</span></label>
+											<label for="sub_category_name" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">Product Category  <span class="required-label">*</span></label>
 											<div class="col-lg-4 col-md-9 col-sm-8">
-												<input type="text" class="form-control" id="brand_name" name="brand_name" placeholder="Enter BrandName" required>
+												<input type="text" class="form-control" id="sub_category_name" name="sub_category_name" placeholder="Enter Sub Category" required>
 											</div>
 										</div>
-                                       
+                                        <div class="form-group form-show-validation row">
+											<label for="category_id" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">Category<span class="required-label">*</span></label>
+											<div class="col-lg-4 col-md-9 col-sm-8">
+												<div class="select2-input">
+													<select id="category_id" name="category_id" class="form-control" required>
+															<option value="">Please select Category</option>
+															<?php
+																$sql="select * from tbl_category where CATEG02='Active'";
+																// echo $sql
+																$results=mysqli_query($con,$sql);
+																while($row=mysqli_fetch_array($results)){
+																	echo '<option value="'.$row['CATEGTID'].'">'.$row['CATEG01'].'</option>';
+																}
+															?>
+													</select>
+												</div>
+											</div>
+										</div>
 									<div class="card-action">
 										<div class="row">
 											<div class="col-md-12">
-												<input class="btn btn-success" type="submit" value="Submit" onclick="add_brands()">
+												<input class="btn btn-success" type="submit" value="Submit" onclick="add_sub_category()">
 												<button class="btn btn-danger">Cancel</button>
 											</div>										
 										</div>
@@ -232,22 +249,20 @@
 			</div>
 
             <script>
-                function add_brands(){  
-                    var brand_name = $("#brand_name").val();
+                function add_sub_category(){  
+                    var sub_category_name = $("#sub_category_name").val();
+                    var category_id = $("#category_id").val();
                         $.ajax({
-                        url:'controllerProdData.php',
-                        method:'POST',
-                        data:{add_brands:'add_brands',brand_name:brand_name},
-                        cache: false,
-                        success: function(respose){
-							alert("Inserted successfully.");
-							window.location="brand_master_view.php";
-                     }
-                
-                
-                    
-                });
-            }
+                            url:'controllerProdData.php',
+                            method:'POST',
+                            data:{add_sub_category:'add_sub_category',sub_category_name:sub_category_name,category_id:category_id},
+                            cache: false,
+                            success: function(respose){
+								alert("Inserted successfully.");
+								window.location="sub_category_master_view.php";
+                            }
+                         });
+                }
 
             </script>
 			<footer class="footer">
@@ -296,16 +311,16 @@
 									<span class="category-title mt-0">Contacts</span>
 									<div class="avatar-group">
 										<div class="avatar">
-											<img src="../../assets/img/jm_denis.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+											<img src="../assets/img/jm_denis.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 										</div>
 										<div class="avatar">
-											<img src="../../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+											<img src="../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 										</div>
 										<div class="avatar">
-											<img src="../../assets/img/mlane.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+											<img src="../assets/img/mlane.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 										</div>
 										<div class="avatar">
-											<img src="../../assets/img/talha.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+											<img src="../assets/img/talha.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 										</div>
 										<div class="avatar">
 											<span class="avatar-title rounded-circle border border-white">+</span>
@@ -316,7 +331,7 @@
 										<div class="user">
 											<a href="#">
 												<div class="avatar avatar-online">
-													<img src="../../assets/img/jm_denis.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+													<img src="../assets/img/jm_denis.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 												</div>
 												<div class="user-data">
 													<span class="name">Jimmy Denis</span>
@@ -327,7 +342,7 @@
 										<div class="user">
 											<a href="#">
 												<div class="avatar avatar-offline">
-													<img src="../../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+													<img src="../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 												</div>
 												<div class="user-data">
 													<span class="name">Chad</span>
@@ -338,7 +353,7 @@
 										<div class="user">
 											<a href="#">
 												<div class="avatar avatar-offline">
-													<img src="../../assets/img/mlane.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+													<img src="../assets/img/mlane.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 												</div>
 												<div class="user-data">
 													<span class="name">John Doe</span>
@@ -352,7 +367,7 @@
 										<div class="user">
 											<a href="#">
 												<div class="avatar avatar-online">
-													<img src="../../assets/img/jm_denis.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+													<img src="../assets/img/jm_denis.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 												</div>
 												<div class="user-data2">
 													<span class="name">Jimmy Denis</span>
@@ -363,7 +378,7 @@
 										<div class="user">
 											<a href="#">
 												<div class="avatar avatar-offline">
-													<img src="../../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+													<img src="../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 												</div>
 												<div class="user-data2">
 													<span class="name">Chad</span>
@@ -374,7 +389,7 @@
 										<div class="user">
 											<a href="#">
 												<div class="avatar avatar-away">
-													<img src="../../assets/img/talha.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+													<img src="../assets/img/talha.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 												</div>
 												<div class="user-data2">
 													<span class="name">Talha</span>
@@ -391,7 +406,7 @@
 						<div class="messages-title">
 							<div class="user">
 								<div class="avatar avatar-offline float-right ml-2">
-									<img src="../../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+									<img src="../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 								</div>
 								<span class="name">Chad</span>
 								<span class="last-active">Active 2h ago</span>
@@ -404,7 +419,7 @@
 							<div class="message-content-wrapper">
 								<div class="message message-in">
 									<div class="avatar avatar-sm">
-										<img src="../../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+										<img src="../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 									</div>
 									<div class="message-body">
 										<div class="message-content">
@@ -435,7 +450,7 @@
 							<div class="message-content-wrapper">
 								<div class="message message-in">
 									<div class="avatar avatar-sm">
-										<img src="../../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+										<img src="../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 									</div>
 									<div class="message-body">
 										<div class="message-content">
@@ -468,7 +483,7 @@
 							<div class="message-content-wrapper">
 								<div class="message message-in">
 									<div class="avatar avatar-sm">
-										<img src="../../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
+										<img src="../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle border border-white">
 									</div>
 									<div class="message-body">
 										<div class="message-content">
@@ -744,28 +759,28 @@
 		<!-- End Custom template -->
 	</div>
 	<!--   Core JS Files   -->
-	<script src="../../assets/js/core/jquery.3.2.1.min.js"></script>
-	<script src="../../assets/js/core/popper.min.js"></script>
-	<script src="../../assets/js/core/bootstrap.min.js"></script>
+	<script src="../assets/js/core/jquery.3.2.1.min.js"></script>
+	<script src="../assets/js/core/popper.min.js"></script>
+	<script src="../assets/js/core/bootstrap.min.js"></script>
 	<!-- jQuery UI -->
-	<script src="../../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-	<script src="../../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+	<script src="../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+	<script src="../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
 	<!-- Moment JS -->
-	<script src="../../assets/js/plugin/moment/moment.min.js"></script>
+	<script src="../assets/js/plugin/moment/moment.min.js"></script>
 	<!-- Bootstrap Toggle -->
-	<script src="../../assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+	<script src="../assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
 	<!-- jQuery Scrollbar -->
-	<script src="../../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+	<script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
 	<!-- DateTimePicker -->
-	<script src="../../assets/js/plugin/datepicker/bootstrap-datetimepicker.min.js"></script>
+	<script src="../assets/js/plugin/datepicker/bootstrap-datetimepicker.min.js"></script>
 	<!-- Select2 -->
-	<script src="../../assets/js/plugin/select2/select2.full.min.js"></script>
+	<script src="../assets/js/plugin/select2/select2.full.min.js"></script>
 	<!-- jQuery Validation -->
-	<script src="../../assets/js/plugin/jquery.validate/jquery.validate.min.js"></script>
+	<script src="../assets/js/plugin/jquery.validate/jquery.validate.min.js"></script>
 	<!-- Atlantis JS -->
-	<script src="../../assets/js/atlantis.min.js"></script>
+	<script src="../assets/js/atlantis.min.js"></script>
 	<!-- Atlantis DEMO methods, don't include it in your project! -->
-	<script src="../../assets/js/setting-demo2.js"></script>
+	<script src="../assets/js/setting-demo2.js"></script>
 	<script>
 		$('#birth').datetimepicker({
 			format: 'MM/DD/YYYY'

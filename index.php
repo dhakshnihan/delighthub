@@ -573,7 +573,7 @@
                             $rowx=mysqli_fetch_array($resultx);
                             $items=$rowx['items'];
 
-                            $image='./admin/demo2/masters/category_uploads/'.$row["CATEG03"];
+                            $image='./admin//masters/category_uploads/'.$row["CATEG03"];
                             echo '<li>
                                     <a class="suggest-card" href="shop-4column.html">
                                         <img src="'.$image.'" alt="suggest">
@@ -800,7 +800,7 @@
                                             <i class="fas fa-heart"></i>
                                         </button>
                                         <a class="product-image" href="product-video.html">
-                                            <img src="admin/demo2/masters/prod_uploads/Daal.png" alt="product">
+                                            <img src="admin/masters/prod_uploads/Daal.png" alt="product">
                                         </a>
                                         <div class="product-widget">
                                             <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
@@ -845,7 +845,7 @@
                                             <i class="fas fa-heart"></i>
                                         </button>
                                         <a class="product-image" href="product-video.html">
-                                            <img src="admin/demo2/masters/prod_uploads/Groundnuts.png" alt="product">
+                                            <img src="admin/masters/prod_uploads/Groundnuts.png" alt="product">
                                         </a>
                                         <div class="product-widget">
                                             <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
@@ -890,7 +890,7 @@
                                             <i class="fas fa-heart"></i>
                                         </button>
                                         <a class="product-image" href="product-video.html">
-                                            <img src="admin/demo2/masters/prod_uploads/Gulabjamun.png" alt="product">
+                                            <img src="admin/masters/prod_uploads/Gulabjamun.png" alt="product">
                                         </a>
                                         <div class="product-widget">
                                             <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
@@ -935,7 +935,7 @@
                                             <i class="fas fa-heart"></i>
                                         </button>
                                         <a class="product-image" href="product-video.html">
-                                            <img src="admin/demo2/masters/prod_uploads/Mango picke.png" alt="product">
+                                            <img src="admin/masters/prod_uploads/Mango picke.png" alt="product">
                                         </a>
                                         <div class="product-widget">
                                             <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
@@ -980,7 +980,7 @@
                                             <i class="fas fa-heart"></i>
                                         </button>
                                         <a class="product-image" href="product-video.html">
-                                            <img src="admin/demo2/masters/prod_uploads/Saree.png" alt="product">
+                                            <img src="admin/masters/prod_uploads/Saree.png" alt="product">
                                         </a>
                                         <div class="product-widget">
                                             <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
@@ -1090,7 +1090,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="promo-img">
-                            <a href=""><img src="./admin/demo2/banner_uploads/banner2.png" alt="promo"></a>
+                            <a href=""><img src="./admin/masters/banner_uploads/banner2.png" alt="promo"></a>
                         </div>
                     </div>
                 </div>
@@ -2556,73 +2556,73 @@
                 <div class="brand-slider slider-arrow">
                     <div class="brand-wrap">
                         <div class="brand-media">
-                            <img src="images/brand/01.jpg" alt="brand">
+                            <img src="./admin/masters/brand_uploads/7 day fast-shipping.svg" alt="brand">
                             <div class="brand-overlay">
                                 <a href="brand-single.html"><i class="fas fa-link"></i></a>
                             </div>
                         </div>
                         <div class="brand-meta">
-                            <h4>natural greeny</h4>
+                            <h4>7 day fast-shipping</h4>
                             <p>(45 items)</p>
                         </div>
                     </div>
                     <div class="brand-wrap">
                         <div class="brand-media">
-                            <img src="images/brand/02.jpg" alt="brand">
+                            <img src="./admin/masters/brand_uploads/door_step_delivery.svg" alt="brand">
                             <div class="brand-overlay">
                                 <a href="brand-single.html"><i class="fas fa-link"></i></a>
                             </div>
                         </div>
                         <div class="brand-meta">
-                            <h4>vegan lover</h4>
+                            <h4>Door Step Delivery</h4>
                             <p>(45 items)</p>
                         </div>
                     </div>
                     <div class="brand-wrap">
                         <div class="brand-media">
-                            <img src="images/brand/03.jpg" alt="brand">
+                            <img src="./admin/masters/brand_uploads/Finest Indian Products.svg" alt="brand">
                             <div class="brand-overlay">
                                 <a href="brand-single.html"><i class="fas fa-link"></i></a>
                             </div>
                         </div>
                         <div class="brand-meta">
-                            <h4>organic foody</h4>
+                            <h4>Finest Indian Products</h4>
                             <p>(45 items)</p>
                         </div>
                     </div>
                     <div class="brand-wrap">
                         <div class="brand-media">
-                            <img src="images/brand/04.jpg" alt="brand">
+                            <img src="./admin/masters/brand_uploads/Hassle_Custom.svg" alt="brand">
                             <div class="brand-overlay">
                                 <a href="brand-single.html"><i class="fas fa-link"></i></a>
                             </div>
                         </div>
                         <div class="brand-meta">
-                            <h4>ecomart limited</h4>
+                            <h4>Hassle Custom</h4>
                             <p>(45 items)</p>
                         </div>
                     </div>
                     <div class="brand-wrap">
                         <div class="brand-media">
-                            <img src="images/brand/05.jpg" alt="brand">
+                            <img src="./admin/masters/brand_uploads/Request_product_now.svg" alt="brand">
                             <div class="brand-overlay">
                                 <a href="brand-single.html"><i class="fas fa-link"></i></a>
                             </div>
                         </div>
                         <div class="brand-meta">
-                            <h4>fresh fortune</h4>
+                            <h4>Request Product Now</h4>
                             <p>(45 items)</p>
                         </div>
                     </div>
                     <div class="brand-wrap">
                         <div class="brand-media">
-                            <img src="images/brand/06.jpg" alt="brand">
+                            <img src="./admin/masters/brand_uploads/Low-cost shipping.svg" alt="brand">
                             <div class="brand-overlay">
                                 <a href="brand-single.html"><i class="fas fa-link"></i></a>
                             </div>
                         </div>
                         <div class="brand-meta">
-                            <h4>econature</h4>
+                            <h4>Low cost shipping</h4>
                             <p>(45 items)</p>
                         </div>
                     </div>

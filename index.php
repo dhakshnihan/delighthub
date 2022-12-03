@@ -568,7 +568,7 @@
                         $sql="select * from tbl_category where CATEG02='Active'";
                         $result = mysqli_query($con,$sql);
                         while($row=mysqli_fetch_array($result)){
-                            $sqlx="select count(*) as items from tbl_products  where PRODN04='".$row['CATEGTID']."' ";
+                            $sqlx="select count(*) as items from tbl_products  where PRODN10='".$row['CATEGTID']."' ";
                             $resultx = mysqli_query($con,$sqlx);
                             $rowx=mysqli_fetch_array($resultx);
                             $items=$rowx['items'];

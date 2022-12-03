@@ -77,8 +77,8 @@ error_reporting(0);
 		
 		  // File is uploaded to temp dir
 		  if(move_uploaded_file($tempPath, $targetPath)) {
-            $sql="insert into tbl_products(PRODN01,PRODN02,PRODN03,PRODN04,PRODN05,PRODN06,PRODN07,PRODN08,PRODN09) values
-            ('".$_POST['prod_name']."','".$_POST['prod_code']."','".$_POST['brand_id']."','".$_POST['sub_category_id']."','".$_POST['prod_des']."','".$_POST['prod_price']."','".$filename."','Active',now())";
+            $sql="insert into tbl_products(PRODN01,PRODN02,PRODN03,PRODN04,PRODN05,PRODN06,PRODN07,PRODN08,PRODN09,PRODN10) values
+            ('".$_POST['prod_name']."','".$_POST['prod_code']."','".$_POST['brand_id']."','".$_POST['sub_category_id']."','".$_POST['prod_des']."','".$_POST['prod_price']."','".$filename."','Active',now(),'".$_POST['category_id']."')";
             // echo $sql;
             mysqli_query($con,$sql);
             echo "<script>

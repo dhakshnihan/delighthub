@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php include('dbconnection.php');?>
     <head>
         <!--=====================================
                     META TAG PART START
@@ -133,7 +134,25 @@
                                 <div class="megamenu">
                                     <div class="container">
                                         <div class="row row-cols-6">
-                                            <div class="col">
+                                            <?php 
+                                                $sql="select * from tbl_category where CATEG02='Active'";
+                                                $result=mysqli_query($con,$sql);
+                                                while($row=mysqli_fetch_array($result)){
+                                                    echo    '<div class="col">
+                                                                <div class="megamenu-wrap">
+                                                                    <h5 class="megamenu-title">'.$row['CATEG01'].'</h5>
+                                                                    <ul class="megamenu-list">';
+                                                                    $sqlx="select * from tbl_subcategory where SUBCAT03='Active' and SUBCAT02='".$row['CATEGTID']."'";
+                                                                    $resultx=mysqli_query($con,$sqlx);
+                                                                    while($rowx=mysqli_fetch_array($resultx)){
+                                                                        echo '<li><a href="#">'.$rowx['SUBCAT01'].'</a></li>';
+                                                                    }
+                                                              echo  '</ul>
+                                                                </div>
+                                                             </div>';
+                                                }
+                                            ?>
+                                            <!-- <div class="col">
                                                 <div class="megamenu-wrap">
                                                     <h5 class="megamenu-title">Food</h5>
                                                     <ul class="megamenu-list">
@@ -144,152 +163,13 @@
                                                         <li><a href="#">eggplant</a></li>
                                                     </ul>
                                                 </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="megamenu-wrap">
-                                                    <h5 class="megamenu-title">Groceries</h5>
-                                                    <ul class="megamenu-list">
-                                                        <li><a href="#">Apple</a></li>
-                                                        <li><a href="#">orange</a></li>
-                                                        <li><a href="#">banana</a></li>
-                                                        <li><a href="#">strawberrie</a></li>
-                                                        <li><a href="#">watermelon</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="megamenu-wrap">
-                                                    <h5 class="megamenu-title">Clothing</h5>
-                                                    <ul class="megamenu-list">
-                                                        <li><a href="#">Butter</a></li>
-                                                        <li><a href="#">Cheese</a></li>
-                                                        <li><a href="#">Milk</a></li>
-                                                        <li><a href="#">Eggs</a></li>
-                                                        <li><a href="#">cream</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="megamenu-wrap">
-                                                    <h5 class="megamenu-title">Spices</h5>
-                                                    <ul class="megamenu-list">
-                                                        <li><a href="#">Lobster</a></li>
-                                                        <li><a href="#">Octopus</a></li>
-                                                        <li><a href="#">Shrimp</a></li>
-                                                        <li><a href="#">Halabos</a></li>
-                                                        <li><a href="#">Maeuntang</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="megamenu-wrap">
-                                                    <h5 class="megamenu-title">Jwellery</h5>
-                                                    <ul class="megamenu-list">
-                                                        <li><a href="#">Salmon</a></li>
-                                                        <li><a href="#">Avocados</a></li>
-                                                        <li><a href="#">Leafy Greens</a></li>
-                                                        <li><a href="#">Boiled Potatoes</a></li>
-                                                        <li><a href="#">Cottage Cheese</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="col">
-                                                <div class="megamenu-wrap">
-                                                    <h5 class="megamenu-title">Womens 
-                                                        World</h5>
-                                                    <ul class="megamenu-list">
-                                                        <li><a href="#">Salmon</a></li>
-                                                        <li><a href="#">Avocados</a></li>
-                                                        <li><a href="#">Leafy Greens</a></li>
-                                                        <li><a href="#">Boiled Potatoes</a></li>
-                                                        <li><a href="#">Cottage Cheese</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="col">
-                                                <div class="megamenu-wrap">
-                                                    <h5 class="megamenu-title">Home Needs</h5>
-                                                    <ul class="megamenu-list">
-                                                        <li><a href="#">burger</a></li>
-                                                        <li><a href="#">milkshake</a></li>
-                                                        <li><a href="#">sandwich</a></li>
-                                                        <li><a href="#">doughnut</a></li>
-                                                        <li><a href="#">pizza</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="megamenu-wrap">
-                                                    <h5 class="megamenu-title">Ayurvvedic</h5>
-                                                    <ul class="megamenu-list">
-                                                        <li><a href="#">cocktail</a></li>
-                                                        <li><a href="#">hard soda</a></li>
-                                                        <li><a href="#">shampain</a></li>
-                                                        <li><a href="#">Wine</a></li>
-                                                        <li><a href="#">barley</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="megamenu-wrap">
-                                                    <h5 class="megamenu-title">Gifting</h5>
-                                                    <ul class="megamenu-list">
-                                                        <li><a href="#">Meatball</a></li>
-                                                        <li><a href="#">Sausage</a></li>
-                                                        <li><a href="#">Poultry</a></li>
-                                                        <li><a href="#">chicken</a></li>
-                                                        <li><a href="#">Cows</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="megamenu-wrap">
-                                                    <h5 class="megamenu-title">Books & 
-                                                        Stationary</h5>
-                                                    <ul class="megamenu-list">
-                                                        <li><a href="#">scads</a></li>
-                                                        <li><a href="#">pomfret</a></li>
-                                                        <li><a href="#">groupers</a></li>
-                                                        <li><a href="#">anchovy</a></li>
-                                                        <li><a href="#">mackerel</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="megamenu-wrap">
-                                                    <h5 class="megamenu-title">Festival Items</h5>
-                                                    <ul class="megamenu-list">
-                                                        <li><a href="#">noodles</a></li>
-                                                        <li><a href="#">Powdered milk</a></li>
-                                                        <li><a href="#">nut & yeast</a></li>
-                                                        <li><a href="#">almonds</a></li>
-                                                        <li><a href="#">pumpkin</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="col">
-                                                <div class="megamenu-wrap">
-                                                    <h5 class="megamenu-title">Others</h5>
-                                                    <ul class="megamenu-list">
-                                                        <li><a href="#">noodles</a></li>
-                                                        <li><a href="#">Powdered milk</a></li>
-                                                        <li><a href="#">nut & yeast</a></li>
-                                                        <li><a href="#">almonds</a></li>
-                                                        <li><a href="#">pumpkin</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                            </div> -->
+                                            
                                         </div>
                                     </div>
                                 </div>
                             </li>
-</ul>
+                        </ul>
                     
                     </div>
                    

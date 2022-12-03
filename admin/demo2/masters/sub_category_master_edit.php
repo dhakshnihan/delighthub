@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php include("./../dbconnection.php"); ?>
-<!-- Mirrored from themekita.com/demo-atlantis-bootstrap/livepreview/examples/demo2/tables/datatables.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Nov 2022 13:09:46 GMT -->
+<!-- Mirrored from themekita.com/demo-atlantis-bootstrap/livepreview/examples/demo2/forms/formvalidation.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Nov 2022 13:09:45 GMT -->
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Tables - Atlantis Bootstrap 4 Admin Dashboard</title>
+	<title>Forms - Atlantis Bootstrap 4 Admin Dashboard</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" href="https://themekita.com/demo-atlantis-bootstrap/livepreview/examples/assets/img/icon.ico" type="image/x-icon"/>
 	
@@ -71,13 +71,6 @@
 								<i class="fa fa-search"></i>
 							</a>
 						</li>
-						
-						
-						<li class="nav-item">
-							<a href="#" class="nav-link quick-sidebar-toggler">
-								<i class="fa fa-th"></i>
-							</a>
-						</li>
 						<li class="nav-item dropdown hidden-caret">
 							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
 								<div class="avatar-sm">
@@ -113,7 +106,7 @@
 			</nav>
 			<!-- End Navbar -->
 		</div>
-		<!-- Sidebar -->
+		
 		<!-- Sidebar -->
 		<div class="sidebar sidebar-style-2" data-background-color="dark2">
 			<div class="sidebar-wrapper scrollbar scrollbar-inner">
@@ -131,26 +124,26 @@
 								</ul>
 							</div>
 						</li>
-						<li class="nav-item">
+						<li class="nav-item active submenu">
 							<a data-toggle="collapse" href="#masters">
 								<i class="fas fa-pen-square"></i>
 								<p>Masters</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="masters">
+							<div class="collapse show" id="masters">
 								<ul class="nav nav-collapse">
-									<li>
+                                    <li>
 										<a href="brand_master_model.html">
 											<span class="sub-item">Product Brand</span>
 										</a>
 									</li>
-                                    <li>
+									<li class="active">
 										<a href="category_master_model.html">
 											<span class="sub-item">Product Category</span>
 										</a>
 									</li>
 									<li>
-										<a href="category_master_model.php">
+										<a href="sub_category_master_model.php">
 											<span class="sub-item">Product Sub Category</span>
 										</a>
 									</li>
@@ -162,20 +155,20 @@
 								</ul>
 							</div>
 						</li>
-						<li class="nav-item active submenu">
+                        <li class="nav-item">
 							<a data-toggle="collapse" href="#views">
 								<i class="fas fa-pen-square"></i>
 								<p>Views <Table></Table></p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse show" id="views">
+							<div class="collapse" id="views">
 								<ul class="nav nav-collapse">
-                                    <li class="active">
+                                    <li>
 										<a href="prod_master_view.php">
 											<span class="sub-item">Products View</span>
 										</a>
 									</li>
-									<li >
+									<li>
 										<a href="brand_master_view.php">
 											<span class="sub-item">Product Brands</span>
 										</a>
@@ -199,94 +192,110 @@
 		</div>
 		<!-- End Sidebar -->
 
+
 		<div class="main-panel">
 			<div class="container">
 				<div class="page-inner">
-					<div class="page-header">
-						<h4 class="page-title">Products</h4>
-					</div>
-					
-
+					<!-- <div class="page-header">
+						<h4 class="page-title">Brand Master</h4>
+						
+					</div> -->
+					<div class="row">
 						<div class="col-md-12">
 							<div class="card">
-								<div class="card-body">
-									<div class="table-responsive">
-										<table id="add-row" class="display table table-striped table-hover" >
-											<thead>
-												<tr>
-													<th>S.No</th>
-													<th>Product Name</th>
-													<th>Product Code</th>
-													<th>Product Brand</th>
-													<th>Product SUb Category</th>
-													<th>Description</th>
-													<th>Price</th>
-													<th>Image</th>
-													<th>Status</th>
-													<th style="width: 10%">Action</th>
-												</tr>
-											</thead>
-											
-											<tbody>
-												<?php
-													$sno=1;
-													$sql="select * from tbl_products
-													left join tbl_brands on  PRODN03=BRANDTID 
-													left join tbl_subcategory on SUBCATID=PRODN04 where PRODN08='Active'";
-													// echo $sql;
-													$results=mysqli_query($con,$sql);
-													while($row=mysqli_fetch_array($results)){
-														$imageURL1 = './prod_uploads/'.$row["PRODN07"];
-														
-													echo '<tr>
-															<td>'.$sno.'</td>
-															<td>'.$row['PRODN01'].'</td>
-															<td>'.$row['PRODN02'].'</td>
-															<td>'.$row['BRAND01'].'</td>
-															<td>'.$row['SUBCAT02'].'</td>
-															<td>'.$row['PRODN05'].'</td>
-															<td>'.$row['PRODN06'].'</td>
-															<td><img src="'.$imageURL1.'" width="100" height="100"></td>
-															<td>'.$row['PRODN08'].'</td>
-															<td>
-																<div class="form-button-action">
-																	<a href="./prod_master_edit.php?id='.$row['PRODTID'].'" class="btn btn-success btn-sm">Edit</a>
-																	
-																	<button onclick="delete_prod('.$row['PRODTID'].')" class="btn btn-info btn-sm">Delete!</button>
-																</div>
-															</td>
-														</tr>';
-														$sno++;
-													}
-												?>
-												
-											</tbody>
-										</table>
-									</div>
+								<div class="card-header">
+									<div class="card-title">Product Category</div>
+									<!-- <div class="card-category">Form validation with jQuery from <a href="https://jqueryvalidation.org/">jQuery Validate</a></div> -->
 								</div>
+								<!-- <form id="exampleValidation"> -->
+
+                                    <?php 
+                                        $sql="select * from tbl_subcategory where SUBCATID='".$_GET['id']."'";
+                                        echo $sql;
+                                        $results=mysqli_query($con,$sql);
+									    while($row=mysqli_fetch_array($results)){
+                                            $sub_category_name=$row['SUBCAT01'];
+                                            $category_id=$row['SUBCAT02'];
+                                            $status=$row['SUBCAT03'];
+                                            echo "<input type='hidden' name='sub_category_id' id='sub_category_id' value='".$row['SUBCATID']."'>";
+                                        }
+                                    ?>
+									<div class="card-body">
+										<div class="form-group form-show-validation row">
+											<label for="category_name" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">Product Category  <span class="required-label">*</span></label>
+											<div class="col-lg-4 col-md-9 col-sm-8">
+												<input type="text" class="form-control" id="sub_category_name" name="sub_category_name" value="<?php echo $sub_category_name; ?>" placeholder="Enter Category" required>
+											</div>
+										</div>
+                                        <div class="form-group form-show-validation row">
+											<label for="category_id" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">Category<span class="required-label">*</span></label>
+											<div class="col-lg-4 col-md-9 col-sm-8">
+												<div class="select2-input">
+													<select id="category_id" name="category_id" class="form-control" required>
+															<option value="">Please select Category</option>
+															<?php
+																$sql="select * from tbl_category where CATEG02='Active'";
+																// echo $sql
+																$results=mysqli_query($con,$sql);
+																while($row=mysqli_fetch_array($results)){
+                                                                    if($category_id==$row['CATEGTID']){
+                                                                        $selected="selected";
+                                                                    }
+																	echo '<option value="'.$row['CATEGTID'].'" '.$selected.'>'.$row['CATEG01'].'</option>';
+																}
+															?>
+													</select>
+												</div>
+											</div>
+										</div>
+                                        <div class="form-group form-show-validation row">
+											<label for="status" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right"> Status<span class="required-label">*</span></label>
+											<div class="col-lg-4 col-md-9 col-sm-8">
+												<div class="select2-input">
+													<select name="status" id="status" class="form-control" required>
+															<option value="">Please select status</option>
+                                                            <option value="Active" <?php echo ($status == 'Active')?"selected":"" ?>>Active</option>
+                                                            <option value="InActive" <?php echo ($status == 'InActive')?"selected":"" ?>>InActive</option>
+															
+													</select>
+												</div>
+											</div>
+										</div>
+									<div class="card-action">
+										<div class="row">
+											<div class="col-md-12">
+												<input class="btn btn-success" type="submit" value="Submit" onclick="edit_sub_category()">
+												<button class="btn btn-danger">Cancel</button>
+											</div>										
+										</div>
+									</div>
+								<!-- </form> -->
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<script>
-               
-				function delete_prod(val){  
-                  
+
+            <script>
+                function edit_sub_category(){  
+                    var sub_category_name = $("#sub_category_name").val();
+                    var status = $("#status").val();
+                    var category_id = $("#category_id").val();
+                    var sub_category_id = $("#sub_category_id").val();
+                 
                         $.ajax({
                             url:'controllerProdData.php',
                             method:'POST',
-                            data:{delet_products:'delet_products',prod_id:val},
+                            data:{edit_sub_category:'edit_sub_category',sub_category_name:sub_category_name,status:status,category_id:category_id,sub_category_id:sub_category_id},
                             cache: false,
                             success: function(respose){
-								alert("Recoed Deleted.");
-								window.location="prod_master_view.php";
+								alert("Recoed Deleted successfully.");
+								window.location="sub_category_master_view.php";
                             }
                          });
                 }
 
             </script>
-			
 			<footer class="footer">
 				<div class="container-fluid">
 					<nav class="pull-left">
@@ -787,65 +796,66 @@
 	<!-- jQuery UI -->
 	<script src="../../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
 	<script src="../../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+	<!-- Moment JS -->
+	<script src="../../assets/js/plugin/moment/moment.min.js"></script>
 	<!-- Bootstrap Toggle -->
 	<script src="../../assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
 	<!-- jQuery Scrollbar -->
 	<script src="../../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
-	<!-- Datatables -->
-	<script src="../../assets/js/plugin/datatables/datatables.min.js"></script>
+	<!-- DateTimePicker -->
+	<script src="../../assets/js/plugin/datepicker/bootstrap-datetimepicker.min.js"></script>
+	<!-- Select2 -->
+	<script src="../../assets/js/plugin/select2/select2.full.min.js"></script>
+	<!-- jQuery Validation -->
+	<script src="../../assets/js/plugin/jquery.validate/jquery.validate.min.js"></script>
 	<!-- Atlantis JS -->
 	<script src="../../assets/js/atlantis.min.js"></script>
 	<!-- Atlantis DEMO methods, don't include it in your project! -->
 	<script src="../../assets/js/setting-demo2.js"></script>
-	<script >
-		$(document).ready(function() {
-			$('#basic-datatables').DataTable({
-			});
+	<script>
+		$('#birth').datetimepicker({
+			format: 'MM/DD/YYYY'
+		});
 
-			$('#multi-filter-select').DataTable( {
-				"pageLength": 5,
-				initComplete: function () {
-					this.api().columns().every( function () {
-						var column = this;
-						var select = $('<select class="form-control"><option value=""></option></select>')
-						.appendTo( $(column.footer()).empty() )
-						.on( 'change', function () {
-							var val = $.fn.dataTable.util.escapeRegex(
-								$(this).val()
-								);
+		$('#state').select2({
+			theme: "bootstrap"
+		});
 
-							column
-							.search( val ? '^'+val+'$' : '', true, false )
-							.draw();
-						} );
+		/* validate */
 
-						column.data().unique().sort().each( function ( d, j ) {
-							select.append( '<option value="'+d+'">'+d+'</option>' )
-						} );
-					} );
-				}
-			});
+		// validation when select change
+		$("#state").change(function(){
+			$(this).valid();
+		})
 
-			// Add Row
-			$('#add-row').DataTable({
-				"pageLength": 5,
-			});
+		// validation when inputfile change
+		$("#uploadImg").on("change", function(){
+			$(this).parent('form').validate();
+		})
 
-			var action = '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
-
-			$('#addRowButton').click(function() {
-				$('#add-row').dataTable().fnAddData([
-					$("#addName").val(),
-					$("#addPosition").val(),
-					$("#addOffice").val(),
-					action
-					]);
-				$('#addRowModal').modal('hide');
-
-			});
+		$("#exampleValidation").validate({
+			validClass: "success",
+			rules: {
+				gender: {required: true},
+				confirmpassword: {
+					equalTo: "#password"
+				},
+				birth: {
+					date: true
+				},
+				uploadImg: {
+					required: true, 
+				},
+			},
+			highlight: function(element) {
+				$(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+			},
+			success: function(element) {
+				$(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+			},
 		});
 	</script>
 </body>
 
-<!-- Mirrored from themekita.com/demo-atlantis-bootstrap/livepreview/examples/demo2/tables/datatables.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Nov 2022 13:09:46 GMT -->
+<!-- Mirrored from themekita.com/demo-atlantis-bootstrap/livepreview/examples/demo2/forms/formvalidation.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Nov 2022 13:09:45 GMT -->
 </html>

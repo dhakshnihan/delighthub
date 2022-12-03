@@ -149,6 +149,11 @@
 											<span class="sub-item">Product Category</span>
 										</a>
 									</li>
+									<li>
+										<a href="sub_category_master_model.php">
+											<span class="sub-item">Product Sub Category</span>
+										</a>
+									</li>
                                     <li>
 										<a href="prod_master_model.php">
 											<span class="sub-item">Products</span>
@@ -178,6 +183,11 @@
 									<li class="active">
 										<a href="category_master_view.php">
 											<span class="sub-item">Product Category</span>
+										</a>
+									</li>
+									<li>
+										<a href="sub_category_master_view.php">
+											<span class="sub-item">Product Sub Category</span>
 										</a>
 									</li>
 								</ul>

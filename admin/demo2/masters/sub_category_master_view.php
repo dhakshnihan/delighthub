@@ -150,7 +150,7 @@
 										</a>
 									</li>
 									<li>
-										<a href="category_master_model.php">
+										<a href="sub_category_master_model.php">
 											<span class="sub-item">Product Sub Category</span>
 										</a>
 									</li>
@@ -170,12 +170,12 @@
 							</a>
 							<div class="collapse show" id="views">
 								<ul class="nav nav-collapse">
-                                    <li class="active">
+                                    <li>
 										<a href="prod_master_view.php">
 											<span class="sub-item">Products View</span>
 										</a>
 									</li>
-									<li >
+                                    <li>
 										<a href="brand_master_view.php">
 											<span class="sub-item">Product Brands</span>
 										</a>
@@ -185,7 +185,7 @@
 											<span class="sub-item">Product Category</span>
 										</a>
 									</li>
-									<li>
+                                    <li class="active">
 										<a href="sub_category_master_view.php">
 											<span class="sub-item">Product Sub Category</span>
 										</a>
@@ -203,7 +203,7 @@
 			<div class="container">
 				<div class="page-inner">
 					<div class="page-header">
-						<h4 class="page-title">Products</h4>
+						<h4 class="page-title">Product Category</h4>
 					</div>
 					
 
@@ -215,14 +215,9 @@
 											<thead>
 												<tr>
 													<th>S.No</th>
-													<th>Product Name</th>
-													<th>Product Code</th>
-													<th>Product Brand</th>
-													<th>Product SUb Category</th>
-													<th>Description</th>
-													<th>Price</th>
-													<th>Image</th>
-													<th>Status</th>
+													<th>Category Name</th>
+                                                    <th>Sub Category Name</th>
+                                                    <th>Status</th>
 													<th style="width: 10%">Action</th>
 												</tr>
 											</thead>
@@ -230,29 +225,23 @@
 											<tbody>
 												<?php
 													$sno=1;
-													$sql="select * from tbl_products
-													left join tbl_brands on  PRODN03=BRANDTID 
-													left join tbl_subcategory on SUBCATID=PRODN04 where PRODN08='Active'";
+													$sql="select * from tbl_subcategory 
+                                                    left join tbl_category on SUBCAT02=CATEGTID ";
 													// echo $sql;
 													$results=mysqli_query($con,$sql);
 													while($row=mysqli_fetch_array($results)){
-														$imageURL1 = './prod_uploads/'.$row["PRODN07"];
+														
 														
 													echo '<tr>
 															<td>'.$sno.'</td>
-															<td>'.$row['PRODN01'].'</td>
-															<td>'.$row['PRODN02'].'</td>
-															<td>'.$row['BRAND01'].'</td>
-															<td>'.$row['SUBCAT02'].'</td>
-															<td>'.$row['PRODN05'].'</td>
-															<td>'.$row['PRODN06'].'</td>
-															<td><img src="'.$imageURL1.'" width="100" height="100"></td>
-															<td>'.$row['PRODN08'].'</td>
+															<td>'.$row['SUBCAT01'].'</td>
+                                                            <td>'.$row['CATEG01'].'</td>
+                                                            <td>'.$row['SUBCAT03'].'</td>
 															<td>
 																<div class="form-button-action">
-																	<a href="./prod_master_edit.php?id='.$row['PRODTID'].'" class="btn btn-success btn-sm">Edit</a>
+																	<a href="./sub_category_master_edit.php?id='.$row['SUBCATID'].'" class="btn btn-success btn-sm">Edit</a>
 																	
-																	<button onclick="delete_prod('.$row['PRODTID'].')" class="btn btn-info btn-sm">Delete!</button>
+																	<button onclick="delete_sub_category('.$row['SUBCATID'].')" class="btn btn-info btn-sm">Delete!</button>
 																</div>
 															</td>
 														</tr>';
@@ -269,18 +258,32 @@
 					</div>
 				</div>
 			</div>
+
 			<script>
-               
-				function delete_prod(val){  
+                // function edit_category(){  
+                //     var category_id = $("#id").val();
+                //         $.ajax({
+                //             url:'category_master_edit.php',
+                //             method:'POST',
+                //             data:{edit_category:'edit_category',category_id:category_id},
+                //             cache: false,
+                //             success: function(respose){
+				// 				alert("Updated successfully.");
+				// 				window.location="category_master_view.php";
+                //             }
+                //          });
+                // }
+
+				function delete_sub_category(val){  
                   
                         $.ajax({
                             url:'controllerProdData.php',
                             method:'POST',
-                            data:{delet_products:'delet_products',prod_id:val},
+                            data:{delete_sub_category:'delete_sub_category',sub_category_id:val},
                             cache: false,
                             success: function(respose){
-								alert("Recoed Deleted.");
-								window.location="prod_master_view.php";
+								alert("Recoed Deleted successfully.");
+								window.location="sub_category_master_view.php";
                             }
                          });
                 }

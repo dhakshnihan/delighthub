@@ -142,6 +142,11 @@
 											<span class="sub-item">Product Category</span>
 										</a>
 									</li>
+									<li>
+										<a href="sub_category_master_model.php">
+											<span class="sub-item">Product Sub Category</span>
+										</a>
+									</li>
                                     <li class="active">
 										<a href="prod_master_model.php">
 											<span class="sub-item">Products</span>
@@ -171,6 +176,11 @@
 									<li>
 										<a href="category_master_view.php">
 											<span class="sub-item">Product Category</span>
+										</a>
+									</li>
+									<li>
+										<a href="sub_category_master_view.php">
+											<span class="sub-item">Product Sub Category</span>
 										</a>
 									</li>
 								</ul>
@@ -212,17 +222,17 @@
 											</div>
 										</div>
 										<div class="form-group form-show-validation row">
-											<label for="category_id" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">Category<span class="required-label">*</span></label>
+											<label for="sub_category_id" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">Category<span class="required-label">*</span></label>
 											<div class="col-lg-4 col-md-9 col-sm-8">
 												<div class="select2-input">
-													<select id="category_id" name="category_id" class="form-control" required>
+													<select id="sub_category_id" name="sub_category_id" class="form-control" required>
 															<option value="">Please select Category</option>
 															<?php
-																$sql="select * from tbl_category where CATEG02='Active'";
+																$sql="select * from tbl_subcategory where SUBCAT03='Active'";
 																echo $sql;
 																$results=mysqli_query($con,$sql);
 																while($row=mysqli_fetch_array($results)){
-																	echo '<option value="'.$row['CATEGTID'].'">'.$row['CATEG01'].'</option>';
+																	echo '<option value="'.$row['SUBCATID'].'">'.$row['SUBCAT01'].'</option>';
 																}
 															?>
 													</select>

@@ -44,6 +44,24 @@ error_reporting(0);
         mysqli_query($con,$sql);
     }
 
+    //Sub Category Added 
+    if(isset($_POST['add_sub_category'])){
+        $sql="insert into tbl_subcategory(SUBCAT01,SUBCAT02,SUBCAT03) values ('".$_POST['sub_category_name']."','".$_POST['category_id']."','Active')";
+        mysqli_query($con,$sql);
+    }
+
+     //Sub Category Edit 
+     if(isset($_POST['edit_sub_category'])){
+        $sql="update tbl_subcategory set SUBCAT01='".$_POST['sub_category_name']."',SUBCAT02='".$_POST['category_id']."',SUBCAT03='Active' where SUBCATID='".$_POST['sub_category_id']."'";
+        mysqli_query($con,$sql);
+    }
+
+     //Sub Category Delete  
+     if(isset($_POST['delete_sub_category'])){
+        $sql="delete from tbl_subcategory where SUBCATID='".$_POST['sub_category_id']."'";
+        mysqli_query($con,$sql);
+    }
+
      //Products Added
      if(isset($_POST['submit'])){
 
@@ -60,7 +78,7 @@ error_reporting(0);
 		  // File is uploaded to temp dir
 		  if(move_uploaded_file($tempPath, $targetPath)) {
             $sql="insert into tbl_products(PRODN01,PRODN02,PRODN03,PRODN04,PRODN05,PRODN06,PRODN07,PRODN08,PRODN09) values
-            ('".$_POST['prod_name']."','".$_POST['prod_code']."','".$_POST['category_id']."','".$_POST['brand_id']."','".$_POST['prod_des']."','".$_POST['prod_price']."','".$filename."','Active',now())";
+            ('".$_POST['prod_name']."','".$_POST['prod_code']."','".$_POST['sub_category_id']."','".$_POST['brand_id']."','".$_POST['prod_des']."','".$_POST['prod_price']."','".$filename."','Active',now())";
             // echo $sql;
             mysqli_query($con,$sql);
             echo "<script>
@@ -87,7 +105,7 @@ error_reporting(0);
 		
 		  // File is uploaded to temp dir
 		  if(move_uploaded_file($tempPath, $targetPath)) {
-            $sql="update tbl_products set PRODN01='".$_POST['prod_name']."',PRODN02='".$_POST['prod_code']."',PRODN03='".$_POST['category_id']."',PRODN04='".$_POST['brand_id']."',
+            $sql="update tbl_products set PRODN01='".$_POST['prod_name']."',PRODN02='".$_POST['prod_code']."',PRODN03='".$_POST['sub_category_id']."',PRODN04='".$_POST['brand_id']."',
             PRODN05='".$_POST['prod_des']."',PRODN06='".$_POST['prod_price']."',PRODN07='".$filename."',PRODN08='".$_POST['status']."',PRODN09=now() where PRODTID='".$_POST['prod_id']."'";
             // echo $sql;
             mysqli_query($con,$sql);

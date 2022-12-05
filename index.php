@@ -1025,7 +1025,7 @@
                                             <i class="fas fa-heart"></i>
                                         </button>
                                         <a class="product-image" href="product-video.html">
-                                            <img src="images/product/20.jpg" alt="product">
+                                            <img src="admin/masters/prod_uploads/Daal.png" alt="product">
                                         </a>
                                         <div class="product-widget">
                                             <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
@@ -2739,7 +2739,7 @@
                             <div class="blog-card">
                                 <div class="blog-media">
                                     <a class="blog-img" href="#">
-                                        <img src="images/blog/01.jpg" alt="blog">
+                                        <img src="admin/masters/blog_uploads/Mask group-1.png" alt="blog">
                                     </a>
                                 </div>
                                 <div class="blog-content">
@@ -2768,7 +2768,7 @@
                             <div class="blog-card">
                                 <div class="blog-media">
                                     <a class="blog-img" href="#">
-                                        <img src="images/blog/02.jpg" alt="blog">
+                                        <img src="admin/masters/blog_uploads/Mask group-1.png" alt="blog">
                                     </a>
                                 </div>
                                 <div class="blog-content">
@@ -2797,7 +2797,7 @@
                             <div class="blog-card">
                                 <div class="blog-media">
                                     <a class="blog-img" href="#">
-                                        <img src="images/blog/03.jpg" alt="blog">
+                                        <img src="admin/masters/blog_uploads/Mask group-1.png" alt="blog">
                                     </a>
                                 </div>
                                 <div class="blog-content">
@@ -2826,7 +2826,7 @@
                             <div class="blog-card">
                                 <div class="blog-media">
                                     <a class="blog-img" href="#">
-                                        <img src="images/blog/04.jpg" alt="blog">
+                                        <img src="admin/masters/blog_uploads/Mask group-2.png" alt="blog">
                                     </a>
                                 </div>
                                 <div class="blog-content">

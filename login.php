@@ -52,6 +52,32 @@
         <!--=====================================
                     USER FORM PART START
         =======================================-->
+        <?php
+            require('dbconnection.php');
+            session_start();
+        
+            if (isset($_POST['email'])) {
+                $email = stripslashes($_REQUEST['email']);    // removes backslashes
+                $email = mysqli_real_escape_string($con, $email);
+                $password = stripslashes($_REQUEST['password']);
+                $password = mysqli_real_escape_string($con, $password);
+                // Check user is exist in the database
+                $query    = "SELECT * FROM `tbl_users` WHERE email='$email'
+                            AND password='" . md5($password) . "'";
+                $result = mysqli_query($con, $query) or die(mysql_error());
+                $rows = mysqli_num_rows($result);
+                if ($rows == 1) {
+                    $_SESSION['email'] = $email;
+                    // Redirect to user dashboard page
+                    header("Location: index.php");
+                } else {
+                    echo "<div class='form'>
+                        <h3>Incorrect Username/password.</h3><br/>
+                        <p class='link'>Click here to <a href='login.php'>Login</a> again.</p>
+                        </div>";
+                }
+            } else {
+        ?>
         <section class="user-form-part">
             <div class="container">
                 <div class="row justify-content-center">
@@ -78,12 +104,12 @@
                                 <div class="user-form-divider">
                                     <p>or</p>
                                 </div>
-                                <form class="user-form">
+                                <form class="user-form"  method="post" name="login">
                                     <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="Enter your email">
+                                        <input type="email" class="form-control"  name="email" id="email" placeholder="Enter your email">
                                     </div>
                                     <div class="form-group ">
-                                        <input type="password" class="form-control" placeholder="Enter your password">
+                                        <input type="password" class="form-control" name="password" id="password" placeholder="Enter your password">
                                     </div>
                                     <div class="form-check mb-3">
                                         <input class="form-check-input" type="checkbox" value="" id="check">
@@ -106,6 +132,9 @@
                 </div>
             </div>
         </section>
+    <?php
+        }
+    ?>
         <!--=====================================
                     USER FORM PART END
         =======================================-->

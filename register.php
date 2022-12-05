@@ -44,6 +44,59 @@
         <!-- CUSTOM -->
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/user-auth.css">
+        <style>
+           
+            .form {
+                margin: 50px auto;
+                width: 300px;
+                padding: 30px 25px;
+                background: white;
+            }
+            h1.login-title {
+                color: #666;
+                margin: 0px auto 25px;
+                font-size: 25px;
+                font-weight: 300;
+                text-align: center;
+            }
+            .login-input {
+                font-size: 15px;
+                border: 1px solid #ccc;
+                padding: 10px;
+                margin-bottom: 25px;
+                height: 25px;
+                width: calc(100% - 23px);
+            }
+            .login-input:focus {
+                border-color:#6e8095;
+                outline: none;
+            }
+            .login-button {
+                color: #fff;
+                background: #55a1ff;
+                border: 0;
+                outline: 0;
+                width: 100%;
+                height: 50px;
+                font-size: 16px;
+                text-align: center;
+                cursor: pointer;
+            }
+            .link {
+                color: #666;
+                font-size: 15px;
+                text-align: center;
+                margin-bottom: 0px;
+            }
+            .link a {
+                color: #666;
+            }
+            h3 {
+                font-weight: normal;
+                text-align: center;
+            }
+
+        </style>
         <!--=====================================
                     CSS LINK PART END
         =======================================-->
@@ -78,36 +131,39 @@
                                 <div class="user-form-divider">
                                     <p>or</p>
                                 </div>
-                                <form class="user-form">
-                                    <div class="row">
+                                <div class="user-form">
+                                <div class="row">
                                     <div class="col-lg-6">
                                     <div class="form-group me-2">
-                                    <input type="text" class="form-control" placeholder="Enter First name">   
+                                    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter First name">   
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group ">
-                                        <input type="text" class="form-control" placeholder="Enter Last name">  
+                                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter Last name">  
                                     </div>
                                 </div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="Enter your email">
+                                        <input type="email" class="form-control" id="email" name="email"  placeholder="Enter your email">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Enter your password">
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" >
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Enter repeat password">
+                                        <input type="password" class="form-control" id="confirm_pass" name="confirm_pass"   placeholder="Enter Re-Password"  onkeyup="validate_password()">
+                                    </div>
+                                    <div class="form-group">
+                                         <span id="wrong_pass_alert"></span>
                                     </div>
                                     <div class="form-check mb-3">
                                         <input class="form-check-input" type="checkbox" value="" id="check">
                                         <label class="form-check-label" for="check">Accept all the <a href="#">Terms & Conditions</a></label>
                                     </div>
                                     <div class="form-button">
-                                        <button type="submit">register</button>
+                                        <button type="submit" name="submit" id="submit" value="Register" onclick="registration_form()" >register</button>
                                     </div>
-                                </form>
+                                 </div>
                             </div>
                         </div>
                         <div class="user-form-remind">
@@ -124,6 +180,59 @@
                     USER FORM PART END
         =======================================-->
 
+
+        <script>
+            function validate_password() {
+                // alert("test");
+                var pass = document.getElementById('password').value;
+                var confirm_pass = document.getElementById('confirm_pass').value;
+                if (pass != confirm_pass) {
+                    document.getElementById('wrong_pass_alert').style.color = 'red';
+                    document.getElementById('wrong_pass_alert').innerHTML
+                    = '☒ Use same password';
+                   
+                } else {
+                    document.getElementById('wrong_pass_alert').style.color = 'green';
+                    document.getElementById('wrong_pass_alert').innerHTML =
+                        '🗹 Password Matched';
+                  
+                }
+            }
+
+                 
+                  function registration_form(){
+                        alert("test");
+                    var first_name = $("#first_name").val();
+                    var last_name = $("#last_name").val();
+                    var email = $("#email").val();
+                    var password = $("#password").val();
+                    var confirm_pass = $("#confirm_pass").val();
+                    if (password.length>0 && confirm_pass.length>0 && email.length>0 && first_name.length>0 && last_name.length>0) {
+                        $.ajax({
+                            type: "POST",
+                            url: "registration_ajax.php",
+                            data: {type:'registration',first_name:first_name,email:email
+                            ,password:password,confirm_pass:confirm_pass,last_name:last_name},
+                            success: function(result){
+                                var data = jQuery.parseJSON(result);
+                                if(data.value=="OK"){
+                                    window.location.href = "user-otp.php";
+                                }else if(data.value=="exist"){
+                                    alert("Email no already exist!");
+                                }else{
+                                    alert("Please try again!");
+                                }
+                                
+                            }
+                        });
+                    } else {
+                            alert("Please fill all the fields");
+                            
+                        }
+                    }
+                    
+              
+        </script>
 
         <!--=====================================
                     JS LINK PART START

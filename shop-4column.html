@@ -1093,140 +1093,6 @@
                             </form>
                         </div>
                         <div class="shop-widget">
-                            <h6 class="shop-widget-title">Filter by Tag</h6>
-                            <form>
-                                <ul class="shop-widget-list">
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <!-- <input type="checkbox" id="tag1">
-                                            <label for="tag1">new items</label> -->
-                                            <select id="brand1" class="form-select form-select-lg">
-                                                <option value="new items">new items</option>
-                                            </select>
-                                        </div>
-                                        <span class="shop-widget-number">(13)</span>
-                                    </li>
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <!-- <input type="checkbox" id="tag2">
-                                            <label for="tag2">sale items</label> -->
-                                            <select id="brand1" class="form-select form-select-lg">
-                                                <option value="sale items">sale items</option>
-                                            </select>
-                                        </div>
-                                        <span class="shop-widget-number">(28)</span>
-                                    </li>
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <!-- <input type="checkbox" id="tag3">
-                                            <label for="tag3">rating items</label> -->
-                                            <select id="brand1" class="form-select form-select-lg">
-                                                <option value="rating items">rating items</option>
-                                            </select>
-                                        </div>
-                                        <span class="shop-widget-number">(35)</span>
-                                    </li>
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <!-- <input type="checkbox" id="tag4">
-                                            <label for="tag4">feature items</label> -->
-                                            <select id="brand1" class="form-select form-select-lg">
-                                                <option value="feature items">feature items</option>
-                                            </select> 
-                                        </div>
-                                        <span class="shop-widget-number">(47)</span>
-                                    </li>
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <!-- <input type="checkbox" id="tag5">
-                                            <label for="tag5">discount items</label> -->
-                                            <select id="brand1" class="form-select form-select-lg">
-                                                <option value="discount items">discount items</option>
-                                            </select> 
-                                        </div>
-                                        <span class="shop-widget-number">(59)</span>
-                                    </li>
-                                </ul>
-                                <button class="shop-widget-btn">
-                                    <i class="far fa-trash-alt"></i>
-                                    <span>clear filter</span>
-                                </button>
-                            </form>
-                        </div>
-                        <div class="shop-widget">
-                            <h6 class="shop-widget-title">Filter by Brand</h6>
-                            <form>
-                                <input class="shop-widget-search" type="text" placeholder="Search...">
-                                <ul class="shop-widget-list shop-widget-scroll">
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <!-- <input type="checkbox" id="brand1">
-                                            <label for="brand1">mari gold</label> -->
-                                            <select id="brand1" class="form-select form-select-lg">
-                                                <option value="mari gold">mari gold</option>
-                                            </select>
-                                        </div>
-                                        <span class="shop-widget-number">(13)</span>
-                                    </li>
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <!-- <input type="checkbox" id="brand2">
-                                            <label for="brand2">tredar</label>-->
-                                             <select id="brand1" class="form-select form-select-lg">
-                                                <option value="tredar">tredar</option>
-                                            </select> 
-                                        </div>
-                                        <span class="shop-widget-number">(28)</span>
-                                    </li>
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <!-- <input type="checkbox" id="brand3">
-                                            <label for="brand3">keya</label> -->
-                                            <select id="brand1" class="form-select form-select-lg">
-                                                <option value="keya">keya</option>
-                                            </select> 
-                                        </div>
-                                        <span class="shop-widget-number">(35)</span>
-                                    </li>
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <!-- <input type="checkbox" id="brand4">
-                                            <label for="brand4">diamond</label> -->
-                                            <select id="brand1" class="form-select form-select-lg">
-                                                <option value="diamond">diamond</option>
-                                            </select> 
-                                        </div>
-                                        <span class="shop-widget-number">(47)</span>
-                                    </li>
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <!-- <input type="checkbox" id="brand5">
-                                            <label for="brand5">lilly's</label> -->
-                                            <select id="brand1" class="form-select form-select-lg">
-                                                <option value="lilly">lilly</option>
-                                            </select>
-                                        </div>
-                                        <span class="shop-widget-number">(59)</span>
-                                    </li>
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <!-- <input type="checkbox" id="brand6">
-                                            <label for="brand6">fremant</label> -->
-                                            <select id="brand1" class="form-select form-select-lg">
-                                                <option value="brand6">brand6</option>
-                                            </select>
-                                        </div>
-                                        <span class="shop-widget-number">(64)</span>
-                                    </li>
-                                  
-                                </ul>
-                                <button class="shop-widget-btn">
-                                    <i class="far fa-trash-alt"></i>
-                                    <span>clear filter</span>
-                                </button>
-                            </form>
-                        </div>
-                        <div class="shop-widget">
                             <h6 class="shop-widget-title">Filter by Category</h6>
                             <form>
                                 <input class="shop-widget-search" type="text" placeholder="Search...">
@@ -1322,6 +1188,127 @@
                                         <span class="shop-widget-number">(92)</span>
                                     </li>
                                     
+                                </ul>
+                                <button class="shop-widget-btn">
+                                    <i class="far fa-trash-alt"></i>
+                                    <span>clear filter</span>
+                                </button>
+                            </form>
+                        </div>
+                        <div class="shop-widget">
+                            <h6 class="shop-widget-title">Filter by Brand</h6>
+                            <form>
+                                <input class="shop-widget-search" type="text" placeholder="Search...">
+                                <ul class="shop-widget-list shop-widget-scroll">
+                                    <li>
+                                        <div class="shop-widget-content">
+                                            <!-- <input type="checkbox" id="brand1">
+                                            <label for="brand1">mari gold</label> -->
+                                            <select id="brand1" class="form-select form-select-lg">
+                                                <option value="mari gold">mari gold</option>
+                                            </select>
+                                        </div>
+                                        <span class="shop-widget-number">(13)</span>
+                                    </li>
+                                    <li>
+                                        <div class="shop-widget-content">
+                                            <!-- <input type="checkbox" id="brand2">
+                                            <label for="brand2">tredar</label>-->
+                                             <select id="brand1" class="form-select form-select-lg">
+                                                <option value="tredar">tredar</option>
+                                            </select> 
+                                        </div>
+                                        <span class="shop-widget-number">(28)</span>
+                                    </li>
+                                    <li>
+                                        <div class="shop-widget-content">
+                                            <!-- <input type="checkbox" id="brand3">
+                                            <label for="brand3">keya</label> -->
+                                            <select id="brand1" class="form-select form-select-lg">
+                                                <option value="keya">keya</option>
+                                            </select> 
+                                        </div>
+                                        <span class="shop-widget-number">(35)</span>
+                                    </li>
+                                    <li>
+                                        <div class="shop-widget-content">
+                                            <!-- <input type="checkbox" id="brand4">
+                                            <label for="brand4">diamond</label> -->
+                                            <select id="brand1" class="form-select form-select-lg">
+                                                <option value="diamond">diamond</option>
+                                            </select> 
+                                        </div>
+                                        <span class="shop-widget-number">(47)</span>
+                                    </li>
+                                    <li>
+                                        <div class="shop-widget-content">
+                                            <!-- <input type="checkbox" id="brand5">
+                                            <label for="brand5">lilly's</label> -->
+                                            <select id="brand1" class="form-select form-select-lg">
+                                                <option value="lilly">lilly</option>
+                                            </select>
+                                        </div>
+                                        <span class="shop-widget-number">(59)</span>
+                                    </li>
+                                    <li>
+                                        <div class="shop-widget-content">
+                                            <!-- <input type="checkbox" id="brand6">
+                                            <label for="brand6">fremant</label> -->
+                                            <select id="brand1" class="form-select form-select-lg">
+                                                <option value="brand6">brand6</option>
+                                            </select>
+                                        </div>
+                                        <span class="shop-widget-number">(64)</span>
+                                    </li>
+                                  
+                                </ul>
+                                <button class="shop-widget-btn">
+                                    <i class="far fa-trash-alt"></i>
+                                    <span>clear filter</span>
+                                </button>
+                            </form>
+                        </div>
+                        <div class="shop-widget">
+                            <h6 class="shop-widget-title"> <select id="brand1" class="form-select form-select-lg">
+                                <option value="new items">Filter by Tag</option>
+                            </select></h6>
+                            <form>
+                                <ul class="shop-widget-list">
+                                    <li>
+                                        <div class="shop-widget-content">
+                                            <input type="checkbox" id="tag1">
+                                            <label for="tag1">new items</label>
+                                        </div>
+                                        <span class="shop-widget-number">(13)</span>
+                                    </li>
+                                    <li>
+                                        <div class="shop-widget-content">
+                                            <input type="checkbox" id="tag2">
+                                            <label for="tag2">sale items</label>
+                                        </div>
+                                        <span class="shop-widget-number">(28)</span>
+                                    </li>
+                                    <li>
+                                        <div class="shop-widget-content">
+                                            <input type="checkbox" id="tag3">
+                                            <label for="tag3">rating items</label>
+                                        </div>
+                                        <span class="shop-widget-number">(35)</span>
+                                    </li>
+                                    <li>
+                                        <div class="shop-widget-content">
+                                            <input type="checkbox" id="tag4">
+                                            <label for="tag4">feature items</label>
+                                        </div>
+                                        <span class="shop-widget-number">(47)</span>
+                                    </li>
+                                    <li>
+                                        <div class="shop-widget-content">
+                                            <input type="checkbox" id="tag5">
+                                            <label for="tag5">discount items</label>
+                                        </div>
+                                        <span class="shop-widget-number">(59)</span>
+                                    </li>
                                 </ul>
                                 <button class="shop-widget-btn">
                                     <i class="far fa-trash-alt"></i>

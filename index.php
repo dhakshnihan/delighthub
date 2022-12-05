@@ -564,54 +564,31 @@
         <section class="suggest-part">
             <div class="container">
                 <ul class="suggest-slider slider-arrow">
-                    <li>
-                        <a class="suggest-card" href="shop-4column.html">
-                            <img src="images/suggest/Clothing.png" alt="suggest">
-                            <h5>Clothing <span>34 items</span></h5>
-                        </a>
-                    </li>
-                    <li>
+                    <?php 
+                        $sql="select * from tbl_category where CATEG02='Active'";
+                        $result = mysqli_query($con,$sql);
+                        while($row=mysqli_fetch_array($result)){
+                            $sqlx="select count(*) as items from tbl_products  where PRODN04='".$row['CATEGTID']."' ";
+                            $resultx = mysqli_query($con,$sqlx);
+                            $rowx=mysqli_fetch_array($resultx);
+                            $items=$rowx['items'];
+
+                            $image='./admin/demo2/masters/category_uploads/'.$row["CATEG03"];
+                            echo '<li>
+                                    <a class="suggest-card" href="shop-4column.html">
+                                        <img src="'.$image.'" alt="suggest">
+                                        <h5>'.$row['CATEG01'].' <span>'.$items.' items</span></h5>
+                                    </a>
+                                </li>';
+                        }
+                    ?>
+                    
+                    <!-- <li>
                         <a class="suggest-card" href="shop-4column.html">
                             <img src="images/suggest/Clothing.png" alt="suggest">
                             <h5>fruits <span>89 items</span></h5>
                         </a>
-                    </li>
-                    <li>
-                        <a class="suggest-card" href="shop-4column.html">
-                            <img src="images/suggest/Clothing.png" alt="suggest">
-                            <h5>groceries <span>45 items</span></h5>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="suggest-card" href="shop-4column.html">
-                            <img src="images/suggest/Clothing.png" alt="suggest">
-                            <h5>dairy farm <span>83 items</span></h5>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="suggest-card" href="shop-4column.html">
-                            <img src="images/suggest/Clothing.png" alt="suggest">
-                            <h5>sea foods <span>40 items</span></h5>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="suggest-card" href="shop-4column.html">
-                            <img src="images/suggest/06.jpg" alt="suggest">
-                            <h5>vegan foods <span>57 items</span></h5>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="suggest-card" href="shop-4column.html">
-                            <img src="images/suggest/07.jpg" alt="suggest">
-                            <h5>dry foods <span>23 items</span></h5>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="suggest-card" href="shop-4column.html">
-                            <img src="images/suggest/08.jpg" alt="suggest">
-                            <h5>fast foods <span>97 items</span></h5>
-                        </a>
-                    </li>
+                    </li>-->
                 </ul>
             </div>
         </section>
@@ -650,7 +627,7 @@
                         <div class="col-md-6 col-lg-6">
                             <div class="banner-content">
                                 <h1>free home delivery within 24 hours now.</h1>
-                                <p>Lorem ipsum dolor consectetur adipisicing elit modi consequatur eaque expedita porro necessitatibus eveniet voluptatum quis pariatur Laboriosam molestiae architecto excepturi</p>
+                                <!-- <p>Lorem ipsum dolor consectetur adipisicing elit modi consequatur eaque expedita porro necessitatibus eveniet voluptatum quis pariatur Laboriosam molestiae architecto excepturi</p> -->
                                 <div class="banner-btn">
                                     <a class="btn btn-inline" href="shop-4column.html">
                                         <i class="fas fa-shopping-basket"></i>
@@ -682,7 +659,7 @@
                         <div class="col-md-6 col-lg-6">
                             <div class="banner-content">
                                 <h1>free home delivery within 24 hours now.</h1>
-                                <p>Lorem ipsum dolor consectetur adipisicing elit modi consequatur eaque expedita porro necessitatibus eveniet voluptatum quis pariatur Laboriosam molestiae architecto excepturi</p>
+                                <!-- <p>Lorem ipsum dolor consectetur adipisicing elit modi consequatur eaque expedita porro necessitatibus eveniet voluptatum quis pariatur Laboriosam molestiae architecto excepturi</p> -->
                                 <div class="banner-btn">
                                     <a class="btn btn-inline" href="shop-4column.html">
                                         <i class="fas fa-shopping-basket"></i>
@@ -705,7 +682,7 @@
                         <div class="col-md-6 col-lg-6">
                             <div class="banner-content">
                                 <h1>free home delivery within 24 hours now.</h1>
-                                <p>Lorem ipsum dolor consectetur adipisicing elit modi consequatur eaque expedita porro necessitatibus eveniet voluptatum quis pariatur Laboriosam molestiae architecto excepturi</p>
+                                <!-- <p>Lorem ipsum dolor consectetur adipisicing elit modi consequatur eaque expedita porro necessitatibus eveniet voluptatum quis pariatur Laboriosam molestiae architecto excepturi</p> -->
                                 <div class="banner-btn">
                                     <a class="btn btn-inline" href="shop-4column.html">
                                         <i class="fas fa-shopping-basket"></i>
@@ -746,7 +723,7 @@
                             </div>
                             <div class="intro-content">
                                 <h5>free home delivery</h5>
-                                <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
+                                <!-- <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p> -->
                             </div>
                         </div>
                     </div>
@@ -757,7 +734,7 @@
                             </div>
                             <div class="intro-content">
                                 <h5>instant return policy</h5>
-                                <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
+                                <!-- <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p> -->
                             </div>
                         </div>
                     </div>
@@ -768,7 +745,7 @@
                             </div>
                             <div class="intro-content">
                                 <h5>quick support system</h5>
-                                <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
+                                <!-- <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p> -->
                             </div>
                         </div>
                     </div>
@@ -779,7 +756,7 @@
                             </div>
                             <div class="intro-content">
                                 <h5>secure payment way</h5>
-                                <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
+                                <!-- <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p> -->
                             </div>
                         </div>
                     </div>
@@ -823,7 +800,7 @@
                                             <i class="fas fa-heart"></i>
                                         </button>
                                         <a class="product-image" href="product-video.html">
-                                            <img src="images/product/15.jpg" alt="product">
+                                            <img src="admin/demo2/masters/prod_uploads/Daal.png" alt="product">
                                         </a>
                                         <div class="product-widget">
                                             <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
@@ -838,13 +815,13 @@
                                             <i class="active icofont-star"></i>
                                             <i class="active icofont-star"></i>
                                             <i class="icofont-star"></i>
-                                            <a href="product-video.html">(3)</a>
+                                            <a href="product-video.html">(4)</a>
                                         </div>
                                         <h6 class="product-name">
-                                            <a href="product-video.html">fresh green chilis</a>
+                                            <a href="product-video.html">Toor Dal</a>
                                         </h6>
                                         <h6 class="product-price">
-                                            <span>$28<small>/piece</small></span>
+                                            <span>$150<small>/piece</small></span>
                                         </h6>
                                         <button class="product-add" title="Add to Cart">
                                             <i class="fas fa-shopping-basket"></i>
@@ -868,7 +845,7 @@
                                             <i class="fas fa-heart"></i>
                                         </button>
                                         <a class="product-image" href="product-video.html">
-                                            <img src="images/product/16.jpg" alt="product">
+                                            <img src="admin/demo2/masters/prod_uploads/Groundnuts.png" alt="product">
                                         </a>
                                         <div class="product-widget">
                                             <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
@@ -883,13 +860,13 @@
                                             <i class="active icofont-star"></i>
                                             <i class="active icofont-star"></i>
                                             <i class="icofont-star"></i>
-                                            <a href="product-video.html">(3)</a>
+                                            <a href="product-video.html">(4)</a>
                                         </div>
                                         <h6 class="product-name">
-                                            <a href="product-video.html">fresh green chilis</a>
+                                            <a href="product-video.html">Organic Peanuts</a>
                                         </h6>
                                         <h6 class="product-price">
-                                            <span>$28<small>/piece</small></span>
+                                            <span>$290<small>/piece</small></span>
                                         </h6>
                                         <button class="product-add" title="Add to Cart">
                                             <i class="fas fa-shopping-basket"></i>
@@ -913,7 +890,7 @@
                                             <i class="fas fa-heart"></i>
                                         </button>
                                         <a class="product-image" href="product-video.html">
-                                            <img src="images/product/17.jpg" alt="product">
+                                            <img src="admin/demo2/masters/prod_uploads/Gulabjamun.png" alt="product">
                                         </a>
                                         <div class="product-widget">
                                             <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
@@ -928,13 +905,13 @@
                                             <i class="active icofont-star"></i>
                                             <i class="active icofont-star"></i>
                                             <i class="icofont-star"></i>
-                                            <a href="product-video.html">(3)</a>
+                                            <a href="product-video.html">(4)</a>
                                         </div>
                                         <h6 class="product-name">
-                                            <a href="product-video.html">fresh green chilis</a>
+                                            <a href="product-video.html">Dry Gulabjamun</a>
                                         </h6>
                                         <h6 class="product-price">
-                                            <span>$28<small>/piece</small></span>
+                                            <span>$900<small>/piece</small></span>
                                         </h6>
                                         <button class="product-add" title="Add to Cart">
                                             <i class="fas fa-shopping-basket"></i>
@@ -958,7 +935,7 @@
                                             <i class="fas fa-heart"></i>
                                         </button>
                                         <a class="product-image" href="product-video.html">
-                                            <img src="images/product/18.jpg" alt="product">
+                                            <img src="admin/demo2/masters/prod_uploads/Mango picke.png" alt="product">
                                         </a>
                                         <div class="product-widget">
                                             <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
@@ -973,13 +950,13 @@
                                             <i class="active icofont-star"></i>
                                             <i class="active icofont-star"></i>
                                             <i class="icofont-star"></i>
-                                            <a href="product-video.html">(3)</a>
+                                            <a href="product-video.html">(4)</a>
                                         </div>
                                         <h6 class="product-name">
-                                            <a href="product-video.html">fresh green chilis</a>
+                                            <a href="product-video.html">Mango Slices Pickle</a>
                                         </h6>
                                         <h6 class="product-price">
-                                            <span>$28<small>/piece</small></span>
+                                            <span>$300<small>/piece</small></span>
                                         </h6>
                                         <button class="product-add" title="Add to Cart">
                                             <i class="fas fa-shopping-basket"></i>
@@ -1003,7 +980,7 @@
                                             <i class="fas fa-heart"></i>
                                         </button>
                                         <a class="product-image" href="product-video.html">
-                                            <img src="images/product/19.jpg" alt="product">
+                                            <img src="admin/demo2/masters/prod_uploads/Saree.png" alt="product">
                                         </a>
                                         <div class="product-widget">
                                             <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
@@ -1018,13 +995,13 @@
                                             <i class="active icofont-star"></i>
                                             <i class="active icofont-star"></i>
                                             <i class="icofont-star"></i>
-                                            <a href="product-video.html">(3)</a>
+                                            <a href="product-video.html">(4)</a>
                                         </div>
                                         <h6 class="product-name">
-                                            <a href="product-video.html">fresh green chilis</a>
+                                            <a href="product-video.html">Kalamandir Saree</a>
                                         </h6>
                                         <h6 class="product-price">
-                                            <span>$28<small>/piece</small></span>
+                                            <span>$5000<small>/piece</small></span>
                                         </h6>
                                         <button class="product-add" title="Add to Cart">
                                             <i class="fas fa-shopping-basket"></i>
@@ -1063,7 +1040,7 @@
                                             <i class="active icofont-star"></i>
                                             <i class="active icofont-star"></i>
                                             <i class="icofont-star"></i>
-                                            <a href="product-video.html">(3)</a>
+                                            <a href="product-video.html">(4)</a>
                                         </div>
                                         <h6 class="product-name">
                                             <a href="product-video.html">fresh green chilis</a>
@@ -1113,7 +1090,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="promo-img">
-                            <a href=""><img src="images/promo/home/03.jpg" alt="promo"></a>
+                            <a href=""><img src="./admin/demo2/banner_uploads/banner2.png" alt="promo"></a>
                         </div>
                     </div>
                 </div>

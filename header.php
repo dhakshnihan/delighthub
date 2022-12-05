@@ -117,11 +117,11 @@
                 <div class="header-content">
                     <div class="header-media-group">
                         <button class="header-user"><img src="images/user.png" alt="user"></button>
-                        <a href="index.html"><img src="images/logo.png" alt="logo"></a>
+                        <a href="index.php"><img src="images/logo.png" alt="logo"></a>
                         <button class="header-src"><i class="fas fa-search"></i></button>
                     </div>
 
-                    <a href="index.html" class="header-logo">
+                    <a href="index.php" class="header-logo">
                         <img src="images/logo.png" alt="logo">
                     </a>
                     <div class=""> 

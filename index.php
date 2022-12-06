@@ -1,6 +1,7 @@
 
     <?php include('header.php');?>
     <?php include('cart.php');?>
+<<<<<<< HEAD
  
     <?php 
            $sqlx="select * from tbl_users ";
@@ -463,6 +464,9 @@
         =======================================-->
 
         <?php include ('productview.php');?>
+=======
+    <?php include ('productview.php');?>
+>>>>>>> 80cce01c6c0eb608bb9974d67f3083cc3fcb72e8
        
 
         <!--=====================================
@@ -756,7 +760,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="section-btn-25">
-                            <a href="shop-4column.html" class="btn btn-outline">
+                            <a href="product-items.php" class="btn btn-outline">
                                 <i class="fas fa-eye"></i>
                                 <span>show more</span>
                             </a>
@@ -865,8 +869,7 @@
                                         <img src="images/product/01.jpg" alt="product">
                                     </a>
                                     <div class="product-widget">
-                                        <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                        <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                        
                                         <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
                                     </div>
                                 </div>
@@ -890,8 +893,7 @@
                                         <span>add</span>
                                     </button>
                                     <div class="product-action">
-                                        <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
-                                        <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
+                                       
                                         <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
                                     </div>
                                 </div>
@@ -910,8 +912,7 @@
                                         <img src="images/product/02.jpg" alt="product">
                                     </a>
                                     <div class="product-widget">
-                                        <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                        <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                        
                                         <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
                                     </div>
                                 </div>
@@ -955,8 +956,7 @@
                                         <img src="images/product/03.jpg" alt="product">
                                     </a>
                                     <div class="product-widget">
-                                        <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                        <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                        
                                         <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
                                     </div>
                                 </div>
@@ -1000,8 +1000,7 @@
                                         <img src="images/product/04.jpg" alt="product">
                                     </a>
                                     <div class="product-widget">
-                                        <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                        <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                        
                                         <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
                                     </div>
                                 </div>
@@ -1045,8 +1044,7 @@
                                         <img src="images/product/05.jpg" alt="product">
                                     </a>
                                     <div class="product-widget">
-                                        <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                        <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                        
                                         <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
                                     </div>
                                 </div>
@@ -1090,8 +1088,7 @@
                                         <img src="images/product/06.jpg" alt="product">
                                     </a>
                                     <div class="product-widget">
-                                        <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                        <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                        
                                         <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
                                     </div>
                                 </div>
@@ -1135,8 +1132,7 @@
                                         <img src="images/product/07.jpg" alt="product">
                                     </a>
                                     <div class="product-widget">
-                                        <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                        <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                        
                                         <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
                                     </div>
                                 </div>
@@ -1180,8 +1176,7 @@
                                         <img src="images/product/08.jpg" alt="product">
                                     </a>
                                     <div class="product-widget">
-                                        <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                        <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                        
                                         <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
                                     </div>
                                 </div>
@@ -1225,8 +1220,7 @@
                                         <img src="images/product/09.jpg" alt="product">
                                     </a>
                                     <div class="product-widget">
-                                        <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                        <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                       
                                         <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
                                     </div>
                                 </div>
@@ -1270,8 +1264,7 @@
                                         <img src="images/product/10.jpg" alt="product">
                                     </a>
                                     <div class="product-widget">
-                                        <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                        <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                        
                                         <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
                                     </div>
                                 </div>
@@ -1320,8 +1313,7 @@
                                         <img src="images/product/11.jpg" alt="product">
                                     </a>
                                     <div class="product-widget">
-                                        <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                        <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                        
                                         <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
                                     </div>
                                 </div>
@@ -1365,8 +1357,7 @@
                                         <img src="images/product/12.jpg" alt="product">
                                     </a>
                                     <div class="product-widget">
-                                        <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                        <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                        
                                         <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
                                     </div>
                                 </div>
@@ -1410,8 +1401,7 @@
                                         <img src="images/product/13.jpg" alt="product">
                                     </a>
                                     <div class="product-widget">
-                                        <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                        <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                        
                                         <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
                                     </div>
                                 </div>
@@ -1455,8 +1445,7 @@
                                         <img src="images/product/14.jpg" alt="product">
                                     </a>
                                     <div class="product-widget">
-                                        <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                        <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                       
                                         <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
                                     </div>
                                 </div>
@@ -1500,8 +1489,7 @@
                                         <img src="images/product/15.jpg" alt="product">
                                     </a>
                                     <div class="product-widget">
-                                        <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                        <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                        
                                         <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
                                     </div>
                                 </div>
@@ -1545,8 +1533,7 @@
                                         <img src="images/product/16.jpg" alt="product">
                                     </a>
                                     <div class="product-widget">
-                                        <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                        <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                       
                                         <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
                                     </div>
                                 </div>
@@ -1590,8 +1577,7 @@
                                         <img src="images/product/17.jpg" alt="product">
                                     </a>
                                     <div class="product-widget">
-                                        <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                        <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                        
                                         <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
                                     </div>
                                 </div>
@@ -1635,8 +1621,7 @@
                                         <img src="images/product/18.jpg" alt="product">
                                     </a>
                                     <div class="product-widget">
-                                        <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                        <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                        
                                         <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
                                     </div>
                                 </div>
@@ -1680,8 +1665,7 @@
                                         <img src="images/product/19.jpg" alt="product">
                                     </a>
                                     <div class="product-widget">
-                                        <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                        <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                        
                                         <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
                                     </div>
                                 </div>
@@ -1725,8 +1709,7 @@
                                         <img src="images/product/20.jpg" alt="product">
                                     </a>
                                     <div class="product-widget">
-                                        <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                        <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                        
                                         <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
                                     </div>
                                 </div>
@@ -1775,8 +1758,7 @@
                                         <img src="images/product/06.jpg" alt="product">
                                     </a>
                                     <div class="product-widget">
-                                        <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                        <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                        
                                         <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
                                     </div>
                                 </div>
@@ -1820,8 +1802,7 @@
                                         <img src="images/product/07.jpg" alt="product">
                                     </a>
                                     <div class="product-widget">
-                                        <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                        <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                        
                                         <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
                                     </div>
                                 </div>
@@ -1865,8 +1846,7 @@
                                         <img src="images/product/08.jpg" alt="product">
                                     </a>
                                     <div class="product-widget">
-                                        <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                        <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                        
                                         <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
                                     </div>
                                 </div>
@@ -1910,8 +1890,7 @@
                                         <img src="images/product/09.jpg" alt="product">
                                     </a>
                                     <div class="product-widget">
-                                        <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                        <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                       
                                         <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
                                     </div>
                                 </div>
@@ -1955,8 +1934,7 @@
                                         <img src="images/product/10.jpg" alt="product">
                                     </a>
                                     <div class="product-widget">
-                                        <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                        <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                        
                                         <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
                                     </div>
                                 </div>
@@ -2000,8 +1978,7 @@
                                         <img src="images/product/11.jpg" alt="product">
                                     </a>
                                     <div class="product-widget">
-                                        <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                        <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                        
                                         <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
                                     </div>
                                 </div>
@@ -2045,8 +2022,7 @@
                                         <img src="images/product/12.jpg" alt="product">
                                     </a>
                                     <div class="product-widget">
-                                        <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                        <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                        
                                         <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
                                     </div>
                                 </div>
@@ -2090,8 +2066,7 @@
                                         <img src="images/product/13.jpg" alt="product">
                                     </a>
                                     <div class="product-widget">
-                                        <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                        <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                        
                                         <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
                                     </div>
                                 </div>
@@ -2135,8 +2110,7 @@
                                         <img src="images/product/14.jpg" alt="product">
                                     </a>
                                     <div class="product-widget">
-                                        <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                        <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                        
                                         <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
                                     </div>
                                 </div>
@@ -2180,8 +2154,7 @@
                                         <img src="images/product/15.jpg" alt="product">
                                     </a>
                                     <div class="product-widget">
-                                        <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                        <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                        
                                         <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
                                     </div>
                                 </div>
@@ -2217,7 +2190,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section-btn-25">
-                            <a href="shop-4column.html" class="btn btn-outline">
+                            <a href="product-items.php" class="btn btn-outline">
                                 <i class="fas fa-eye"></i>
                                 <span>show more</span>
                             </a>
@@ -2248,72 +2221,72 @@
                         <div class="brand-media">
                             <img src="./admin/masters/brand_uploads/7 day fast-shipping.svg" alt="brand">
                             <div class="brand-overlay">
-                                <a href="brand-single.html"><i class="fas fa-link"></i></a>
+                                <!-- <a href="#"><i class="fas fa-link"></i></a> -->
                             </div>
                         </div>
                         <div class="brand-meta">
                             <h4>7 day fast-shipping</h4>
-                            <p>(45 items)</p>
+                            
                         </div>
                     </div>
                     <div class="brand-wrap">
                         <div class="brand-media">
                             <img src="./admin/masters/brand_uploads/door_step_delivery.svg" alt="brand">
                             <div class="brand-overlay">
-                                <a href="brand-single.html"><i class="fas fa-link"></i></a>
+                                <!-- <a href="brand-single.html"><i class="fas fa-link"></i></a> -->
                             </div>
                         </div>
                         <div class="brand-meta">
                             <h4>Door Step Delivery</h4>
-                            <p>(45 items)</p>
+                            
                         </div>
                     </div>
                     <div class="brand-wrap">
                         <div class="brand-media">
                             <img src="./admin/masters/brand_uploads/Finest Indian Products.svg" alt="brand">
                             <div class="brand-overlay">
-                                <a href="brand-single.html"><i class="fas fa-link"></i></a>
+                                <!-- <a href="brand-single.html"><i class="fas fa-link"></i></a> -->
                             </div>
                         </div>
                         <div class="brand-meta">
                             <h4>Finest Indian Products</h4>
-                            <p>(45 items)</p>
+                            
                         </div>
                     </div>
                     <div class="brand-wrap">
                         <div class="brand-media">
                             <img src="./admin/masters/brand_uploads/Hassle_Custom.svg" alt="brand">
                             <div class="brand-overlay">
-                                <a href="brand-single.html"><i class="fas fa-link"></i></a>
+                                <!-- <a href="brand-single.html"><i class="fas fa-link"></i></a> -->
                             </div>
                         </div>
                         <div class="brand-meta">
                             <h4>Hassle Custom</h4>
-                            <p>(45 items)</p>
+                           
                         </div>
                     </div>
                     <div class="brand-wrap">
                         <div class="brand-media">
                             <img src="./admin/masters/brand_uploads/Request_product_now.svg" alt="brand">
                             <div class="brand-overlay">
-                                <a href="brand-single.html"><i class="fas fa-link"></i></a>
+                                <!-- <a href="brand-single.html"><i class="fas fa-link"></i></a> -->
                             </div>
                         </div>
                         <div class="brand-meta">
                             <h4>Request Product Now</h4>
-                            <p>(45 items)</p>
+                            
                         </div>
                     </div>
                     <div class="brand-wrap">
                         <div class="brand-media">
                             <img src="./admin/masters/brand_uploads/Low-cost shipping.svg" alt="brand">
                             <div class="brand-overlay">
-                                <a href="brand-single.html"><i class="fas fa-link"></i></a>
+                                <!-- <a href="brand-single.html"><i class="fas fa-link"></i></a> -->
                             </div>
                         </div>
                         <div class="brand-meta">
                             <h4>Low cost shipping</h4>
-                            <p>(45 items)</p>
+                            
                         </div>
                     </div>
                 </div>
@@ -2548,7 +2521,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section-btn-25">
-                            <a href="blog-grid.html" class="btn btn-outline">
+                            <a href="blog-grid.php" class="btn btn-outline">
                                 <i class="fas fa-eye"></i>
                                 <span>view all blog</span>
                             </a>

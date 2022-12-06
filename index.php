@@ -687,270 +687,58 @@
                 <div class="row">
                     <div class="col">
                         <ul class="new-slider slider-arrow">
-                            <li>
-                                <div class="product-card">
-                                    <div class="product-media">
-                                        <div class="product-label">
-                                            <label class="label-text new">new</label>
-                                        </div>
-                                        <button class="product-wish wish">
-                                            <i class="fas fa-heart"></i>
-                                        </button>
-                                        <a class="product-image" href="product-tab.php">
-                                            <img src="admin/masters/prod_uploads/Daal.png" alt="product">
-                                        </a>
-                                        <div class="product-widget">
-                                           
-                                            <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-rating">
-                                            <i class="active icofont-star"></i>
-                                            <i class="active icofont-star"></i>
-                                            <i class="active icofont-star"></i>
-                                            <i class="active icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                            <a href="product-tab.php">(4)</a>
-                                        </div>
-                                        <h6 class="product-name">
-                                            <a href="product-tab.php">Toor Dal</a>
-                                        </h6>
-                                        <h6 class="product-price">
-                                            <span>$150<small>/piece</small></span>
-                                        </h6>
-                                        <button class="product-add" title="Add to Cart" onclick="fun()">
-                                            <i class="fas fa-shopping-basket"></i>
-                                            <span>add</span>
-                                        </button>
-                                        <!-- <div class="product-action">
-                                            <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
-                                            <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
-                                            <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
-                                        </div> -->
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="product-card">
-                                    <div class="product-media">
-                                        <div class="product-label">
-                                            <label class="label-text new">new</label>
-                                        </div>
-                                        <button class="product-wish wish">
-                                            <i class="fas fa-heart"></i>
-                                        </button>
-                                        <a class="product-image" href="product-tab.php">
-                                            <img src="admin/masters/prod_uploads/Groundnuts.png" alt="product">
-                                        </a>
-                                        <div class="product-widget">
-                                           
-                                            <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-rating">
-                                            <i class="active icofont-star"></i>
-                                            <i class="active icofont-star"></i>
-                                            <i class="active icofont-star"></i>
-                                            <i class="active icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                            <a href="product-tab.php">(4)</a>
-                                        </div>
-                                        <h6 class="product-name">
-                                            <a href="product-tab.php">Organic Peanuts</a>
-                                        </h6>
-                                        <h6 class="product-price">
-                                            <span>$290<small>/piece</small></span>
-                                        </h6>
-                                        <button class="product-add" title="Add to Cart">
-                                            <i class="fas fa-shopping-basket"></i>
-                                            <span>add</span>
-                                        </button>
-                                        <!-- <div class="product-action">
-                                            <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
-                                            <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
-                                            <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
-                                        </div> -->
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="product-card">
-                                    <div class="product-media">
-                                        <div class="product-label">
-                                            <label class="label-text new">new</label>
-                                        </div>
-                                        <button class="product-wish wish">
-                                            <i class="fas fa-heart"></i>
-                                        </button>
-                                        <a class="product-image" href="product-tab.php">
-                                            <img src="admin/masters/prod_uploads/Gulabjamun.png" alt="product">
-                                        </a>
-                                        <div class="product-widget">
-                                            
-                                            <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-rating">
-                                            <i class="active icofont-star"></i>
-                                            <i class="active icofont-star"></i>
-                                            <i class="active icofont-star"></i>
-                                            <i class="active icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                            <a href="product-tab.php">(4)</a>
-                                        </div>
-                                        <h6 class="product-name">
-                                            <a href="product-tab.php">Dry Gulabjamun</a>
-                                        </h6>
-                                        <h6 class="product-price">
-                                            <span>$900<small>/piece</small></span>
-                                        </h6>
-                                        <button class="product-add" title="Add to Cart">
-                                            <i class="fas fa-shopping-basket"></i>
-                                            <span>add</span>
-                                        </button>
-                                        <!-- <div class="product-action">
-                                            <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
-                                            <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
-                                            <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
-                                        </div> -->
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="product-card">
-                                    <div class="product-media">
-                                        <div class="product-label">
-                                            <label class="label-text new">new</label>
-                                        </div>
-                                        <button class="product-wish wish">
-                                            <i class="fas fa-heart"></i>
-                                        </button>
-                                        <a class="product-image" href="product-tab.php">
-                                            <img src="admin/masters/prod_uploads/Mango picke.png" alt="product">
-                                        </a>
-                                        <div class="product-widget">
-                                            
-                                            <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-rating">
-                                            <i class="active icofont-star"></i>
-                                            <i class="active icofont-star"></i>
-                                            <i class="active icofont-star"></i>
-                                            <i class="active icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                            <a href="product-tab.php">(4)</a>
-                                        </div>
-                                        <h6 class="product-name">
-                                            <a href="product-tab.php">Mango Slices Pickle</a>
-                                        </h6>
-                                        <h6 class="product-price">
-                                            <span>$300<small>/piece</small></span>
-                                        </h6>
-                                        <button class="product-add" title="Add to Cart">
-                                            <i class="fas fa-shopping-basket"></i>
-                                            <span>add</span>
-                                        </button>
-                                        <!-- <div class="product-action">
-                                            <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
-                                            <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
-                                            <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
-                                        </div> -->
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="product-card">
-                                    <div class="product-media">
-                                        <div class="product-label">
-                                            <label class="label-text new">new</label>
-                                        </div>
-                                        <button class="product-wish wish">
-                                            <i class="fas fa-heart"></i>
-                                        </button>
-                                        <a class="product-image" href="product-tab.php">
-                                            <img src="admin/masters/prod_uploads/Saree.png" alt="product">
-                                        </a>
-                                        <div class="product-widget">
-                                            
-                                            <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-rating">
-                                            <i class="active icofont-star"></i>
-                                            <i class="active icofont-star"></i>
-                                            <i class="active icofont-star"></i>
-                                            <i class="active icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                            <a href="product-tab.php">(4)</a>
-                                        </div>
-                                        <h6 class="product-name">
-                                            <a href="product-tab.php">Kalamandir Saree</a>
-                                        </h6>
-                                        <h6 class="product-price">
-                                            <span>$5000<small>/piece</small></span>
-                                        </h6>
-                                        <button class="product-add" title="Add to Cart">
-                                            <i class="fas fa-shopping-basket"></i>
-                                            <span>add</span>
-                                        </button>
-                                        <!-- <div class="product-action">
-                                            <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
-                                            <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
-                                            <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
-                                        </div> -->
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="product-card">
-                                    <div class="product-media">
-                                        <div class="product-label">
-                                            <label class="label-text new">new</label>
-                                        </div>
-                                        <button class="product-wish wish">
-                                            <i class="fas fa-heart"></i>
-                                        </button>
-                                        <a class="product-image" href="product-tab.php">
-                                            <img src="admin/masters/prod_uploads/Daal.png" alt="product">
-                                        </a>
-                                        <div class="product-widget">
-                                            
-                                            <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-rating">
-                                            <i class="active icofont-star"></i>
-                                            <i class="active icofont-star"></i>
-                                            <i class="active icofont-star"></i>
-                                            <i class="active icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                            <a href="product-tab.php">(4)</a>
-                                        </div>
-                                        <h6 class="product-name">
-                                            <a href="product-tab.php">fresh green chilis</a>
-                                        </h6>
-                                        <h6 class="product-price">
-                                            <span>$28<small>/piece</small></span>
-                                        </h6>
-                                        <button class="product-add" title="Add to Cart">
-                                            <i class="fas fa-shopping-basket"></i>
-                                            <span>add</span>
-                                        </button>
-                                        <div class="product-action">
-                                            <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
-                                            <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
-                                            <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                           
+                                <?php 
+                                    $sql="select * from  tbl_products where PRODN08='Active'";
+                                    $result=mysqli_query($con,$sql);
+                                    while($row=mysqli_fetch_array($result)){
+                                        // $image='/admin/masters/product_uploads/."'.$row['PRODN07'].'"';
+                                        $image='./admin//masters/category_uploads/'.$row["PRODN07"];
+                                        $price=$row['PRODN06'];
+                                        $product_name=$row['PRODN01'];
+                                        $product_id=$row['PRODTID'];
+
+                               echo     '<li>
+                                            <div class="product-card">
+                                                <div class="product-media">
+                                                    <div class="product-label">
+                                                        <label class="label-text new">new</label>
+                                                    </div>
+                                                    <button class="product-wish wish">
+                                                        <i class="fas fa-heart"></i>
+                                                    </button>
+                                                    <a class="product-image" href="product-tab.php">
+                                                        <img src='.$image.' alt="product">
+                                                    </a>
+                                                    <div class="product-widget">
+                                                    
+                                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-id='.$product_id.' data-bs-target="#product-view"></a>
+                                                    </div>
+                                                </div>
+                                                <div class="product-content">
+                                                    <div class="product-rating">
+                                                        <i class="active icofont-star"></i>
+                                                        <i class="active icofont-star"></i>
+                                                        <i class="active icofont-star"></i>
+                                                        <i class="active icofont-star"></i>
+                                                        <i class="icofont-star"></i>
+                                                        <a href="product-tab.php">(4)</a>
+                                                    </div>
+                                                    <h6 class="product-name">
+                                                        <a href="product-tab.php">'.$product_name.'</a>
+                                                    </h6>
+                                                    <h6 class="product-price">
+                                                        <span>$'.$price.'<small>/piece</small></span>
+                                                    </h6>
+                                                    <button class="product-add" title="Add to Cart" onclick="fun()">
+                                                        <i class="fas fa-shopping-basket"></i>
+                                                        <span>add</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </li>';
+                                    } 
+                                ?>
                         </ul>
                     </div>
                 </div>
@@ -2820,9 +2608,25 @@
         <script>
 
 
-function fun(){
-    alert("hiii");
-}
+        function fun(){
+            alert("hiii");
+        }
+
+        $(document).ready(function(){
+            $(".fa-eye").click(function(){
+                var product_id =$(this).data('id');
+                
+                $.ajax({
+                    url:"ajax.php",
+                    method:"post",
+                    data:{product_id:product_id},
+                    success:function(response){
+                        $(".product-view").html(response);
+                        $("#modal-content").modal('show'); 
+                    }
+                })
+            })
+        })
             </script>
 
     </body>

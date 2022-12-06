@@ -83,7 +83,7 @@
                 <div class="row justify-content-center">
                     <div class="col-12 col-sm-10 col-md-12 col-lg-12 col-xl-7">
                         <div class="user-form-logo">
-                            <a href="index.html"><img src="images/logo.png" alt="logo"></a>
+                            <a href="index.php"><img src="images/logo.png" alt="logo"></a>
                         </div>
                         <div class="user-form-card">
                             <div class="user-form-title">
@@ -112,11 +112,11 @@
                                         <input type="password" class="form-control" name="password" id="password" placeholder="Enter your password">
                                     </div>
                                     <div class="form-check mb-3">
-                                        <input class="form-check-input" type="checkbox" value="" id="check">
+                                        <input class="form-check-input" type="checkbox" value="lsRememberMe" id="rememberMe">
                                         <label class="form-check-label" for="check">Remember Me</label>
                                     </div>
                                     <div class="form-button col-lg-10">
-                                        <button type="submit">login</button>
+                                        <button type="submit" onclick="lsRememberMe()">Log In</button>
                                         <p>Forgot your password?<a href="reset-password.php">reset here</a></p>
                                     </div>
                                 </form>
@@ -159,6 +159,30 @@
         <script src="js/venobox.js"></script>
         <script src="js/slick.js"></script>
         <script src="js/main.js"></script> 
+
+        <!-- <script>
+
+                const rmCheck = document.getElementById("rememberMe");
+                emailInput = document.getElementById("email");
+
+                if (localStorage.checkbox && localStorage.checkbox !== "") {
+                rmCheck.setAttribute("checked", "checked");
+                emailInput.value = localStorage.username;
+                } else {
+                rmCheck.removeAttribute("checked");
+                emailInput.value = "";
+                }
+
+                function lsRememberMe() {
+                if (rmCheck.checked && emailInput.value !== "") {
+                    localStorage.username = emailInput.value;
+                    localStorage.checkbox = rmCheck.value;
+                } else {
+                    localStorage.username = "";
+                    localStorage.checkbox = "";
+                }
+                }
+            </script> -->
         <!--=====================================
                     JS LINK PART END
         =======================================-->

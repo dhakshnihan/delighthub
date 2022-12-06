@@ -49,6 +49,13 @@
         <!--=====================================
                     CSS LINK PART END
         =======================================-->
+        <style>
+            @media (min-width: 320px) and (max-width: 767px) {
+                html {
+                    overflow-x: hidden;
+                }
+            }
+        </style>
     </head>
     <body>
         <div class="backdrop"></div>

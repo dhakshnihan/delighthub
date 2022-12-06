@@ -1,7 +1,7 @@
 
     <?php include('header.php');?>
     <?php include('cart.php');?>
-<<<<<<< HEAD
+
  
     <?php 
            $sqlx="select * from tbl_users ";
@@ -464,10 +464,7 @@
         =======================================-->
 
         <?php include ('productview.php');?>
-=======
-    <?php include ('productview.php');?>
->>>>>>> 80cce01c6c0eb608bb9974d67f3083cc3fcb72e8
-       
+
 
         <!--=====================================
                     SUGGEST PART START

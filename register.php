@@ -44,59 +44,7 @@
         <!-- CUSTOM -->
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/user-auth.css">
-        <style>
-           
-            .form {
-                margin: 50px auto;
-                width: 300px;
-                padding: 30px 25px;
-                background: white;
-            }
-            h1.login-title {
-                color: #666;
-                margin: 0px auto 25px;
-                font-size: 25px;
-                font-weight: 300;
-                text-align: center;
-            }
-            .login-input {
-                font-size: 15px;
-                border: 1px solid #ccc;
-                padding: 10px;
-                margin-bottom: 25px;
-                height: 25px;
-                width: calc(100% - 23px);
-            }
-            .login-input:focus {
-                border-color:#6e8095;
-                outline: none;
-            }
-            .login-button {
-                color: #fff;
-                background: #55a1ff;
-                border: 0;
-                outline: 0;
-                width: 100%;
-                height: 50px;
-                font-size: 16px;
-                text-align: center;
-                cursor: pointer;
-            }
-            .link {
-                color: #666;
-                font-size: 15px;
-                text-align: center;
-                margin-bottom: 0px;
-            }
-            .link a {
-                color: #666;
-            }
-            h3 {
-                font-weight: normal;
-                text-align: center;
-            }
-
-        </style>
+        
         <!--=====================================
                     CSS LINK PART END
         =======================================-->
@@ -144,9 +92,12 @@
                                     </div>
                                 </div>
                                     </div>
+                                    <form action="#" id="form">
                                     <div class="form-group">
-                                        <input type="email" class="form-control" id="email" name="email"  placeholder="Enter your email">
+                                        <input type="email" class="form-control" id="email" name="email"  placeholder="Enter your email" onkeydown="validation()">
+                                        <span id="text"></span>
                                     </div>
+                                       </form>
                                     <div class="form-group">
                                         <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" >
                                     </div>
@@ -157,11 +108,11 @@
                                          <span id="wrong_pass_alert"></span>
                                     </div>
                                     <div class="form-check mb-3">
-                                        <input class="form-check-input" type="checkbox" value="" id="check">
+                                        <input class="form-check-input" type="checkbox" value="" id="check" checked>
                                         <label class="form-check-label" for="check">Accept all the <a href="#">Terms & Conditions</a></label>
                                     </div>
                                     <div class="form-button">
-                                        <button type="submit" name="submit" id="submit" value="Register" onclick="registration_form()" >register</button>
+                                        <button type="submit" name="submit" id="submit" value="Register" onclick="registration_form();" >register</button>
                                     </div>
                                  </div>
                             </div>
@@ -197,17 +148,69 @@
                         '🗹 Password Matched';
                   
                 }
+
+               
             }
 
+
+            function validation() {
+  
+                        var email = document.getElementById('email').value;
+                        var text = document.getElementById('text');
+                        var  pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+                        if (email.match(pattern)) {
+                            form.classList.add('valid')
+                            form.classList.remove('invalid')
+                            text.innerHTML = "Your Email Address in valid";
+                            text.style.color = '#119744';
+                        } else {
+                            form.classList.remove('valid')
+                            form.classList.add('invalid')
+                            text.innerHTML = "Please Enter Valid Email Address";
+                            text.style.color = '#ff0000';
+                        }
+
+                        if (email == '') {
+                            form.classList.remove('valid')
+                            form.classList.remove('invalid')
+                            text.innerHTML = "";
+                            text.style.color = '#00ff00';
+                        }
+                        }
+
                  
-                  function registration_form(){
-                        alert("test");
+                  function registration_form(){   
+                    
                     var first_name = $("#first_name").val();
                     var last_name = $("#last_name").val();
                     var email = $("#email").val();
                     var password = $("#password").val();
                     var confirm_pass = $("#confirm_pass").val();
-                    if (password.length>0 && confirm_pass.length>0 && email.length>0 && first_name.length>0 && last_name.length>0) {
+                    var pro= false;
+                    var gg=false;
+                    if($("input[type='checkbox']").is(":checked")){
+
+                         var gg=true;
+
+                    } else{
+
+                        alert("Please Accept all the Terms & Conditions");
+                        return false;
+                    }
+                    
+                    if ( password.length>0 && confirm_pass.length>0 && email.length>0 && first_name.length>0 && last_name.length>0) {
+                        pro=true;
+                    } 
+
+
+                    else {
+                           
+                            alert("Please fill all the fields");
+                            return false;
+                            
+                        }
+                        if(gg==true && pro==true)
                         $.ajax({
                             type: "POST",
                             url: "registration_ajax.php",
@@ -218,17 +221,15 @@
                                 if(data.value=="OK"){
                                     window.location.href = "user-otp.php";
                                 }else if(data.value=="exist"){
-                                    alert("Email no already exist!");
+                                    alert("Email already exist!");
                                 }else{
                                     alert("Please try again!");
                                 }
                                 
                             }
                         });
-                    } else {
-                            alert("Please fill all the fields");
-                            
-                        }
+                   
+
                     }
                     
               

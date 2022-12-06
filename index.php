@@ -1,6 +1,16 @@
 
     <?php include('header.php');?>
     <?php include('cart.php');?>
+ 
+    <?php 
+           $sqlx="select * from tbl_users ";
+           // echo $sql;
+           $resultx=mysqli_query($con,$sqlx);
+           $rowx=mysqli_fetch_array($resultx);
+           $user_id=$rowx['id'];
+
+           echo '<input type="hidden" id="user_id" value="'.$user_id.'">';
+    ?>
     
         <!--=====================================
                 CATEGORY SIDEBAR PART START
@@ -689,14 +699,18 @@
                         <ul class="new-slider slider-arrow">
                            
                                 <?php 
+
+                                 
                                     $sql="select * from  tbl_products where PRODN08='Active'";
                                     $result=mysqli_query($con,$sql);
                                     while($row=mysqli_fetch_array($result)){
                                         // $image='/admin/masters/product_uploads/."'.$row['PRODN07'].'"';
-                                        $image='./admin//masters/category_uploads/'.$row["PRODN07"];
+                                        $image='./admin/masters/category_uploads/'.$row["PRODN07"];
                                         $price=$row['PRODN06'];
                                         $product_name=$row['PRODN01'];
                                         $product_id=$row['PRODTID'];
+                                       
+                                      
 
                                echo     '<li>
                                             <div class="product-card">
@@ -710,10 +724,7 @@
                                                     <a class="product-image" href="product-tab.php">
                                                         <img src='.$image.' alt="product">
                                                     </a>
-                                                    <div class="product-widget">
-                                                    
-                                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-id='.$product_id.' data-bs-target="#product-view"></a>
-                                                    </div>
+                                                   
                                                 </div>
                                                 <div class="product-content">
                                                     <div class="product-rating">
@@ -730,9 +741,9 @@
                                                     <h6 class="product-price">
                                                         <span>$'.$price.'<small>/piece</small></span>
                                                     </h6>
-                                                    <button class="product-add" title="Add to Cart" onclick="fun()">
+                                                    <button class="product-add" title="Add to Cart">
                                                         <i class="fas fa-shopping-basket"></i>
-                                                        <span>add</span>
+                                                        <span title="Product View" href="#" class="add_cart" data-bs-toggle="modal" data-id='.$product_id.' data-bs-target="#product-view">add cart</span>
                                                     </button>
                                                 </div>
                                             </div>
@@ -2607,19 +2618,14 @@
 
         <script>
 
-
-        function fun(){
-            alert("hiii");
-        }
-
         $(document).ready(function(){
-            $(".fa-eye").click(function(){
+            $(".add_cart").click(function(){
                 var product_id =$(this).data('id');
-                
+                var user_id=$("#user_id").val();
                 $.ajax({
                     url:"ajax.php",
                     method:"post",
-                    data:{product_id:product_id},
+                    data:{'product_view':'product_view',product_id:product_id,user_id:user_id},
                     success:function(response){
                         $(".product-view").html(response);
                         $("#modal-content").modal('show'); 

@@ -2,9 +2,12 @@
 <?php
 require_once('dbconnection.php');
 
+if(isset($_POST['product_view'])){
+
     $response='';
 
     $product_id=$_POST['product_id'];
+    $user_id=$_POST['user_id'];
     $sql="select * from tbl_products
     left join tbl_category on PRODN10=CATEGTID
     where PRODTID='".$_POST['product_id']."'";
@@ -50,14 +53,15 @@ require_once('dbconnection.php');
                                         <span><input type="hidden" value="'.$price.'" id="price" class="price">$'.$price.'<small>/per kilo</small></span>
                                     </h3>
                                     <p id="weight_value">Weight: 1 kg</p>
+                                    <span id="uom_input_value"><input  title="UOM" type="hidden" id="uom" name="uom" value="1"></span>
                                     <div class="cart-info quantity">
                                 
                                     <div class="view-list-group">
                                     
                                         <ul class="view-tag-list">
-                                            <li><button type="button" class="btn btn-outline-success " id="myfunction_weight_value1" onclick="myfunction_weight_value1(0.25)">0.25 KG</button></li>
-                                            <li><button type="button" class="btn btn-outline-success " id="myfunction_weight_value2" onclick="myfunction_weight_value2(0.50)">0.50 KG</button></li>
-                                            <li><button type="button" class="btn btn-outline-success " id="myfunction_weight_value3" onclick="myfunction_weight_value3(1)">1 KG</button></li>
+                                            <li><button type="button" class="btn btn-outline-success " value="0.25" id="myfunction_weight_value1" onclick="myfunction_weight_value1(0.25)">0.25 KG</button></li>
+                                            <li><button type="button" class="btn btn-outline-success " value="0.50" id="myfunction_weight_value2" onclick="myfunction_weight_value2(0.50)">0.50 KG</button></li>
+                                            <li><button type="button" class="btn btn-outline-success " value="1" id="myfunction_weight_value3" onclick="myfunction_weight_value3(1)">1 KG</button></li>
                                         </ul>
                                         
                                     </div>
@@ -74,14 +78,12 @@ require_once('dbconnection.php');
                                         
                                     </div>
                                     <div class="view-add-group">
-                                        <button class="product-add" title="Add to Cart">
+                                        <button class="product-add" title="Add to Cart" onclick="add_to_cart('.$product_id.','.$price.','.$user_id.')">
                                             <i class="fas fa-shopping-basket"></i>
                                             <span>add to cart</span>
                                         </button>
                                     
                                     </div> 
-
-                                    <p class="view-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit non tempora magni repudiandae sint suscipit tempore quis maxime explicabo veniam eos reprehenderit fuga</p>
                                     <div class="view-action-group">
                                         <a class="view-wish wish" href="#" title="Add Your Wishlist">
                                             <i class="icofont-heart"></i>
@@ -89,6 +91,8 @@ require_once('dbconnection.php');
                                         </a>
                                     
                                     </div>
+                                    <p class="view-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit non tempora magni repudiandae sint suscipit tempore quis maxime explicabo veniam eos reprehenderit fuga</p>
+                                    
                                 </div>
                             </div>
                         </div>';
@@ -128,14 +132,14 @@ require_once('dbconnection.php');
                                     </h3>
                                    
                                     <div class="cart-info quantity">
-                                
+                                    <span id="uom_input_value"><input  title="UOM" type="hidden" id="uom" name="uom" value="S"></span>
                                     <div class="view-list-group">
                                     
                                         <ul class="view-tag-list">
                                             <li><button type="button" class="btn btn-outline-success " id="myfunction_inches_value1" onclick="myfunction_inches_value1()">XL</button></li>
                                             <li><button type="button" class="btn btn-outline-success " id="myfunction_inches_value2" onclick="myfunction_inches_value2()">L</button></li>
                                             <li><button type="button" class="btn btn-outline-success " id="myfunction_inches_value3" onclick="myfunction_inches_value3()">M</button></li>
-                                            <li><button type="button" class="btn btn-outline-success " id="myfunction_inches_value3" onclick="myfunction_inches_value3()">S</button></li>
+                                            <li><button type="button" class="btn btn-outline-success " id="myfunction_inches_value4" onclick="myfunction_inches_value4()">S</button></li>
                                         </ul>
                                         
                                     </div>
@@ -152,21 +156,21 @@ require_once('dbconnection.php');
                                         
                                     </div>
                                     <div class="view-add-group">
-                                        <button class="product-add" title="Add to Cart">
+                                        <button class="product-add" title="Add to Cart" onclick="add_to_cart('.$product_id.','.$price.','.$user_id.')">
                                             <i class="fas fa-shopping-basket"></i>
                                             <span>add to cart</span>
                                         </button>
                                     
                                     </div> 
-
-                                    <p class="view-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit non tempora magni repudiandae sint suscipit tempore quis maxime explicabo veniam eos reprehenderit fuga</p>
                                     <div class="view-action-group">
-                                        <a class="view-wish wish" href="#" title="Add Your Wishlist">
+                                        <a class="view-wish wish" href="#" title="Add Your Wishlist" >
                                             <i class="icofont-heart"></i>
                                             <span>add to wish</span>
                                         </a>
                                     
                                     </div>
+                                    <p class="view-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit non tempora magni repudiandae sint suscipit tempore quis maxime explicabo veniam eos reprehenderit fuga</p>
+                                    
                                 </div>
                             </div>
                         </div>';
@@ -212,27 +216,27 @@ require_once('dbconnection.php');
                                     <div class="cart-action-group">
                                         <div class="product-action">
                                             <button class="action-minus" title="Quantity Minus" onclick="decrementValue()" value="-"><i class="icofont-minus"></i></button>
-                                            <input type="text" name="quantity" value="1" maxlength="2" max="10" size="1" id="number" />
+                                            <input type="text" name="quantity"  value="1" maxlength="2" max="10" size="1" id="number" />
                                             <button class="action-plus" title="Quantity Plus" onclick="incrementValue()" value="+"><i class="icofont-plus"></i></button>
                                         </div>
                                         
                                     </div>
                                     <div class="view-add-group">
-                                        <button class="product-add" title="Add to Cart">
+                                        <button class="product-add" title="Add to Cart" onclick="add_to_cart('.$product_id.','.$price.','.$user_id.')">
                                             <i class="fas fa-shopping-basket"></i>
                                             <span>add to cart</span>
                                         </button>
                                     
                                     </div> 
-
-                                    <p class="view-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit non tempora magni repudiandae sint suscipit tempore quis maxime explicabo veniam eos reprehenderit fuga</p>
                                     <div class="view-action-group">
-                                        <a class="view-wish wish" href="#" title="Add Your Wishlist">
-                                            <i class="icofont-heart"></i>
-                                            <span>add to wish</span>
-                                        </a>
-                                    
-                                    </div>
+                                    <a class="view-wish wish" href="#" title="Add Your Wishlist">
+                                        <i class="icofont-heart"></i>
+                                        <span>add to wish</span>
+                                    </a>
+                                
+                                </div>
+                                    <p class="view-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit non tempora magni repudiandae sint suscipit tempore quis maxime explicabo veniam eos reprehenderit fuga</p>
+                                   
                                 </div>
                             </div>
                         </div>';
@@ -241,5 +245,24 @@ require_once('dbconnection.php');
     }
 
 echo $response;
+
+}
+
+if(isset($_POST['product_add_to_cart'])){
+    $product_id=$_POST['product_id'];
+    $user_id=$_POST['user_id'];
+    $total_price=$_POST['total_price'];
+    $items=$_POST['items'];
+    $uom=$_POST['uom'];
+  
+
+    $sqlx="insert into tbl_cart (fk_product,total_price,items,uom,fk_userid) value ('".$product_id."','".$total_price."','".$items."','".$uom."','".$user_id."')";
+    // echo $sqlx;
+    mysqli_query($con,$sqlx);
+
+
+}
+
+
 
 ?>

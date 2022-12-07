@@ -248,6 +248,8 @@ echo $response;
 
 }
 
+//cart insert 
+
 if(isset($_POST['product_add_to_cart'])){
     $product_id=$_POST['product_id'];
     $user_id=$_POST['user_id'];
@@ -262,6 +264,20 @@ if(isset($_POST['product_add_to_cart'])){
 
 
 }
+//cart checkout update 
+if(isset($_POST['cart_checkout'])){
+    $items=$_POST['items'];
+    $total_price=$_POST['total_price'];
+    $cart_id=$_POST['cart_id'];
+    
+
+    for($x=0;$x<sizeof($cart_id);$x++){
+        $sql="update tbl_cart set total_price='".$total_price[$x]."',items='".$items[$x]."' where cart_id='".$cart_id[$x]."'";
+        echo $sql;
+        mysqli_query($con,$sql);
+    }
+  }
+ 
 
 
 

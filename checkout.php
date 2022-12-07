@@ -69,7 +69,7 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                     <li class="breadcrumb-item"><a href="shop-4column.html">shop grid</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">checkout</li>
+                    <li class="breadcrumb-item active" aria-current="page">checkout change</li>
                 </ol>
             </div>
         </section>

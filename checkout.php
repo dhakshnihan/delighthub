@@ -78,9 +78,34 @@
         =======================================-->
 
 
+         <!--=====================================
+                CART CHECKOUT PART Updation START
+        =======================================-->
+        <?php
+            include("dbconnection.php");
+            $items=$_POST['input-quantity'];
+            $total_price=$_POST['total_price'];
+            $cart_id=$_POST['cart_id'];
+            $count = count($_POST["cart_id"]);
+
+            for($x=0;$x<sizeof($cart_id);$x++){
+                $sql="update tbl_cart set total_price='".$total_price[$x]."',items='".$items[$x]."' where cart_id='".$cart_id[$x]."'";
+                echo $sql;
+                mysqli_query($con,$sql);
+            }
+           
+
+        ?>
+
+         <!--=====================================
+                CART CHECKOUT PART Updation END
+        =======================================-->
+
+
         <!--=====================================
                     CHECKOUT PART START
         =======================================-->
+      
         <section class="inner-section checkout-part">
             <div class="container">
                 <div class="row">

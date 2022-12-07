@@ -2,6 +2,7 @@
                   CART SIDEBAR PART START
         =======================================-->
         <aside class="cart-sidebar">
+            <form method="POST" action="checkout.php" >
             <div class="cart-header">
                 <div class="cart-total">
                     <i class="fas fa-shopping-basket"></i>
@@ -56,15 +57,15 @@
                                     <p>'.$uom_tag.'</p>
                                 </div>
                                 <div class="cart-info price" id="cart-price-'.$row["cart_id"].'">
-                                   
+                                <input type="hidden" name="cart_id[]" value="'.$row['cart_id'].'"> 
                                 </div>
                                 <div class="cart-action-group">
                                     <div class="product-action">
                                         <button class="action-minus" title="Quantity Minus" onclick="cartdecrementValue('.$cart_id.','.$unit_price.')" value="-"><i class="icofont-minus"></i></button>
-                                        <input type="text" name="input-quantity"  value="'.$items.'" maxlength="2" max="10" size="1"  class="input-quantity-'.$cart_id.'"  id="input-quantity-'.$cart_id.'"  />
+                                        <input type="text" name="input-quantity[]"  value="'.$items.'" maxlength="2" max="10" size="1"  class="input-quantity-'.$cart_id.'"  id="input-quantity-'.$cart_id.'"  />
                                         <button class="action-plus" title="Quantity Plus" onclick="cartincrementValue('.$cart_id.','.$unit_price.')" value="+"><i class="icofont-plus"></i></button>
                                     </div>
-                                    <h6><input type="text" id="total_price_'.$cart_id.'" value="'.$total_price.'" style="color: forestgreen;"></h6>
+                                    <h6><input type="text" name="total_price[]" id="total_price_'.$cart_id.'" value="'.$total_price.'" style="color: forestgreen;"></h6>
                                 </div>
                             </div>
                         </li>';
@@ -82,11 +83,18 @@
                     <input type="text" placeholder="Enter your coupon code">
                     <button type="submit"><span>apply</span></button>
                 </form>
-                <a class="cart-checkout-btn" href="checkout.php">
-                    <span class="checkout-label">Proceed to Checkout</span>
-                    <span class="checkout-price">$<?php echo '<input type="text" id="grand_total_price" value="'.$grand_total_price.'" >'; ?></span>
-                </a>
+                 <a class="cart-checkout-btn" >
+                     <button>
+                        <span class="checkout-label">Proceed to Checkout</span>
+                        <span class="checkout-price"><?php echo '$'.$grand_total_price; echo '<input type="hidden" id="grand_total_price" value="'.$grand_total_price.'" >'; ?></span>
+                     </button>
+                  
+                </a> 
+                <!-- <button class="cart-checkout-btn" > <span class="checkout-label">Proceed to Checkout</span>
+                    <span class="checkout-price"><?php echo $grand_total_price; echo '<input type="hidden" id="grand_total_price" value="'.$grand_total_price.'" >'; ?></span>
+                </button> -->
             </div>
+            </form>
         </aside>
         
         <script>
@@ -105,9 +113,6 @@
                             document.getElementById('total_price_'+cart_id).value =unit_price*input;
                         
                             document.getElementById('grand_total_price').value = (parseFloat(grand_total_price)+parseFloat(unit_price));
-                           
-
-                       
                     }
                 }
                 function cartdecrementValue(cart_id,unit_price)
@@ -126,6 +131,20 @@
                        
                     }
                   
+                }
+
+                function cart_checkout(){
+                    var uom=$("#uom").val();
+                
+                        $.ajax({
+                            url:"ajax.php",
+                            method:"post",
+                            data:{'product_add_to_cart':'product_add_to_cart',product_id:product_id,total_price:quantity,user_id:user_id,items:items,uom:uom},
+                            success:function(response){
+                                window.location ='index.php';
+                            }
+                        })
+
                 }
         </script>
         <!--=====================================

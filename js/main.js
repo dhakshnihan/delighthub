@@ -152,26 +152,26 @@ $('.wish').on('click', function(){
 //========================================
 //      INCREMENT PRODUCT QUANTITY
 //========================================
-$('.action-plus').on('click', function(){
-    var increamentValue = $(this).closest('.product-action').children('.action-input').get(0).value++
-    var actionMinus = $(this).closest('.product-action').children('.action-minus');
+// $('.action-plus').on('click', function(){
+//     var increamentValue = $(this).closest('.product-action').children('.action-input').get(0).value++
+//     var actionMinus = $(this).closest('.product-action').children('.action-minus');
 
-    if(increamentValue > 0) {
-        actionMinus.removeAttr('disabled');
-    }
-});
+//     if(increamentValue > 0) {
+//         actionMinus.removeAttr('disabled');
+//     }
+// });
 
 
 //========================================
 //      DECREMENT PRODUCT QUANTITY
 //========================================
-$('.action-minus').on('click', function(){
-    var decrementValue = $(this).closest('.product-action').children('.action-input').get(0).value--
+// $('.action-minus').on('click', function(){
+//     var decrementValue = $(this).closest('.product-action').children('.action-input').get(0).value--
 
-    if(decrementValue == 2) {
-        $(this).attr('disabled', 'disabled');
-    }
-});
+//     if(decrementValue == 2) {
+//         $(this).attr('disabled', 'disabled');
+//     }
+// });
 
 
 //========================================

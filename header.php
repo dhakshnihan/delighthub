@@ -1,3 +1,6 @@
+
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php include('dbconnection.php');?>
@@ -154,6 +157,7 @@
                                     <div class="container">
                                         <div class="row row-cols-6">
                                             <?php 
+                                                
                                                 $sql="select * from tbl_category where CATEG02='Active'";
                                                 $result=mysqli_query($con,$sql);
                                                 while($row=mysqli_fetch_array($result)){

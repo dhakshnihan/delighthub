@@ -51,6 +51,7 @@
         <link rel="stylesheet" href="css/user-auth.css">
         <link rel="stylesheet" href="css/about.css">
         <link rel="stylesheet" href="css/contact.css">
+        <link rel="stylesheet" href="css/checkout.css">
         <!--=====================================
                     CSS LINK PART END
         =======================================-->

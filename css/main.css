@@ -1283,7 +1283,7 @@ tbody tr {
 }
 
 tbody tr td {
-  padding: 12px 20px;
+  padding: -9px 20px;
   text-align: center;
   border-right: 1px solid var(--border);
 }

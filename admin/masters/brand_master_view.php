@@ -159,6 +159,12 @@
 											<span class="sub-item">Products</span>
 										</a>
 									</li>
+
+									<li>
+										<a href="coupon_genrate.php">
+											<span class="sub-item">Offer_Coupons</span>
+										</a>
+									</li>
 								</ul>
 							</div>
 						</li>

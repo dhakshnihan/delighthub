@@ -1,8 +1,9 @@
     <?php include('header.php');?>
         <?php include('cart.php');?>
         <?php include ('productview.php');?>
-
-
+        
+        <script src="productscript.js"></script>
+            
         <!--=====================================
                     BANNER PART START
         =======================================-->
@@ -26,6 +27,25 @@
         =======================================-->
         <section class="inner-section">
             <div class="container">
+               
+
+            <?php 
+                 $id = $_GET['id'];
+                 
+                                 
+                $sql="select * from  tbl_products LEFT JOIN   tbl_brands ON BRANDTID = PRODN03 where PRODN08='Active' and PRODTID= '$id'";
+                // echo $sql;
+                
+                $result=mysqli_query($con,$sql);
+                while($row=mysqli_fetch_array($result)){
+                    // $image='/admin/masters/product_uploads/."'.$row['PRODN07'].'"';
+                    $image='./admin/masters/prod_uploads/'.$row["PRODN07"];
+                    $price=$row['PRODN06'];
+                    $product_name=$row['PRODN01'];
+                    $brand=$row['BRAND01'];
+                     $product_id=$row['PRODTID'];
+                
+             echo'
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="details-gallery">
@@ -34,49 +54,26 @@
                                 <label class="details-label off">-10%</label>
                             </div>
                             <ul class="details-preview"> 
-                                <li><img src="images/product/01.jpg" alt="product"></li>
-                                <li><img src="images/product/01.jpg" alt="product"></li>
-                                <li><img src="images/product/01.jpg" alt="product"></li>
-                                <li><img src="images/product/01.jpg" alt="product"></li>
-                                <li><img src="images/product/01.jpg" alt="product"></li>
+                                <li><img src='.$image.' alt="product"></li>
+                                <li><img src='.$image.' alt="product"></li>
+                                <li><img src='.$image.' alt="product"></li>
+                               
                             </ul>
                             <ul class="details-thumb">
-                                <li><img src="images/product/01.jpg" alt="product"></li>
-                                <li><img src="images/product/01.jpg" alt="product"></li>
-                                <li><img src="images/product/01.jpg" alt="product"></li>
-                                <li><img src="images/product/01.jpg" alt="product"></li>
-                                <li><img src="images/product/01.jpg" alt="product"></li>
+                                <li><img src='.$image.' alt="product"></li>
+                                <li><img src='.$image.' alt="product"></li>
+                                <li><img src='.$image.' alt="product"></li>
+                                
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <ul class="product-navigation">
-                            <li class="product-nav-prev">
-                                <a href="#">
-                                    <i class="icofont-arrow-left"></i>
-                                    prev product
-                                    <span class="product-nav-popup">
-                                        <img src="images/product/02.jpg" alt="product">
-                                        <small>green chilis</small>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="product-nav-next">
-                                <a href="#">
-                                    next product
-                                    <i class="icofont-arrow-right"></i>
-                                    <span class="product-nav-popup">
-                                        <img src="images/product/03.jpg" alt="product">
-                                        <small>green chilis</small>
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
+                        
                         <div class="details-content">
-                            <h3 class="details-name"><a href="#">existing product name</a></h3>
+                            <h3 class="details-name"><a href="#">'.$product_name.'</a></h3>
                             <div class="details-meta">
-                                <p>SKU:<span>1234567</span></p>
-                                <p>BRAND:<a href="#">radhuni</a></p>
+                                <p>PRODUCT_Id:<span>'. $product_id.'</span></p>
+                                <p>BRAND:<a href="#">'.$brand.'</a></p>
                             </div>
                             <div class="details-rating">
                                 <i class="active icofont-star"></i>
@@ -87,51 +84,51 @@
                                 <a href="#">(3 reviews)</a>
                             </div>
                             <h3 class="details-price">
-                                <del>$38.00</del>
-                                <span>$24.00<small>/per kilo</small></span>
+                                <del>$380.00</del>
+                                <span id="pricekg">'.$price.'<small>/per kilo</small></span>
                             </h3>
-                            <p class="details-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores quibusdam.</p>
-                            <div class="details-list-group">
-                                <label class="details-list-title">tags:</label>
-                                <ul class="details-tag-list">
-                                    <li><a href="#">organic</a></li>
-                                    <li><a href="#">fruits</a></li>
-                                    <li><a href="#">chilis</a></li>
-                                </ul>
-                            </div>
-                            <div class="details-list-group">
-                                <label class="details-list-title">Share:</label>
-                                <ul class="details-share-list">
-                                    <li><a href="#" class="icofont-facebook" title="Facebook"></a></li>
-                                    <li><a href="#" class="icofont-twitter" title="Twitter"></a></li>
-                                    <li><a href="#" class="icofont-linkedin" title="Linkedin"></a></li>
-                                    <li><a href="#" class="icofont-instagram" title="Instagram"></a></li>
-                                </ul>
-                            </div>
+                            <p id="weight_value">Weight: 1 kg</p>
+                            <div class="view-list-group">
+                                    
+                                    <ul class="view-tag-list">
+                                        <li><button type="button" class="btn btn-outline-success " value="0.25" id="half" onclick="myhalf(0.25)">0.25 KG</button></li>
+                                        <li><button type="button" class="btn btn-outline-success " value="0.50" id=2half onclick=my2half(0.500) >0.50 KG</button></li>
+                                        <li><button type="button" class="btn btn-outline-success " value="1" id= kilo onclick="mykilo(1)">1 KG</button></li>
+                                    </ul>
+                                    
+                                </div>
+                                <span id="total_price" class="total_price"> Rs:'.$price.' (Inclusive Of Tax)</span>
+                                <div class="cart-action-group">
+                                        <div class="product-action">
+                                            <button class="action-minus" title="Quantity Minus" onclick="decrementValue()" value="-"><i class="icofont-minus"></i></button>
+                                            <input type="text" name="quantity" value="1" maxlength="2" max="10" size="1" id="number" />
+                                            <button class="action-plus" title="Quantity Plus" onclick="incrementValue()" value="+"><i class="icofont-plus"></i></button>
+                                        </div>
+                                        
+                                    </div>
+                           
                             <div class="details-add-group">
                                 <button class="product-add" title="Add to Cart">
                                     <i class="fas fa-shopping-basket"></i>
                                     <span>add to cart</span>
-                                </button>
-                                <div class="product-action">
-                                    <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
-                                    <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
-                                    <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
-                                </div>
-                            </div>
-                            <div class="details-action-group">
+                                </button><br/>
+                                <div class="details-action-group">
                                 <a class="details-wish wish" href="#" title="Add Your Wishlist">
                                     <i class="icofont-heart"></i>
                                     <span>add to wish</span>
                                 </a>
-                                <a class="details-compare" href="compare.html" title="Compare This Item">
-                                    <i class="fas fa-random"></i>
-                                    <span>Compare This</span>
-                                </a>
+                              
                             </div>
+
+                                <p class="details-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores quibusdam.</p>
+                               
+                            </div>
+                            
                         </div>
                     </div>
-                </div>
+                </div>';
+                }
+                ?>
             </div>
         </section>
         <!--=====================================

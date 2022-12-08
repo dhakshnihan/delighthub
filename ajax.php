@@ -14,7 +14,7 @@ if(isset($_POST['product_view'])){
     $result=mysqli_query($con,$sql);
     while($row=mysqli_fetch_array($result)){
     
-        $image='./admin//masters/category_uploads/'.$row["PRODN07"];
+        $image='./admin//masters/prod_uploads/'.$row["PRODN07"];
         $price=$row['PRODN06'];
         $product_name=$row['PRODN01'];
         $uom=$row['CATEG04'];
@@ -30,6 +30,7 @@ if(isset($_POST['product_view'])){
                                     <ul class="preview-slider slider-arrow"> 
                                         <li><img src='.$image.' alt="product"></li>
                                     </ul>
+                                    
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-6">

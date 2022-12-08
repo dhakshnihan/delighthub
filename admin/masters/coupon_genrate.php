@@ -7,6 +7,7 @@
 	<title>Forms - Atlantis Bootstrap 4 Admin Dashboard</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" href="https://themekita.com/demo-atlantis-bootstrap/livepreview/examples/assets/img/icon.ico" type="image/x-icon"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	
 	<!-- Fonts and icons -->
 	<script src="../assets/js/plugin/webfont/webfont.min.js"></script>
@@ -132,12 +133,12 @@
 							</a>
 							<div class="collapse show" id="masters">
 								<ul class="nav nav-collapse">
-                                    <li>
+									<li class="active">
 										<a href="brand_master_model.html">
 											<span class="sub-item">Product Brand</span>
 										</a>
 									</li>
-									<li class="active">
+                                    <li>
 										<a href="category_master_model.html">
 											<span class="sub-item">Product Category</span>
 										</a>
@@ -210,25 +211,40 @@
 						<div class="col-md-12">
 							<div class="card">
 								<div class="card-header">
-									<div class="card-title">Product Category</div>
+									<div class="card-title">Offer_Coupons</div>
 									<!-- <div class="card-category">Form validation with jQuery from <a href="https://jqueryvalidation.org/">jQuery Validate</a></div> -->
 								</div>
 								<!-- <form id="exampleValidation"> -->
 									<div class="card-body">
 										<div class="form-group form-show-validation row">
-											<label for="category_name" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">Product Category  <span class="required-label">*</span></label>
+											<label for="brand_name" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">Coupon Code <span class="required-label">*</span></label>
 											<div class="col-lg-4 col-md-9 col-sm-8">
-												<input type="text" class="form-control" id="category_name" name="category_name" placeholder="Enter Category" required>
+												<input type="text" class="form-control"  name="coupon" id="coupon"  required="required">
 											</div>
 										</div>
+                                        <center>
+										<div class="col-lg-4 col-md-9 col-sm-8">
+											
+											<button id="generate" class="btn btn-success deletelanguage" type="button" ><span class="glyphicon glyphicon-random"  ></span> Generate</button>
+	
+											</div>	
+											</center>
+										<div class="form-group form-show-validation row">
+											<label for="brand_name" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">Discount % <span class="required-label">*</span></label>
+											<div class="col-lg-4 col-md-9 col-sm-8">
+												<input type="text" class="form-control" id="brand_name" name="brand_name" placeholder="Discount %" required>
+											</div>
+										</div>
+										<center>
 									<div class="card-action">
 										<div class="row">
 											<div class="col-md-12">
-												<input class="btn btn-success" type="submit" value="Submit" onclick="add_category()">
+												<input class="btn btn-success" type="submit" value="Submit" onclick="add_brands()">
 												<button class="btn btn-danger">Cancel</button>
 											</div>										
 										</div>
 									</div>
+	</center>
 								<!-- </form> -->
 							</div>
 						</div>
@@ -236,22 +252,22 @@
 				</div>
 			</div>
 
-            <script>
-                function add_category(){  
-                    var category_name = $("#category_name").val();
-                        $.ajax({
-                            url:'controllerProdData.php',
-                            method:'POST',
-                            data:{add_category:'add_category',category_name:category_name},
-                            cache: false,
-                            success: function(respose){
-								alert("Inserted successfully.");
-								window.location="category_master_view.php";
-                            }
-                         });
-                }
+			
 
-            </script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#generate').on('click', function(){
+			$.get("get_coupon.php", function(data){
+				$('#coupon').val(data);
+			});
+		});
+	});
+</script>
+
+
+
+
+
 			<footer class="footer">
 				<div class="container-fluid">
 					<nav class="pull-left">
@@ -746,7 +762,8 @@
 		<!-- End Custom template -->
 	</div>
 	<!--   Core JS Files   -->
-	<script src="../assets/js/core/jquery.3.2.1.min.js"></script>
+	<!-- <script src="../assets/js/core/jquery.3.2.1.min.js"></script> -->
+	<!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
 	<script src="../assets/js/core/popper.min.js"></script>
 	<script src="../assets/js/core/bootstrap.min.js"></script>
 	<!-- jQuery UI -->
@@ -768,49 +785,7 @@
 	<script src="../assets/js/atlantis.min.js"></script>
 	<!-- Atlantis DEMO methods, don't include it in your project! -->
 	<script src="../assets/js/setting-demo2.js"></script>
-	<script>
-		$('#birth').datetimepicker({
-			format: 'MM/DD/YYYY'
-		});
-
-		$('#state').select2({
-			theme: "bootstrap"
-		});
-
-		/* validate */
-
-		// validation when select change
-		$("#state").change(function(){
-			$(this).valid();
-		})
-
-		// validation when inputfile change
-		$("#uploadImg").on("change", function(){
-			$(this).parent('form').validate();
-		})
-
-		$("#exampleValidation").validate({
-			validClass: "success",
-			rules: {
-				gender: {required: true},
-				confirmpassword: {
-					equalTo: "#password"
-				},
-				birth: {
-					date: true
-				},
-				uploadImg: {
-					required: true, 
-				},
-			},
-			highlight: function(element) {
-				$(element).closest('.form-group').removeClass('has-success').addClass('has-error');
-			},
-			success: function(element) {
-				$(element).closest('.form-group').removeClass('has-error').addClass('has-success');
-			},
-		});
-	</script>
+	
 </body>
 
 <!-- Mirrored from themekita.com/demo-atlantis-bootstrap/livepreview/examples/demo2/forms/formvalidation.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Nov 2022 13:09:45 GMT -->

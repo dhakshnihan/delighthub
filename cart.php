@@ -2,7 +2,7 @@
                   CART SIDEBAR PART START
         =======================================-->
         <aside class="cart-sidebar">
-            <form method="POST" action="checkout.php" >
+            <!-- <form method="POST" action="checkout.php" > -->
             <div class="cart-header">
                 <div class="cart-total">
                     <i class="fas fa-shopping-basket"></i>
@@ -44,25 +44,26 @@
                         }else{
                             $uom_tag="";
                         }
-                echo    '<li class="cart-item">
+                echo    '<li class="cart-item" id="row_'.$row['cart_id'].'">
                             <div class="cart-media">
-                                <a href="#"><img src="'.$image.'" alt="product"></a>
-                                <button class="cart-delete"><i class="far fa-trash-alt"></i></button>
+                                <a href="product-tab.php"><img src="'.$image.'" alt="product" >
+                                  <button class="cart-delete" ><i class="fas fa-eye" style="background-color: #ffffff;color: #119744;"></i></button>
+                                </a>
                             </div>
                             <div class="cart-info-group">
-                                <div class="cart-info">
-                                    <h6><a href="product-single.html">existing product name</a></h6>
-                                    <p>Unit Price - $'.$unit_price.'<input type="hidden" id="unit_price_'.$cart_id.'" value="'.$unit_price.'"></p>
+                                <div class="cart-info ">
+                                    <h6><a href="product-single.html">existing product name</a><button class="ms-4  cart-delete" onclick="cart_items_delete('.$cart_id.')"><i class="far fa-trash-alt" style="color: red;"></i></button></h6>
+                                    <p>Unit Price - $'.$unit_price.'<input type="hidden" class="unit_price" id="unit_price_'.$cart_id.'" value="'.$unit_price.'"></p>
 
                                     <p>'.$uom_tag.'</p>
                                 </div>
                                 <div class="cart-info price" id="cart-price-'.$row["cart_id"].'">
-                                <input type="hidden" name="cart_id[]" value="'.$row['cart_id'].'"> 
+                                <input type="number" name="cart_id[]"  value="'.$row['cart_id'].'" style="display: none;"> 
                                 </div>
                                 <div class="cart-action-group">
                                     <div class="product-action">
                                         <button class="action-minus" title="Quantity Minus" onclick="cartdecrementValue('.$cart_id.','.$unit_price.')" value="-"><i class="icofont-minus"></i></button>
-                                        <input type="text" name="input-quantity[]"  value="'.$items.'" maxlength="2" max="10" size="1"  class="input-quantity-'.$cart_id.'"  id="input-quantity-'.$cart_id.'"  />
+                                        <input type="text" name="input-quantity[]"  value="'.$items.'" maxlength="2" max="10" size="1"  class="input_quantity_'.$cart_id.'"  id="input-quantity-'.$cart_id.'"  />
                                         <button class="action-plus" title="Quantity Plus" onclick="cartincrementValue('.$cart_id.','.$unit_price.')" value="+"><i class="icofont-plus"></i></button>
                                     </div>
                                     <h6><input type="text" name="total_price[]" id="total_price_'.$cart_id.'" value="'.$total_price.'" style="color: forestgreen;"></h6>
@@ -84,9 +85,9 @@
                     <button type="submit"><span>apply</span></button>
                 </form>
                  <a class="cart-checkout-btn" >
-                     <button>
+                     <button name="submit" onclick="cart_checkout()">
                         <span class="checkout-label">Proceed to Checkout</span>
-                        <span class="checkout-price"><?php echo '$'.$grand_total_price; echo '<input type="hidden" id="grand_total_price" value="'.$grand_total_price.'" >'; ?></span>
+                        <span class="checkout-price" id="grand_total_price_span"><?php echo '$'.$grand_total_price; ?></span>  <?php echo '<input type="hidden" id="grand_total_price" value="'.$grand_total_price.'" >'; ?>
                      </button>
                   
                 </a> 
@@ -94,7 +95,7 @@
                     <span class="checkout-price"><?php echo $grand_total_price; echo '<input type="hidden" id="grand_total_price" value="'.$grand_total_price.'" >'; ?></span>
                 </button> -->
             </div>
-            </form>
+            <!-- </form> -->
         </aside>
         
         <script>
@@ -113,6 +114,7 @@
                             document.getElementById('total_price_'+cart_id).value =unit_price*input;
                         
                             document.getElementById('grand_total_price').value = (parseFloat(grand_total_price)+parseFloat(unit_price));
+                            grand_total_price_span.innerHTML =  (parseFloat(grand_total_price)+parseFloat(unit_price));
                     }
                 }
                 function cartdecrementValue(cart_id,unit_price)
@@ -128,23 +130,46 @@
                             document.getElementById('input-quantity-'+cart_id).value  = input;
                             document.getElementById('total_price_'+cart_id).value =unit_price*input;
                             document.getElementById('grand_total_price').value = (parseFloat(grand_total_price)-parseFloat(unit_price));
+                            grand_total_price_span.innerHTML =  (parseFloat(grand_total_price)-parseFloat(unit_price));
                        
                     }
                   
                 }
 
+
                 function cart_checkout(){
-                    var uom=$("#uom").val();
-                
-                        $.ajax({
+                   
+                    var array_items = new Array();
+                    var array_total_price = new Array();
+                    var arrNumber = new Array();
+                    $('input[type=number]').each(function(){
+                        arrNumber.push($(this).val());
+                        array_items.push($("#input-quantity-"+$(this).val()).val());
+                        array_total_price.push($("#total_price_"+$(this).val()).val());
+                        alert(array_total_price);
+                    })
+
+                    $.ajax({
                             url:"ajax.php",
                             method:"post",
-                            data:{'product_add_to_cart':'product_add_to_cart',product_id:product_id,total_price:quantity,user_id:user_id,items:items,uom:uom},
+                            data:{'cart_checkout':'cart_checkout',cart_id:arrNumber,total_price:array_total_price,items:array_items},
                             success:function(response){
-                                window.location ='index.php';
+                                window.location ='checkout.php';
                             }
                         })
 
+                }
+
+                function cart_items_delete(cart_id){
+                         $.ajax({
+                            url:"ajax.php",
+                            method:"post",
+                            data:{'cart_items_delete':'cart_items_delete',cart_id:cart_id},
+                            success:function(response){
+                                // $("#row_" + cart_id).remove();
+                                window.location ='index.php';
+                            }
+                        })
                 }
         </script>
         <!--=====================================

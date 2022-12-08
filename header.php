@@ -227,7 +227,7 @@
                         <ul class="navbar-list dropdown">
                             <li class=" header-widget ms-3 dropdown-megamenu">
                                 <!-- <a href="" class="header-widget ms-3 dropdown-arrow1"><span>More</span></a> -->
-                                <a href="wishlist1.html" class="header-widget" title="Wishlist">
+                                <a href="login.php" class="header-widget" title="Wishlist">
                                     <img src="images/user.png" alt="user">
                                 </a>
                                     <ul class="dropdown-position-list">
@@ -419,7 +419,7 @@
             </div>
             <div class="nav-content">
                 <div class="nav-btn">
-                    <a href="login.html" class="btn btn-inline">
+                    <a href="login.php" class="btn btn-inline">
                         <i class="fa fa-unlock-alt"></i>
                         <span>join here</span>
                     </a>
@@ -450,36 +450,30 @@
                 <ul class="nav-list">
                     <li>
                         <a class="nav-link dropdown-link" href="#"><i class="icofont-home"></i>Home</a>
-                        <ul class="dropdown-list">
-                            <li><a href="home-grid.html">Home grid</a></li>
-                            <li><a href="index.html">Home index</a></li>
-                            <li><a href="home-classic.html">Home classic</a></li>
-                            <li><a href="home-standard.html">Home standard</a></li>
-                            <li><a href="home-category.html">Home category</a></li>
-                        </ul>
+                        
                     </li>
                     <li>
                         <a class="nav-link dropdown-link" href="#"><i class="icofont-food-cart"></i>shop</a>
-                        <ul class="dropdown-list">
+                        <!-- <ul class="dropdown-list">
                             <li><a href="shop-5column.html">shop 5 column</a></li>
                             <li><a href="shop-4column.html">shop 4 column</a></li>
                             <li><a href="shop-3column.html">shop 3 column</a></li>
                             <li><a href="shop-2column.html">shop 2 column</a></li>
                             <li><a href="shop-1column.html">shop 1 column</a></li>
-                        </ul>
+                        </ul> -->
                     </li>
                     <li>
                         <a class="nav-link dropdown-link" href="#"><i class="icofont-page"></i>product</a>
-                        <ul class="dropdown-list">
+                        <!-- <ul class="dropdown-list">
                             <li><a href="product-tab.html">product tab</a></li>
                             <li><a href="product-grid.html">product grid</a></li>
                             <li><a href="product-tab.php">product video</a></li>
                             <li><a href="product-simple.html">product simple</a></li>
-                        </ul>
+                        </ul> -->
                     </li>
                     <li>
                         <a class="nav-link dropdown-link" href="#"><i class="icofont-bag-alt"></i>my account</a>
-                        <ul class="dropdown-list">
+                        <!-- <ul class="dropdown-list">
                             <li><a href="profile.html">profile</a></li>
                             <li><a href="wallet.html">wallet</a></li>
                             <li><a href="wishlist.html">wishlist</a></li>
@@ -488,20 +482,20 @@
                             <li><a href="orderlist.html">order history</a></li>
                             <li><a href="invoice.html">order invoice</a></li>
                             <li><a href="email-template.html">email template</a></li>
-                        </ul>
+                        </ul> -->
                     </li>
                     <li>
                         <a class="nav-link dropdown-link" href="#"><i class="icofont-lock"></i>authentic</a>
-                        <ul class="dropdown-list">
+                        <!-- <ul class="dropdown-list">
                             <li><a href="login.html">login</a></li>
                             <li><a href="register.html">register</a></li>
                             <li><a href="reset-password.html">reset password</a></li>
                             <li><a href="change-password.html">change password</a></li>
-                        </ul>
+                        </ul> -->
                     </li>
                     <li>
                         <a class="nav-link dropdown-link" href="#"><i class="icofont-book-alt"></i>blogs</a>
-                        <ul class="dropdown-list">
+                        <!-- <ul class="dropdown-list">
                             <li><a href="blog-grid.html">blog grid</a></li>
                             <li><a href="blog-standard.html">blog standard</a></li>
                             <li><a href="blog-details.html">blog details</a></li>
@@ -516,7 +510,7 @@
                     <li><a class="nav-link" href="coming-soon.html"><i class="icofont-options"></i>coming soon</a></li>
                     <li><a class="nav-link" href="error.html"><i class="icofont-ui-block"></i>404 error</a></li>
                     <li><a class="nav-link" href="login.html"><i class="icofont-logout"></i>logout</a></li>
-                </ul>
+                </ul> -->
                 <div class="nav-info-group">
                     <div class="nav-info">
                         <i class="icofont-ui-touch-phone"></i>
@@ -529,12 +523,12 @@
                         <i class="icofont-ui-email"></i>
                         <p>
                             <small>email us</small>
-                            <span>support@greeny.com</span>
+                            <span>support@delightshub.com</span>
                         </p>
                     </div>
                 </div>
                 <div class="nav-footer">
-                    <p>All Rights Reserved by <a href="#">Mironcoder</a></p>
+                    <p>All Rights Reserved by <a href="#">Delights Hub</a></p>
                 </div>
             </div>
         </aside>

@@ -1958,7 +1958,7 @@
                             <div class="blog-card">
                                 <div class="blog-media">
                                     <a class="blog-img" href="#">
-                                        <img src="admin/masters/blog_uploads/Mask group-1.png" alt="blog">
+                                        <img src="New/Indian_Sweets.png" alt="blog">
                                     </a>
                                 </div>
                                 <div class="blog-content">
@@ -1977,7 +1977,7 @@
                                     </h4>
                                     <p class="blog-desc">
                                     India is a land of sweet delicacies. Indian sweets are known for their rich flavours and exotic ingredients. They are not just desserts, but an integral part of festivals, celebrations, and special occasions.
-                                    Indian sweets are usually made with sugar, milk, ghee, cream, and nuts like almonds, cashews, and pistachios. .....
+                                    Indian sweets are usually made with sugar, milk, ghee, cream, and nuts like almonds, cashews, and pistachios....
                                     </p>
                                     <a class="blog-btn" href="#">
                                         <span>read more</span>
@@ -1988,7 +1988,7 @@
                             <div class="blog-card">
                                 <div class="blog-media">
                                     <a class="blog-img" href="#">
-                                        <img src="admin/masters/blog_uploads/Mask group-1.png" alt="blog">
+                                        <img src="New/Indian_Spices.png" alt="blog">
                                     </a>
                                 </div>
                                 <div class="blog-content">
@@ -2017,7 +2017,7 @@
                             <div class="blog-card">
                                 <div class="blog-media">
                                     <a class="blog-img" href="#">
-                                        <img src="admin/masters/blog_uploads/Mask group-1.png" alt="blog">
+                                        <img src="New/Indian_Dressing_Styles.png" alt="blog">
                                     </a>
                                 </div>
                                 <div class="blog-content">
@@ -2046,7 +2046,7 @@
                             <div class="blog-card">
                                 <div class="blog-media">
                                     <a class="blog-img" href="#">
-                                        <img src="admin/masters/blog_uploads/Mask group-2.png" alt="blog">
+                                        <img src="New/Indian_Spices.png" alt="blog">
                                     </a>
                                 </div>
                                 <div class="blog-content">
@@ -2061,10 +2061,10 @@
                                         </li>
                                     </ul>
                                     <h4 class="blog-title">
-                                        <a href="blog-details.html">Voluptate blanditiis provident Lorem ipsum dolor sit amet</a>
+                                        <a href="blog-details.html">Exploring the Rich Tastes and Fragrances of Indian Spices</a>
                                     </h4>
                                     <p class="blog-desc">
-                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias autem recusandae deleniti nam dignissimos sequi ...
+                                    The Indian subcontinent is renowned for its exotic spices, which have been used to create unique and flavorful dishes for centuries. From the hot, spicy flavours of chili peppers to the sweet and fragrant aromas of cardamom and cinnamon, Indian spices bring a distinct flavour to any dish. ...
                                     </p>
                                     <a class="blog-btn" href="#">
                                         <span>read more</span>

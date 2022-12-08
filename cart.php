@@ -19,7 +19,7 @@
                     where status='Active'";
                     $result=mysqli_query($con,$sql);
                     while($row=mysqli_fetch_array($result)){
-                        $image='./admin/masters/category_uploads/'.$row["PRODN07"];
+                        $image='./admin/masters/prod_uploads/'.$row["PRODN07"];
                         $total_price=$row['total_price'];
                         $unit_price=$row['PRODN06'];
                         $items=$row['items'];

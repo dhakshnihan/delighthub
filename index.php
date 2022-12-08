@@ -41,7 +41,7 @@
 
                             $image='./admin//masters/category_uploads/'.$row["CATEG03"];
                             echo '<li>
-                                    <a class="suggest-card" href="shop-4column.html">
+                                    <a class="suggest-card" href="product-items.php">
                                         <img src="'.$image.'" alt="suggest">
                                         <h5>'.$row['CATEG01'].' <span>'.$items.' items</span></h5>
                                     </a>
@@ -425,7 +425,7 @@
                                     </a>
                                     <div class="product-widget">
                                         
-                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                        <!-- <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a> -->
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -445,7 +445,7 @@
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
                                         <i class="fas fa-shopping-basket"></i>
-                                        <span>add</span>
+                                        <span title="Product View" href="#" class="add_cart" data-bs-toggle="modal" data-id='2' data-bs-target="#product-view">add cart</span>
                                     </button>
                                     <div class="product-action">
                                        
@@ -466,10 +466,10 @@
                                     <a class="product-image" href="product-tab.php">
                                         <img src="images/product/02.jpg" alt="product">
                                     </a>
-                                    <div class="product-widget">
+                                    <!-- <div class="product-widget">
                                         
                                         <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="product-content">
                                     <div class="product-rating">
@@ -488,7 +488,7 @@
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
                                         <i class="fas fa-shopping-basket"></i>
-                                        <span>add</span>
+                                        <span title="Product View" href="#" class="add_cart" data-bs-toggle="modal" data-id='1' data-bs-target="#product-view">add cart</span>
                                     </button>
                                     <div class="product-action">
                                         <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
@@ -512,7 +512,7 @@
                                     </a>
                                     <div class="product-widget">
                                         
-                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                        <!-- <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a> -->
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -532,7 +532,7 @@
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
                                         <i class="fas fa-shopping-basket"></i>
-                                        <span>add</span>
+                                        <span title="Product View" href="#" class="add_cart" data-bs-toggle="modal" data-id='1' data-bs-target="#product-view">add cart</span>
                                     </button>
                                     <div class="product-action">
                                         <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
@@ -556,7 +556,7 @@
                                     </a>
                                     <div class="product-widget">
                                         
-                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                        <!-- <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a> -->
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -576,7 +576,7 @@
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
                                         <i class="fas fa-shopping-basket"></i>
-                                        <span>add</span>
+                                        <span title="Product View" href="#" class="add_cart" data-bs-toggle="modal" data-id='1' data-bs-target="#product-view">add cart</span>
                                     </button>
                                     <div class="product-action">
                                         <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
@@ -600,7 +600,7 @@
                                     </a>
                                     <div class="product-widget">
                                         
-                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                        <!-- <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a> -->
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -620,7 +620,8 @@
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
                                         <i class="fas fa-shopping-basket"></i>
-                                        <span>add</span>
+                                        <span title="Product View" href="#" class="add_cart" data-bs-toggle="modal" data-id='2' data-bs-target="#product-view">add cart</span>
+                                    </button>
                                     </button>
                                     <div class="product-action">
                                         <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
@@ -644,7 +645,7 @@
                                     </a>
                                     <div class="product-widget">
                                         
-                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                        <!-- <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a> -->
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -664,7 +665,7 @@
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
                                         <i class="fas fa-shopping-basket"></i>
-                                        <span>add</span>
+                                        <span title="Product View" href="#" class="add_cart" data-bs-toggle="modal" data-id='3' data-bs-target="#product-view">add cart</span>
                                     </button>
                                     <div class="product-action">
                                         <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
@@ -688,7 +689,7 @@
                                     </a>
                                     <div class="product-widget">
                                         
-                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                        <!-- <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a> -->
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -708,7 +709,7 @@
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
                                         <i class="fas fa-shopping-basket"></i>
-                                        <span>add</span>
+                                        <span title="Product View" href="#" class="add_cart" data-bs-toggle="modal" data-id='1' data-bs-target="#product-view">add cart</span>
                                     </button>
                                     <div class="product-action">
                                         <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
@@ -732,7 +733,7 @@
                                     </a>
                                     <div class="product-widget">
                                         
-                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                        <!-- <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a> -->
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -752,7 +753,7 @@
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
                                         <i class="fas fa-shopping-basket"></i>
-                                        <span>add</span>
+                                        <span title="Product View" href="#" class="add_cart" data-bs-toggle="modal" data-id='1' data-bs-target="#product-view">add cart</span>
                                     </button>
                                     <div class="product-action">
                                         <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
@@ -776,7 +777,7 @@
                                     </a>
                                     <div class="product-widget">
                                        
-                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                        <!-- <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a> -->
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -796,7 +797,7 @@
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
                                         <i class="fas fa-shopping-basket"></i>
-                                        <span>add</span>
+                                        <span title="Product View" href="#" class="add_cart" data-bs-toggle="modal" data-id='1' data-bs-target="#product-view">add cart</span>
                                     </button>
                                     <div class="product-action">
                                         <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
@@ -820,7 +821,7 @@
                                     </a>
                                     <div class="product-widget">
                                         
-                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                        <!-- <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a> -->
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -840,7 +841,7 @@
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
                                         <i class="fas fa-shopping-basket"></i>
-                                        <span>add</span>
+                                        <span title="Product View" href="#" class="add_cart" data-bs-toggle="modal" data-id='1' data-bs-target="#product-view">add cart</span>
                                     </button>
                                     <div class="product-action">
                                         <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
@@ -869,7 +870,7 @@
                                     </a>
                                     <div class="product-widget">
                                         
-                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                        <!-- <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a> -->
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -889,7 +890,7 @@
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
                                         <i class="fas fa-shopping-basket"></i>
-                                        <span>add</span>
+                                        <span title="Product View" href="#" class="add_cart" data-bs-toggle="modal" data-id='1' data-bs-target="#product-view">add cart</span>
                                     </button>
                                     <div class="product-action">
                                         <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
@@ -913,7 +914,7 @@
                                     </a>
                                     <div class="product-widget">
                                         
-                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                        <!-- <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a> -->
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -933,7 +934,7 @@
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
                                         <i class="fas fa-shopping-basket"></i>
-                                        <span>add</span>
+                                        <span title="Product View" href="#" class="add_cart" data-bs-toggle="modal" data-id='1' data-bs-target="#product-view">add cart</span>
                                     </button>
                                     <div class="product-action">
                                         <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
@@ -957,7 +958,7 @@
                                     </a>
                                     <div class="product-widget">
                                         
-                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                        <!-- <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a> -->
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -977,7 +978,7 @@
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
                                         <i class="fas fa-shopping-basket"></i>
-                                        <span>add</span>
+                                        <span title="Product View" href="#" class="add_cart" data-bs-toggle="modal" data-id='1' data-bs-target="#product-view">add cart</span>
                                     </button>
                                     <div class="product-action">
                                         <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
@@ -1001,7 +1002,7 @@
                                     </a>
                                     <div class="product-widget">
                                        
-                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                        <!-- <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a> -->
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -1021,7 +1022,7 @@
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
                                         <i class="fas fa-shopping-basket"></i>
-                                        <span>add</span>
+                                        <span title="Product View" href="#" class="add_cart" data-bs-toggle="modal" data-id='1' data-bs-target="#product-view">add cart</span>
                                     </button>
                                     <div class="product-action">
                                         <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
@@ -1045,7 +1046,7 @@
                                     </a>
                                     <div class="product-widget">
                                         
-                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                        <!-- <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a> -->
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -1065,7 +1066,7 @@
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
                                         <i class="fas fa-shopping-basket"></i>
-                                        <span>add</span>
+                                        <span title="Product View" href="#" class="add_cart" data-bs-toggle="modal" data-id='1' data-bs-target="#product-view">add cart</span>
                                     </button>
                                     <div class="product-action">
                                         <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
@@ -1089,7 +1090,7 @@
                                     </a>
                                     <div class="product-widget">
                                        
-                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                        <!-- <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a> -->
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -1109,7 +1110,7 @@
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
                                         <i class="fas fa-shopping-basket"></i>
-                                        <span>add</span>
+                                        <span title="Product View" href="#" class="add_cart" data-bs-toggle="modal" data-id='1' data-bs-target="#product-view">add cart</span>
                                     </button>
                                     <div class="product-action">
                                         <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
@@ -1133,7 +1134,7 @@
                                     </a>
                                     <div class="product-widget">
                                         
-                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                        <!-- <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a> -->
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -1153,7 +1154,7 @@
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
                                         <i class="fas fa-shopping-basket"></i>
-                                        <span>add</span>
+                                        <span title="Product View" href="#" class="add_cart" data-bs-toggle="modal" data-id='1' data-bs-target="#product-view">add cart</span>
                                     </button>
                                     <div class="product-action">
                                         <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
@@ -1177,7 +1178,7 @@
                                     </a>
                                     <div class="product-widget">
                                         
-                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                        <!-- <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a> -->
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -1197,7 +1198,7 @@
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
                                         <i class="fas fa-shopping-basket"></i>
-                                        <span>add</span>
+                                        <span title="Product View" href="#" class="add_cart" data-bs-toggle="modal" data-id='1' data-bs-target="#product-view">add cart</span>
                                     </button>
                                     <div class="product-action">
                                         <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
@@ -1221,7 +1222,7 @@
                                     </a>
                                     <div class="product-widget">
                                         
-                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                        <!-- <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a> -->
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -1241,7 +1242,7 @@
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
                                         <i class="fas fa-shopping-basket"></i>
-                                        <span>add</span>
+                                        <span title="Product View" href="#" class="add_cart" data-bs-toggle="modal" data-id='1' data-bs-target="#product-view">add cart</span>
                                     </button>
                                     <div class="product-action">
                                         <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
@@ -1265,7 +1266,7 @@
                                     </a>
                                     <div class="product-widget">
                                         
-                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                        <!-- <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a> -->
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -1285,7 +1286,7 @@
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
                                         <i class="fas fa-shopping-basket"></i>
-                                        <span>add</span>
+                                        <span title="Product View" href="#" class="add_cart" data-bs-toggle="modal" data-id='1' data-bs-target="#product-view">add cart</span>
                                     </button>
                                     <div class="product-action">
                                         <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
@@ -1314,7 +1315,7 @@
                                     </a>
                                     <div class="product-widget">
                                         
-                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                        <!-- <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a> -->
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -1334,7 +1335,7 @@
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
                                         <i class="fas fa-shopping-basket"></i>
-                                        <span>add</span>
+                                        <span title="Product View" href="#" class="add_cart" data-bs-toggle="modal" data-id='1' data-bs-target="#product-view">add cart</span>
                                     </button>
                                     <div class="product-action">
                                         <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
@@ -1358,7 +1359,7 @@
                                     </a>
                                     <div class="product-widget">
                                         
-                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                        <!-- <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a> -->
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -1378,7 +1379,7 @@
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
                                         <i class="fas fa-shopping-basket"></i>
-                                        <span>add</span>
+                                        <span title="Product View" href="#" class="add_cart" data-bs-toggle="modal" data-id='1' data-bs-target="#product-view">add cart</span>
                                     </button>
                                     <div class="product-action">
                                         <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
@@ -1402,7 +1403,7 @@
                                     </a>
                                     <div class="product-widget">
                                         
-                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                        <!-- <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a> -->
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -1422,7 +1423,7 @@
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
                                         <i class="fas fa-shopping-basket"></i>
-                                        <span>add</span>
+                                        <span title="Product View" href="#" class="add_cart" data-bs-toggle="modal" data-id='1' data-bs-target="#product-view">add cart</span>
                                     </button>
                                     <div class="product-action">
                                         <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
@@ -1446,7 +1447,7 @@
                                     </a>
                                     <div class="product-widget">
                                        
-                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                        <!-- <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a> -->
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -1466,7 +1467,7 @@
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
                                         <i class="fas fa-shopping-basket"></i>
-                                        <span>add</span>
+                                        <span title="Product View" href="#" class="add_cart" data-bs-toggle="modal" data-id='1' data-bs-target="#product-view">add cart</span>
                                     </button>
                                     <div class="product-action">
                                         <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
@@ -1490,7 +1491,7 @@
                                     </a>
                                     <div class="product-widget">
                                         
-                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                        <!-- <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a> -->
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -1510,7 +1511,7 @@
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
                                         <i class="fas fa-shopping-basket"></i>
-                                        <span>add</span>
+                                        <span title="Product View" href="#" class="add_cart" data-bs-toggle="modal" data-id='1' data-bs-target="#product-view">add cart</span>
                                     </button>
                                     <div class="product-action">
                                         <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
@@ -1534,7 +1535,7 @@
                                     </a>
                                     <div class="product-widget">
                                         
-                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                        <!-- <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a> -->
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -1554,7 +1555,7 @@
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
                                         <i class="fas fa-shopping-basket"></i>
-                                        <span>add</span>
+                                        <span title="Product View" href="#" class="add_cart" data-bs-toggle="modal" data-id='1' data-bs-target="#product-view">add cart</span>
                                     </button>
                                     <div class="product-action">
                                         <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
@@ -1578,7 +1579,7 @@
                                     </a>
                                     <div class="product-widget">
                                         
-                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                        <!-- <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a> -->
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -1598,7 +1599,7 @@
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
                                         <i class="fas fa-shopping-basket"></i>
-                                        <span>add</span>
+                                        <span title="Product View" href="#" class="add_cart" data-bs-toggle="modal" data-id='1' data-bs-target="#product-view">add cart</span>
                                     </button>
                                     <div class="product-action">
                                         <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
@@ -1622,7 +1623,7 @@
                                     </a>
                                     <div class="product-widget">
                                         
-                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                        <!-- <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a> -->
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -1642,7 +1643,7 @@
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
                                         <i class="fas fa-shopping-basket"></i>
-                                        <span>add</span>
+                                        <span title="Product View" href="#" class="add_cart" data-bs-toggle="modal" data-id='1' data-bs-target="#product-view">add cart</span>
                                     </button>
                                     <div class="product-action">
                                         <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
@@ -1666,7 +1667,7 @@
                                     </a>
                                     <div class="product-widget">
                                         
-                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                        <!-- <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a> -->
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -1710,7 +1711,7 @@
                                     </a>
                                     <div class="product-widget">
                                         
-                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                        <!-- <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a> -->
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -1730,7 +1731,7 @@
                                     </h6>
                                     <button class="product-add" title="Add to Cart">
                                         <i class="fas fa-shopping-basket"></i>
-                                        <span>add</span>
+                                        <span title="Product View" href="#" class="add_cart" data-bs-toggle="modal" data-id='1' data-bs-target="#product-view">add cart</span>
                                     </button>
                                     <div class="product-action">
                                         <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>

@@ -227,7 +227,7 @@
                         <ul class="navbar-list dropdown">
                             <li class=" header-widget ms-3 dropdown-megamenu">
                                 <!-- <a href="" class="header-widget ms-3 dropdown-arrow1"><span>More</span></a> -->
-                                <a href="wishlist1.html" class="header-widget" title="Wishlist">
+                                <!-- <a href="wishlist1.html" class="header-widget" title="Wishlist"> -->
                                     <img src="images/user.png" alt="user">
                                 </a>
                                     <ul class="dropdown-position-list">

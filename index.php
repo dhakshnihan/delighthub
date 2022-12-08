@@ -421,7 +421,7 @@
                                         <i class="fas fa-heart"></i>
                                     </button>
                                     <a class="product-image" href="product-tab.php">
-                                        <img src="images/product/01.jpg" alt="product">
+                                        <img src="New/1-Amla Juice.png" alt="product">
                                     </a>
                                     <div class="product-widget">
                                         
@@ -464,7 +464,7 @@
                                         <i class="fas fa-heart"></i>
                                     </button>
                                     <a class="product-image" href="product-tab.php">
-                                        <img src="images/product/02.jpg" alt="product">
+                                        <img src="New/2-Gulabjamun.png" alt="product">
                                     </a>
                                     <!-- <div class="product-widget">
                                         
@@ -508,7 +508,7 @@
                                         <i class="fas fa-heart"></i>
                                     </button>
                                     <a class="product-image" href="product-tab.php">
-                                        <img src="images/product/03.jpg" alt="product">
+                                        <img src="New/3-Groundnuts.png" alt="product">
                                     </a>
                                     <div class="product-widget">
                                         
@@ -552,7 +552,7 @@
                                         <i class="fas fa-heart"></i>
                                     </button>
                                     <a class="product-image" href="product-tab.php">
-                                        <img src="images/product/04.jpg" alt="product">
+                                        <img src="New/4-Mixture.png" alt="product">
                                     </a>
                                     <div class="product-widget">
                                         
@@ -596,7 +596,7 @@
                                         <i class="fas fa-heart"></i>
                                     </button>
                                     <a class="product-image" href="product-tab.php">
-                                        <img src="images/product/05.jpg" alt="product">
+                                        <img src="New/5-Saree.png" alt="product">
                                     </a>
                                     <div class="product-widget">
                                         
@@ -641,7 +641,7 @@
                                         <i class="fas fa-heart"></i>
                                     </button>
                                     <a class="product-image" href="product-tab.php">
-                                        <img src="images/product/06.jpg" alt="product">
+                                        <img src="New/6-MangoPickle.png" alt="product">
                                     </a>
                                     <div class="product-widget">
                                         
@@ -685,7 +685,7 @@
                                         <i class="fas fa-heart"></i>
                                     </button>
                                     <a class="product-image" href="product-tab.php">
-                                        <img src="images/product/07.jpg" alt="product">
+                                        <img src="New/7_Boondi_Laddu.png" alt="product">
                                     </a>
                                     <div class="product-widget">
                                         
@@ -729,7 +729,7 @@
                                         <i class="fas fa-heart"></i>
                                     </button>
                                     <a class="product-image" href="product-tab.php">
-                                        <img src="images/product/08.jpg" alt="product">
+                                        <img src="New/8_Daal.png" alt="product">
                                     </a>
                                     <div class="product-widget">
                                         
@@ -773,7 +773,7 @@
                                         <i class="fas fa-heart"></i>
                                     </button>
                                     <a class="product-image" href="product-tab.php">
-                                        <img src="images/product/09.jpg" alt="product">
+                                        <img src="New/9_Maida.png" alt="product">
                                     </a>
                                     <div class="product-widget">
                                        
@@ -817,7 +817,7 @@
                                         <i class="fas fa-heart"></i>
                                     </button>
                                     <a class="product-image" href="product-tab.php">
-                                        <img src="images/product/10.jpg" alt="product">
+                                        <img src="New/10_Chips.png" alt="product">
                                     </a>
                                     <div class="product-widget">
                                         
@@ -866,7 +866,7 @@
                                         <i class="fas fa-heart"></i>
                                     </button>
                                     <a class="product-image" href="product-tab.php">
-                                        <img src="images/product/11.jpg" alt="product">
+                                        <img src="New/10_Chips.png" alt="product">
                                     </a>
                                     <div class="product-widget">
                                         
@@ -910,7 +910,7 @@
                                         <i class="fas fa-heart"></i>
                                     </button>
                                     <a class="product-image" href="product-tab.php">
-                                        <img src="images/product/12.jpg" alt="product">
+                                        <img src="New/5-Saree.png" alt="product">
                                     </a>
                                     <div class="product-widget">
                                         
@@ -954,7 +954,7 @@
                                         <i class="fas fa-heart"></i>
                                     </button>
                                     <a class="product-image" href="product-tab.php">
-                                        <img src="images/product/13.jpg" alt="product">
+                                        <img src="New/8_Daal.png" alt="product">
                                     </a>
                                     <div class="product-widget">
                                         
@@ -998,7 +998,7 @@
                                         <i class="fas fa-heart"></i>
                                     </button>
                                     <a class="product-image" href="product-tab.php">
-                                        <img src="images/product/14.jpg" alt="product">
+                                        <img src="New/7_Boondi_Laddu.png" alt="product">
                                     </a>
                                     <div class="product-widget">
                                        
@@ -1042,7 +1042,7 @@
                                         <i class="fas fa-heart"></i>
                                     </button>
                                     <a class="product-image" href="product-tab.php">
-                                        <img src="images/product/15.jpg" alt="product">
+                                        <img src="New/3-Groundnuts.png" alt="product">
                                     </a>
                                     <div class="product-widget">
                                         
@@ -1086,7 +1086,7 @@
                                         <i class="fas fa-heart"></i>
                                     </button>
                                     <a class="product-image" href="product-tab.php">
-                                        <img src="images/product/16.jpg" alt="product">
+                                        <img src="New/1-Amla Juice.png" alt="product">
                                     </a>
                                     <div class="product-widget">
                                        
@@ -1130,7 +1130,7 @@
                                         <i class="fas fa-heart"></i>
                                     </button>
                                     <a class="product-image" href="product-tab.php">
-                                        <img src="images/product/17.jpg" alt="product">
+                                        <img src="New/10_Chips.png" alt="product">
                                     </a>
                                     <div class="product-widget">
                                         
@@ -1174,7 +1174,7 @@
                                         <i class="fas fa-heart"></i>
                                     </button>
                                     <a class="product-image" href="product-tab.php">
-                                        <img src="images/product/18.jpg" alt="product">
+                                        <img src="New/7_Boondi_Laddu.png" alt="product">
                                     </a>
                                     <div class="product-widget">
                                         
@@ -1218,7 +1218,7 @@
                                         <i class="fas fa-heart"></i>
                                     </button>
                                     <a class="product-image" href="product-tab.php">
-                                        <img src="images/product/19.jpg" alt="product">
+                                        <img src="New/9_Maida.png" alt="product">
                                     </a>
                                     <div class="product-widget">
                                         
@@ -1262,7 +1262,7 @@
                                         <i class="fas fa-heart"></i>
                                     </button>
                                     <a class="product-image" href="product-tab.php">
-                                        <img src="images/product/20.jpg" alt="product">
+                                        <img src="New/6-MangoPickle.png" alt="product">
                                     </a>
                                     <div class="product-widget">
                                         
@@ -1311,7 +1311,7 @@
                                         <i class="fas fa-heart"></i>
                                     </button>
                                     <a class="product-image" href="product-tab.php">
-                                        <img src="images/product/06.jpg" alt="product">
+                                        <img src="New/1-Amla Juice.png" alt="product">
                                     </a>
                                     <div class="product-widget">
                                         
@@ -1355,7 +1355,7 @@
                                         <i class="fas fa-heart"></i>
                                     </button>
                                     <a class="product-image" href="product-tab.php">
-                                        <img src="images/product/07.jpg" alt="product">
+                                        <img src="New/2-Gulabjamun.png" alt="product">
                                     </a>
                                     <div class="product-widget">
                                         
@@ -1399,7 +1399,7 @@
                                         <i class="fas fa-heart"></i>
                                     </button>
                                     <a class="product-image" href="product-tab.php">
-                                        <img src="images/product/08.jpg" alt="product">
+                                        <img src="New/3-Groundnuts.png" alt="product">
                                     </a>
                                     <div class="product-widget">
                                         
@@ -1443,7 +1443,7 @@
                                         <i class="fas fa-heart"></i>
                                     </button>
                                     <a class="product-image" href="product-tab.php">
-                                        <img src="images/product/09.jpg" alt="product">
+                                        <img src="New/4-Mixture.png" alt="product">
                                     </a>
                                     <div class="product-widget">
                                        
@@ -1487,7 +1487,7 @@
                                         <i class="fas fa-heart"></i>
                                     </button>
                                     <a class="product-image" href="product-tab.php">
-                                        <img src="images/product/10.jpg" alt="product">
+                                        <img src="New/5-Saree.png" alt="product">
                                     </a>
                                     <div class="product-widget">
                                         
@@ -1531,7 +1531,7 @@
                                         <i class="fas fa-heart"></i>
                                     </button>
                                     <a class="product-image" href="product-tab.php">
-                                        <img src="images/product/11.jpg" alt="product">
+                                        <img src="New/6-MangoPickle.png" alt="product">
                                     </a>
                                     <div class="product-widget">
                                         
@@ -1575,7 +1575,7 @@
                                         <i class="fas fa-heart"></i>
                                     </button>
                                     <a class="product-image" href="product-tab.php">
-                                        <img src="images/product/12.jpg" alt="product">
+                                        <img src="New/7_Boondi_Laddu.png" alt="product">
                                     </a>
                                     <div class="product-widget">
                                         
@@ -1619,7 +1619,7 @@
                                         <i class="fas fa-heart"></i>
                                     </button>
                                     <a class="product-image" href="product-tab.php">
-                                        <img src="images/product/13.jpg" alt="product">
+                                        <img src="New/8_Daal.png" alt="product">
                                     </a>
                                     <div class="product-widget">
                                         
@@ -1663,7 +1663,7 @@
                                         <i class="fas fa-heart"></i>
                                     </button>
                                     <a class="product-image" href="product-tab.php">
-                                        <img src="images/product/14.jpg" alt="product">
+                                        <img src="New/9_Maida.png" alt="product">
                                     </a>
                                     <div class="product-widget">
                                         
@@ -1707,7 +1707,7 @@
                                         <i class="fas fa-heart"></i>
                                     </button>
                                     <a class="product-image" href="product-tab.php">
-                                        <img src="images/product/15.jpg" alt="product">
+                                        <img src="New/10_Chips.png" alt="product">
                                     </a>
                                     <div class="product-widget">
                                         
@@ -1880,8 +1880,8 @@
                         <div class="testimonial-slider slider-arrow">
                             <div class="testimonial-card">
                                 <i class="fas fa-quote-left"></i>
-                                <p>Lorem ipsum dolor consectetur adipisicing elit neque earum sapiente vitae obcaecati magnam doloribus magni provident ipsam</p>
-                                <h5>mahmud hasan</h5>
+                                <p>"I have been using this delivery site for a while and it has been amazing! The deliveries are always on time and I never have to worry about them getting lost. Highly recommend!". </p>
+                                <h5>Sean W</h5>
                                 <ul>
                                     <li class="fas fa-star"></li>
                                     <li class="fas fa-star"></li>
@@ -1889,12 +1889,12 @@
                                     <li class="fas fa-star"></li>
                                     <li class="fas fa-star"></li>
                                 </ul>
-                                <img src="images/avatar/01.jpg" alt="testimonial">
+                                <img src="New/Rectangle 2.png" alt="testimonial">
                             </div>
                             <div class="testimonial-card">
                                 <i class="fas fa-quote-left"></i>
-                                <p>Lorem ipsum dolor consectetur adipisicing elit neque earum sapiente vitae obcaecati magnam doloribus magni provident ipsam</p>
-                                <h5>mahmud hasan</h5>
+                                <p>"I love Delights Hub! They offer a wide range of products and it's so easy to order. The delivery times are always reliable and I never have any issues. Great service!" </p>
+                                <h5>Mary S.</h5>
                                 <ul>
                                     <li class="fas fa-star"></li>
                                     <li class="fas fa-star"></li>
@@ -1902,12 +1902,12 @@
                                     <li class="fas fa-star"></li>
                                     <li class="fas fa-star"></li>
                                 </ul>
-                                <img src="images/avatar/02.jpg" alt="testimonial">
+                                <img src="New/Rectangle 1.png" alt="testimonial">
                             </div>
                             <div class="testimonial-card">
                                 <i class="fas fa-quote-left"></i>
-                                <p>Lorem ipsum dolor consectetur adipisicing elit neque earum sapiente vitae obcaecati magnam doloribus magni provident ipsam</p>
-                                <h5>mahmud hasan</h5>
+                                <p>"I have been using this delivery site for some time now and I have never had any problems. The customer service is always helpful and my orders always arrive on time. Would definitely recommend!" .</p>
+                                <h5>John K</h5>
                                 <ul>
                                     <li class="fas fa-star"></li>
                                     <li class="fas fa-star"></li>
@@ -1915,12 +1915,12 @@
                                     <li class="fas fa-star"></li>
                                     <li class="fas fa-star"></li>
                                 </ul>
-                                <img src="images/avatar/03.jpg" alt="testimonial">
+                                <img src="New/Rectangle 3.png" alt="testimonial">
                             </div>
                             <div class="testimonial-card">
                                 <i class="fas fa-quote-left"></i>
-                                <p>Lorem ipsum dolor consectetur adipisicing elit neque earum sapiente vitae obcaecati magnam doloribus magni provident ipsam</p>
-                                <h5>mahmud hasan</h5>
+                               <p>"I have been using this delivery site for some time now and I have never had any problems. The customer service is always helpful and my orders always arrive on time. Would definitely recommend!" .</p>
+                                <h5>John K</h5>
                                 <ul>
                                     <li class="fas fa-star"></li>
                                     <li class="fas fa-star"></li>
@@ -1928,7 +1928,7 @@
                                     <li class="fas fa-star"></li>
                                     <li class="fas fa-star"></li>
                                 </ul>
-                                <img src="images/avatar/04.jpg" alt="testimonial">
+                                <img src="New/Rectangle 3.png" alt="testimonial">
                             </div>
                         </div>
                     </div>
@@ -1973,10 +1973,11 @@
                                         </li>
                                     </ul>
                                     <h4 class="blog-title">
-                                        <a href="blog-details.html">Voluptate blanditiis provident Lorem ipsum dolor sit amet</a>
+                                        <a href="blog-details.html">The Sweet Delights of India: Exploring the World of Indian Sweets </a>
                                     </h4>
                                     <p class="blog-desc">
-                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias autem recusandae deleniti nam dignissimos sequi ...
+                                    India is a land of sweet delicacies. Indian sweets are known for their rich flavours and exotic ingredients. They are not just desserts, but an integral part of festivals, celebrations, and special occasions.
+                                    Indian sweets are usually made with sugar, milk, ghee, cream, and nuts like almonds, cashews, and pistachios. .....
                                     </p>
                                     <a class="blog-btn" href="#">
                                         <span>read more</span>
@@ -2002,10 +2003,10 @@
                                         </li>
                                     </ul>
                                     <h4 class="blog-title">
-                                        <a href="blog-details.html">Voluptate blanditiis provident Lorem ipsum dolor sit amet</a>
+                                        <a href="blog-details.html">Exploring the Rich Tastes and Fragrances of Indian Spices</a>
                                     </h4>
                                     <p class="blog-desc">
-                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias autem recusandae deleniti nam dignissimos sequi ...
+                                    The Indian subcontinent is renowned for its exotic spices, which have been used to create unique and flavorful dishes for centuries. From the hot, spicy flavours of chili peppers to the sweet and fragrant aromas of cardamom and cinnamon, Indian spices bring a distinct flavour to any dish. ...
                                     </p>
                                     <a class="blog-btn" href="#">
                                         <span>read more</span>
@@ -2031,10 +2032,10 @@
                                         </li>
                                     </ul>
                                     <h4 class="blog-title">
-                                        <a href="blog-details.html">Voluptate blanditiis provident Lorem ipsum dolor sit amet</a>
+                                        <a href="blog-details.html">The Timeless Charm of Indian Dressing Styles</a>
                                     </h4>
                                     <p class="blog-desc">
-                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias autem recusandae deleniti nam dignissimos sequi ...
+                                    The traditional Indian dress is an integral part of Indian culture and is steeped in history. It is seen as a way of expressing the Indian identity and the culture of the country. The traditional Indian dress has evolved over centuries and is a reflection of the changing times....
                                     </p>
                                     <a class="blog-btn" href="#">
                                         <span>read more</span>

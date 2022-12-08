@@ -44,14 +44,15 @@
                         }else{
                             $uom_tag="";
                         }
-                echo    '<li class="cart-item">
+                echo    '<li class="cart-item" id="row_'.$row['cart_id'].'">
                             <div class="cart-media">
-                                <a href="#"><img src="'.$image.'" alt="product"></a>
-                                <button class="cart-delete"><i class="far fa-trash-alt"></i></button>
+                                <a href="product-tab.php"><img src="'.$image.'" alt="product" >
+                                  <button class="cart-delete" ><i class="fas fa-eye" style="background-color: #ffffff;color: #119744;"></i></button>
+                                </a>
                             </div>
                             <div class="cart-info-group">
-                                <div class="cart-info">
-                                    <h6><a href="product-single.html">existing product name</a></h6>
+                                <div class="cart-info ">
+                                    <h6><a href="product-single.html">existing product name</a><button class="ms-4  cart-delete" onclick="cart_items_delete('.$cart_id.')"><i class="far fa-trash-alt" style="color: red;"></i></button></h6>
                                     <p>Unit Price - $'.$unit_price.'<input type="hidden" class="unit_price" id="unit_price_'.$cart_id.'" value="'.$unit_price.'"></p>
 
                                     <p>'.$uom_tag.'</p>
@@ -157,6 +158,18 @@
                             }
                         })
 
+                }
+
+                function cart_items_delete(cart_id){
+                         $.ajax({
+                            url:"ajax.php",
+                            method:"post",
+                            data:{'cart_items_delete':'cart_items_delete',cart_id:cart_id},
+                            success:function(response){
+                                // $("#row_" + cart_id).remove();
+                                window.location ='index.php';
+                            }
+                        })
                 }
         </script>
         <!--=====================================

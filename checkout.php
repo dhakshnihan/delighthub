@@ -42,10 +42,7 @@
                 ;min-width: 35px;
                 text-align: center;
             }
-            input{  
-                border: 0;
-                width: 2%;
-            }
+           
             nput::-webkit-outer-spin-button,
             input::-webkit-inner-spin-button {
                 -webkit-appearance: none;
@@ -111,72 +108,92 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td class="table-serial"><h6>Pro0001</h6></td>
-                                                <td class="table-image"><img src="images/product/01.jpg" alt="product"></td>
-                                                <td class="table-name"><h6>product name</h6></td>
-                                                <td class="table-price"><h6>$19<small>/kilo</small></h6></td>
-                                                <td class="table-brand"><h6>2 Kgs</h6></td>
-                                                <td class="table-quantity"> <span class="minus bg-dark">-</span><input type="number" class="count" name="qty" value="1"><span class="plus bg-dark">+</span></td>
-                                                <td class="table-action">
-                                                    <a class="view" href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#product-view"><i class="fas fa-eye"></i></a>
-                                                    <a class="trash" href="#" title="Remove Wishlist"><i class="icofont-trash"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="table-serial"><h6>Pro0002</h6></td>
-                                                <td class="table-image"><img src="images/product/02.jpg" alt="product"></td>
-                                                <td class="table-name"><h6>product name</h6></td>
-                                                <td class="table-price"><h6>$19<small>/kilo</small></h6></td>
-                                                <td class="table-brand"><h6>s</h6></td>
-                                                <td class="table-quantity"><span class="minus bg-dark">-</span><input type="number" class="count" name="qty" value="6"><span class="plus bg-dark">+</span></td>
-                                                <td class="table-action">
-                                                    <a class="view" href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#product-view"><i class="fas fa-eye"></i></a>
-                                                    <a class="trash" href="#" title="Remove Wishlist"><i class="icofont-trash"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="table-serial"><h6>Pro0003</h6></td>
-                                                <td class="table-image"><img src="images/product/03.jpg" alt="product"></td>
-                                                <td class="table-name"><h6>product name</h6></td>
-                                                <td class="table-price"><h6>$19<small>/kilo</small></h6></td>
-                                                <td class="table-brand"><h6>xxl</h6></td>
-                                                <td class="table-quantity"><span class="minus bg-dark">-</span><input type="number" class="count" name="qty" value="7"><span class="plus bg-dark">+</span></td>
-                                                <td class="table-action">
-                                                    <a class="view" href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#product-view"><i class="fas fa-eye"></i></a>
-                                                    <a class="trash" href="#" title="Remove Wishlist"><i class="icofont-trash"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="table-serial"><h6>Pro0004</h6></td>
-                                                <td class="table-image"><img src="images/product/04.jpg" alt="product"></td>
-                                                <td class="table-name"><h6>product name</h6></td>
-                                                <td class="table-price"><h6>$19<small>/kilo</small></h6></td>
-                                                <td class="table-brand"><h6>0.25 kgs</h6></td>
-                                                <td class="table-quantity"><span class="minus bg-dark">-</span><input type="number" class="count" name="qty" value="4"><span class="plus bg-dark">+</span></td>
-                                                <td class="table-action">
-                                                    <a class="view" href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#product-view"><i class="fas fa-eye"></i></a>
-                                                    <a class="trash" href="#" title="Remove Wishlist"><i class="icofont-trash"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="table-serial"><h6>Pro0005</h6></td>
-                                                <td class="table-image"><img src="images/product/05.jpg" alt="product"></td>
-                                                <td class="table-name"><h6>product name</h6></td>
-                                                <td class="table-price"><h6>$19<small>/kilo</small></h6></td>
-                                                <td class="table-brand"><h6>0.50 Kgs</h6></td>
-                                                <td class="table-quantity">
-                                                  
-                                                        <span class="minus bg-dark">-</span>
-                                                        <input type="number" class="count" name="qty" value="1">
-                                                        <span class="plus bg-dark">+</span>
+                                            <?php 
+                                            $checkout_grand_total_price=0;
+                                            $sql="select * from tbl_cart 
+                                            left join tbl_products on PRODTID=fk_product
+                                            left join tbl_category on  PRODN10=CATEGTID
+                                            where PRODN08='Active'";
+                                            $result=mysqli_query($con,$sql);
+                                            while($row=mysqli_fetch_array($result)){
+                                                $image='./admin/masters/prod_uploads/'.$row["PRODN07"];
+                                                $product_name=$row['PRODN01'];
+                                                $checkout_total_price=$row['total_price'];
+                                                $checkout_unit_price=$row['PRODN06'];
+                                                $items=$row['items'];
+                                                $cart_id=$row['cart_id'];
+                                                $unit_price=$row['PRODN06'];
+                                                $uom=$row['uom'];
+                                                $product_id=$row['PRODTID'];
+                                                
+                                            
+                                                $categoty_uom=$row['CATEG04'];
+                                                echo    '<tr>
+                                                            <td class="table-serial"><h6>Pro0001</h6></td>
+                                                            <td class="table-image"><img src="'.$image.'" alt="product"></td>
+                                                            <td class="table-name"><h6>'.$product_name.'</h6></td>
+                                                            <td class="table-price"><h6>$<input type="text" name="checkout_total_price[]" id="checkout_total_price_'.$cart_id.'" value="'.$checkout_total_price.'" readonly><small>/kilo</small></h6>
+                                                                <input type="hidden" name="checkout_unit_price[]" id="checkout_unit_price_'.$cart_id.'" value="'.$checkout_unit_price.'" readonly>
+                                                                
+                                                            </td>';
+                                                     if($categoty_uom=='Kgs'){
+                                                        
+                                                        echo  '<td class="table-brand">'; 
+                                                        ?>
+
+                                                                <select class="select_uom_kgs_<?=$cart_id?>" id="select_uom_kgs_<?=$cart_id; ?>" onchange="select_uom_kgs(<?php echo $cart_id; ?>,this)">
+                                                                        <option value="0.25" <?php echo ($uom == '0.25')?"selected":"" ?>>0.250g</option>
+                                                                        <option value="0.5" <?php echo ($uom == '0.5')?"selected":"" ?>>0.500g</option>
+                                                                        <option value="1" <?php echo ($uom == '1')?"selected":"" ?>>1kg</option>
+                                                                    </select>
+                                                                </td>
+                                                        <?php
+                                                     } else if($categoty_uom=='Inches'){
+                                                        echo  '<td class="table-brand">';
+                                                        ?>
+                                                                    <select class="select_uom_inches_<?php echo $cart_id; ?>" id="select_uom_inches_<?php echo $cart_id; ?>" onchange="select_uom_inches(<?php echo $cart_id; ?>,this)">
+                                                                        <option value="XL" <?php echo ($uom == 'XL')?"selected":"" ?>>XL</option>
+                                                                        <option value="L" <?php echo ($uom == 'L')?"selected":"" ?>>L</option>
+                                                                        <option value="M" <?php echo ($uom == 'M')?"selected":"" ?>>M</option>
+                                                                        <option value="S" <?php echo ($uom == 'S')?"selected":"" ?>>S</option>
+                                                                    </select>
+
+                                                                </td>
+                                                      <?php
+                                                     }else{
+                                                        echo  '<td class="table-brand">NA</td>';
+                                                     }
                                                     
-                                                </td>
-                                                <td class="table-action">
-                                                    <a class="view" href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#product-view"><i class="fas fa-eye"></i></a>
-                                                    <a class="trash" href="#" title="Remove Wishlist"><i class="icofont-trash"></i></a>
-                                                </td>
-                                            </tr>
+
+
+                                                      echo  '<td class="table-quantity">
+                                                                <div class="cart-action-group">
+                                                                    <div class="product-action">
+                                                                        <button class="action-minus" title="Quantity Minus" onclick="checkoutdecrementValue('.$cart_id.','.$checkout_unit_price.')" value="-"><i class="icofont-minus"></i></button>
+                                                                        <input type="text" name="input-quantity[]"  value="'.$items.'" maxlength="2" max="10" size="1"  class="checkout_quantity_'.$cart_id.'"  id="checkout_quantity_'.$cart_id.'"  />
+                                                                        <button class="action-plus" title="Quantity Plus" onclick="checkoutincrementValue('.$cart_id.','.$checkout_unit_price.')" value="+"><i class="icofont-plus"></i></button>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="table-action">
+                                                                <a class="view" href="#" title="Quick View"><i class="fas fa-eye"  data-bs-toggle="modal" data-id='.$product_id.'  data-bs-target="#product-view"></i></a>
+                                                                <a class="trash" href="#" title="Remove Wishlist" onclick="checkout_items_delete('.$cart_id.')"><i class="icofont-trash"></i></a>
+                                                             
+                                                            </td>
+                                                        </tr>';
+
+                                                        $checkout_grand_total_price=$checkout_grand_total_price+$checkout_total_price;
+                                                       
+                                                       
+                                            }
+                                            echo '<input type="hidden" id="checkout_grand_total_price" value="'.$checkout_grand_total_price.'">';
+
+                                            //total 10% discount price 
+                                            $discount_price = (10/100)*$checkout_grand_total_price;
+                                            $total=$checkout_grand_total_price- $discount_price;
+
+                                            ?>
+                                            
                                         </tbody>
                                     </table>
                                 </div>
@@ -186,212 +203,41 @@
                                         <input type="text" placeholder="Enter your coupon code">
                                         <button type="submit"><span>apply</span></button>
                                     </form>
+                                   
                                 </div>
                                 <div class="checkout-charge">
                                     <ul>
                                         <li>
                                             <span>Sub total</span>
-                                            <span>$267.45</span>
+                                            <span id="checkout_grand_total_price_span">$<?php echo $checkout_grand_total_price;  ?></span>
                                         </li>
                                         <li>
                                             <span>delivery fee</span>
-                                            <span>$10.00</span>
-                                        </li>
-                                        <li>
-                                            <span>discount</span>
                                             <span>$00.00</span>
                                         </li>
                                         <li>
+                                            <span>discount</span>
+                                            <span>$<?php echo round($discount_price,2); ?></span>
+                                        </li>
+                                        <li>
                                             <span>Total<small>(Incl. VAT)</small></span>
-                                            <span>$277.00</span>
+                                            <span>$<?php echo round($total,2); ?></span>
                                         </li>
                                     </ul>
 
                                     <a class="cart-checkout-btn" href="checkout.php">
-                    <span class="checkout-label">Proceed to Checkout</span>
-                    <span class="checkout-price">$277.00</span>
-                </a>
+                                        <span class="checkout-label">Proceed to Checkout</span>
+                                        <span class="checkout-price">$<?php echo round($total,2); ?></span>
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="col-lg-12">
-                        <div class="account-card">
-                            <div class="account-title">
-                                <h4>Delivery Schedule</h4>
-                            </div>
-                            <div class="account-content">
-                                <div class="row">
-                                    <div class="col-md-6 col-lg-4 alert fade show">
-                                        <div class="profile-card schedule active">
-                                            <h6>express</h6>
-                                            <p>90 min express delivery</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-4 alert fade show">
-                                        <div class="profile-card schedule">
-                                            <h6>8am-10pm</h6>
-                                            <p>8.00 AM - 10.00 PM</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-4 alert fade show">
-                                        <div class="profile-card schedule">
-                                            <h6>Next day</h6>
-                                            <p>Next day or Tomorrow</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="account-card">
-                            <div class="account-title">
-                                <h4>contact number</h4>
-                                <button data-bs-toggle="modal" data-bs-target="#contact-add">add contact</button>
-                            </div>
-                            <div class="account-content">
-                                <div class="row">
-                                    <div class="col-md-6 col-lg-4 alert fade show">
-                                        <div class="profile-card contact active">
-                                            <h6>primary</h6>
-                                            <p>+8801838288389</p>
-                                            <ul>
-                                                <li><button class="edit icofont-edit" title="Edit This" data-bs-toggle="modal" data-bs-target="#contact-edit"></button></li>
-                                                <li><button class="trash icofont-ui-delete" title="Remove This" data-bs-dismiss="alert"></button></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-4 alert fade show">
-                                        <div class="profile-card contact">
-                                            <h6>secondary</h6>
-                                            <p>+8801941101915</p>
-                                            <ul>
-                                                <li><button class="edit icofont-edit" title="Edit This" data-bs-toggle="modal" data-bs-target="#contact-edit"></button></li>
-                                                <li><button class="trash icofont-ui-delete" title="Remove This" data-bs-dismiss="alert"></button></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-4 alert fade show">
-                                        <div class="profile-card contact">
-                                            <h6>secondary</h6>
-                                            <p>+8801747875727</p>
-                                            <ul>
-                                                <li><button class="edit icofont-edit" title="Edit This" data-bs-toggle="modal" data-bs-target="#contact-edit"></button></li>
-                                                <li><button class="trash icofont-ui-delete" title="Remove This" data-bs-dismiss="alert"></button></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="account-card">
-                            <div class="account-title">
-                                <h4>delivery address</h4>
-                                <button data-bs-toggle="modal" data-bs-target="#address-add">add address</button>
-                            </div>
-                            <div class="account-content">
-                                <div class="row">
-                                    <div class="col-md-6 col-lg-4 alert fade show">
-                                        <div class="profile-card address active">
-                                            <h6>Home</h6>
-                                            <p>jalkuri, fatullah, narayanganj-1420. word no-09, road no-17/A</p>
-                                            <ul class="user-action">
-                                                <li><button class="edit icofont-edit" title="Edit This" data-bs-toggle="modal" data-bs-target="#address-edit"></button></li>
-                                                <li><button class="trash icofont-ui-delete" title="Remove This" data-bs-dismiss="alert"></button></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-4 alert fade show">
-                                        <div class="profile-card address">
-                                            <h6>Office</h6>
-                                            <p>east tejturi bazar, dhaka-1200. word no-04, road no-13/c, house no-4/b</p>
-                                            <ul class="user-action">
-                                                <li><button class="edit icofont-edit" title="Edit This" data-bs-toggle="modal" data-bs-target="#address-edit"></button></li>
-                                                <li><button class="trash icofont-ui-delete" title="Remove This" data-bs-dismiss="alert"></button></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-4 alert fade show">
-                                        <div class="profile-card address">
-                                            <h6>Bussiness</h6>
-                                            <p>kawran bazar, dhaka-1100. word no-02, road no-13/d, house no-7/m</p>
-                                            <ul class="user-action">
-                                                <li><button class="edit icofont-edit" title="Edit This" data-bs-toggle="modal" data-bs-target="#address-edit"></button></li>
-                                                <li><button class="trash icofont-ui-delete" title="Remove This" data-bs-dismiss="alert"></button></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="account-card mb-0">
-                            <div class="account-title">
-                                <h4>payment option</h4>
-                                <button data-bs-toggle="modal" data-bs-target="#payment-add">add card</button>
-                            </div>
-                            <div class="account-content">
-                                <div class="row">
-                                    <div class="col-md-6 col-lg-4 alert fade show">
-                                        <div class="payment-card payment active">
-                                            <img src="images/payment/png/01.png" alt="payment">
-                                            <h4>card number</h4>
-                                            <p>
-                                                <span>****</span>
-                                                <span>****</span>
-                                                <span>****</span>
-                                                <sup>1876</sup>
-                                            </p>
-                                            <h5>miron mahmud</h5>
-                                            <button class="trash icofont-ui-delete" title="Remove This" data-bs-dismiss="alert"></button>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-4 alert fade show">
-                                        <div class="payment-card payment">
-                                            <img src="images/payment/png/02.png" alt="payment">
-                                            <h4>card number</h4>
-                                            <p>
-                                                <span>****</span>
-                                                <span>****</span>
-                                                <span>****</span>
-                                                <sup>1876</sup>
-                                            </p>
-                                            <h5>miron mahmud</h5>
-                                            <button class="trash icofont-ui-delete" title="Remove This" data-bs-dismiss="alert"></button>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-4 alert fade show">
-                                        <div class="payment-card payment">
-                                            <img src="images/payment/png/03.png" alt="payment">
-                                            <h4>card number</h4>
-                                            <p>
-                                                <span>****</span>
-                                                <span>****</span>
-                                                <span>****</span>
-                                                <sup>1876</sup>
-                                            </p>
-                                            <h5>miron mahmud</h5>
-                                            <button class="trash icofont-ui-delete" title="Remove This" data-bs-dismiss="alert"></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="checkout-check">
-                                <input type="checkbox" id="checkout-check">
-                                <label for="checkout-check">By making this purchase you agree to our <a href="#">Terms and Conditions</a>.</label>
-                            </div>
-                            <div class="checkout-proced">
-                                <a href="invoice.html" class="btn btn-inline">proced to checkout</a>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </section>
+
+       
         <!--=====================================
                     CHECKOUT PART END
         =======================================-->
@@ -746,6 +592,154 @@
         <!--=====================================
                     JS LINK PART END
         =======================================-->
+
+         
+        <script>
+
+                function checkoutincrementValue(cart_id,unit_price)
+                {
+                   
+                    var input = $("#checkout_quantity_"+cart_id).val();
+                    var checkout_grand_total_price = $("#checkout_grand_total_price").val();
+                    var select_uom_kgs=$("#select_uom_kgs_"+cart_id).val();
+                    
+                    if(select_uom_kgs=="0.25"){
+                        input = isNaN(input) ? 0 : input;
+                    
+                        if(input<10){
+                            input++;
+                                document.getElementById('checkout_quantity_'+cart_id).value  = input;
+                                document.getElementById('checkout_total_price_'+cart_id).value =(parseFloat(unit_price)*input)/4;
+                            
+                                document.getElementById('checkout_grand_total_price').value = (parseFloat(checkout_grand_total_price)+parseFloat(unit_price));
+                                checkout_grand_total_price_span.innerHTML =  (parseFloat(checkout_grand_total_price)+parseFloat(unit_price));
+                        }
+                    }else if(select_uom_kgs=="0.5"){
+                        input = isNaN(input) ? 0 : input;
+                    
+                        if(input<10){
+                            input++;
+                                document.getElementById('checkout_quantity_'+cart_id).value  = input;
+                                document.getElementById('checkout_total_price_'+cart_id).value =(parseFloat(unit_price)*input)/2;
+                            
+                                document.getElementById('checkout_grand_total_price').value = (parseFloat(checkout_grand_total_price)+parseFloat(unit_price));
+                                checkout_grand_total_price_span.innerHTML =  (parseFloat(checkout_grand_total_price)+parseFloat(unit_price));
+                        }
+                    }else{
+                        input = isNaN(input) ? 0 : input;
+                    
+                        if(input<10){
+                            input++;
+                                document.getElementById('checkout_quantity_'+cart_id).value  = input;
+                                document.getElementById('checkout_total_price_'+cart_id).value =unit_price*input;
+                            
+                                document.getElementById('checkout_grand_total_price').value = (parseFloat(checkout_grand_total_price)+parseFloat(unit_price));
+                                checkout_grand_total_price_span.innerHTML =  (parseFloat(checkout_grand_total_price)+parseFloat(unit_price));
+                        }
+                    }
+                   
+                }
+                function checkoutdecrementValue(cart_id,unit_price)
+                {
+                 
+                    var input = $("#checkout_quantity_"+cart_id).val();
+                    var checkout_grand_total_price = $("#checkout_grand_total_price").val();
+                    var select_uom_kgs=$("#select_uom_kgs_"+cart_id).val();
+                    
+                    if(select_uom_kgs=="0.25"){
+                        input = isNaN(input) ? 0 : input;
+                    
+                        if(input>1){
+                            input--;
+                                document.getElementById('checkout_quantity_'+cart_id).value  = input;
+                                document.getElementById('checkout_total_price_'+cart_id).value =(parseFloat(unit_price)*input)/4;
+                                document.getElementById('checkout_grand_total_price').value = (parseFloat(checkout_grand_total_price)-parseFloat(unit_price));
+                                checkout_grand_total_price_span.innerHTML =  (parseFloat(checkout_grand_total_price)-parseFloat(unit_price));
+                        
+                        }
+                    }else if(select_uom_kgs=="0.5"){
+                        input = isNaN(input) ? 0 : input;
+                    
+                        if(input>1){
+                            input--;
+                                document.getElementById('checkout_quantity_'+cart_id).value  = input;
+                                document.getElementById('checkout_total_price_'+cart_id).value =(parseFloat(unit_price)*input)/2;
+                                document.getElementById('checkout_grand_total_price').value = (parseFloat(checkout_grand_total_price)-parseFloat(unit_price));
+                                checkout_grand_total_price_span.innerHTML =  (parseFloat(checkout_grand_total_price)-parseFloat(unit_price));
+                        
+                        }
+                    }else{
+                        input = isNaN(input) ? 0 : input;
+                    
+                        if(input>1){
+                            input--;
+                                document.getElementById('checkout_quantity_'+cart_id).value  = input;
+                                document.getElementById('checkout_total_price_'+cart_id).value =unit_price*input;
+                                document.getElementById('checkout_grand_total_price').value = (parseFloat(checkout_grand_total_price)-parseFloat(unit_price));
+                                checkout_grand_total_price_span.innerHTML =  (parseFloat(checkout_grand_total_price)-parseFloat(unit_price));
+                        
+                        }
+                    }
+
+                   
+                  
+                }
+
+
+                function select_uom_kgs(cart_id,selected_value){
+                    var selected_values=selected_value.value;
+                    var checkout_unit_price=$("#checkout_unit_price_"+cart_id).val();
+                    var input = $("#checkout_quantity_"+cart_id).val();
+                   
+                    if(selected_values=='0.5'){
+                       
+                        document.getElementById('checkout_total_price_'+cart_id).value =(parseFloat(checkout_unit_price)/2)*input;
+                        // document.getElementById('checkout_grand_total_price').value = (parseFloat(checkout_grand_total_price)+((parseFloat(checkout_unit_price)/2)*input));
+                        // checkout_grand_total_price_span.innerHTML =  (parseFloat(checkout_grand_total_price)+((parseFloat(checkout_unit_price)/2)*input));
+                    }else if(selected_values=='0.25'){
+                        
+                        document.getElementById('checkout_total_price_'+cart_id).value =(parseFloat(checkout_unit_price)/4)*input;
+                        // document.getElementById('checkout_grand_total_price').value = (parseFloat(checkout_grand_total_price)+((parseFloat(checkout_unit_price)/4)*input));
+                        // checkout_grand_total_price_span.innerHTML =  (parseFloat(checkout_grand_total_price)+((parseFloat(checkout_unit_price)/4)*input));
+                    }else{
+                         document.getElementById('checkout_total_price_'+cart_id).value =(parseFloat(checkout_unit_price))*input;
+                    }
+
+                  
+                }
+
+                
+                $(document).ready(function(){
+                    $(".fa-eye").click(function(){
+                        var product_id =$(this).data('id');
+                        var user_id=$("#user_id").val();
+                        $.ajax({
+                            url:"ajax.php",
+                            method:"post",
+                            data:{'product_view':'product_view',product_id:product_id,user_id:user_id},
+                            success:function(response){
+                                $(".product-view").html(response);
+                                $("#modal-content").modal('show'); 
+                            }
+                        })
+                    })
+                })
+
+                function checkout_items_delete(cart_id){
+                    $.ajax({
+                        url:"ajax.php",
+                        method:"post",
+                        data:{'cart_items_delete':'cart_items_delete',cart_id:cart_id},
+                        success:function(response){
+                            // $("#row_" + cart_id).remove();
+                            window.location ='checkout.php';
+                        }
+                    })
+                }
+
+        </script>
+        
+
     </body>
 </html>
 

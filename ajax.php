@@ -278,6 +278,13 @@ if(isset($_POST['cart_checkout'])){
     }
   }
  
+  //cart items delete 
+
+    if(isset($_POST['cart_items_delete'])){
+        $cart_id=$_POST['cart_id'];
+        $sql="delete from tbl_cart where cart_id='".$cart_id."'";
+        mysqli_query($con,$sql);
+    }
 
 
 

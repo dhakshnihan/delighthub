@@ -1,6 +1,6 @@
     <?php include('header.php');?>
         <?php include('cart.php');?>
-        <?php include ('productview.php');?>
+        
         
         <script src="productscript.js"></script>
             
@@ -33,7 +33,7 @@
                  $id = $_GET['id'];
                  
                                  
-                $sql="select * from  tbl_products LEFT JOIN   tbl_brands ON BRANDTID = PRODN03 where PRODN08='Active' and PRODTID= '$id'";
+                $sql="select * from  tbl_products LEFT JOIN   tbl_brands ON BRANDTID = PRODN03  left join tbl_category on PRODN10=CATEGTID where PRODN08='Active' and PRODTID= '$id'";
                 // echo $sql;
                 
                 $result=mysqli_query($con,$sql);
@@ -44,7 +44,9 @@
                     $product_name=$row['PRODN01'];
                     $brand=$row['BRAND01'];
                      $product_id=$row['PRODTID'];
-                
+                     $uom=$row['CATEG04'];
+                   $PRODN05=$row['PRODN05'];
+              
              echo'
                 <div class="row">
                     <div class="col-lg-6">
@@ -85,19 +87,22 @@
                             </div>
                             <h3 class="details-price">
                                 <del>$380.00</del>
-                                <span id="pricekg">'.$price.'<small>/per kilo</small></span>
+                                <span id="pricekg" >'.$price.'<small>/per kilo</small></span>
                             </h3>
                             <p id="weight_value">Weight: 1 kg</p>
+                            <span id="uom_input_value"><input  title="UOM" type="hidden" id="uom" name="uom" value="1"></span>
+                            <span id="total_input_price"><input  title="Final Quantity" type="hidden" id="quantity" name="quantity" value="'.$price.'"></span>
+                            <span id="total_input_hidden_price"><input  title="Quantity Number" type="hidden" id="quantity_hidden" name="quantity_hidden" value="'.$price.'"></span>
                             <div class="view-list-group">
                                     
                                     <ul class="view-tag-list">
-                                        <li><button type="button" class="btn btn-outline-success " value="0.25" id="half" onclick="myhalf(0.25)">0.25 KG</button></li>
-                                        <li><button type="button" class="btn btn-outline-success " value="0.50" id=2half onclick=my2half(0.500) >0.50 KG</button></li>
-                                        <li><button type="button" class="btn btn-outline-success " value="1" id= kilo onclick="mykilo(1)">1 KG</button></li>
+                                    <li><button type="button" class="btn btn-outline-success " value="0.25" id="myfunction_weight_value1" onclick="myfunction_weight_value1(0.25)">0.25 KG</button></li>
+                                    <li><button type="button" class="btn btn-outline-success " value="0.50" id="myfunction_weight_value2" onclick="myfunction_weight_value2(0.50)">0.50 KG</button></li>
+                                    <li><button type="button" class="btn btn-outline-success " value="1" id="myfunction_weight_value3" onclick="myfunction_weight_value3(1)">1 KG</button></li>
                                     </ul>
                                     
                                 </div>
-                                <span id="total_price" class="total_price"> Rs:'.$price.' (Inclusive Of Tax)</span>
+                                <span id="total_price" class="total_price" style="color:red"> Rs:'.$price.' (Inclusive Of Tax)</span>
                                 <div class="cart-action-group">
                                         <div class="product-action">
                                             <button class="action-minus" title="Quantity Minus" onclick="decrementValue()" value="-"><i class="icofont-minus"></i></button>
@@ -120,15 +125,14 @@
                               
                             </div>
 
-                                <p class="details-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores quibusdam.</p>
+                                <p class="details-desc">'.$PRODN05.'</p>
                                
                             </div>
                             
                         </div>
                     </div>
-                </div>';
-                }
-                ?>
+                </div>
+               
             </div>
         </section>
         <!--=====================================
@@ -168,8 +172,8 @@
                                 <table class="table table-bordered">
                                     <tbody>
                                         <tr>
-                                            <th scope="row">Product code</th>
-                                            <td>SKU: 101783</td>
+                                            <th scope="row">Product_Id</th>
+                                            <td>SKU: '.$product_id.'</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Weight</th>
@@ -315,7 +319,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>';
+            }
+            ?>
             </div>
         </section>
         <!--=====================================

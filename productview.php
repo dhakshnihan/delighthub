@@ -76,7 +76,7 @@
                     value++;
                         document.getElementById('number').value = value;
                         document.getElementById('quantity').value =quantity_hidden*value;
-                        total_price.innerHTML = "$" + "" + parseInt(quantity_hidden)*parseInt(value) + "" + "  (Inclusive Of Tax)";
+                        total_price.innerHTML = "Rs:" + "" + parseInt(quantity_hidden)*parseInt(value) + "" + " /-"+" (Inclusive Of Tax)";
                 }
             }
             function decrementValue()
@@ -90,7 +90,7 @@
                     value--;
                         document.getElementById('number').value = value;
                         document.getElementById('quantity').value =quantity-quantity_hidden;
-                        total_price.innerHTML = "$" + "" + (quantity-quantity_hidden) + "" + "  (Inclusive Of Tax)";
+                        total_price.innerHTML = "Rs:" + "" + (quantity-quantity_hidden) + "" + "/-" +"  (Inclusive Of Tax)";
                         
                 }
 

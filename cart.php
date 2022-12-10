@@ -146,7 +146,7 @@
                         arrNumber.push($(this).val());
                         array_items.push($("#input-quantity-"+$(this).val()).val());
                         array_total_price.push($("#total_price_"+$(this).val()).val());
-                        alert(array_total_price);
+                        // alert(array_total_price);
                     })
 
                     $.ajax({

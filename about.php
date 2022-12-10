@@ -26,8 +26,14 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="about-content">
-                            <h2>Our Motive is to Provide Best for Those Who Deserve</h2>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis exercitationem commodi aliquam necessitatibus vero reiciendis quaerat illo est fuga ea temporibus natus doloremque ipsum voluptas quod deserunt expedita reprehenderit pariatur quidem quisquam, recusandae animi non! Voluptas totam repudiandae rerum molestiae possimus quis numquam sapiente sunt architecto quisquam Aliquam odio optio</p>
+                            <h2>About Us</h2>
+                
+                
+                    <p>At Delighthub, we are passionate about bringing the best of India to the rest of the world. We are proud to provide our customers with quality products and excellent customer service. We look forward to helping you find the perfect product .</p>
+                    <p>Delightshub is an international delivery service specializing in shipping goods to customers around the world. We offer a wide range of services, from express delivery to economy delivery, meaning we can accommodate any budget and delivery timeframe.
+                        Our reliable team of experts are experienced in handling all types of shipments, from large parcels to small packages. We also provide our customers with secure payment options, complete tracking information and full insurance cover.
+                        We have been in business for over 2 years, providing our customers with an easy, efficient and reliable way of sending their packages.
+                        </p>
                         </div>
                         <ul class="about-list">
                             <li>
@@ -80,8 +86,8 @@
                                 <i class="icofont-fruits"></i>
                             </div>
                             <div class="choose-text">
-                                <h4>100% fresh organic food</h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing tempora pariatur provident animi error dignissimo cumque minus facere dolores cupiditate debitis</p>
+                                <h4>Finest Products </h4>
+                                <p>We deliver the finest products from India to customers around the world. Our mission is to provide premium quality products while ensuring top-notch customer service.</p>
                             </div>
                         </div>
                     </div>
@@ -91,8 +97,8 @@
                                 <i class="icofont-vehicle-delivery-van"></i>
                             </div>
                             <div class="choose-text">
-                                <h4>Delivery within one hour</h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing tempora pariatur provident animi error dignissimo cumque minus facere dolores cupiditate debitis</p>
+                                <h4>Low-Cost Shipping </h4>
+                                <p>We’ve established strategic partnerships with various logistics companies around the world to ensure that our customers receive the lowest shipping rates on their orders.</p>
                             </div>
                         </div>
                     </div>
@@ -102,8 +108,8 @@
                                 <i class="icofont-loop"></i>
                             </div>
                             <div class="choose-text">
-                                <h4>quickly return policy</h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing tempora pariatur provident animi error dignissimo cumque minus facere dolores cupiditate debitis</p>
+                                <h4>Hassle Free custom clearance</h4>
+                                <p>We are committed to delivering hassle-free custom clearance, ensuring that our customers receive their goods in a timely and reliable manner.</p>
                             </div>
                         </div>
                     </div>

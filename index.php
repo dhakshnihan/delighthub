@@ -92,8 +92,8 @@
                     <div class="row align-items-center">
                         <div class="col-md-6 col-lg-6">
                             <div class="banner-content">
-                                <h1>free home delivery within 24 hours now.</h1>
-                                <!-- <p>Lorem ipsum dolor consectetur adipisicing elit modi consequatur eaque expedita porro necessitatibus eveniet voluptatum quis pariatur Laboriosam molestiae architecto excepturi</p> -->
+                                <h1> Experience India’s Finest: Delivered to Your Doorstep in the USA.</h1>
+                                <p>We deliver finest goods from our production houses and partner brands with the highest quality and craftsmanship.</p>
                                 <div class="banner-btn">
                                     <a class="btn btn-inline bt-lg" href="product-items.php">
                                         <i class="fas fa-shopping-basket"></i>
@@ -124,8 +124,8 @@
                         </div>
                         <div class="col-md-6 col-lg-6">
                             <div class="banner-content">
-                                <h1>free home delivery within 24 hours now.</h1>
-                                <!-- <p>Lorem ipsum dolor consectetur adipisicing elit modi consequatur eaque expedita porro necessitatibus eveniet voluptatum quis pariatur Laboriosam molestiae architecto excepturi</p> -->
+                                <h1>Bringing the Real Taste of India – directly from India to Your Home!</h1>
+                                <p>Experience the unique flavours of Indian spices and aromas from Kashmiri saffron to cardamom and every other spice in between.</p>
                                 <div class="banner-btn">
                                     <a class="btn btn-inline" href="shop-4column.html">
                                         <i class="fas fa-shopping-basket"></i>
@@ -147,8 +147,8 @@
                     <div class="row align-items-center">
                         <div class="col-md-6 col-lg-6">
                             <div class="banner-content">
-                                <h1>free home delivery within 24 hours now.</h1>
-                                <!-- <p>Lorem ipsum dolor consectetur adipisicing elit modi consequatur eaque expedita porro necessitatibus eveniet voluptatum quis pariatur Laboriosam molestiae architecto excepturi</p> -->
+                                <h1>Delivering India’s Spirit Devotional and Festival Items to Your Home.</h1>
+                                <p>It’s a joy to us to bring the festival and devotional items to you we have many options from trinkets to statues, there is something for everyone.</p>
                                 <div class="banner-btn">
                                     <a class="btn btn-inline" href="shop-4column.html">
                                         <i class="fas fa-shopping-basket"></i>
@@ -188,8 +188,8 @@
                                 <i class="fas fa-truck"></i>
                             </div>
                             <div class="intro-content">
-                                <h5>free home delivery</h5>
-                                <!-- <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p> -->
+                                <h5>Doorstep Delivery </h5>
+                                <p>Goodness Delivered Right to Your Doorstep!.</p>
                             </div>
                         </div>
                     </div>
@@ -199,8 +199,8 @@
                                 <i class="fas fa-sync-alt"></i>
                             </div>
                             <div class="intro-content">
-                                <h5>instant return policy</h5>
-                                <!-- <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p> -->
+                                <h5>Instant Refund Policy</h5>
+                                <p>We Make Returns Easy - Get Your Money Back Instantly!.</p>
                             </div>
                         </div>
                     </div>
@@ -211,7 +211,7 @@
                             </div>
                             <div class="intro-content">
                                 <h5>quick support system</h5>
-                                <!-- <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p> -->
+                                <p>Get Help You Need, Fast with Quick Support System!.</p>
                             </div>
                         </div>
                     </div>
@@ -221,8 +221,8 @@
                                 <i class="fas fa-lock"></i>
                             </div>
                             <div class="intro-content">
-                                <h5>secure payment way</h5>
-                                <!-- <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p> -->
+                                <h5>Secure Payment Gateways</h5>
+                                <p>Pay for your Favourite Products Securely .</p>
                             </div>
                         </div>
                     </div>
@@ -249,7 +249,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="section-heading">
-                            <h2>Added new items</h2>
+                            <h2 style="margin-top: 2rem">Added new items</h2>
                         </div>
                     </div>
                 </div>

@@ -18,6 +18,7 @@ if(isset($_POST['product_view'])){
         $price=$row['PRODN06'];
         $product_name=$row['PRODN01'];
         $uom=$row['CATEG04'];
+        $PRODN05=$row['PRODN05'];
 
         if($uom=="Kgs"){
             $response.='<div class="row">
@@ -30,7 +31,12 @@ if(isset($_POST['product_view'])){
                                     <ul class="preview-slider slider-arrow"> 
                                         <li><img src='.$image.' alt="product"></li>
                                     </ul>
-                                    
+                                    <div class="row details-thumb">
+    <div class="col-lg-4 col-6 "><img class="img-thumbnail img-fluid" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/04LDEYRW59.jpg" alt=""></div>
+    <div class="col-lg-4 col-6 "><img class="img-thumbnail img-fluid" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/90V03Q5Y60.jpg" alt=""></div>
+    <div class="col-lg-4 col-6 "><img class="img-thumbnail img-fluid" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/90V03Q5Y60.jpg" alt=""></div>
+   
+    </div>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-6">
@@ -66,7 +72,7 @@ if(isset($_POST['product_view'])){
                                         </ul>
                                         
                                     </div>
-                                    <span id="total_price" class="total_price"> $'.$price.' (Inclusive Of Tax)</span>
+                                    <span id="total_price" class="total_price" style="color:red"> Rs:'.$price.' (Inclusive Of Tax)</span>
 
                                     <span id="total_input_price"><input  title="Final Quantity" type="hidden" id="quantity" name="quantity" value="'.$price.'"></span>
                                     <span id="total_input_hidden_price"><input  title="Quantity Number" type="hidden" id="quantity_hidden" name="quantity_hidden" value="'.$price.'"></span>
@@ -92,7 +98,7 @@ if(isset($_POST['product_view'])){
                                         </a>
                                     
                                     </div>
-                                    <p class="view-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit non tempora magni repudiandae sint suscipit tempore quis maxime explicabo veniam eos reprehenderit fuga</p>
+                                    <p class="view-desc">'.$PRODN05.'</p>
                                     
                                 </div>
                             </div>
@@ -170,7 +176,7 @@ if(isset($_POST['product_view'])){
                                         </a>
                                     
                                     </div>
-                                    <p class="view-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit non tempora magni repudiandae sint suscipit tempore quis maxime explicabo veniam eos reprehenderit fuga</p>
+                                    <p class="view-desc">'.$PRODN05.'</p>
                                     
                                 </div>
                             </div>
@@ -236,7 +242,7 @@ if(isset($_POST['product_view'])){
                                     </a>
                                 
                                 </div>
-                                    <p class="view-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit non tempora magni repudiandae sint suscipit tempore quis maxime explicabo veniam eos reprehenderit fuga</p>
+                                    <p class="view-desc">'.$PRODN05.'</p>
                                    
                                 </div>
                             </div>

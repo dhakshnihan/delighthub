@@ -66,11 +66,13 @@
                             AND password='" . md5($password) . "'";
                 $result = mysqli_query($con, $query) or die(mysql_error());
                 $rows = mysqli_num_rows($result);
+                $users= mysqli_fetch_array($result);
                 if ($rows == 1) {
                    
                     $_SESSION['email'] = $email;
-                    $_SESSION['id'] = $id;
-                    echo $_SESSION['email'];
+                    $_SESSION['user_id'] = $users['id'];
+                    $_SESSION['name'] = $users['first_name'];
+               
                     // Redirect to user dashboard page
                     header("Location: index.php");
                 } else {

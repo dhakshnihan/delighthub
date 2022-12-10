@@ -1,3 +1,4 @@
+<?php session_start();   ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -83,6 +84,7 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                     <div class="form-group me-2">
+                                    <input type="hidden" class="form-control" id="user_id" name="user_id" value="<?php echo $_SESSION['user_id']; ?>">   
                                     <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter First name">   
                                     </div>
                                 </div>
@@ -121,12 +123,21 @@
                                     <div class="form-group">
                                         <input type="type" class="form-control" id="country" name="country" placeholder="Enter your country" >
                                     </div>
+                                    <span id="address_type"><input  type="hidden" id="address_value" name="address_value" value=""></span>
+                                    <div class="view-list-group">
+                                    
+                                    <ul class="view-tag-list">
+                                        <li><button type="button" class="btn btn-outline-success " id="myfunction_address_home" onclick="myfunction_address_home()">Home</button></li>
+                                        <li><button type="button" class="btn btn-outline-success " id="myfunction_address_ofc" onclick="myfunction_address_ofc()">Office</button></li>
+                                    </ul>
+                                    
+                                </div>
                                     <div class="form-check mb-3">
                                         <input class="form-check-input" type="checkbox" value="" id="check" checked>
                                         <label class="form-check-label" for="check">Accept all the <a href="#">Terms & Conditions</a></label>
                                     </div>
                                     <div class="form-button">
-                                        <button type="submit" name="submit" id="submit" value="Register" onclick="registration_form();" >register</button>
+                                        <button type="submit" name="submit" id="submit" value="Register" onclick="address_form();" >register</button>
                                     </div>
                                  </div>
                             </div>
@@ -147,60 +158,21 @@
 
 
         <script>
-            function validate_password() {
-                // alert("test");
-                var pass = document.getElementById('password').value;
-                var confirm_pass = document.getElementById('confirm_pass').value;
-                if (pass != confirm_pass) {
-                    document.getElementById('wrong_pass_alert').style.color = 'red';
-                    document.getElementById('wrong_pass_alert').innerHTML
-                    = '☒ Use same password';
-                   
-                } else {
-                    document.getElementById('wrong_pass_alert').style.color = 'green';
-                    document.getElementById('wrong_pass_alert').innerHTML =
-                        '🗹 Password Matched';
-                  
-                }
+            
 
-               
-            }
-
-
-            function validation() {
-  
-                        var email = document.getElementById('email').value;
-                        var text = document.getElementById('text');
-                        var  pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-
-                        if (email.match(pattern)) {
-                            form.classList.add('valid')
-                            form.classList.remove('invalid')
-                            text.innerHTML = "Your Email Address in valid";
-                            text.style.color = '#119744';
-                        } else {
-                            form.classList.remove('valid')
-                            form.classList.add('invalid')
-                            text.innerHTML = "Please Enter Valid Email Address";
-                            text.style.color = '#ff0000';
-                        }
-
-                        if (email == '') {
-                            form.classList.remove('valid')
-                            form.classList.remove('invalid')
-                            text.innerHTML = "";
-                            text.style.color = '#00ff00';
-                        }
-                        }
 
                  
-                  function registration_form(){   
+                  function address_form(){   
                     
                     var first_name = $("#first_name").val();
                     var last_name = $("#last_name").val();
-                    var email = $("#email").val();
-                    var password = $("#password").val();
-                    var confirm_pass = $("#confirm_pass").val();
+                    var address = $("#address").val();
+                    var landmark = $("#landmark").val();
+                    var city = $("#city").val();
+                    var zip=$("#zip").val();
+                    var state=$("#state").val();
+                    var country=$("#country").val();
+                    var user_id=$("#user_id").val();
                     var pro= false;
                     var gg=false;
                     if($("input[type='checkbox']").is(":checked")){
@@ -213,14 +185,13 @@
                         return false;
                     }
                     
-                    if ( password.length>0 && confirm_pass.length>0 && email.length>0 && first_name.length>0 && last_name.length>0) {
+                    if ( first_name.length>0 && last_name.length>0 && address.length>0 && landmark.length>0 && city.length>0 && zip.length>0 && state.length>0 && country.length>0  && address_value.length>0) {
                         pro=true;
                     } 
 
 
                     else {
-                           
-                            alert("Please fill all the fields");
+                            alert("Please fill all the fields.");
                             return false;
                             
                         }
@@ -228,16 +199,11 @@
                         $.ajax({
                             type: "POST",
                             url: "registration_ajax.php",
-                            data: {type:'registration',first_name:first_name,email:email
-                            ,password:password,confirm_pass:confirm_pass,last_name:last_name},
+                            data: {type:'address_form',first_name:first_name,last_name:last_name,address:address,landmark:landmark,city:city,zip:zip,state:state,country:country,user_id:user_id},
                             success: function(result){
                                 var data = jQuery.parseJSON(result);
                                 if(data.value=="OK"){
-                                    window.location.href = "user-otp.php";
-                                }else if(data.value=="exist"){
-                                    alert("Email already exist!");
-                                }else{
-                                    alert("Please try again!");
+                                    window.location.href = "product_summary.php";
                                 }
                                 
                             }
@@ -245,6 +211,23 @@
                    
 
                     }
+                    function myfunction_address_ofc(){
+                        address_type.innerHTML = '<input  type="hidden" id="address_value" name="address_value" value="Home">';
+                        
+                            var myfunction_address_ofc = document.getElementById("myfunction_address_ofc");
+                            var myfunction_address_home = document.getElementById("myfunction_address_home");
+                            myfunction_address_ofc.classList.add("active");
+                            myfunction_address_home.classList.remove("active");
+                    }
+                    function myfunction_address_home(){
+                        address_type.innerHTML = '<input  type="hidden" id="address_value" name="address_value" value="Office">';
+                        
+                            var myfunction_address_home = document.getElementById("myfunction_address_home");
+                            var myfunction_address_ofc = document.getElementById("myfunction_address_ofc");
+                            myfunction_address_ofc.classList.remove("active");
+                            myfunction_address_home.classList.add("active");
+                    }
+                    
                     
               
         </script>

@@ -22,6 +22,21 @@
             
             $query.= " AND PRODN03='".$_POST["filter_brand"]."'";
         }
+       
+       
+        if(isset($_POST["rating5"])){
+            $query.= " AND  PRODN11>'".$_POST["rating5"][0]."'";
+        }
+        if(isset($_POST["rating4"])){
+            $query.= " AND   PRODN11>'".$_POST["rating4"][0]."'";
+        }
+        if(isset($_POST["rating3"])){
+            $query.= " AND  PRODN11>'".$_POST["rating3"][0]."'";
+        }
+        if(isset($_POST["filter_region"]) && !empty($_POST["filter_region"])){
+            $query.= " AND PRODN12='".$_POST["filter_region"]."'";
+        }
+       
         if(isset($_POST["short_by_filter"]) && !empty($_POST["short_by_filter"])){
 
             if($_POST["short_by_filter"]=="price_high_to_low"){
@@ -34,7 +49,7 @@
         }
 
         $sql="select * from  tbl_products where PRODN08='Active' $query ";
-        echo $sql;
+        // echo $sql;
         $result=mysqli_query($con,$sql);
         while($row=mysqli_fetch_array($result)){
             // $image='/admin/masters/product_uploads/."'.$row['PRODN07'].'"';

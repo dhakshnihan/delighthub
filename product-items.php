@@ -37,7 +37,7 @@
                                     <input type="number" placeholder="Min - 00" id="min_price">
                                     <input type="number" placeholder="Max - 5k" id="max_price">
                                 </div>
-                                <button class="shop-widget-btn" id="common_selector">
+                                <button class="shop-widget-btn common_selector" id="common_selector">
                                     <i class="fas fa-search"></i>
                                     <span>search</span>
                                 </button>
@@ -47,68 +47,33 @@
                                 <ul class="shop-widget-list">
                                     <li>
                                         <div class="shop-widget-content">
-                                            <input type="checkbox" id="feat1">
+                                            <input type="checkbox" id="feat1" class="common_selector common_selector5" value="5">
                                             <label for="feat1">
                                                 <i class="fas fa-star active"></i>
-                                                <i class="fas fa-star active"></i>
-                                                <i class="fas fa-star active"></i>
-                                                <i class="fas fa-star active"></i>
-                                                <i class="fas fa-star active"></i>
+                                                5 Rating
                                             </label>
                                         </div>
                                         <span class="shop-widget-number">(13)</span>
                                     </li>
                                     <li>
                                         <div class="shop-widget-content">
-                                            <input type="checkbox" id="feat2">
+                                            <input type="checkbox" class="common_selector common_selector4" value="4">
                                             <label for="feat2">
                                                 <i class="fas fa-star active"></i>
-                                                <i class="fas fa-star active"></i>
-                                                <i class="fas fa-star active"></i>
-                                                <i class="fas fa-star active"></i>
-                                                <i class="fas fa-star"></i>
+                                                4 & Above
                                             </label>
                                         </div>
                                         <span class="shop-widget-number">(28)</span>
                                     </li>
                                     <li>
                                         <div class="shop-widget-content">
-                                            <input type="checkbox" id="feat3">
+                                            <input type="checkbox" id="feat3" class="common_selector common_selector3" value="3">
                                             <label for="feat3">
                                                 <i class="fas fa-star active"></i>
-                                                <i class="fas fa-star active"></i>
-                                                <i class="fas fa-star active"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
+                                                3 & bove
                                             </label>
                                         </div>
                                         <span class="shop-widget-number">(35)</span>
-                                    </li>
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <input type="checkbox" id="feat4">
-                                            <label for="feat4">
-                                                <i class="fas fa-star active"></i>
-                                                <i class="fas fa-star active"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </label>
-                                        </div>
-                                        <span class="shop-widget-number">(47)</span>
-                                    </li>
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <input type="checkbox" id="feat5">
-                                            <label for="feat5">
-                                                <i class="fas fa-star active"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </label>
-                                        </div>
-                                        <span class="shop-widget-number">(59)</span>
                                     </li>
                                 </ul>
                                 <button class="shop-widget-btn">
@@ -152,15 +117,15 @@
                                 </button>
                         </div>
                         <div class="shop-widget">
-                            <h6 class="shop-widget-title">Filter by Tag</h6>
-                            <select id="filter_tag" onchange="filter_tag()"  class="form-select form-select-lg">
+                            <h6 class="shop-widget-title">Filter by Region </h6>
+                            <select id="filter_region" onchange="filter_region()"  class="form-select form-select-lg">
                                 <?php 
-                                    // $sql="select * from tbl_category where CATEG02='Active'";
-                                    // $result=mysqli_query($con,$sql);
-                                    // echo "<option value=''>Filter category</option>";
-                                    // while($row=mysqli_fetch_array($result)){
-                                    //     echo "<option value=".$row['CATEGTID'].">".$row['CATEG01']."</option>";
-                                    // }
+                                    $sql="select * from tbl_region where status='Active'";
+                                    $result=mysqli_query($con,$sql);
+                                    echo "<option value=''>Filter Region</option>";
+                                    while($row=mysqli_fetch_array($result)){
+                                        echo "<option value=".$row['region_id'].">".$row['region_name']."</option>";
+                                    }
                                 ?>
                             </select>
                                 <button class="shop-widget-btn">
@@ -467,12 +432,18 @@
                     var filter_category=$("#filter_category").val();
                     var filter_brand=$("#filter_brand").val();
                     var short_by_filter=$("#short_by_filter").val();
-                   
 
+                   var rating5=get_filter('common_selector5');
+                   var rating4=get_filter('common_selector4');
+                   var rating3=get_filter('common_selector3');
+
+                   var filter_region=$("#filter_region").val();
+                   
                     $.ajax({
                         url:"fetch_data_ajax.php",
                         method:"POST",
-                        data:{'action':'action', minimum_price:minimum_price, maximum_price:maximum_price,filter_brand:filter_brand,filter_category:filter_category,short_by_filter:short_by_filter},
+                        data:{'action':'action', minimum_price:minimum_price, maximum_price:maximum_price,filter_brand:filter_brand,
+                            filter_category:filter_category,short_by_filter:short_by_filter,rating5:rating5,rating4:rating4,rating3:rating3,filter_region:filter_region},
                         success:function(data){
                             $('.filter_data').html(data);
                            
@@ -480,9 +451,19 @@
                     });
                 }
 
-                $('#common_selector').click(function(){
+                $('.common_selector').click(function(){
+                  
                     filter_data();
                 });
+
+                function get_filter(class_name)
+                {
+                    var filter = [];
+                    $('.'+class_name+':checked').each(function(){
+                        filter.push($(this).val());
+                    });
+                    return filter;
+                }
 
                 function filter_category(){
                     
@@ -494,10 +475,15 @@
                 function short_by_filter(){
                     filter_data();
                 }
-                
+                function filter_region(){
+                    filter_data();
+                }
+                 
+
                 $(document).ready(function(){
                     filter_data();
                 });
+               
 
               
          

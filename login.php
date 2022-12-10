@@ -67,7 +67,9 @@
                 $result = mysqli_query($con, $query) or die(mysql_error());
                 $rows = mysqli_num_rows($result);
                 if ($rows == 1) {
+                   
                     $_SESSION['email'] = $email;
+                    $_SESSION['id'] = $id;
                     echo $_SESSION['email'];
                     // Redirect to user dashboard page
                     header("Location: index.php");

@@ -61,7 +61,11 @@ if(isset($_POST['product_view'])){
                                     </div>
                                     <h3 class="view-price">
                                         <span><input type="hidden" value="'.$price.'" id="price" class="price">$'.$price.'<small>/per kilo</small></span>
+                                        
                                     </h3>
+                                    <h4>
+                                    <span id="total_price" class="total_price" style="color:red"> Rs:'.$price.' (Inclusive Of Tax)</span>
+                                    </h4>
                                     <p id="weight_value">Weight: 1 kg</p>
                                     <span id="uom_input_value"><input  title="UOM" type="hidden" id="uom" name="uom" value="1"></span>
                                     <div class="cart-info quantity">
@@ -75,7 +79,19 @@ if(isset($_POST['product_view'])){
                                         </ul>
                                         
                                     </div>
-                                    <span id="total_price" class="total_price" style="color:red"> Rs:'.$price.' (Inclusive Of Tax)</span>
+                                    
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupSelect01">Brand</label>
+                                        </div>
+                                        <select class="custom-select" id="inputGroupSelect01">
+                                            <option selected>D-Mart</option>
+                                            <option value="1">More</option>
+                                            <option value="2">Reliance fress</option>
+                                            <option value="3">trends</option>
+                                        </select>
+                                        </div>
+                                        </div>
 
                                     <span id="total_input_price"><input  title="Final Quantity" type="hidden" id="quantity" name="quantity" value="'.$price.'"></span>
                                     <span id="total_input_hidden_price"><input  title="Quantity Number" type="hidden" id="quantity_hidden" name="quantity_hidden" value="'.$price.'"></span>

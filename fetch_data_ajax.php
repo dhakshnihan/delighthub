@@ -34,7 +34,7 @@
         }
 
         $sql="select * from  tbl_products where PRODN08='Active' $query ";
-        echo $sql;
+        // echo $sql;
         $result=mysqli_query($con,$sql);
         while($row=mysqli_fetch_array($result)){
             // $image='/admin/masters/product_uploads/."'.$row['PRODN07'].'"';

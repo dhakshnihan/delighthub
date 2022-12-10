@@ -33,6 +33,7 @@
                         $unit_price=$row['PRODN06'];
                         $items=$row['items'];
                         $uom=$row['uom'];
+                        $pro=$row['PRODTID'];
                         $category_uom=$row['CATEG04'];
                         $cart_id=$row["cart_id"];
                         if($items>0){
@@ -55,7 +56,7 @@
                         }
                 echo    '<li class="cart-item" id="row_'.$row['cart_id'].'">
                             <div class="cart-media">
-                                <a href="product-tab.php"><img src="'.$image.'" alt="product" >
+                                <a href="product-tab.php?id='.$pro.'"><img src="'.$image.'" alt="product" >
                                   <button class="cart-delete" ><i class="fas fa-eye" style="background-color: #ffffff;color: #119744;"></i></button>
                                 </a>
                             </div>
@@ -75,7 +76,7 @@
                                         <input type="text" name="input-quantity[]"  value="'.$items.'" maxlength="2" max="10" size="1"  class="input_quantity_'.$cart_id.'"  id="input-quantity-'.$cart_id.'"  />
                                         <button class="action-plus" title="Quantity Plus" onclick="cartincrementValue('.$cart_id.','.$unit_price.')" value="+"><i class="icofont-plus"></i></button>
                                     </div>
-                                    <h6><input type="text" name="total_price[]" id="total_price_'.$cart_id.'" value="'.$total_price.'" style="color: forestgreen;"></h6>
+                                    <h6><input type="text" name="total_price[] ms-4" id="total_price_'.$cart_id.'" value="'.$total_price.'" style="color: forestgreen;"></h6>
                                 </div>
                             </div>
                         </li>';

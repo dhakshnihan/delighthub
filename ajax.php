@@ -1,5 +1,6 @@
 
 <?php
+session_start();
 require_once('dbconnection.php');
 
 if(isset($_POST['product_view'])){
@@ -19,6 +20,8 @@ if(isset($_POST['product_view'])){
         $product_name=$row['PRODN01'];
         $uom=$row['CATEG04'];
         $PRODN05=$row['PRODN05'];
+
+        
 
         if($uom=="Kgs"){
             $response.='<div class="row">
@@ -263,7 +266,7 @@ if(isset($_POST['product_add_to_cart'])){
     $total_price=$_POST['total_price'];
     $items=$_POST['items'];
     $uom=$_POST['uom'];
-  
+    $_SESSION['product_id']=$product_id;
 
     $sqlx="insert into tbl_cart (fk_product,total_price,items,uom,fk_userid) value ('".$product_id."','".$total_price."','".$items."','".$uom."','".$user_id."')";
     // echo $sqlx;
@@ -293,6 +296,68 @@ if(isset($_POST['cart_checkout'])){
         mysqli_query($con,$sql);
     }
 
+    //Brwose by top Rating/Reviews/Discount
 
+    if(isset($_POST['top_browrse_products'])){
+
+        $top_browse=$_POST['top_browse'];
+        if($top_browse=="top_order"){
+            $tag='<label class="label-text order">314</label>';
+        }else if($top_browse=="top_rating"){
+            $tag='<label class="label-text rate">4.8</label>';
+        }else{
+            $tag='<label class="label-text off">-10%</label>';
+        }
+
+        $data="";
+        $data.='<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">';
+        $sql="select * from tbl_products";
+        $result=mysqli_query($con,$sql);
+        while($row=mysqli_fetch_array($result)){
+            $image='./admin/masters/prod_uploads/'.$row["PRODN07"];
+            $price=$row['PRODN06'];
+            $product_name=$row['PRODN01'];
+            $product_id=$row['PRODTID'];
+
+        $data.='<div class="col">
+                    <div class="product-card">
+                        <div class="product-media">
+                            <div class="product-label">
+                               '.$tag.'
+                            </div>
+                            <button class="product-wish wish">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <a class="product-image" href="product-tab.php?id='.$product_id.'">
+                                <img src="'.$image.'" alt="product">
+                            </a>
+                        </div>
+                        <div class="product-content">
+                            <div class="product-rating">
+                                <i class="active icofont-star"></i>
+                                <i class="active icofont-star"></i>
+                                <i class="active icofont-star"></i>
+                                <i class="active icofont-star"></i>
+                                <i class="icofont-star"></i>
+                                <a href="product-tab.php">(3)</a>
+                            </div>
+                            <h6 class="product-name">
+                                <a href="product-tab.php?id='.$product_id.'">'.$product_name.'</a>
+                            </h6>
+                            <h6 class="product-price">
+                                <span>$'.$price.'<small>/piece</small></span>
+                            </h6>
+                            <button class="product-add" title="Add to Cart">
+                                <i class="fas fa-shopping-basket"></i>
+                                <span title="Product View" href="#" class="add_cart1" onclick="add_cart('.$product_id.')" data-bs-toggle="modal" data-id='.$product_id.' data-bs-target="#product-view">add cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>';
+        }
+        $data.="</div>";
+
+        echo $data;
+    }
 
 ?>

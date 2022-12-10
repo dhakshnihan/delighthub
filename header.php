@@ -243,7 +243,17 @@
                         
                         <button class="header-widget header-cart" title="Cartlist">
                             <i class="fas fa-shopping-basket"></i>
-                            <sup>9+</sup>
+                            <?php 
+               
+                                $sqlx="select *,count(*) as total_items from tbl_cart
+                                left join tbl_products on fk_product=PRODTID
+                                left join tbl_category on  PRODN10=CATEGTID
+                                where status='Active'";
+                                $resultx=mysqli_query($con,$sqlx);
+                                $rowx=mysqli_fetch_array($resultx);
+                                $total_items=$rowx['total_items'];
+                            ?>
+                            <sup><?php echo $total_items; ?></sup>
                             <!-- <span>total price<small>$345.00</small></span> -->
                         </button>
                     </div>

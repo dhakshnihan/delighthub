@@ -28,25 +28,22 @@
             <div class="container">
                 <div class="row content-reverse">
                     <div class="col-lg-3">
-                        <div class="shop-widget-promo">
+                        <!-- <div class="shop-widget-promo">
                             <a href="#"><img src="images/promo/shop/01.jpg" alt="promo"></a>
-                        </div>
+                        </div> -->
                         <div class="shop-widget">
                             <h6 class="shop-widget-title">Filter by Price</h6>
-                            <form>
                                 <div class="shop-widget-group">
-                                    <input type="text" placeholder="Min - 00">
-                                    <input type="text" placeholder="Max - 5k">
+                                    <input type="number" placeholder="Min - 00" id="min_price">
+                                    <input type="number" placeholder="Max - 5k" id="max_price">
                                 </div>
-                                <button class="shop-widget-btn">
+                                <button class="shop-widget-btn" id="common_selector">
                                     <i class="fas fa-search"></i>
                                     <span>search</span>
                                 </button>
-                            </form>
                         </div>
                         <div class="shop-widget">
                             <h6 class="shop-widget-title">Filter by Rating</h6>
-                            <form>
                                 <ul class="shop-widget-list">
                                     <li>
                                         <div class="shop-widget-content">
@@ -118,252 +115,72 @@
                                     <i class="far fa-trash-alt"></i>
                                     <span>clear filter</span>
                                 </button>
-                            </form>
                         </div>
                         <div class="shop-widget">
                             <h6 class="shop-widget-title">Filter by Category</h6>
-                            <form>
-                                <input class="shop-widget-search" type="text" placeholder="Search...">
-                                <ul class="shop-widget-list shop-widget-scroll">
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <!-- <input type="checkbox" id="cate1">
-                                            <label for="cate1">vegetables</label> -->
-                                            <select id="brand1" class="form-select form-select-lg">
-                                                <option value="vegetables">vegetables</option>
-                                            </select> 
-                                        </div>
-                                        <span class="shop-widget-number">(13)</span>
-                                    </li>
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <!-- <input type="checkbox" id="cate2">
-                                            <label for="cate2">groceries</label> -->
-                                            <select id="brand1" class="form-select form-select-lg">
-                                                <option value="groceries">groceries</option>
-                                            </select> 
-                                        </div>
-                                        <span class="shop-widget-number">(28)</span>
-                                    </li>
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <!-- <input type="checkbox" id="cate3">
-                                            <label for="cate3">fruits</label> -->
-                                            <select id="brand1" class="form-select form-select-lg">
-                                                <option value="fruits">fruits</option>
-                                            </select> 
-                                        </div>
-                                        <span class="shop-widget-number">(35)</span>
-                                    </li>
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <!-- <input type="checkbox" id="cate4">
-                                            <label for="cate4">dairy farm</label> -->
-                                            <select id="brand1" class="form-select form-select-lg">
-                                                <option value="dairy farm">dairy farm</option>
-                                            </select> 
-                                        </div>
-                                        <span class="shop-widget-number">(47)</span>
-                                    </li>
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <!-- <input type="checkbox" id="cate5">
-                                            <label for="cate5">sea foods</label> -->
-                                            <select id="brand1" class="form-select form-select-lg">
-                                                <option value="sea foods">sea foods</option>
-                                            </select> 
-                                        </div>
-                                        <span class="shop-widget-number">(59)</span>
-                                    </li>
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <!-- <input type="checkbox" id="cate6">
-                                            <label for="cate6">diet foods</label> -->
-                                            <select id="brand1" class="form-select form-select-lg">
-                                                <option value="diet foods">diet foods</option>
-                                            </select> 
-                                        </div>
-                                        <span class="shop-widget-number">(64)</span>
-                                    </li>
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <!-- <input type="checkbox" id="cate7">
-                                            <label for="cate7">dry foods</label> -->
-                                            <select id="brand1" class="form-select form-select-lg">
-                                                <option value="dry foods">dry foods</option>
-                                            </select> 
-                                        </div>
-                                        <span class="shop-widget-number">(77)</span>
-                                    </li>
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <!-- <input type="checkbox" id="cate8">
-                                            <label for="cate8">fast foods</label> -->
-                                            <select id="brand1" class="form-select form-select-lg">
-                                                <option value="fast foods">fast foods</option>
-                                            </select> 
-                                        </div>
-                                        <span class="shop-widget-number">(85)</span>
-                                    </li>
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <!-- <input type="checkbox" id="cate9">
-                                            <label for="cate9">drinks</label> -->
-                                            <select id="brand1" class="form-select form-select-lg">
-                                                <option value="drinks">drinks</option>
-                                            </select> 
-                                        </div>
-                                        <span class="shop-widget-number">(92)</span>
-                                    </li>
-                                    
-                                </ul>
-                                <button class="shop-widget-btn">
+                            <select id="filter_category"  onchange="filter_category()" class="form-select form-select-lg">
+                                <?php 
+                                    $sql="select * from tbl_category where CATEG02='Active'";
+                                    $result=mysqli_query($con,$sql);
+                                    echo "<option value=''>Filter Category</option>";
+                                    while($row=mysqli_fetch_array($result)){
+                                        echo "<option value=".$row['CATEGTID'].">".$row['CATEG01']."</option>";
+                                    }
+                                ?>
+                            </select>
+
+                                <button class="shop-widget-btn" >
                                     <i class="far fa-trash-alt"></i>
                                     <span>clear filter</span>
                                 </button>
-                            </form>
                         </div>
                         <div class="shop-widget">
                             <h6 class="shop-widget-title">Filter by Brand</h6>
-                            <form>
-                                <input class="shop-widget-search" type="text" placeholder="Search...">
-                                <ul class="shop-widget-list shop-widget-scroll">
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <!-- <input type="checkbox" id="brand1">
-                                            <label for="brand1">mari gold</label> -->
-                                            <select id="brand1" class="form-select form-select-lg">
-                                                <option value="mari gold">mari gold</option>
-                                            </select>
-                                        </div>
-                                        <span class="shop-widget-number">(13)</span>
-                                    </li>
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <!-- <input type="checkbox" id="brand2">
-                                            <label for="brand2">tredar</label>-->
-                                             <select id="brand1" class="form-select form-select-lg">
-                                                <option value="tredar">tredar</option>
-                                            </select> 
-                                        </div>
-                                        <span class="shop-widget-number">(28)</span>
-                                    </li>
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <!-- <input type="checkbox" id="brand3">
-                                            <label for="brand3">keya</label> -->
-                                            <select id="brand1" class="form-select form-select-lg">
-                                                <option value="keya">keya</option>
-                                            </select> 
-                                        </div>
-                                        <span class="shop-widget-number">(35)</span>
-                                    </li>
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <!-- <input type="checkbox" id="brand4">
-                                            <label for="brand4">diamond</label> -->
-                                            <select id="brand1" class="form-select form-select-lg">
-                                                <option value="diamond">diamond</option>
-                                            </select> 
-                                        </div>
-                                        <span class="shop-widget-number">(47)</span>
-                                    </li>
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <!-- <input type="checkbox" id="brand5">
-                                            <label for="brand5">lilly's</label> -->
-                                            <select id="brand1" class="form-select form-select-lg">
-                                                <option value="lilly">lilly</option>
-                                            </select>
-                                        </div>
-                                        <span class="shop-widget-number">(59)</span>
-                                    </li>
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <!-- <input type="checkbox" id="brand6">
-                                            <label for="brand6">fremant</label> -->
-                                            <select id="brand1" class="form-select form-select-lg">
-                                                <option value="brand6">brand6</option>
-                                            </select>
-                                        </div>
-                                        <span class="shop-widget-number">(64)</span>
-                                    </li>
-                                  
-                                </ul>
+                            <select id="filter_brand" onchange="filter_brand()"  class="form-select form-select-lg">
+                                <?php 
+                                    $sql="select * from tbl_brands where BRAND02='Active'";
+                                    $result=mysqli_query($con,$sql);
+                                    echo "<option value=''>Filter Brand</option>";
+                                    while($row=mysqli_fetch_array($result)){
+                                        echo "<option value=".$row['BRANDTID'].">".$row['BRAND01']."</option>";
+                                    }
+                                ?>
+                            </select>
                                 <button class="shop-widget-btn">
                                     <i class="far fa-trash-alt"></i>
                                     <span>clear filter</span>
                                 </button>
-                            </form>
                         </div>
                         <div class="shop-widget">
-                            <h6 class="shop-widget-title"> <select id="brand1" class="form-select form-select-lg">
-                                <option value="new items">Filter by Tag</option>
-                            </select></h6>
-                            <form>
-                                <ul class="shop-widget-list">
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <input type="checkbox" id="tag1">
-                                            <label for="tag1">new items</label>
-                                        </div>
-                                        <span class="shop-widget-number">(13)</span>
-                                    </li>
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <input type="checkbox" id="tag2">
-                                            <label for="tag2">sale items</label>
-                                        </div>
-                                        <span class="shop-widget-number">(28)</span>
-                                    </li>
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <input type="checkbox" id="tag3">
-                                            <label for="tag3">rating items</label>
-                                        </div>
-                                        <span class="shop-widget-number">(35)</span>
-                                    </li>
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <input type="checkbox" id="tag4">
-                                            <label for="tag4">feature items</label>
-                                        </div>
-                                        <span class="shop-widget-number">(47)</span>
-                                    </li>
-                                    <li>
-                                        <div class="shop-widget-content">
-                                            <input type="checkbox" id="tag5">
-                                            <label for="tag5">discount items</label>
-                                        </div>
-                                        <span class="shop-widget-number">(59)</span>
-                                    </li>
-                                </ul>
+                            <h6 class="shop-widget-title">Filter by Tag</h6>
+                            <select id="filter_tag" onchange="filter_tag()"  class="form-select form-select-lg">
+                                <?php 
+                                    // $sql="select * from tbl_category where CATEG02='Active'";
+                                    // $result=mysqli_query($con,$sql);
+                                    // echo "<option value=''>Filter category</option>";
+                                    // while($row=mysqli_fetch_array($result)){
+                                    //     echo "<option value=".$row['CATEGTID'].">".$row['CATEG01']."</option>";
+                                    // }
+                                ?>
+                            </select>
                                 <button class="shop-widget-btn">
                                     <i class="far fa-trash-alt"></i>
                                     <span>clear filter</span>
                                 </button>
-                            </form>
                         </div>
                     </div>
                     <div class="col-lg-9">
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="top-filter">
-                                    <div class="filter-show">
-                                        <label class="filter-label">Show :</label>
-                                        <select class="form-select filter-select">
-                                            <option value="1">12</option>
-                                            <option value="2">24</option>
-                                            <option value="3">36</option>
-                                        </select>
-                                    </div>
+                                    
                                     <div class="filter-short">
                                         <label class="filter-label">Short by :</label>
-                                        <select class="form-select filter-select">
-                                            <option selected>Populartiy</option>
+                                        <select class="form-select filter-select" id="short_by_filter" onchange="short_by_filter()">
+                                            <option value="4">Populartiy</option>
                                             <option value="3">New Items</option>
-                                            <option value="1">Price High to Low</option>
-                                            <option value="2">Price Low to High</option>
+                                            <option value="price_high_to_low">Price High to Low</option>
+                                            <option value="price_low_to_high">Price Low to High</option>
                                         </select>
                                     </div>
                                     <!-- <div class="filter-action">
@@ -374,64 +191,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-4">
-                        <?php 
-
-                                 
-                            $sql="select * from  tbl_products where PRODN08='Active'";
-                            $result=mysqli_query($con,$sql);
-                            while($row=mysqli_fetch_array($result)){
-                                // $image='/admin/masters/product_uploads/."'.$row['PRODN07'].'"';
-                                $image='./admin/masters/prod_uploads/'.$row["PRODN07"];
-                                $price=$row['PRODN06'];
-                                $product_name=$row['PRODN01'];
-                                $product_id=$row['PRODTID'];
-
-                            echo '<div class="col">
-                                    <div class="product-card">
-                                        <div class="product-media">
-                                            <div class="product-label">
-                                                <label class="label-text new">new</label>
-                                            </div>
-                                            <button class="product-wish wish">
-                                                <i class="fas fa-heart"></i>
-                                            </button>
-                                            <a class="product-image" href="product-video.html">
-                                                <img src="'.$image.'" alt="product">
-                                            </a>
-                                            
-                                        </div>
-                                        <div class="product-content">
-                                            <div class="product-rating">
-                                                <i class="active icofont-star"></i>
-                                                <i class="active icofont-star"></i>
-                                                <i class="active icofont-star"></i>
-                                                <i class="active icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <a href="product-tab.html">(3)</a>
-                                            </div>
-                                            <h6 class="product-name">
-                                                <a href="product-tab.html">'.$product_name.'</a>
-                                            </h6>
-                                            <h6 class="product-price">
-                                                <span>$'.$price.'<small>/piece</small></span>
-                                            </h6>
-                                            <button class="product-add" title="Add to Cart">
-                                                <i class="fas fa-shopping-basket"></i>
-                                                <span title="Product View" href="#" class="add_cart" data-bs-toggle="modal" data-id='.$product_id.' data-bs-target="#product-view">add cart</span>
-                                             </button>
-                                            <div class="product-action">
-                                                <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
-                                                <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
-                                                <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>';
-                            }
-
-                            ?>
-                        </div>
+                            <div class="filter_data"></div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="bottom-paginate">
@@ -666,11 +426,19 @@
         <script src="js/venobox.js"></script>
         <script src="js/slick.js"></script>
         <script src="js/main.js"></script> 
+
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        
+        
         <!--=====================================
                     JS LINK PART END
         =======================================-->
         <script>
-
+            
+            $(document).ready(function(){
+                $("#filter_category").select2();
+            })
             $(document).ready(function(){
                 $(".add_cart").click(function(){
                     var product_id =$(this).data('id');
@@ -686,6 +454,55 @@
                     })
                 })
             })
+
+
+          
+                
+                function filter_data()
+                {
+                  
+                    // $('.filter_data').html('<div id="loading" style="" ></div>');
+                    var maximum_price=$("#max_price").val();
+                    var minimum_price=$("#min_price").val();
+                    var filter_category=$("#filter_category").val();
+                    var filter_brand=$("#filter_brand").val();
+                    var short_by_filter=$("#short_by_filter").val();
+                   
+
+                    $.ajax({
+                        url:"fetch_data_ajax.php",
+                        method:"POST",
+                        data:{'action':'action', minimum_price:minimum_price, maximum_price:maximum_price,filter_brand:filter_brand,filter_category:filter_category,short_by_filter:short_by_filter},
+                        success:function(data){
+                            $('.filter_data').html(data);
+                           
+                        }
+                    });
+                }
+
+                $('#common_selector').click(function(){
+                    filter_data();
+                });
+
+                function filter_category(){
+                    
+                    filter_data();
+                }
+                function filter_brand(){
+                    filter_data();
+                }
+                function short_by_filter(){
+                    filter_data();
+                }
+                
+                $(document).ready(function(){
+                    filter_data();
+                });
+
+              
+         
+           
+            
     </script>
 
     </body>

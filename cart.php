@@ -2,22 +2,31 @@
                   CART SIDEBAR PART START
         =======================================-->
         <aside class="cart-sidebar">
-            <!-- <form method="POST" action="checkout.php" > -->
+            <?php 
+               
+                $sqlx="select *,count(* ) as total_items from tbl_cart
+                left join tbl_products on fk_product=PRODTID
+                left join tbl_category on  PRODN10=CATEGTID
+                where status='Active'";
+                $resultx=mysqli_query($con,$sqlx);
+                $rowx=mysqli_fetch_array($resultx);
+                $total_items=$rowx['total_items'];
+            ?>
             <div class="cart-header">
                 <div class="cart-total">
                     <i class="fas fa-shopping-basket"></i>
-                    <span>total item (5)</span>
+                    <span>total item (<?php echo $total_items; ?>)</span>
                 </div>
                 <button class="cart-close"><i class="icofont-close"></i></button>
             </div>
             <ul class="cart-list">
                 <?php 
-                $grand_total_price=0;
-                    $sql="select * from tbl_cart
-                    left join tbl_products on fk_product=PRODTID
-                    left join tbl_category on  PRODN10=CATEGTID
-                    where status='Active'";
-                    $result=mysqli_query($con,$sql);
+                     $grand_total_price=0;
+                     $sql="select * from tbl_cart
+                     left join tbl_products on fk_product=PRODTID
+                     left join tbl_category on  PRODN10=CATEGTID
+                     where status='Active'";
+                     $result=mysqli_query($con,$sql);
                     while($row=mysqli_fetch_array($result)){
                         $image='./admin/masters/prod_uploads/'.$row["PRODN07"];
                         $total_price=$row['total_price'];

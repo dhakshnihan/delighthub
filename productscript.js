@@ -45,7 +45,7 @@
                 var price = document.getElementById("pricekg").innerHTML;
                 weight_value.innerHTML = "Weight: " + "" + val + "" + " Kg ";
                 uom_input_value.innerHTML = '<input  title="UOM" type="hidden" id="uom" name="uom" value="'+val+'">';
-                total_price.innerHTML= "Rs:"+ ""+parseInt(price)/4 +"" + "/-" + "(Include All taxs)";
+                total_price.innerHTML= "Rs:"+ ""+parseInt(price)/2 +"" + "/-" + "(Include All taxs)";
                 total_input_price.innerHTML = '<input  title="Final Quantity" type="hidden" id="quantity" name="quantity" value="'+parseInt(price)/parseInt(2)+'" >';
                 total_input_hidden_price.innerHTML = '<input  title="Quantity Number" type="hidden" id="quantity_hidden" name="quantity_hidden" value="'+parseInt(price)/parseInt(2)+'" >';
                 document.getElementById('number').value = 1;
@@ -62,7 +62,7 @@
                 var price = document.getElementById("pricekg").innerHTML;
                 weight_value.innerHTML =  "Weight: " + "" + val + "" + " Kg ";
                 uom_input_value.innerHTML = '<input  title="UOM" type="hidden" id="uom" name="uom" value="'+val+'">';
-                total_price.innerHTML= "Rs:"+ ""+parseInt(price)/4 +"" + "/-" + "(Include All taxs)";
+                total_price.innerHTML= "Rs:"+ ""+parseInt(price)/(val) +"" + "/-" + "(Include All taxs)";
                 total_input_price.innerHTML = '<input  title="Final Quantity" type="hidden" id="quantity" name="quantity" value="'+parseInt(price)/parseInt(val)+'">';
                 total_input_hidden_price.innerHTML = '<input  title="Quantity Number" type="hidden" id="quantity_hidden" name="quantity_hidden" value="'+parseInt(price)/parseInt(val)+'" >';
                 document.getElementById('number').value = 1;

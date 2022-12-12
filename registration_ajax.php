@@ -75,12 +75,7 @@
     }
     
 
-	//Address insert section 
-	if($_POST['type']=="address_form"){
-		$sql="insert into tbl_address (fk_user_id,first_name,last_name,address,landmark,city,zip,state,country) values ('".$_POST['user_id']."','".$_POST['first_name']."','".$_POST['last_name']."',
-		'".$_POST['address']."','".$_POST['landmark']."','".$_POST['city']."','".$_POST['zip']."','".$_POST['state']."','".$_POST['country']."')";
-		mysqli_query($con,$sql);
-	}
+	
 
     
 	

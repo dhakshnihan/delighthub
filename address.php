@@ -61,6 +61,7 @@
                         <div class="user-form-logo">
                             <a href="index.html"><img src="images/logo.png" alt="logo"></a>
                         </div>
+                        <form id="frm-image-upload" action="address_ajax.php"  method="POST" enctype = "multipart/form-data" onsubmit="return validateform()">
                         <div class="user-form-card">
                             <div class="user-form-title">
                                 <h2>ADDRESS</h2>
@@ -101,7 +102,7 @@
                                     </div>
                                        </form>
                                     <div class="form-group">
-                                        <input type="type" class="form-control" id="landmark" name="password" placeholder="Enter your landmark" >
+                                        <input type="type" class="form-control" id="landmark" name="landmark" placeholder="Enter your landmark" >
                                     </div>
                                 <div class="row">
                                  <div class="col-lg-6">
@@ -123,25 +124,47 @@
                                     <div class="form-group">
                                         <input type="type" class="form-control" id="country" name="country" placeholder="Enter your country" >
                                     </div>
-                                    <span id="address_type"><input  type="hidden" id="address_value" name="address_value" value=""></span>
+                                
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div>Choose Image :</div>
+                                            <div>
+                                                <input type="file" class="file-image" name="file_image"  onchange="loadImageFile(event,this)" accept="image/jpeg">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                        <img id="ImageFile" width="150" height="150" />
+                                        </div>
+                                    </div>   
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div>Choose Sign :</div>
+                                            <div>
+                                                <input type="file" class="file-sign" name="file_sign" id="file_sign"  onchange="loadSignFile(event,this)"  accept="image/jpeg">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                        <img id="SignFile" width="150" height="150" />
+                                        </div>
+                                    </div>  
+                                        <span id="address_type"><input  type="hidden" id="address_value" name="address_value" value=""></span>
                                     <div class="view-list-group">
                                     
                                     <ul class="view-tag-list">
-                                        <li><button type="button" class="btn btn-outline-success " id="myfunction_address_home" onclick="myfunction_address_home()">Home</button></li>
-                                        <li><button type="button" class="btn btn-outline-success " id="myfunction_address_ofc" onclick="myfunction_address_ofc()">Office</button></li>
+                                        <li><button type="button" class="btn btn-outline-success " id="myfunction_address_home" onclick="myfunction_ofc()">Home</button></li>
+                                        <li><button type="button" class="btn btn-outline-success " id="myfunction_address_ofc" onclick="myfunction_home()">Office</button></li>
                                     </ul>
                                     
                                 </div>
-                                    <div class="form-check mb-3">
-                                        <input class="form-check-input" type="checkbox" value="" id="check" checked>
-                                        <label class="form-check-label" for="check">Accept all the <a href="#">Terms & Conditions</a></label>
-                                    </div>
+                                  
                                     <div class="form-button">
-                                        <button type="submit" name="submit" id="submit" value="Register" onclick="address_form();" >register</button>
+                                        <button type="submit" name="Register" id="submit" value="Register"  >register</button>
                                     </div>
                                  </div>
                             </div>
                         </div>
+                        </form>
+                        
                         <div class="user-form-remind">
                             <p>Already Have An Account?<a href="login.php">login here</a></p>
                         </div>
@@ -156,82 +179,7 @@
                     USER FORM PART END
         =======================================-->
 
-
-        <script>
-            
-
-
-                 
-                  function address_form(){   
-                    
-                    var first_name = $("#first_name").val();
-                    var last_name = $("#last_name").val();
-                    var address = $("#address").val();
-                    var landmark = $("#landmark").val();
-                    var city = $("#city").val();
-                    var zip=$("#zip").val();
-                    var state=$("#state").val();
-                    var country=$("#country").val();
-                    var user_id=$("#user_id").val();
-                    var pro= false;
-                    var gg=false;
-                    if($("input[type='checkbox']").is(":checked")){
-
-                         var gg=true;
-
-                    } else{
-
-                        alert("Please Accept all the Terms & Conditions");
-                        return false;
-                    }
-                    
-                    if ( first_name.length>0 && last_name.length>0 && address.length>0 && landmark.length>0 && city.length>0 && zip.length>0 && state.length>0 && country.length>0  && address_value.length>0) {
-                        pro=true;
-                    } 
-
-
-                    else {
-                            alert("Please fill all the fields.");
-                            return false;
-                            
-                        }
-                        if(gg==true && pro==true)
-                        $.ajax({
-                            type: "POST",
-                            url: "registration_ajax.php",
-                            data: {type:'address_form',first_name:first_name,last_name:last_name,address:address,landmark:landmark,city:city,zip:zip,state:state,country:country,user_id:user_id},
-                            success: function(result){
-                                var data = jQuery.parseJSON(result);
-                                if(data.value=="OK"){
-                                    window.location.href = "product_summary.php";
-                                }
-                                
-                            }
-                        });
-                   
-
-                    }
-                    function myfunction_address_ofc(){
-                        address_type.innerHTML = '<input  type="hidden" id="address_value" name="address_value" value="Home">';
-                        
-                            var myfunction_address_ofc = document.getElementById("myfunction_address_ofc");
-                            var myfunction_address_home = document.getElementById("myfunction_address_home");
-                            myfunction_address_ofc.classList.add("active");
-                            myfunction_address_home.classList.remove("active");
-                    }
-                    function myfunction_address_home(){
-                        address_type.innerHTML = '<input  type="hidden" id="address_value" name="address_value" value="Office">';
-                        
-                            var myfunction_address_home = document.getElementById("myfunction_address_home");
-                            var myfunction_address_ofc = document.getElementById("myfunction_address_ofc");
-                            myfunction_address_ofc.classList.remove("active");
-                            myfunction_address_home.classList.add("active");
-                    }
-                    
-                    
-              
-        </script>
-
+    
         <!--=====================================
                     JS LINK PART START
         =======================================-->
@@ -254,5 +202,130 @@
         <!--=====================================
                     JS LINK PART END
         =======================================-->
+
+        <script>
+         
+             function myfunction_home(){
+                address_type.innerHTML = '<input  type="hidden" id="address_value" name="address_value" value="Home">';
+                
+                    var myfunction_address_ofc = document.getElementById("myfunction_address_ofc");
+                    var myfunction_address_home = document.getElementById("myfunction_address_home");
+                    myfunction_address_ofc.classList.add("active");
+                    myfunction_address_home.classList.remove("active");
+            }
+            function myfunction_ofc(){
+                address_type.innerHTML = '<input  type="hidden" id="address_value" name="address_value" value="Office">';
+                
+                    var myfunction_address_home = document.getElementById("myfunction_address_home");
+                    var myfunction_address_ofc = document.getElementById("myfunction_address_ofc");
+                    myfunction_address_ofc.classList.remove("active");
+                    myfunction_address_home.classList.add("active");
+            }
+
+            function validateform(){  
+                    var first_name = $("#first_name").val();
+                    var last_name = $("#last_name").val();
+                    var address = $("#address").val();
+                    var landmark = $("#landmark").val();
+                    var city = $("#city").val();
+                    var zip=$("#zip").val();
+                    var state=$("#state").val();
+                    var country=$("#country").val();
+                     var address_value=$("#address_value").val();
+                    if ( first_name.length>0 && last_name.length>0 && address.length>0 && landmark.length>0 && city.length>0 && zip.length>0 && state.length>0 && country.length>0  && address_value.length>0) {
+                       form.submit();
+                        return true;  
+                    }else{
+                        alert("Please fill all the fields.");
+                        return false;  
+                    }
+            }  
+                 
+                //   function address_form(){   
+                    
+                //     var first_name = $("#first_name").val();
+                //     var last_name = $("#last_name").val();
+                //     var address = $("#address").val();
+                //     var landmark = $("#landmark").val();
+                //     var city = $("#city").val();
+                //     var zip=$("#zip").val();
+                //     var state=$("#state").val();
+                //     var country=$("#country").val();
+                //     var user_id=$("#user_id").val();
+                //     var pro= false;
+                //     var gg=false;
+                //     if($("input[type='checkbox']").is(":checked")){
+
+                //          var gg=true;
+
+                //     } else{
+
+                //         alert("Please Accept all the Terms & Conditions");
+                //         return false;
+                //     }
+                    
+                //     if ( first_name.length>0 && last_name.length>0 && address.length>0 && landmark.length>0 && city.length>0 && zip.length>0 && state.length>0 && country.length>0  && address_value.length>0) {
+                //         pro=true;
+                //     } 
+
+
+                //     else {
+                //             alert("Please fill all the fields.");
+                //             return false;
+                            
+                //         }
+                //         if(gg==true && pro==true)
+                //         $.ajax({
+                //             type: "POST",
+                //             url: "registration_ajax.php",
+                //             data: {type:'address_form',first_name:first_name,last_name:last_name,address:address,landmark:landmark,city:city,zip:zip,state:state,country:country,user_id:user_id},
+                //             success: function(result){
+                //                 var data = jQuery.parseJSON(result);
+                //                 if(data.value=="OK"){
+                //                     window.location.href = "product_summary.php";
+                //                 }
+                                
+                //             }
+                //         });
+                   
+
+                //     }
+                   
+
+                    //priview uploaded image
+                    var loadSignFile = function(event) {
+                        var SignFile = document.getElementById('SignFile');
+                        var file = event.target.files[0];
+                        if(file.size>51200){
+                            alert("Please size below 50Kbs.");
+                        }else{
+                            SignFile.src = URL.createObjectURL(event.target.files[0]);
+                                SignFile.onload = function() {
+                                
+                                    URL.revokeObjectURL(SignFile.src) 
+                            // free memory
+                            }
+                        }
+                       
+                       
+                    };
+                    var loadImageFile = function(event) {
+                        var ImageFile = document.getElementById('ImageFile');
+                       
+                        var fileImage = event.target.files[0];
+                        if(fileImage.size>51200){
+                            
+                            alert("Please size below 50Kbs.");
+                        }else{
+                            ImageFile.src = URL.createObjectURL(event.target.files[0]);
+                            ImageFile.onload = function() {
+                            URL.revokeObjectURL(ImageFile.src) // free memory
+                            }
+                        }
+                    };
+                    
+              
+        </script>
+
     </body>
 </html>

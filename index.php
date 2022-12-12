@@ -265,8 +265,9 @@
                                         $price=$row['PRODN06'];
                                         $product_name=$row['PRODN01'];
                                         $product_id=$row['PRODTID'];
-                                                                            
-                                  
+                                        $rating=$row['PRODN11'];
+
+                                        
 
                                echo     '<li>
                                             <div class="product-card">
@@ -283,13 +284,19 @@
                                                    
                                                 </div>
                                                 <div class="product-content">
-                                                    <div class="product-rating">
-                                                        <i class="active icofont-star"></i>
-                                                        <i class="active icofont-star"></i>
-                                                        <i class="active icofont-star"></i>
-                                                        <i class="active icofont-star"></i>
-                                                        <i class="icofont-star"></i>
-                                                        <a href="product-tab.php">(4)</a>
+                                                    <div class="product-rating">';
+
+                                                    for ($i = 1; $i <= 5; $i++) {
+                                                       
+                                                        if($i <= $rating) {
+                                                            echo   '<i class="active icofont-star"></i>';
+                                                        }else{
+                                                            echo   '<i class=" icofont-star"></i>';
+                                                        }
+                                                }
+                                                
+                                                       
+                                                    echo '<a href="product-tab.php">('.$rating.')</a>
                                                     </div>
                                                     <h6 class="product-name">
                                                         <a href="product-tab.php?id='.$product_id.'">'.$product_name.'</a>

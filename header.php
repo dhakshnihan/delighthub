@@ -227,12 +227,19 @@
                         <ul class="navbar-list dropdown">
                             <li class=" header-widget ms-3 dropdown-megamenu">
                                 <!-- <a href="" class="header-widget ms-3 dropdown-arrow1"><span>More</span></a> -->
-                                <a href="login.php" class="header-widget" title="Wishlist">
+                                <a href="" class="header-widget" title="Wishlist">
                                     <img src="images/user.png" alt="user">
                                 </a>
                                     <ul class="dropdown-position-list">
-                                        <li><a href="login.php">Log In</a></li>
-                                        <li><a href="register.php">Register</a></li>
+                                        <?php 
+                                            if(isset($_SESSION['user_id'])>0){
+                                                echo '<li><a href="logout.php">Log Out</a></li>';
+                                            }else{
+                                                echo '<li><a href="login.php">Log In</a></li>
+                                                <li><a href="register.php">Register</a></li>';
+                                            }
+                                           
+                                        ?>
                                         
                                     </ul>
                                

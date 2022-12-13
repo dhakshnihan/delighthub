@@ -315,25 +315,37 @@ if(isset($_POST['cart_checkout'])){
     //Brwose by top Rating/Reviews/Discount
 
     if(isset($_POST['top_browrse_products'])){
-
         $top_browse=$_POST['top_browse'];
+        $query="";
         if($top_browse=="top_order"){
-            $tag='<label class="label-text order">314</label>';
+            $query.=" And PRODN13>100";
         }else if($top_browse=="top_rating"){
-            $tag='<label class="label-text rate">4.8</label>';
+            $query.=" And PRODN11>=3";
         }else{
-            $tag='<label class="label-text off">-10%</label>';
+            $query.=" And PRODN14>=10";
         }
-
         $data="";
         $data.='<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">';
-        $sql="select * from tbl_products";
+        $sql="select * from tbl_products where PRODN08='Active' $query";
         $result=mysqli_query($con,$sql);
         while($row=mysqli_fetch_array($result)){
             $image='./admin/masters/prod_uploads/'.$row["PRODN07"];
             $price=$row['PRODN06'];
             $product_name=$row['PRODN01'];
             $product_id=$row['PRODTID'];
+            $rating=$row['PRODN11'];
+            $top_orders=$row['PRODN13'];
+            $top_discount=$row['PRODN14'];
+
+           
+            if($top_browse=="top_order"){
+                $tag='<label class="label-text order">'.$top_orders.'</label>';
+            }else if($top_browse=="top_rating"){
+                $tag='<label class="label-text rate">'.$rating.'</label>';
+            }else{
+                $tag='<label class="label-text off">-'.$top_discount.'%</label>';
+            }
+    
 
         $data.='<div class="col">
                     <div class="product-card">
@@ -349,13 +361,17 @@ if(isset($_POST['cart_checkout'])){
                             </a>
                         </div>
                         <div class="product-content">
-                            <div class="product-rating">
-                                <i class="active icofont-star"></i>
-                                <i class="active icofont-star"></i>
-                                <i class="active icofont-star"></i>
-                                <i class="active icofont-star"></i>
-                                <i class="icofont-star"></i>
-                                <a href="product-tab.php">(3)</a>
+                            <div class="product-rating">';
+
+                            for ($i = 1; $i <= 5; $i++) {
+                                
+                                if($i <= $rating) {
+                                    $data.= '<i class="active icofont-star"></i>';
+                                }else{
+                                    $data.='<i class=" icofont-star"></i>';
+                                }
+                            } 
+                            $data.='<a href="product-tab.php">'.$rating.'</a>
                             </div>
                             <h6 class="product-name">
                                 <a href="product-tab.php?id='.$product_id.'">'.$product_name.'</a>

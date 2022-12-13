@@ -44,6 +44,19 @@
                         </div>
                         <div class="shop-widget">
                             <h6 class="shop-widget-title">Filter by Rating</h6>
+                                <?php 
+                                    //five star rating 
+                                    $result=mysqli_query($con,"select * from tbl_products where PRODN08='Active' and PRODN11>=5 ");
+                                    $five_star=mysqli_num_rows($result);
+
+                                    //four and above rating
+                                    $resultx=mysqli_query($con,"select * from tbl_products where PRODN08='Active' and PRODN11>3 ");
+                                    $four_star=mysqli_num_rows($resultx);
+
+                                    //three and above rating
+                                    $resultxx=mysqli_query($con,"select * from tbl_products where PRODN08='Active' and PRODN11>2 ");
+                                    $three_star=mysqli_num_rows($resultxx);
+                                ?>
                                 <ul class="shop-widget-list">
                                     <li>
                                         <div class="shop-widget-content">
@@ -53,7 +66,7 @@
                                                 5 Rating
                                             </label>
                                         </div>
-                                        <span class="shop-widget-number">(13)</span>
+                                        <span class="shop-widget-number">(<?php echo $five_star; ?>)</span>
                                     </li>
                                     <li>
                                         <div class="shop-widget-content">
@@ -63,7 +76,7 @@
                                                 4 & Above
                                             </label>
                                         </div>
-                                        <span class="shop-widget-number">(28)</span>
+                                        <span class="shop-widget-number">(<?php echo $four_star; ?>)</span>
                                     </li>
                                     <li>
                                         <div class="shop-widget-content">
@@ -73,7 +86,7 @@
                                                 3 & bove
                                             </label>
                                         </div>
-                                        <span class="shop-widget-number">(35)</span>
+                                        <span class="shop-widget-number">(<?php echo $three_star; ?>)</span>
                                     </li>
                                 </ul>
                                 <button class="shop-widget-btn">

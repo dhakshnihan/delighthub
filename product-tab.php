@@ -35,10 +35,6 @@
             <?php 
             
                  $id = $_GET['id'];
-                
-                  echo $_SESSION['email']; 
-                 
-               
                                  
                 $sql="select * from  tbl_products LEFT JOIN   tbl_brands ON BRANDTID = PRODN03  left join tbl_category on PRODN10=CATEGTID where PRODN08='Active' and PRODTID= '$id'";
                 // echo $sql;
@@ -120,7 +116,7 @@
                                     </div>
                            
                             <div class="details-add-group">
-                                <button class="product-add" title="Add to Cart" onclick="add_to_cart('.$product_id.','.$price.','.$user_id.')">
+                                <button class="product-add" title="Add to Cart" onclick="add_to_cart('.$product_id.','.$price.','.$_SESSION['user_id'].')">
                                     <i class="fas fa-shopping-basket"></i>
                                     <span>add to cart</span>
                                 </button><br/>

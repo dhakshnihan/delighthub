@@ -53,37 +53,37 @@
                             <img src="images/about/03.jpg" alt="about">
                             <img src="images/about/04.jpg" alt="about">
                         </div> -->
-                        <h3>Request Your Product</h3>
-                        <form class="user-form">
+                        <h3>Request Your Product<span style="color:red">*</span></h3>
+                        <form class="user-form" action="" method="post">
                                 <div class="row">
                                     <div class="col-lg-6">
                                     <div class="form-group me-2">
-                                    <input type="text" class="form-control" placeholder="Enter Name">   
+                                    <input type="text" class="form-control"  name="name" id="name" placeholder="Enter Name">   
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group ">
-                                        <input type="text" class="form-control" placeholder="Enter Phone No">  
+                                        <input type="text" class="form-control"  name="phone" id="phone" placeholder="Enter Mobile No">  
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">
                                     <div class="form-group me-2">
-                                    <input type="email" class="form-control" placeholder="Enter Email">   
+                                    <input type="email" class="form-control" name= "email" id="email" placeholder="Enter Email">   
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group ">
-                                        <input type="text" class="form-control" placeholder="Enter Country">  
+                                        <input type="text" class="form-control" name="country" id="country" placeholder="Enter Country">  
                                     </div>
                                 </div>
                                    
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Enter the product you want">
+                                        <input type="text" class="form-control"  id= "want"  name="want" placeholder="Enter the product you want">
                                     </div>
                                  
                                     <div class="form-button">
-                                        <button type="submit">submit</button>
+                                        <button type="submit" name="submit" onclick="requestpro()">submit</button>
                                     </div>
                                 </form>
                     </div>
@@ -93,7 +93,34 @@
         <!--=====================================
                     ABOUT PART END
         =======================================-->
+ <script>
+    function requestpro(){
+    let name= document.getElementById('name').value;
+    let phone= document.getElementById('phone').value;
+    let email = document.getElementById('email').value;
+    let country= document.getElementById('country').value;
+    let want = document.getElementById('want').value;
+        
+    $.ajax({
+                    url:'insert.php',
+                    method:'POST',
+                    data:{
+                        Name:name,
+                        Mobile=phone,
+                        E-mail:email,
+                        country= country,
+                        wanted= want
+                    },
+                   success:function(data){
+                       alert(data);
+                   }
+                });
 
+
+    }
+
+
+ </script>
 
 
         <!--=====================================

@@ -112,7 +112,7 @@
                             <li> 
                                 <p style="color: aliceblue;">
                                     <!-- <small>call us</small> -->
-                                    <i class="icofont-ui-touch-phone"></i><span> 999 999 9999</span>
+                                    <i class="icofont-ui-touch-phone"></i><span> 9700150035</span>
                                 </p></li>
                             <li>
                                 <p style="color: aliceblue;">
@@ -526,7 +526,7 @@
                         <i class="icofont-ui-touch-phone"></i>
                         <p>
                             <small>call us</small>
-                            <span>(+880) 183 8288 389</span>
+                            <span>9700150035</span>
                         </p>
                     </div>
                     <div class="nav-info">

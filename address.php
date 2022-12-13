@@ -65,7 +65,7 @@
                         <div class="user-form-card">
                             <div class="user-form-title">
                                 <h2>ADDRESS</h2>
-                                <p>Setup A New Account In A Minute</p>
+                                <p>Setup A New Address In A Minute</p>
                             </div>
                             <div class="user-form-group">
                                 <!-- <ul class="user-form-social">
@@ -74,13 +74,13 @@
                                     <li><a href="#" class="google"><i class="fab fa-google"></i>Join with google</a></li>
                                     <li><a href="#" class="instagram"><i class="fab fa-instagram"></i>Join with instagram</a></li>
                                 </ul> -->
-                                <figure class="figure">
-                                    <img src="images.jpg" class="figure-img img-fluid rounded" alt="..." width="650" height="950">
+                                <!-- <figure class="figure">
+                                    <img src="images.jpg" class="figure-img img-fluid rounded" alt="..." width="650" height="950"> -->
                                     <!-- <figcaption class="figure-caption text-end">A caption for the above image.</figcaption> -->
-                                  </figure>
-                                <div class="user-form-divider">
+                                  <!-- </figure> -->
+                                <!-- <div class="user-form-divider">
                                     <p>or</p>
-                                </div>
+                                </div> -->
                                 <div class="user-form">
                                 <div class="row">
                                     <div class="col-lg-6">
@@ -127,7 +127,7 @@
                                 
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <div>Choose Image :</div>
+                                            <div>Upload Aadhaar  :</div>
                                             <div>
                                                 <input type="file" class="file-image" name="file_image"  onchange="loadImageFile(event,this)" accept="image/jpeg">
                                             </div>
@@ -138,13 +138,13 @@
                                     </div>   
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <div>Choose Sign :</div>
+                                            <div>Upload Sign :</div>
                                             <div>
                                                 <input type="file" class="file-sign" name="file_sign" id="file_sign"  onchange="loadSignFile(event,this)"  accept="image/jpeg">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
-                                        <img id="SignFile" width="150" height="150" />
+                                        <img id="SignFile" width="150" height="50" />
                                         </div>
                                     </div>  
                                         <span id="address_type"><input  type="hidden" id="address_value" name="address_value" value=""></span>
@@ -158,7 +158,7 @@
                                 </div>
                                   
                                     <div class="form-button">
-                                        <button type="submit" name="Register" id="submit" value="Register"  >register</button>
+                                        <button type="submit" name="Register" id="submit" value="Register" >Submit</button>
                                     </div>
                                  </div>
                             </div>

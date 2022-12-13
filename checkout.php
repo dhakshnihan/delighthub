@@ -223,21 +223,14 @@
                                             <span>Total<small>(Incl. VAT)</small></span>
                                             <span>$<?php echo round($total,2); ?></span>
                                         </li>
+                                        <li>
+                                        
+                                        </li>
                                     </ul>
-                                    <?php 
-                                    
-                                    if($_SESSION['email']>0){ 
-                                           
-                                   echo' <a class="cart-checkout-btn" href="address.php">
-                                   
-                                        <span class="checkout-label">Proceed to Checkout</span>
-                                        <span class="checkout-price">Rs'.$total.'</span>
-                                    </a>';
-                                }
-                                // else{
-                                //     echo '<a class="cart-checkout-btn" href="login.php"></a>';
-                                // }
-                                ?>
+                                    <a class="cart-checkout-btn" href="address.php">
+                    <span class="checkout-label">Proceed to Checkout</span>
+                    <span class="checkout-price">Rs <?php echo round($total,2); ?></span>
+                </a>
                                 </div>
                             </div>
                         </div>

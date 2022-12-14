@@ -20,6 +20,11 @@ if(isset($_POST['product_view'])){
         $product_name=$row['PRODN01'];
         $uom=$row['CATEG04'];
         $PRODN05=$row['PRODN05'];
+        $rating=$row['PRODN11'];
+
+        $sqlx="select * from tbl_cart where fk_product='".$_POST['product_id']."'";
+        $resultx=mysqli_query($con,$sqlx);
+        $already_cart=mysqli_num_rows($resultx);
 
         
 
@@ -49,15 +54,18 @@ if(isset($_POST['product_view'])){
                                     </h3>
                                     <div class="view-meta">
                                         <p>SKU:<span>1234567</span></p>
-                                        <p>BRAND:<a href="#">radhuni</a></p>
                                     </div>
-                                    <div class="view-rating">
-                                        <i class="active icofont-star"></i>
-                                        <i class="active icofont-star"></i>
-                                        <i class="active icofont-star"></i>
-                                                <i class="active icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <a href="product-video.html">(3 reviews)</a>
+                                    <div class="view-rating">';
+                                    for ($i = 1; $i <= 5; $i++) {
+                                                                   
+                                        if($i <= $rating) {
+                                           $response.='<i class="active icofont-star"></i>';
+                                        }else{
+                                            $response.='<i class=" icofont-star"></i>';
+                                        }
+                                    }
+                                        
+                         $response.='<a href="product-items.html">('.$rating.')</a>
                                     </div>
                                     <h3 class="view-price">
                                         <span><input type="hidden" value="'.$price.'" id="price" class="price">$'.$price.'<small>/per kilo</small></span>
@@ -84,12 +92,15 @@ if(isset($_POST['product_view'])){
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" for="inputGroupSelect01">Brand</label>
                                         </div>
-                                        <select class="custom-select" id="inputGroupSelect01">
-                                            <option selected>D-Mart</option>
-                                            <option value="1">More</option>
-                                            <option value="2">Reliance fress</option>
-                                            <option value="3">trends</option>
-                                        </select>
+                                        <select class="custom-select" id="brand">
+                                            <option value="">Any</option>';
+
+                                        $sqlx="select * from tbl_brands where BRAND02='Active'";
+                                        $resultx=mysqli_query($con,$sqlx);
+                                        while($rowx=mysqli_fetch_array($resultx)){
+                                            $response.='<option value='.$rowx['BRAND01'].'>'.$rowx['BRAND01'].'</option>';
+                                        } 
+                             $response.='</select>
                                         </div>
                                         </div>
 
@@ -103,13 +114,26 @@ if(isset($_POST['product_view'])){
                                         </div>
                                         
                                     </div>
-                                    <div class="view-add-group">
-                                        <button class="product-add" title="Add to Cart" onclick="add_to_cart('.$product_id.','.$price.','.$user_id.')">
-                                            <i class="fas fa-shopping-basket"></i>
-                                            <span>add to cart</span>
-                                        </button>
+                                    <div class="view-add-group">';
+                                        if($user_id>0 and $already_cart==0){
+                                            $response.='<button class="product-add" title="Add to Cart" onclick="add_to_cart('.$product_id.','.$price.','.$user_id.')">
+                                                            <i class="fas fa-shopping-basket"></i>
+                                                            <span>add to cart</span>
+                                                        </button>';
+                                        }else if($already_cart>0){
+                                            $response.='<button class="product-add" title="Add to Cart" onclick="already_exist()">
+                                                        <i class="fas fa-shopping-basket"></i>
+                                                        <span>add to cart</span>
+                                                    </button><br/>';
+                                        }else{
+                                            $response.='<a class="product-add" title="Please Login" href="login.php">
+                                                            <i class="fas fa-shopping-basket"></i>
+                                                            <span>add to cart</span>
+                                                        </a>';
+                                        }
+                                     
                                     
-                                    </div> 
+                        $response.='</div> 
                                     <div class="view-action-group">
                                         <a class="view-wish wish" href="#" title="Add Your Wishlist">
                                             <i class="icofont-heart"></i>
@@ -143,15 +167,18 @@ if(isset($_POST['product_view'])){
                                     </h3>
                                     <div class="view-meta">
                                         <p>SKU:<span>1234567</span></p>
-                                        <p>BRAND:<a href="#">radhuni</a></p>
                                     </div>
-                                    <div class="view-rating">
-                                        <i class="active icofont-star"></i>
-                                        <i class="active icofont-star"></i>
-                                        <i class="active icofont-star"></i>
-                                                <i class="active icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <a href="product-video.html">(3 reviews)</a>
+                                    <div class="view-rating">';
+                                    for ($i = 1; $i <= 5; $i++) {
+                                                                   
+                                        if($i <= $rating) {
+                                           $response.='<i class="active icofont-star"></i>';
+                                        }else{
+                                            $response.='<i class=" icofont-star"></i>';
+                                        }
+                                    }
+                                        
+                                $response.='<a href="">('.$rating.')</a>
                                     </div>
                                     <h3 class="view-price">
                                         <span><input type="hidden" value="'.$price.'" id="price" class="price">$'.$price.'<small>/per Item</small></span>
@@ -181,13 +208,26 @@ if(isset($_POST['product_view'])){
                                         </div>
                                         
                                     </div>
-                                    <div class="view-add-group">
-                                        <button class="product-add" title="Add to Cart" onclick="add_to_cart('.$product_id.','.$price.','.$user_id.')">
-                                            <i class="fas fa-shopping-basket"></i>
-                                            <span>add to cart</span>
-                                        </button>
-                                    
-                                    </div> 
+                                    <div class="view-add-group">>';
+                                    if($user_id>0 and $already_cart==0){
+                                        $response.='<button class="product-add" title="Add to Cart" onclick="add_to_cart('.$product_id.','.$price.','.$user_id.')">
+                                                        <i class="fas fa-shopping-basket"></i>
+                                                        <span>add to cart</span>
+                                                    </button>';
+                                    }else if($already_cart>0){
+                                        $response.='<button class="product-add" title="Add to Cart" onclick="already_exist()">
+                                                    <i class="fas fa-shopping-basket"></i>
+                                                    <span>add to cart</span>
+                                                </button><br/>';
+                                    }else{
+                                        $response.='<a class="product-add" title="Please Login" href="login.php">
+                                                        <i class="fas fa-shopping-basket"></i>
+                                                        <span>add to cart</span>
+                                                    </a>';
+                                    }
+                                 
+                                
+                    $response.='</div> 
                                     <div class="view-action-group">
                                         <a class="view-wish wish" href="#" title="Add Your Wishlist" >
                                             <i class="icofont-heart"></i>
@@ -221,15 +261,18 @@ if(isset($_POST['product_view'])){
                                     </h3>
                                     <div class="view-meta">
                                         <p>SKU:<span>1234567</span></p>
-                                        <p>BRAND:<a href="#">radhuni</a></p>
                                     </div>
-                                    <div class="view-rating">
-                                        <i class="active icofont-star"></i>
-                                        <i class="active icofont-star"></i>
-                                        <i class="active icofont-star"></i>
-                                                <i class="active icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <a href="product-video.html">(3 reviews)</a>
+                                    <div class="view-rating">';
+                                    for ($i = 1; $i <= 5; $i++) {
+                                                                   
+                                        if($i <= $rating) {
+                                           $response.='<i class="active icofont-star"></i>';
+                                        }else{
+                                            $response.='<i class=" icofont-star"></i>';
+                                        }
+                                    }
+                                        
+                                $response.='<a href="product-items.html">('.$rating.')</a>
                                     </div>
                                     <h3 class="view-price">
                                         <span><input type="hidden" value="'.$price.'" id="price" class="price">$'.$price.'<small>/per Item</small></span>
@@ -247,13 +290,26 @@ if(isset($_POST['product_view'])){
                                         </div>
                                         
                                     </div>
-                                    <div class="view-add-group">
-                                        <button class="product-add" title="Add to Cart" onclick="add_to_cart('.$product_id.','.$price.','.$user_id.')">
-                                            <i class="fas fa-shopping-basket"></i>
-                                            <span>add to cart</span>
-                                        </button>
-                                    
-                                    </div> 
+                                    <div class="view-add-group">>';
+                                    if($user_id>0 and $already_cart==0){
+                                        $response.='<button class="product-add" title="Add to Cart" onclick="add_to_cart('.$product_id.','.$price.','.$user_id.')">
+                                                        <i class="fas fa-shopping-basket"></i>
+                                                        <span>add to cart</span>
+                                                    </button>';
+                                    }else if($already_cart>0){
+                                        $response.='<button class="product-add" title="Add to Cart" onclick="already_exist()">
+                                                    <i class="fas fa-shopping-basket"></i>
+                                                    <span>add to cart</span>
+                                                </button><br/>';
+                                    }else{
+                                        $response.='<a class="product-add" title="Please Login" href="login.php">
+                                                        <i class="fas fa-shopping-basket"></i>
+                                                        <span>add to cart</span>
+                                                    </a>';
+                                    }
+                                 
+                                
+                    $response.='</div> 
                                     <div class="view-action-group">
                                     <a class="view-wish wish" href="#" title="Add Your Wishlist">
                                         <i class="icofont-heart"></i>
@@ -282,9 +338,10 @@ if(isset($_POST['product_add_to_cart'])){
     $total_price=$_POST['total_price'];
     $items=$_POST['items'];
     $uom=$_POST['uom'];
+    $brand=$_POST['brand'];
     $_SESSION['product_id']=$product_id;
 
-    $sqlx="insert into tbl_cart (fk_product,total_price,items,uom,fk_userid) value ('".$product_id."','".$total_price."','".$items."','".$uom."','".$user_id."')";
+    $sqlx="insert into tbl_cart (fk_product,total_price,items,uom,fk_userid,brand_name) value ('".$product_id."','".$total_price."','".$items."','".$uom."','".$user_id."','".$brand."')";
     // echo $sqlx;
     mysqli_query($con,$sqlx);
 
@@ -390,6 +447,13 @@ if(isset($_POST['cart_checkout'])){
         $data.="</div>";
 
         echo $data;
+    }
+
+
+    if(isset($_POST['comment_reviews'])){
+        $sql="insert into tbl_user_reviews(fk_product_id,reviewer_name,reviewer_email,reviewer_rating,description) values ('".$_POST['product_id']."','".$_POST['reviewer_name']."','".$_POST['reviewer_email']."','5','".$_POST['describe']."')";
+        // echo $sql;
+        mysqli_query($con,$sql);
     }
 
 ?>

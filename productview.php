@@ -1,7 +1,7 @@
  <!--=====================================
                     PRODUCT VIEW START
   =======================================-->
-        <div class="modal fade" id="product-view">
+  <div class="modal fade" id="product-view">
             <div class="modal-dialog"> 
                 <div class="modal-content">
                     <button class="modal-close icofont-close" data-bs-dismiss="modal"></button>
@@ -164,17 +164,21 @@
               var uom=$("#uom").val();
               var quantity=$("#quantity").val();
               var items=$("#number").val();
-             
-         
+              var brand=$("#brand").val();
+          
                 $.ajax({
                     url:"ajax.php",
                     method:"post",
-                    data:{'product_add_to_cart':'product_add_to_cart',product_id:product_id,total_price:quantity,user_id:user_id,items:items,uom:uom},
+                    data:{'product_add_to_cart':'product_add_to_cart',product_id:product_id,total_price:quantity,user_id:user_id,items:items,uom:uom,brand:brand},
                     success:function(response){
                         window.location ='index.php';
                     }
                 })
             }
+
+            function already_exist(){
+            alert("This item already added cart!");
+        }
 
              //======================Added to cart end script=======================================================
 

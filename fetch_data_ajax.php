@@ -6,6 +6,14 @@
 
         $data="";
         $query="";
+        $results_per_page = 2;  
+
+        if (!isset ($_POST['page_no']) ) {  
+            $page_no = 1;  
+        } else {  
+            $page_no = $_POST['page_no'];  
+        }  
+
         $data.='<div class="row row-cols-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-4">';
 
        
@@ -25,7 +33,7 @@
        
        
         if(isset($_POST["rating5"])){
-            $query.= " AND  PRODN11>'".$_POST["rating5"][0]."'";
+            $query.= " AND  PRODN11>='".$_POST["rating5"][0]."'";
         }
         if(isset($_POST["rating4"])){
             $query.= " AND   PRODN11>'".$_POST["rating4"][0]."'";
@@ -51,12 +59,18 @@
         $sql="select * from  tbl_products where PRODN08='Active' $query ";
         // echo $sql;
         $result=mysqli_query($con,$sql);
-        while($row=mysqli_fetch_array($result)){
+        $number_of_result = mysqli_num_rows($result); 
+        $number_of_page = ceil ($number_of_result / $results_per_page);  
+        $page_first_result = ($page_no-1) * $results_per_page;  
+        $query = "select * from  tbl_products where PRODN08='Active' $query LIMIT " . $page_first_result . ',' . $results_per_page;  
+        $resultx=mysqli_query($con,$query);
+        while($row=mysqli_fetch_array($resultx)){
             // $image='/admin/masters/product_uploads/."'.$row['PRODN07'].'"';
             $image='./admin/masters/prod_uploads/'.$row["PRODN07"];
             $price=$row['PRODN06'];
             $product_name=$row['PRODN01'];
             $product_id=$row['PRODTID'];
+            $rating=$row['PRODN11'];
 
         $data.='<div class="col">
                 <div class="product-card">
@@ -73,13 +87,17 @@
                         
                     </div>
                     <div class="product-content">
-                        <div class="product-rating">
-                            <i class="active icofont-star"></i>
-                            <i class="active icofont-star"></i>
-                            <i class="active icofont-star"></i>
-                            <i class="active icofont-star"></i>
-                            <i class="icofont-star"></i>
-                            <a href="product-tab.html">(3)</a>
+                        <div class="product-rating">';
+                        for ($i = 1; $i <= 5; $i++) {
+                                                       
+                            if($i <= $rating) {
+                               $data.='<i class="active icofont-star"></i>';
+                            }else{
+                                $data.='<i class=" icofont-star"></i>';
+                            }
+                        }
+                            
+                    $data.='<a href="product-tab.html">('.$rating.')</a>
                         </div>
                         <h6 class="product-name">
                             <a href="product-tab.html">'.$product_name.'</a>
@@ -89,7 +107,7 @@
                         </h6>
                         <button class="product-add" title="Add to Cart">
                             <i class="fas fa-shopping-basket"></i>
-                            <span title="Product View" href="#" class="add_cart" data-bs-toggle="modal" data-id='.$product_id.' data-bs-target="#product-view">add cart</span>
+                            <span title="Product View" href="#" class="add_cart" onclick="add_cart('.$product_id.')" data-bs-toggle="modal" data-id='.$product_id.' data-bs-target="#product-view">add cart</span>
                             </button>
                         <div class="product-action">
                             <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
@@ -100,7 +118,42 @@
                 </div>
             </div>';
         }
-        echo '</div>';
+        $data.='</div>
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="bottom-paginate">
+                                    <p class="page-info">Showing 5 of '.$number_of_result.' Results</p>
+                                    <ul class="pagination">';
+                                    if(($page_no-1)>0){
+                                        $data.='<li class="page-item">
+                                                    <button class="page-link" onclick=previous_page('.($page_no-1).')>
+                                                        <i class="fas fa-long-arrow-alt-left"></i>
+                                                    </button>
+                                                </li>';
+                                    }else{
+                                        
+                                    }
+                                        
+                                        for($page = 1; $page<= $number_of_page; $page++) { 
+                                           
+                                            if($page==$page_no){
+                                                $status='active';
+                                            }else{
+                                                $status='';
+                                            }
+                                            $data.='<li class="page-item"> <button class="page-link '.$status.'" onclick=pagenation('.$page.')>'.$page.'</button></li>';
+                                        }
+                                 $data.='<li class="page-item">
+                                            <button class="page-link" onclick=next_page('.($page_no+1).')>
+                                                <i class="fas fa-long-arrow-alt-right"></i>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>';
+        
         
         echo $data;
     }

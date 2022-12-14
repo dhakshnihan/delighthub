@@ -3,6 +3,72 @@
     <?php include('cart.php');?>
     <?php include ('productview.php');?>
 
+    <style>
+#snackbar {
+  visibility: hidden;
+ 
+  margin-left: 34rem;
+  max-width: fit-content;
+  background-color: #119744;
+  color: #fff;
+  /* text-align: center; */
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+}
+#snackbar1 {
+  visibility: hidden;
+ 
+  margin-left: 34rem;
+  max-width: fit-content;
+  background-color: red;
+  color: #fff;
+  /* text-align: center; */
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+#snackbar1.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+</style>
+
         <!--=====================================
                     BANNER PART START
         =======================================-->
@@ -54,16 +120,16 @@
                             <img src="images/about/04.jpg" alt="about">
                         </div> -->
                         <h3>Request Your Product<span style="color:red">*</span></h3>
-                        <form class="user-form" action="" method="post">
+                        <!-- <form class="user-form" action="" method="post"> -->
                                 <div class="row">
                                     <div class="col-lg-6">
-                                    <div class="form-group me-2">
+                                    <div class="form-group me-1">
                                     <input type="text" class="form-control"  name="name" id="name" placeholder="Enter Name">   
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group ">
-                                        <input type="text" class="form-control"  name="phone" id="phone" placeholder="Enter Mobile No">  
+                                        <input type="number" class="form-control"  name="phone" id="phone" placeholder="Enter Mobile No">  
                                     </div>
                                 </div>
                                 <div class="row">
@@ -81,11 +147,13 @@
                                     <div class="form-group">
                                         <input type="text" class="form-control"  id= "want"  name="want" placeholder="Enter the product you want">
                                     </div>
+                                    <div id="snackbar">successfully Inserted</div>
+                                    <div id="snackbar1">Error occured !</div>
                                  
                                     <div class="form-button">
                                         <button type="submit" name="submit" onclick="requestpro()">submit</button>
                                     </div>
-                                </form>
+                                <!-- </form> -->
                     </div>
                 </div>
             </div>
@@ -100,22 +168,44 @@
     let email = document.getElementById('email').value;
     let country= document.getElementById('country').value;
     let want = document.getElementById('want').value;
-        
+    var x = document.getElementById("snackbar");
+    var y= document.getElementById("snackbar1");
+           
+   
+      if(name !='' && phone != '' && email != '' && country != '' && want !='')  
+      {
     $.ajax({
-                    url:'insert.php',
+                    url:'request_ajax.php',
                     method:'POST',
                     data:{
+                        type:'action',
                         Name:name,
-                        Mobile=phone,
-                        E-mail:email,
-                        country= country,
-                        wanted= want
+                        Mobile:phone,
+                        Email:email,
+                        country:country,
+                        wanted: want
                     },
                    success:function(data){
-                       alert(data);
+                    var data = JSON.parse(data);
+			if(data.statusCode==200){
+                x.className = "show";
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+										
+			}
+			else if(data.statusCode==201){
+                y.className = "show";
+            setTimeout(function(){ y.className = y.className.replace("show", ""); }, 3000);
+			}
+			
+		
                    }
                 });
+            }
+            else{
+                 y.className = "show";
+            setTimeout(function(){ y.className = y.className.replace("show", ""); }, 3000);
 
+            }
 
     }
 

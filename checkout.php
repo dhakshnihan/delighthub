@@ -692,19 +692,23 @@
                     var selected_values=selected_value.value;
                     var checkout_unit_price=$("#checkout_unit_price_"+cart_id).val();
                     var input = $("#checkout_quantity_"+cart_id).val();
+                    var checkout_grand_total_price = $("#checkout_grand_total_price").val();
                    
                     if(selected_values=='0.5'){
-                       
+                        // var tt = (parseFloat(checkout_grand_total_price)+((parseFloat(checkout_unit_price)/2)*input));
                         document.getElementById('checkout_total_price_'+cart_id).value =(parseFloat(checkout_unit_price)/2)*input;
-                        // document.getElementById('checkout_grand_total_price').value = (parseFloat(checkout_grand_total_price)+((parseFloat(checkout_unit_price)/2)*input));
-                        // checkout_grand_total_price_span.innerHTML =  (parseFloat(checkout_grand_total_price)+((parseFloat(checkout_unit_price)/2)*input));
+                       var tt = (parseFloat(checkout_grand_total_price)+((parseFloat(checkout_unit_price)/2)*input));
+                       alert(tt);
+                        checkout_grand_total_price_span.innerHTML = tt;
                     }else if(selected_values=='0.25'){
                         
                         document.getElementById('checkout_total_price_'+cart_id).value =(parseFloat(checkout_unit_price)/4)*input;
-                        // document.getElementById('checkout_grand_total_price').value = (parseFloat(checkout_grand_total_price)+((parseFloat(checkout_unit_price)/4)*input));
-                        // checkout_grand_total_price_span.innerHTML =  (parseFloat(checkout_grand_total_price)+((parseFloat(checkout_unit_price)/4)*input));
+                        document.getElementById('checkout_grand_total_price').value = (parseFloat(checkout_grand_total_price)+((parseFloat(checkout_unit_price)/4)*input));
+                        checkout_grand_total_price_span.innerHTML =  (parseFloat(checkout_grand_total_price)+((parseFloat(checkout_unit_price)/4)*input));
                     }else{
                          document.getElementById('checkout_total_price_'+cart_id).value =(parseFloat(checkout_unit_price))*input;
+                         document.getElementById('checkout_grand_total_price').value = (parseFloat(checkout_grand_total_price)+((parseFloat(checkout_unit_price)/1)*input));
+                        checkout_grand_total_price_span.innerHTML =  (parseFloat(checkout_grand_total_price)+((parseFloat(checkout_unit_price)/1)*input));
                     }
 
                   

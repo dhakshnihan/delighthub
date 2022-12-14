@@ -2,7 +2,13 @@
 
        <?php include('header.php');?>
     <?php include('cart.php');?>
-    <?php include ('productview.php');?>
+    <?php include ('productview.php');
+    
+    error_reporting(0);
+
+    echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
+    ?>
+    
 
         <!--=====================================
                     BANNER PART START
@@ -70,7 +76,7 @@
                                     </li>
                                     <li>
                                         <div class="shop-widget-content">
-                                            <input type="checkbox" class="common_selector common_selector4" value="4">
+                                            <input type="checkbox" id="feat2" class="common_selector common_selector4" value="3">
                                             <label for="feat2">
                                                 <i class="fas fa-star active"></i>
                                                 4 & Above
@@ -80,7 +86,7 @@
                                     </li>
                                     <li>
                                         <div class="shop-widget-content">
-                                            <input type="checkbox" id="feat3" class="common_selector common_selector3" value="3">
+                                            <input type="checkbox" id="feat3" class="common_selector common_selector3" value="2">
                                             <label for="feat3">
                                                 <i class="fas fa-star active"></i>
                                                 3 & bove
@@ -89,10 +95,6 @@
                                         <span class="shop-widget-number">(<?php echo $three_star; ?>)</span>
                                     </li>
                                 </ul>
-                                <button class="shop-widget-btn">
-                                    <i class="far fa-trash-alt"></i>
-                                    <span>clear filter</span>
-                                </button>
                         </div>
                         <div class="shop-widget">
                             <h6 class="shop-widget-title">Filter by Category</h6>
@@ -106,11 +108,6 @@
                                     }
                                 ?>
                             </select>
-
-                                <button class="shop-widget-btn" >
-                                    <i class="far fa-trash-alt"></i>
-                                    <span>clear filter</span>
-                                </button>
                         </div>
                         <div class="shop-widget">
                             <h6 class="shop-widget-title">Filter by Brand</h6>
@@ -124,10 +121,6 @@
                                     }
                                 ?>
                             </select>
-                                <button class="shop-widget-btn">
-                                    <i class="far fa-trash-alt"></i>
-                                    <span>clear filter</span>
-                                </button>
                         </div>
                         <div class="shop-widget">
                             <h6 class="shop-widget-title">Filter by Region </h6>
@@ -141,7 +134,7 @@
                                     }
                                 ?>
                             </select>
-                                <button class="shop-widget-btn">
+                                <button class="shop-widget-btn" id="clearData" onclick="clearData()">
                                     <i class="far fa-trash-alt"></i>
                                     <span>clear filter</span>
                                 </button>
@@ -155,8 +148,8 @@
                                     <div class="filter-short">
                                         <label class="filter-label">Short by :</label>
                                         <select class="form-select filter-select" id="short_by_filter" onchange="short_by_filter()">
-                                            <option value="4">Populartiy</option>
-                                            <option value="3">New Items</option>
+                                            <!-- <option value="4">Populartiy</option>
+                                            <option value="3">New Items</option> -->
                                             <option value="price_high_to_low">Price High to Low</option>
                                             <option value="price_low_to_high">Price Low to High</option>
                                         </select>
@@ -170,7 +163,7 @@
                             </div>
                         </div>
                             <div class="filter_data"></div>
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-lg-12">
                                 <div class="bottom-paginate">
                                     <p class="page-info">Showing 12 of 60 Results</p>
@@ -193,7 +186,7 @@
                                     </ul>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -417,9 +410,7 @@
             $(document).ready(function(){
                 $("#filter_category").select2();
             })
-            $(document).ready(function(){
-                $(".add_cart").click(function(){
-                    var product_id =$(this).data('id');
+           function add_cart(product_id){
                     var user_id=$("#user_id").val();
                     $.ajax({
                         url:"ajax.php",
@@ -430,13 +421,12 @@
                             $("#modal-content").modal('show'); 
                         }
                     })
-                })
-            })
+                }
 
 
           
                 
-                function filter_data()
+                function filter_data(page)
                 {
                   
                     // $('.filter_data').html('<div id="loading" style="" ></div>');
@@ -451,12 +441,13 @@
                    var rating3=get_filter('common_selector3');
 
                    var filter_region=$("#filter_region").val();
+
                    
                     $.ajax({
                         url:"fetch_data_ajax.php",
                         method:"POST",
                         data:{'action':'action', minimum_price:minimum_price, maximum_price:maximum_price,filter_brand:filter_brand,
-                            filter_category:filter_category,short_by_filter:short_by_filter,rating5:rating5,rating4:rating4,rating3:rating3,filter_region:filter_region},
+                            filter_category:filter_category,short_by_filter:short_by_filter,rating5:rating5,rating4:rating4,rating3:rating3,filter_region:filter_region,page_no:page},
                         success:function(data){
                             $('.filter_data').html(data);
                            
@@ -497,9 +488,31 @@
                     filter_data();
                 });
                
+                function clearData() {
+                    
+                    document.getElementById("filter_category").value = "";
+                    document.getElementById("filter_region").value = "";
+                    document.getElementById("filter_brand").value = "";
+                    $("#feat2").prop("checked", false);
+                    $("#feat1").prop("checked", false);
+                    $("#feat3").prop("checked", false);
+                    document.getElementById("min_price").value="";
+                    document.getElementById("max_price").value="";
+                    // filter_category.innerHTML="<option value=''>Filter Category</option>";
+                    filter_data();
+                }  
+               
+                function pagenation(page){
+                    filter_data(page);
+                }
 
-              
-         
+                function next_page(page){
+                    filter_data(page);
+                }
+                
+                function previous_page(page){
+                    filter_data(page);
+                }
            
             
     </script>

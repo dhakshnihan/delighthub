@@ -271,7 +271,7 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                                                 <div class="product-label">
                                                     <label class="label-text new">new</label>
                                                 </div>
-                                                <button class="product-wish wish">
+                                                <button class="product-wish wish" onclick="add_wish_list('.$product_id.')">
                                                     <i class="fas fa-heart"></i>
                                                 </button>
                                                 <a class="product-image" href="product-tab.php?id='.$product_id.'">
@@ -822,6 +822,19 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
         //     })
         // })
 
+        function add_wish_list(product_id){
+        alert("test");
+        $user_id=$("#user_id").val();
+            $.ajax({
+                url:"ajax.php",
+                method:"post",
+                data:{'add_wishlist':'add_wishlist',product_id:product_id,user_id:user_id},
+                success:function(data){
+                  
+                }
+            })
+      }
+
         function add_cart(product_id){
         
             // var product_id =$(this).data('id');
@@ -850,8 +863,9 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
         }
         
         $(document).ready(function(){
-         $('#btn').trigger('click');
-      });
+            $('#btn').trigger('click');
+        });
+      
 
     </script>
 

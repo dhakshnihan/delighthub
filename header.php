@@ -3,7 +3,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<?php include('dbconnection.php');?>
+<?php include('dbconnection.php'); ?>
     <head>
         <!--=====================================
                     META TAG PART START

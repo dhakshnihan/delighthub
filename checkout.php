@@ -107,14 +107,17 @@
                                                 <th scope="col">action</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="tbody">
                                             <?php 
+                                              $x=0;
+                                            $array_cart_id=array();
                                             $checkout_grand_total_price=0;
                                             $sql="select * from tbl_cart 
                                             left join tbl_products on PRODTID=fk_product
                                             left join tbl_category on  PRODN10=CATEGTID
                                             where PRODN08='Active'";
                                             $result=mysqli_query($con,$sql);
+                                            $child= mysqli_num_rows($result);
                                             while($row=mysqli_fetch_array($result)){
                                                 $image='./admin/masters/prod_uploads/'.$row["PRODN07"];
                                                 $product_name=$row['PRODN01'];
@@ -125,23 +128,28 @@
                                                 $unit_price=$row['PRODN06'];
                                                 $uom=$row['uom'];
                                                 $product_id=$row['PRODTID'];
+                                                $array_cart_id[]=$row['cart_id'];
+                                                // print_r($array_cart_id);
+
                                                 
                                             
                                                 $categoty_uom=$row['CATEG04'];
+                                              
                                                 echo    '<tr>
                                                             <td class="table-serial"><h6>Pro0001</h6></td>
+                                                           
                                                             <td class="table-image"><img src="'.$image.'" alt="product"></td>
                                                             <td class="table-name"><h6>'.$product_name.'</h6></td>
-                                                            <td class="table-price"><h6>$<input type="text" name="checkout_total_price[]" id="checkout_total_price_'.$cart_id.'" value="'.$checkout_total_price.'" readonly><small>/kilo</small></h6>
-                                                                <input type="hidden" name="checkout_unit_price[]" id="checkout_unit_price_'.$cart_id.'" value="'.$checkout_unit_price.'" readonly>
+                                                            <td class="table-price"><h6>$<input  class="checkout_total_price_'.$x.'" type="text" name="checkout_total_price[]" id="checkout_total_price_'.$x.'" value="'.$checkout_total_price.'" readonly><small>/kilo</small></h6>
+                                                                <input type="hidden" class="checkout_unit_price_'.$x.'" name="checkout_unit_price[]" id="checkout_unit_price_'.$x.'" value="'.$checkout_unit_price.'" readonly>
                                                                 
                                                             </td>';
                                                      if($categoty_uom=='Kgs'){
-                                                        
+                                                          
                                                         echo  '<td class="table-brand">'; 
                                                         ?>
 
-                                                                <select class="select_uom_kgs_<?=$cart_id?>" id="select_uom_kgs_<?=$cart_id; ?>" onchange="select_uom_kgs(<?php echo $cart_id; ?>,this)">
+                                                                <select class="select_uom_kgs_<?=$cart_id?>" id="select_uom_kgs_<?=$x; ?>" onchange="select_uom_kgs(<?php echo $x; ?>,this)">
                                                                         <option value="0.25" <?php echo ($uom == '0.25')?"selected":"" ?>>0.250g</option>
                                                                         <option value="0.5" <?php echo ($uom == '0.5')?"selected":"" ?>>0.500g</option>
                                                                         <option value="1" <?php echo ($uom == '1')?"selected":"" ?>>1kg</option>
@@ -169,9 +177,9 @@
                                                       echo  '<td class="table-quantity">
                                                                 <div class="cart-action-group">
                                                                     <div class="product-action">
-                                                                        <button class="action-minus" title="Quantity Minus" onclick="checkoutdecrementValue('.$cart_id.','.$checkout_unit_price.')" value="-"><i class="icofont-minus"></i></button>
-                                                                        <input type="text" name="input-quantity[]"  value="'.$items.'" maxlength="2" max="10" size="1"  class="checkout_quantity_'.$cart_id.'"  id="checkout_quantity_'.$cart_id.'"  />
-                                                                        <button class="action-plus" title="Quantity Plus" onclick="checkoutincrementValue('.$cart_id.','.$checkout_unit_price.')" value="+"><i class="icofont-plus"></i></button>
+                                                                        <button cart_id="'.$cart_id.'"class="action-minus" title="Quantity Minus" onclick="checkoutdecrementValue('.$x.','.$checkout_unit_price.')" value="-"><i class="icofont-minus"></i></button>
+                                                                        <input type="text" name="input-quantity[]"  value="'.$items.'" maxlength="2" max="10" size="1"  class="checkout_quantity_'.$cart_id.'"  id="checkout_quantity_'.$x.'"  />
+                                                                        <button class="action-plus" title="Quantity Plus" onclick="checkoutincrementValue('.$x.','.$checkout_unit_price.')" value="+"><i class="icofont-plus"></i></button>
                                                                     </div>
                                                                 </div>
                                                             </td>
@@ -183,11 +191,11 @@
                                                         </tr>';
 
                                                         $checkout_grand_total_price=$checkout_grand_total_price+$checkout_total_price;
-                                                       
-                                                       
+                                                  $x++;     
+                                                      
                                             }
                                             echo '<input type="hidden" id="checkout_grand_total_price" value="'.$checkout_grand_total_price.'">';
-
+                                            echo '<input  type= "text" id="totalcount" value="'.$child.'">';
                                             //total 10% discount price 
                                             $discount_price = (10/100)*$checkout_grand_total_price;
                                             $total=$checkout_grand_total_price- $discount_price;
@@ -604,41 +612,45 @@
                     var input = $("#checkout_quantity_"+cart_id).val();
                     var checkout_grand_total_price = $("#checkout_grand_total_price").val();
                     var select_uom_kgs=$("#select_uom_kgs_"+cart_id).val();
+                    input = isNaN(input) ? 0 : input;
+                    input++;
+                    document.getElementById('checkout_quantity_'+cart_id).value  = input;
+                    ReCalculate();
+
+                    // if(select_uom_kgs=="0.25"){
+                    //     input = isNaN(input) ? 0 : input;
                     
-                    if(select_uom_kgs=="0.25"){
-                        input = isNaN(input) ? 0 : input;
-                    
-                        if(input<10){
-                            input++;
-                                document.getElementById('checkout_quantity_'+cart_id).value  = input;
-                                document.getElementById('checkout_total_price_'+cart_id).value =(parseFloat(unit_price)*input)/4;
+                    //     if(input<10){
+                    //         input++;
+                    //             document.getElementById('checkout_quantity_'+cart_id).value  = input;
+                    //             document.getElementById('checkout_total_price_'+cart_id).value =(parseFloat(unit_price)*input)/4;
                             
-                                document.getElementById('checkout_grand_total_price').value = (parseFloat(checkout_grand_total_price)+parseFloat(unit_price));
-                                checkout_grand_total_price_span.innerHTML =  (parseFloat(checkout_grand_total_price)+parseFloat(unit_price));
-                        }
-                    }else if(select_uom_kgs=="0.5"){
-                        input = isNaN(input) ? 0 : input;
+                    //             document.getElementById('checkout_grand_total_price').value = (parseFloat(checkout_grand_total_price)+parseFloat(unit_price));
+                    //             checkout_grand_total_price_span.innerHTML =  (parseFloat(checkout_grand_total_price)+parseFloat(unit_price));
+                    //     }
+                    // }else if(select_uom_kgs=="0.5"){
+                    //     input = isNaN(input) ? 0 : input;
                     
-                        if(input<10){
-                            input++;
-                                document.getElementById('checkout_quantity_'+cart_id).value  = input;
-                                document.getElementById('checkout_total_price_'+cart_id).value =(parseFloat(unit_price)*input)/2;
+                    //     if(input<10){
+                    //         input++;
+                    //             document.getElementById('checkout_quantity_'+cart_id).value  = input;
+                    //             document.getElementById('checkout_total_price_'+cart_id).value =(parseFloat(unit_price)*input)/2;
                             
-                                document.getElementById('checkout_grand_total_price').value = (parseFloat(checkout_grand_total_price)+parseFloat(unit_price));
-                                checkout_grand_total_price_span.innerHTML =  (parseFloat(checkout_grand_total_price)+parseFloat(unit_price));
-                        }
-                    }else{
-                        input = isNaN(input) ? 0 : input;
+                    //             document.getElementById('checkout_grand_total_price').value = (parseFloat(checkout_grand_total_price)+parseFloat(unit_price));
+                    //             checkout_grand_total_price_span.innerHTML =  (parseFloat(checkout_grand_total_price)+parseFloat(unit_price));
+                    //     }
+                    // }else{
+                    //     input = isNaN(input) ? 0 : input;
                     
-                        if(input<10){
-                            input++;
-                                document.getElementById('checkout_quantity_'+cart_id).value  = input;
-                                document.getElementById('checkout_total_price_'+cart_id).value =unit_price*input;
+                    //     if(input<10){
+                    //         input++;
+                    //             document.getElementById('checkout_quantity_'+cart_id).value  = input;
+                    //             document.getElementById('checkout_total_price_'+cart_id).value =unit_price*input;
                             
-                                document.getElementById('checkout_grand_total_price').value = (parseFloat(checkout_grand_total_price)+parseFloat(unit_price));
-                                checkout_grand_total_price_span.innerHTML =  (parseFloat(checkout_grand_total_price)+parseFloat(unit_price));
-                        }
-                    }
+                    //             document.getElementById('checkout_grand_total_price').value = (parseFloat(checkout_grand_total_price)+parseFloat(unit_price));
+                    //             checkout_grand_total_price_span.innerHTML =  (parseFloat(checkout_grand_total_price)+parseFloat(unit_price));
+                    //     }
+                    // }
                    
                 }
                 function checkoutdecrementValue(cart_id,unit_price)
@@ -647,69 +659,103 @@
                     var input = $("#checkout_quantity_"+cart_id).val();
                     var checkout_grand_total_price = $("#checkout_grand_total_price").val();
                     var select_uom_kgs=$("#select_uom_kgs_"+cart_id).val();
-                    
-                    if(select_uom_kgs=="0.25"){
-                        input = isNaN(input) ? 0 : input;
-                    
-                        if(input>1){
-                            input--;
-                                document.getElementById('checkout_quantity_'+cart_id).value  = input;
-                                document.getElementById('checkout_total_price_'+cart_id).value =(parseFloat(unit_price)*input)/4;
-                                document.getElementById('checkout_grand_total_price').value = (parseFloat(checkout_grand_total_price)-parseFloat(unit_price));
-                                checkout_grand_total_price_span.innerHTML =  (parseFloat(checkout_grand_total_price)-parseFloat(unit_price));
-                        
-                        }
-                    }else if(select_uom_kgs=="0.5"){
-                        input = isNaN(input) ? 0 : input;
-                    
-                        if(input>1){
-                            input--;
-                                document.getElementById('checkout_quantity_'+cart_id).value  = input;
-                                document.getElementById('checkout_total_price_'+cart_id).value =(parseFloat(unit_price)*input)/2;
-                                document.getElementById('checkout_grand_total_price').value = (parseFloat(checkout_grand_total_price)-parseFloat(unit_price));
-                                checkout_grand_total_price_span.innerHTML =  (parseFloat(checkout_grand_total_price)-parseFloat(unit_price));
-                        
-                        }
-                    }else{
-                        input = isNaN(input) ? 0 : input;
-                    
-                        if(input>1){
-                            input--;
-                                document.getElementById('checkout_quantity_'+cart_id).value  = input;
-                                document.getElementById('checkout_total_price_'+cart_id).value =unit_price*input;
-                                document.getElementById('checkout_grand_total_price').value = (parseFloat(checkout_grand_total_price)-parseFloat(unit_price));
-                                checkout_grand_total_price_span.innerHTML =  (parseFloat(checkout_grand_total_price)-parseFloat(unit_price));
-                        
-                        }
+                    input = isNaN(input) ? 0 : input;
+                    if (input > 1){
+                        input--;
                     }
+                    document.getElementById('checkout_quantity_'+cart_id).value  = input;
+                    ReCalculate();
+                    // if(select_uom_kgs=="0.25"){
+                    //     input = isNaN(input) ? 0 : input;
+                    
+                    //     if(input>1){
+                    //         input--;
+                    //             document.getElementById('checkout_quantity_'+cart_id).value  = input;
+                    //             document.getElementById('checkout_total_price_'+cart_id).value =(parseFloat(unit_price)*input)/4;
+                    //             document.getElementById('checkout_grand_total_price').value = (parseFloat(checkout_grand_total_price)-parseFloat(unit_price));
+                    //             checkout_grand_total_price_span.innerHTML =  (parseFloat(checkout_grand_total_price)-parseFloat(unit_price));
+                        
+                    //     }
+                    // }else if(select_uom_kgs=="0.5"){
+                    //     input = isNaN(input) ? 0 : input;
+                    
+                    //     if(input>1){
+                    //         input--;
+                    //             document.getElementById('checkout_quantity_'+cart_id).value  = input;
+                    //             document.getElementById('checkout_total_price_'+cart_id).value =(parseFloat(unit_price)*input)/2;
+                    //             document.getElementById('checkout_grand_total_price').value = (parseFloat(checkout_grand_total_price)-parseFloat(unit_price));
+                    //             checkout_grand_total_price_span.innerHTML =  (parseFloat(checkout_grand_total_price)-parseFloat(unit_price));
+                        
+                    //     }
+                    // }else{
+                    //     input = isNaN(input) ? 0 : input;
+                    
+                    //     if(input>1){
+                    //         input--;
+                    //             document.getElementById('checkout_quantity_'+cart_id).value  = input;
+                    //             document.getElementById('checkout_total_price_'+cart_id).value =unit_price*input;
+                    //             document.getElementById('checkout_grand_total_price').value = (parseFloat(checkout_grand_total_price)-parseFloat(unit_price));
+                    //             checkout_grand_total_price_span.innerHTML =  (parseFloat(checkout_grand_total_price)-parseFloat(unit_price));
+                        
+                    //     }
+                    // }
 
                    
                   
                 }
 
 
+                function ReCalculate(){
+                    let children = document.getElementById('totalcount').value;
+                    let sum=0;
+                    console.log(children);
+                    for (i=0;i<children;i++){
+                        let checkout_unit_priceelement = document.getElementById("checkout_total_price_"+i.toString());
+                        let fixedpriceelement= document.getElementById('checkout_unit_price_'+i.toString()).value;
+                        let checkout_quantity = document.getElementById('checkout_quantity_'+i.toString()).value;
+                        let select_uom_kgs = document.getElementById('select_uom_kgs_'+i.toString()).value;
+
+                       
+                       let cal= checkout_unit_priceelement.value=parseFloat(fixedpriceelement)*parseFloat(checkout_quantity)*parseFloat(select_uom_kgs);
+                       sum = sum+cal;
+                    }
+                    checkout_grand_total_price_span.innerHTML = sum;
+                }
+
                 function select_uom_kgs(cart_id,selected_value){
+
+                    // id="checkout_unit_price_'.$cart_id.'
+                    console.log(typeof selected_value);
                     var selected_values=selected_value.value;
                     var checkout_unit_price=$("#checkout_unit_price_"+cart_id).val();
                     var input = $("#checkout_quantity_"+cart_id).val();
+                    // id="checkout_total_price_1"
                     var checkout_grand_total_price = $("#checkout_grand_total_price").val();
+                    ReCalculate();
                    
-                    if(selected_values=='0.5'){
-                        // var tt = (parseFloat(checkout_grand_total_price)+((parseFloat(checkout_unit_price)/2)*input));
-                        document.getElementById('checkout_total_price_'+cart_id).value =(parseFloat(checkout_unit_price)/2)*input;
-                       var tt = (parseFloat(checkout_grand_total_price)+((parseFloat(checkout_unit_price)/2)*input));
-                       alert(tt);
-                        checkout_grand_total_price_span.innerHTML = tt;
-                    }else if(selected_values=='0.25'){
+                    // var multiplier = parseFloat(selected_values)
+                    // document.getElementById('checkout_total_price_'+cart_id).value = multiplier * parseFloat(checkout_unit_price);
+
+                    // checkout_grand_total_price_span.innerHTML = multiplier * parseFloat(checkout_unit_price);
+
                         
-                        document.getElementById('checkout_total_price_'+cart_id).value =(parseFloat(checkout_unit_price)/4)*input;
-                        document.getElementById('checkout_grand_total_price').value = (parseFloat(checkout_grand_total_price)+((parseFloat(checkout_unit_price)/4)*input));
-                        checkout_grand_total_price_span.innerHTML =  (parseFloat(checkout_grand_total_price)+((parseFloat(checkout_unit_price)/4)*input));
-                    }else{
-                         document.getElementById('checkout_total_price_'+cart_id).value =(parseFloat(checkout_unit_price))*input;
-                         document.getElementById('checkout_grand_total_price').value = (parseFloat(checkout_grand_total_price)+((parseFloat(checkout_unit_price)/1)*input));
-                        checkout_grand_total_price_span.innerHTML =  (parseFloat(checkout_grand_total_price)+((parseFloat(checkout_unit_price)/1)*input));
-                    }
+                    // if(selected_values=='0.5'){
+
+                    //     // var tt = (parseFloat(checkout_grand_total_price)+((parseFloat(checkout_unit_price)/2)*input));
+                    //     document.getElementById('checkout_total_price_'+cart_id).value =(parseFloat(checkout_unit_price)/2)*input;
+                    //    var tt = (parseFloat(checkout_grand_total_price)+((parseFloat(checkout_unit_price)/2)*input));
+                    //    alert(tt);
+                    //     checkout_grand_total_price_span.innerHTML = tt;
+                    // }else if(selected_values=='0.25'){
+                        
+                    //     document.getElementById('checkout_total_price_'+cart_id).value =(parseFloat(checkout_unit_price)/4)*input;
+                    //     document.getElementById('checkout_grand_total_price').value = (parseFloat(checkout_grand_total_price)+((parseFloat(checkout_unit_price)/4)*input));
+                    //     checkout_grand_total_price_span.innerHTML =  (parseFloat(checkout_grand_total_price)+((parseFloat(checkout_unit_price)/4)*input));
+                    // }else{
+                    //      document.getElementById('checkout_total_price_'+cart_id).value =(parseFloat(checkout_unit_price))*input;
+                    //      document.getElementById('checkout_grand_total_price').value = (parseFloat(checkout_grand_total_price)+((parseFloat(checkout_unit_price)/1)*input));
+                    //     checkout_grand_total_price_span.innerHTML =  (parseFloat(checkout_grand_total_price)+((parseFloat(checkout_unit_price)/1)*input));
+                    // }
 
                   
                 }

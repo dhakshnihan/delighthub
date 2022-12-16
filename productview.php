@@ -14,13 +14,13 @@
 
         <script>
             //=======================Kges part Start caleculation =======================================
-            function  myfunction_weight_value1(val){
+            function  myfunction_weight_value1(val,symbol){
                 var price = document.getElementById("price").value;
                 weight_value.innerHTML ="Weight: " + "" + val + "" + " Kg ";
                 uom_input_value.innerHTML = '<input  title="UOM" type="hidden" id="uom" name="uom" value="'+val+'">';
-                total_price.innerHTML = "$" + "" + parseInt(price)/4 + "" + "  (Inclusive Of Tax)";
-                total_input_price.innerHTML = '<input  title="Final Quantity" type="hidden" id="quantity" name="quantity" value="'+parseInt(price)/4+'" >';
-                total_input_hidden_price.innerHTML = '<input  title="Quantity Number" type="hidden" id="quantity_hidden" name="quantity_hidden" value="'+parseInt(price)/4+'" >';
+                total_price.innerHTML = symbol + "" + parseFloat((price)/4).toFixed(2) + "" + "  (Inclusive Of Tax)";
+                total_input_price.innerHTML = '<input  title="Final Quantity" type="hidden" id="quantity" name="quantity" value="'+parseFloat((price)/4).toFixed(2)+'" >';
+                total_input_hidden_price.innerHTML = '<input  title="Quantity Number" type="hidden" id="quantity_hidden" name="quantity_hidden" value="'+parseFloat((price)/4).toFixed(2)+'" >';
                 document.getElementById('number').value = 1;
 
                 var myfunction_weight_value3 = document.getElementById("myfunction_weight_value3");
@@ -31,13 +31,13 @@
                 myfunction_weight_value1.classList.add("active");
                
             }
-            function  myfunction_weight_value2(val){
+            function  myfunction_weight_value2(val,symbol){
                 var price = document.getElementById("price").value;
                 weight_value.innerHTML = "Weight: " + "" + val + "" + " Kg ";
                 uom_input_value.innerHTML = '<input  title="UOM" type="hidden" id="uom" name="uom" value="'+val+'">';
-                total_price.innerHTML = "$" + "" + parseInt(price)/parseInt(2) + "" + "  (Inclusive Of Tax)";
-                total_input_price.innerHTML = '<input  title="Final Quantity" type="hidden" id="quantity" name="quantity" value="'+parseInt(price)/parseInt(2)+'" >';
-                total_input_hidden_price.innerHTML = '<input  title="Quantity Number" type="hidden" id="quantity_hidden" name="quantity_hidden" value="'+parseInt(price)/parseInt(2)+'" >';
+                total_price.innerHTML = symbol + "" + parseFloat((price)/2).toFixed(2) + "" + "  (Inclusive Of Tax)";
+                total_input_price.innerHTML = '<input  title="Final Quantity" type="hidden" id="quantity" name="quantity" value="'+parseFloat((price)/2).toFixed(2)+'" >';
+                total_input_hidden_price.innerHTML = '<input  title="Quantity Number" type="hidden" id="quantity_hidden" name="quantity_hidden" value="'+parseFloat((price)/2).toFixed(2)+'" >';
                 document.getElementById('number').value = 1;
                 
                 var myfunction_weight_value3 = document.getElementById("myfunction_weight_value3");
@@ -48,13 +48,13 @@
                 myfunction_weight_value1.classList.remove("active");
                 
             }
-            function  myfunction_weight_value3(val){
+            function  myfunction_weight_value3(val,symbol){
                 var price = document.getElementById("price").value;
                 weight_value.innerHTML =  "Weight: " + "" + val + "" + " Kg ";
                 uom_input_value.innerHTML = '<input  title="UOM" type="hidden" id="uom" name="uom" value="'+val+'">';
-                total_price.innerHTML = "$" + "" + parseInt(price)/parseInt(val) + "" + "  (Inclusive Of Tax)";
-                total_input_price.innerHTML = '<input  title="Final Quantity" type="hidden" id="quantity" name="quantity" value="'+parseInt(price)/parseInt(val)+'">';
-                total_input_hidden_price.innerHTML = '<input  title="Quantity Number" type="hidden" id="quantity_hidden" name="quantity_hidden" value="'+parseInt(price)/parseInt(val)+'" >';
+                total_price.innerHTML = symbol + "" + parseFloat((price)/val).toFixed(2) + "" + "  (Inclusive Of Tax)";
+                total_input_price.innerHTML = '<input  title="Final Quantity" type="hidden" id="quantity" name="quantity" value="'+parseFloat((price)/val).toFixed(2)+'">';
+                total_input_hidden_price.innerHTML = '<input  title="Quantity Number" type="hidden" id="quantity_hidden" name="quantity_hidden" value="'+parseFloat((price)/val).toFixed(2)+'" >';
                 document.getElementById('number').value = 1;
                
                 var myfunction_weight_value3 = document.getElementById("myfunction_weight_value3");
@@ -67,30 +67,30 @@
                
             }
         
-            function incrementValue()
+            function incrementValue(symbol)
             {
                 var quantity_hidden = $("#quantity_hidden").val();
-                var value = parseInt(document.getElementById('number').value, 10);
+                var value = parseFloat(document.getElementById('number').value, 10);
                 value = isNaN(value) ? 0 : value;
                 if(value<10){
                     value++;
                         document.getElementById('number').value = value;
-                        document.getElementById('quantity').value =quantity_hidden*value;
-                        total_price.innerHTML = "Rs:" + "" + parseInt(quantity_hidden)*parseInt(value) + "" + " /-"+" (Inclusive Of Tax)";
+                        document.getElementById('quantity').value =parseFloat(quantity_hidden*value).toFixed(2);
+                        total_price.innerHTML = symbol + "" + parseFloat(quantity_hidden*value).toFixed(2) + "" + " /-"+" (Inclusive Of Tax)";
                 }
             }
-            function decrementValue()
+            function decrementValue(symbol)
             {
                 var quantity_hidden = $("#quantity_hidden").val();
                 var quantity = $("#quantity").val();
                
-                var value = parseInt(document.getElementById('number').value, 10);
+                var value = parseFloat(document.getElementById('number').value, 10);
                 value = isNaN(value) ? 0 : value;
                 if(value>1){
                     value--;
                         document.getElementById('number').value = value;
-                        document.getElementById('quantity').value =quantity-quantity_hidden;
-                        total_price.innerHTML = "Rs:" + "" + (quantity-quantity_hidden) + "" + "/-" +"  (Inclusive Of Tax)";
+                        document.getElementById('quantity').value = parseFloat(quantity-quantity_hidden).toFixed(2);
+                        total_price.innerHTML = symbol + "" + parseFloat(quantity-quantity_hidden).toFixed(2) + "" + "/-" +"  (Inclusive Of Tax)";
                         
                 }
 

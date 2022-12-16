@@ -93,17 +93,16 @@
                                 <i class="icofont-world"></i>
                                 <select class="select">
                                     <option value="english" selected>english</option>
-                                    <option value="bangali">bangali</option>
-                                    <option value="arabic">arabic</option>
                                 </select>
                             </div>
                             <div class="header-select">
                                 <i class="icofont-money"></i>
-                                <select class="select">
-                                    <option value="english" selected>doller</option>
-                                    <option value="bangali">pound</option>
-                                    <option value="arabic">taka</option>
-                                </select>
+                                    <select class="select_currency" name="currency" id="currency" onchange="currency_convertion()">
+                                        <option value="please select">Please select currency</option>
+                                        <option value="Rupee" <?php echo ($_SESSION['currency'] == 'Rupee')?"selected":"" ?>>Rupee</option>
+                                        <option value="Pound" <?php echo ($_SESSION['currency'] == 'Pound')?"selected":"" ?>>pound</option>
+                                        <option value="Doller" <?php echo ($_SESSION['currency'] == 'Doller')?"selected":"" ?>>doller</option>
+                                    </select>
                             </div>
                         </div>
                     </div>
@@ -585,3 +584,17 @@
         <!--=====================================
                     MOBILE-MENU PART END
         =======================================-->
+
+        <script>
+            function currency_convertion(){
+                var currency = $("#currency").val();
+                $.ajax({
+                    url:"ajax.php",
+                    method:"POST",
+                    data:{'currency_convertion':'currency_convertion',currency:currency},
+                    success:function(response){
+                        location.reload();
+                    }
+                });
+            }
+        </script>

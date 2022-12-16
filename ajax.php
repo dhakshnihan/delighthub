@@ -17,11 +17,21 @@ if(isset($_POST['product_view'])){
     while($row=mysqli_fetch_array($result)){
     
         $image='./admin//masters/prod_uploads/'.$row["PRODN07"];
-        $price=$row['PRODN06'];
         $product_name=$row['PRODN01'];
         $uom=$row['CATEG04'];
         $PRODN05=$row['PRODN05'];
         $rating=$row['PRODN11'];
+
+        if($_SESSION['currency'] == 'Rupee'){
+            $price=$row['PRODN06'];
+            $symbol="₹";
+        }else if($_SESSION['currency'] == 'Doller'){
+            $price=$row['PRODN15'];
+            $symbol="$";
+        }else if($_SESSION['currency'] == 'Pound'){
+            $price=$row['PRODN15'];
+            $symbol="£";
+        }
 
         $sqlx="select * from tbl_cart where fk_product='".$_POST['product_id']."'";
         $resultx=mysqli_query($con,$sqlx);
@@ -83,11 +93,11 @@ if(isset($_POST['product_view'])){
                          $response.='<a href="product-items.html">('.$rating.')</a>
                                     </div>
                                     <h3 class="view-price">
-                                        <span><input type="hidden" value="'.$price.'" id="price" class="price">$'.$price.'<small>/per kilo</small></span>
+                                        <span><input type="hidden" value="'.$price.'" id="price" class="price">'.$symbol.''.$price.'<small>/per kilo</small></span>
                                         
                                     </h3>
                                     <h4>
-                                    <span id="total_price" class="total_price" style="color:red"> Rs:'.$price.' (Inclusive Of Tax)</span>
+                                    <span id="total_price" class="total_price" style="color:red">'.$symbol.''.$price.' (Inclusive Of Tax)</span>
                                     </h4>
                                     <p id="weight_value">Weight: 1 kg</p>
                                     <span id="uom_input_value"><input  title="UOM" type="hidden" id="uom" name="uom" value="1"></span>
@@ -96,9 +106,9 @@ if(isset($_POST['product_view'])){
                                     <div class="view-list-group">
                                     
                                         <ul class="view-tag-list">
-                                            <li><button type="button" class="btn btn-outline-success " value="0.25" id="myfunction_weight_value1" onclick="myfunction_weight_value1(0.25)">0.25 KG</button></li>
-                                            <li><button type="button" class="btn btn-outline-success " value="0.50" id="myfunction_weight_value2" onclick="myfunction_weight_value2(0.50)">0.50 KG</button></li>
-                                            <li><button type="button" class="btn btn-outline-success " value="1" id="myfunction_weight_value3" onclick="myfunction_weight_value3(1)">1 KG</button></li>
+                                            <li><button type="button" class="btn btn-outline-success " value="0.25" id="myfunction_weight_value1" onclick="myfunction_weight_value1(0.25,\''.$symbol.'\')">0.25 KG</button></li>
+                                            <li><button type="button" class="btn btn-outline-success " value="0.50" id="myfunction_weight_value2" onclick="myfunction_weight_value2(0.50,\''.$symbol.'\')">0.50 KG</button></li>
+                                            <li><button type="button" class="btn btn-outline-success " value="1" id="myfunction_weight_value3" onclick="myfunction_weight_value3(1,\''.$symbol.'\')">1 KG</button></li>
                                         </ul>
                                         
                                     </div>
@@ -123,9 +133,9 @@ if(isset($_POST['product_view'])){
                                     <span id="total_input_hidden_price"><input  title="Quantity Number" type="hidden" id="quantity_hidden" name="quantity_hidden" value="'.$price.'"></span>
                                     <div class="cart-action-group">
                                         <div class="product-action">
-                                            <button class="action-minus" title="Quantity Minus" onclick="decrementValue()" value="-"><i class="icofont-minus"></i></button>
+                                            <button class="action-minus" title="Quantity Minus" onclick="decrementValue(\''.$symbol.'\')" value="-"><i class="icofont-minus"></i></button>
                                             <input type="text" name="quantity" value="1" maxlength="2" max="10" size="1" id="number" />
-                                            <button class="action-plus" title="Quantity Plus" onclick="incrementValue()" value="+"><i class="icofont-plus"></i></button>
+                                            <button class="action-plus" title="Quantity Plus" onclick="incrementValue(\''.$symbol.'\')" value="+"><i class="icofont-plus"></i></button>
                                         </div>
                                         
                                     </div>
@@ -196,7 +206,7 @@ if(isset($_POST['product_view'])){
                                 $response.='<a href="">('.$rating.')</a>
                                     </div>
                                     <h3 class="view-price">
-                                        <span><input type="hidden" value="'.$price.'" id="price" class="price">$'.$price.'<small>/per Item</small></span>
+                                        <span><input type="hidden" value="'.$price.'" id="price" class="price">'.$symbol.''.$price.'<small>/per Item</small></span>
                                     </h3>
                                    
                                     <div class="cart-info quantity">
@@ -211,15 +221,15 @@ if(isset($_POST['product_view'])){
                                         </ul>
                                         
                                     </div>
-                                    <span id="total_price" class="total_price"> $'.$price.' (Inclusive Of Tax)</span>
+                                    <span id="total_price" class="total_price"> '.$symbol.''.$price.' (Inclusive Of Tax)</span>
 
                                     <span id="total_input_price"><input  title="Final Quantity" type="hidden" id="quantity" name="quantity" value="'.$price.'"></span>
                                     <span id="total_input_hidden_price"><input  title="Quantity Number" type="hidden" id="quantity_hidden" name="quantity_hidden" value="'.$price.'"></span>
                                     <div class="cart-action-group">
                                         <div class="product-action">
-                                            <button class="action-minus" title="Quantity Minus" onclick="decrementValue()" value="-"><i class="icofont-minus"></i></button>
+                                            <button class="action-minus" title="Quantity Minus" onclick="decrementValue(\''.$symbol.'\')" value="-"><i class="icofont-minus"></i></button>
                                             <input type="text" name="quantity" value="1" maxlength="2" max="10" size="1" id="number" />
-                                            <button class="action-plus" title="Quantity Plus" onclick="incrementValue()" value="+"><i class="icofont-plus"></i></button>
+                                            <button class="action-plus" title="Quantity Plus" onclick="incrementValue(\''.$symbol.'\')" value="+"><i class="icofont-plus"></i></button>
                                         </div>
                                         
                                     </div>
@@ -290,18 +300,18 @@ if(isset($_POST['product_view'])){
                                 $response.='<a href="product-items.html">('.$rating.')</a>
                                     </div>
                                     <h3 class="view-price">
-                                        <span><input type="hidden" value="'.$price.'" id="price" class="price">$'.$price.'<small>/per Item</small></span>
+                                        <span><input type="hidden" value="'.$price.'" id="price" class="price">'.$symbol.''.$price.'<small>/per Item</small></span>
                                     </h3>
                                 
-                                    <span id="total_price" class="total_price"> $'.$price.' (Inclusive Of Tax)</span>
+                                    <span id="total_price" class="total_price"> '.$symbol.''.$price.' (Inclusive Of Tax)</span>
 
                                     <span id="total_input_price"><input  title="Final Quantity" type="hidden" id="quantity" name="quantity" value="'.$price.'"></span>
                                     <span id="total_input_hidden_price"><input  title="Quantity Number" type="hidden" id="quantity_hidden" name="quantity_hidden" value="'.$price.'"></span>
                                     <div class="cart-action-group">
                                         <div class="product-action">
-                                            <button class="action-minus" title="Quantity Minus" onclick="decrementValue()" value="-"><i class="icofont-minus"></i></button>
+                                            <button class="action-minus" title="Quantity Minus" onclick="decrementValue(\''.$symbol.'\')" value="-"><i class="icofont-minus"></i></button>
                                             <input type="text" name="quantity"  value="1" maxlength="2" max="10" size="1" id="number" />
-                                            <button class="action-plus" title="Quantity Plus" onclick="incrementValue()" value="+"><i class="icofont-plus"></i></button>
+                                            <button class="action-plus" title="Quantity Plus" onclick="incrementValue(\''.$symbol.'\')" value="+"><i class="icofont-plus"></i></button>
                                         </div>
                                         
                                     </div>
@@ -508,6 +518,10 @@ if(isset($_POST['cart_checkout'])){
             'value' => $value
         );
         echo json_encode($data);
+    }
+
+    if(isset($_POST['currency_convertion'])){
+        $_SESSION['currency']=$_POST['currency'];
     }
 
 ?>

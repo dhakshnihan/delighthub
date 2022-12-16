@@ -33,7 +33,9 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                         $sqlx="select count(*) as items from tbl_products  where PRODN10='".$row['CATEGTID']."' ";
                         $resultx = mysqli_query($con,$sqlx);
                         $rowx=mysqli_fetch_array($resultx);
-                        $items=$rowx['items'];
+                        $items=$rowx['items']; 
+
+                        
 
                         $image='./admin//masters/category_uploads/'.$row["CATEG03"];
                         echo '<li>
@@ -263,6 +265,19 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                                     $product_id=$row['PRODTID'];
                                     $rating=$row['PRODN11'];
 
+                                    $sqlx="select * from tbl_wishlist where fk_product_id='".$product_id."' and status='Active'";
+                                  
+                                    $resultx=mysqli_query($con,$sqlx);
+                                    $rowx=mysqli_fetch_array($resultx);
+                                    $wishlist_id=$rowx['wishlist_id'];
+
+                                    if($wishlist_id>0){
+                                        $status="active";
+                                    }else{
+                                        $status="";
+                                    }
+
+
                                     
 
                            echo     '<li>
@@ -271,9 +286,12 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                                                 <div class="product-label">
                                                     <label class="label-text new">new</label>
                                                 </div>
-                                                <button class="product-wish wish" onclick="add_wish_list('.$product_id.')">
-                                                    <i class="fas fa-heart"></i>
+                                                <a class="product-image" href="wishlist.php?id='.$product_id.'">
+                                                <button class="product-wish  '.$status.'"  value='.$product_id.'>
+                                                   <i class="fas fa-heart"> </i>
+                                                   
                                                 </button>
+                                                </a>
                                                 <a class="product-image" href="product-tab.php?id='.$product_id.'">
                                                     <img src='.$image.' alt="product">
                                                 </a>
@@ -816,25 +834,10 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
 
 
     <script>
-        //PRODCUT VIEW DIALAG BOX SECTION 
-        // $(document).ready(function(){
-        //     $("add_cart").click(function(){
-        //     })
-        // })
 
-        function add_wish_list(product_id){
-        alert("test");
-        $user_id=$("#user_id").val();
-            $.ajax({
-                url:"ajax.php",
-                method:"post",
-                data:{'add_wishlist':'add_wishlist',product_id:product_id,user_id:user_id},
-                success:function(data){
-                  
-                }
-            })
-      }
+      
 
+      
         function add_cart(product_id){
         
             // var product_id =$(this).data('id');
@@ -866,6 +869,29 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
             $('#btn').trigger('click');
         });
       
+
+          $(document).ready(function(){
+            $(".product-wish").click(function(){
+                
+                var user_id=$("#user_id").val();
+                var product_id= $(this).val();
+               
+                // alert(user_id);
+                // alert(product_id);
+                $.ajax({
+                    url:"ajax.php",
+                    method:"POST",
+                    data:{'add_wishlist':'add_wishlist',user_id:user_id,product_id:product_id},
+                    success:function(response){
+                       window.location.href="wishlist.php";
+                    }
+                });
+            });
+        });
+        
+
+      
+        
 
     </script>
 

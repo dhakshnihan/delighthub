@@ -619,7 +619,7 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                 <div class="row">
                     <div class="col-12">
                         <div class="footer-bottom">
-                            <p class="footer-copytext">&copy;  All Copyrights Reserved by <a target="_blank" href="https://themeforest.net/user/mironcoder">Mironcoder</a></p>
+                            <p class="footer-copytext">&copy;  All Copyrights Reserved by <a target="_blank" href="">Mironcoder</a></p>
                             <div class="footer-card">
                                 <a href="#"><img src="images/payment/jpg/01.jpg" alt="payment"></a>
                                 <a href="#"><img src="images/payment/jpg/02.jpg" alt="payment"></a>

@@ -457,8 +457,8 @@ if(isset($_POST['cart_checkout'])){
     }
 
     if(isset($_POST['add_wishlist'])){
-        $sql="select * from tbl_wishlist(fk_user_id,fk_product_id,status) values ('".$_POST['user_id']."','".$_POST['prodcut_id']."') ";
-        echo $sql;
+        $sql="insert into `tbl_wishlist`(fk_user_id,fk_product_id) values ('".$_POST['user_id']."','".$_POST['product_id']."')";
+        // echo $sql;
         mysqli_query($con,$sql);
     }
 

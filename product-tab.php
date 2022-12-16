@@ -59,6 +59,22 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                    $sqlx="select * from tbl_cart where fk_product='".$_GET['id']."'";
                    $resultx=mysqli_query($con,$sqlx);
                    $already_cart=mysqli_num_rows($resultx);
+
+
+                   $sqlxx="select * from tbl_wishlist where fk_product_id='".$product_id."' and fk_user_id='".$_SESSION['user_id']."' and status='Active'";
+                                  
+                   $resultxx=mysqli_query($con,$sqlxx);
+                   $rowxx=mysqli_fetch_array($resultxx);
+                   $wishlist_id=$rowxx['wishlist_id'];
+                  
+                   if($wishlist_id>0){
+                       $status="active";
+
+                   }else{
+                       $status="";
+
+                   }
+
                    
 
               
@@ -150,10 +166,11 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                                 }
                                 
                                 echo '<div class="details-action-group">
-                                <a class="details-wish wish" href="#" title="Add Your Wishlist">
-                                    <i class="icofont-heart"></i>
-                                    <span>add to wish</span>
-                                </a>
+                                     <button class="details-wish wish '.$status.'"   value='.$product_id.' onclick="view_wish('.$product_id.')" title="Add Your Wishlist">
+                                        <i class="icofont-heart"></i>
+                                        <span>add to wish</span>
+                                    </button>
+                                   
                               
                             </div>
 
@@ -430,7 +447,7 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                         echo    '<button class="product-add" title="Add to Cart">
                                     <i class="fas fa-shopping-basket"></i>
                                     <span title="Product View" href="#" class="add_cart" onclick="add_cart_product('.$product_id.')" data-bs-toggle="modal" data-id='.$product_id.' data-bs-target="#product-view">add cart</span>
-                                </button>';
+                                </button>'; 
                     echo    '</div>
                         </div></div>';
                     }
@@ -694,6 +711,29 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
             })
 
         }
+
+        function view_wish(product_id){
+                var user_id=$("#user_id").val();
+                if(user_id>0){
+                $.ajax({
+                    url:"ajax.php",
+                    method:"POST",
+                    data:{'add_wishlist':'add_wishlist',user_id:user_id,product_id:product_id},
+                    success:function(response){
+                        var data = jQuery.parseJSON(response);
+                        if(data.value=="index"){
+                            window.location.href="index.php";
+                        }else if(data.value=="wishlist"){
+                            window.location.href="wishlist.php";
+                        }
+                        
+                    }
+                    });
+                }else{
+                alert("Please login!");
+                }   
+            }
+        
         </script>
         
     </body>

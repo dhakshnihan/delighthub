@@ -195,7 +195,7 @@
                                                       
                                             }
                                             echo '<input type="hidden" id="checkout_grand_total_price" value="'.$checkout_grand_total_price.'">';
-                                            echo '<input  type= "text" id="totalcount" value="'.$child.'">';
+                                            echo '<input  type= "hidden" id="totalcount" value="'.$child.'">';
                                             //total 10% discount price 
                                             $discount_price = (10/100)*$checkout_grand_total_price;
                                             $total=$checkout_grand_total_price- $discount_price;
@@ -236,9 +236,9 @@
                                         </li>
                                     </ul>
                                     <a class="cart-checkout-btn" href="address.php">
-                    <span class="checkout-label">Proceed to Checkout</span>
-                    <span class="checkout-price">Rs <?php echo round($total,2); ?></span>
-                </a>
+                                        <span class="checkout-label">Proceed to Checkout</span>
+                                        <span class="checkout-price">Rs <?php echo round($total,2); ?></span>
+                                    </a>
                                 </div>
                             </div>
                         </div>

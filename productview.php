@@ -183,6 +183,36 @@
              //======================Added to cart end script=======================================================
 
 
+             //======================add wishlist start script=====================================================
+           function view_wish(product_id){
+
+          
+                 var user_id=$("#user_id").val();
+                
+                if(user_id>0){
+                    $.ajax({
+                        url:"ajax.php",
+                        method:"POST",
+                        data:{'add_wishlist':'add_wishlist',user_id:user_id,product_id:product_id},
+                        success:function(response){
+                            var data = jQuery.parseJSON(response);
+                            if(data.value=="index"){
+                                window.location.href="index.php";
+                            }else if(data.value=="wishlist"){
+                                window.location.href="wishlist.php";
+                            }
+                           
+                        }
+                     });
+                }else{
+                    alert("Please login!");
+                }   
+           }
+                
+         //======================add wishlist end script=====================================================
+
+
+
         </script>
         <!--=====================================
                     PRODUCT VIEW END

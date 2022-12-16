@@ -1,6 +1,7 @@
 
 <?php
 session_start();
+error_reporting(0);
 require_once('dbconnection.php');
 
 if(isset($_POST['product_view'])){
@@ -25,6 +26,20 @@ if(isset($_POST['product_view'])){
         $sqlx="select * from tbl_cart where fk_product='".$_POST['product_id']."'";
         $resultx=mysqli_query($con,$sqlx);
         $already_cart=mysqli_num_rows($resultx);
+
+
+        $sqlxx="select * from tbl_wishlist where fk_product_id='".$product_id."' and fk_user_id='".$_SESSION['user_id']."' and status='Active'";
+        $resultxx=mysqli_query($con,$sqlxx);
+        $rowxx=mysqli_fetch_array($resultxx);
+        $wishlist_id=$rowxx['wishlist_id'];
+        
+        if($wishlist_id>0){
+            $status="active";
+
+        }else{
+            $status="";
+
+        }
 
         
 
@@ -135,10 +150,10 @@ if(isset($_POST['product_view'])){
                                     
                         $response.='</div> 
                                     <div class="view-action-group">
-                                        <a class="view-wish wish" href="#" title="Add Your Wishlist">
+                                        <button class="view-wish wish '.$status.'"   value='.$product_id.' onclick="view_wish('.$product_id.')" title="Add Your Wishlist">
                                             <i class="icofont-heart"></i>
                                             <span>add to wish</span>
-                                        </a>
+                                        </button>
                                     
                                     </div>
                                     <p class="view-desc">'.$PRODN05.'</p>
@@ -229,10 +244,10 @@ if(isset($_POST['product_view'])){
                                 
                     $response.='</div> 
                                     <div class="view-action-group">
-                                        <a class="view-wish wish" href="#" title="Add Your Wishlist" >
+                                        <button class="view-wish wish '.$status.'"   value='.$product_id.' onclick="view_wish('.$product_id.')" title="Add Your Wishlist">
                                             <i class="icofont-heart"></i>
                                             <span>add to wish</span>
-                                        </a>
+                                        </button>
                                     
                                     </div>
                                     <p class="view-desc">'.$PRODN05.'</p>
@@ -311,10 +326,10 @@ if(isset($_POST['product_view'])){
                                 
                     $response.='</div> 
                                     <div class="view-action-group">
-                                    <a class="view-wish wish" href="#" title="Add Your Wishlist">
+                                    <button class="view-wish wish '.$status.'"   value='.$product_id.' onclick="view_wish('.$product_id.')" title="Add Your Wishlist">
                                         <i class="icofont-heart"></i>
                                         <span>add to wish</span>
-                                    </a>
+                                    </button>
                                 
                                 </div>
                                     <p class="view-desc">'.$PRODN05.'</p>
@@ -402,6 +417,20 @@ if(isset($_POST['cart_checkout'])){
             }else{
                 $tag='<label class="label-text off">-'.$top_discount.'%</label>';
             }
+
+            $sqlx="select * from tbl_wishlist where fk_product_id='".$product_id."' and fk_user_id='".$_SESSION['user_id']."' and status='Active'";
+                                  
+            $resultx=mysqli_query($con,$sqlx);
+            $rowx=mysqli_fetch_array($resultx);
+            $wishlist_id=$rowx['wishlist_id'];
+           
+            if($wishlist_id>0){
+                $status="active";
+
+            }else{
+                $status="";
+
+            }
     
 
         $data.='<div class="col">
@@ -410,9 +439,10 @@ if(isset($_POST['cart_checkout'])){
                             <div class="product-label">
                                '.$tag.'
                             </div>
-                            <button class="product-wish wish">
-                                <i class="fas fa-heart"></i>
-                            </button>
+                            <button class="product-wish '.$status.'"  onclick="view_wish('.$product_id.')" value='.$product_id.'>
+                            <i class="fas fa-heart"> </i>
+                            
+                         </button>
                             <a class="product-image" href="product-tab.php?id='.$product_id.'">
                                 <img src="'.$image.'" alt="product">
                             </a>
@@ -457,9 +487,27 @@ if(isset($_POST['cart_checkout'])){
     }
 
     if(isset($_POST['add_wishlist'])){
-        $sql="insert into `tbl_wishlist`(fk_user_id,fk_product_id) values ('".$_POST['user_id']."','".$_POST['product_id']."')";
-        // echo $sql;
-        mysqli_query($con,$sql);
+        $value="";
+        $sqlx="select * from  tbl_wishlist where fk_user_id='".$_POST['user_id']."' and fk_product_id='".$_POST['product_id']."'";
+        $resultx=mysqli_query($con,$sqlx);
+        $rows=mysqli_num_rows($resultx);
+        if($rows>0){
+            $sql="delete from tbl_wishlist where fk_user_id='".$_POST['user_id']."' AND fk_product_id='".$_POST['product_id']."'";
+            // echo $sql;
+            mysqli_query($con,$sql);
+            $value.="index";
+        }else{
+            $sql="insert into `tbl_wishlist`(fk_user_id,fk_product_id) values ('".$_POST['user_id']."','".$_POST['product_id']."')";
+            // echo $sql;
+            mysqli_query($con,$sql);
+            $value.="wishlist";
+            
+        }
+        $data = array(
+            'status' => 'OK',
+            'value' => $value
+        );
+        echo json_encode($data);
     }
 
 ?>

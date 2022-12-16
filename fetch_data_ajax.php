@@ -1,4 +1,6 @@
 <?php
+
+error_reporting(0);
     include('dbconnection.php');
     
     if(isset($_POST["action"]))
@@ -72,15 +74,30 @@
             $product_id=$row['PRODTID'];
             $rating=$row['PRODN11'];
 
+            $sqlxx="select * from tbl_wishlist where fk_product_id='".$product_id."' and fk_user_id='".$_POST['user_id']."' and status='Active'";
+                  
+            $resultxx=mysqli_query($con,$sqlxx);
+            $rowxx=mysqli_fetch_array($resultxx);
+            $wishlist_id=$rowxx['wishlist_id'];
+            
+            if($wishlist_id>0){
+                $status="active";
+
+            }else{
+                $status="";
+
+            }
+
         $data.='<div class="col">
                 <div class="product-card">
                     <div class="product-media">
                         <div class="product-label">
                             <label class="label-text new">new</label>
                         </div>
-                        <button class="product-wish wish">
-                            <i class="fas fa-heart"></i>
-                        </button>
+                        <button class="product-wish '.$status.'"  onclick="view_wish('.$product_id.')" value='.$product_id.'>
+                            <i class="fas fa-heart"> </i>
+                            
+                         </button>
                         <a class="product-image" href="product-video.html">
                             <img src="'.$image.'" alt="product">
                         </a>

@@ -442,12 +442,14 @@
 
                    var filter_region=$("#filter_region").val();
 
+                   var user_id=$("#user_id").val();
+
                    
                     $.ajax({
                         url:"fetch_data_ajax.php",
                         method:"POST",
                         data:{'action':'action', minimum_price:minimum_price, maximum_price:maximum_price,filter_brand:filter_brand,
-                            filter_category:filter_category,short_by_filter:short_by_filter,rating5:rating5,rating4:rating4,rating3:rating3,filter_region:filter_region,page_no:page},
+                            filter_category:filter_category,short_by_filter:short_by_filter,rating5:rating5,rating4:rating4,rating3:rating3,filter_region:filter_region,page_no:page,user_id:user_id},
                         success:function(data){
                             $('.filter_data').html(data);
                            
@@ -513,6 +515,29 @@
                 function previous_page(page){
                     filter_data(page);
                 }
+
+
+            function view_wish(product_id){
+                var user_id=$("#user_id").val();
+                if(user_id>0){
+                $.ajax({
+                    url:"ajax.php",
+                    method:"POST",
+                    data:{'add_wishlist':'add_wishlist',user_id:user_id,product_id:product_id},
+                    success:function(response){
+                        var data = jQuery.parseJSON(response);
+                        if(data.value=="index"){
+                            window.location.href="index.php";
+                        }else if(data.value=="wishlist"){
+                            window.location.href="wishlist.php";
+                        }
+                        
+                    }
+                    });
+                }else{
+                alert("Please login!");
+                }   
+            }
            
             
     </script>

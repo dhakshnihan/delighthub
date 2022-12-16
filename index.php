@@ -265,16 +265,18 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                                     $product_id=$row['PRODTID'];
                                     $rating=$row['PRODN11'];
 
-                                    $sqlx="select * from tbl_wishlist where fk_product_id='".$product_id."' and status='Active'";
+                                    $sqlx="select * from tbl_wishlist where fk_product_id='".$product_id."' and fk_user_id='".$_SESSION['user_id']."' and status='Active'";
                                   
                                     $resultx=mysqli_query($con,$sqlx);
                                     $rowx=mysqli_fetch_array($resultx);
                                     $wishlist_id=$rowx['wishlist_id'];
-
+                                   
                                     if($wishlist_id>0){
                                         $status="active";
+
                                     }else{
                                         $status="";
+
                                     }
 
 
@@ -286,12 +288,11 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                                                 <div class="product-label">
                                                     <label class="label-text new">new</label>
                                                 </div>
-                                                <a class="product-image" href="wishlist.php?id='.$product_id.'">
                                                 <button class="product-wish  '.$status.'"  value='.$product_id.'>
                                                    <i class="fas fa-heart"> </i>
                                                    
                                                 </button>
-                                                </a>
+                                              
                                                 <a class="product-image" href="product-tab.php?id='.$product_id.'">
                                                     <img src='.$image.' alt="product">
                                                 </a>
@@ -876,18 +877,49 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                 var user_id=$("#user_id").val();
                 var product_id= $(this).val();
                
-                // alert(user_id);
-                // alert(product_id);
+                if(user_id>0){
+                    $.ajax({
+                        url:"ajax.php",
+                        method:"POST",
+                        data:{'add_wishlist':'add_wishlist',user_id:user_id,product_id:product_id},
+                        success:function(response){
+                            var data = jQuery.parseJSON(response);
+                            if(data.value=="index"){
+                                window.location.href="index.php";
+                            }else if(data.value=="wishlist"){
+                                window.location.href="wishlist.php";
+                            }
+                           
+                        }
+                     });
+                }else{
+                    alert("Please login!");
+                }
+                
+            });
+        });
+
+        function view_wish(product_id){
+                var user_id=$("#user_id").val();
+                if(user_id>0){
                 $.ajax({
                     url:"ajax.php",
                     method:"POST",
                     data:{'add_wishlist':'add_wishlist',user_id:user_id,product_id:product_id},
                     success:function(response){
-                       window.location.href="wishlist.php";
+                        var data = jQuery.parseJSON(response);
+                        if(data.value=="index"){
+                            window.location.href="index.php";
+                        }else if(data.value=="wishlist"){
+                            window.location.href="wishlist.php";
+                        }
+                        
                     }
-                });
-            });
-        });
+                    });
+                }else{
+                alert("Please login!");
+                }   
+            }
         
 
       

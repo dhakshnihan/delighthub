@@ -46,7 +46,7 @@
                                
                                  
 
-                                 $sql="select * from tbl_wishlist left join tbl_products on PRODTID=fk_product_id ";
+                                 $sql="select * from tbl_wishlist left join tbl_products on PRODTID=fk_product_id where tbl_wishlist.status='Active'";
                                 
                                  $result= mysqli_query($con, $sql);
                                  while($row=mysqli_fetch_array($result))

@@ -7,6 +7,11 @@ require_once('dbconnection.php');
 if(isset($_POST['product_view'])){
 
     $response='';
+    $sqlx="select * from tbl_currency where currency_name='".$_SESSION['currency']."'";
+    $resultx=mysqli_query($con,$sqlx);
+    $rowx=mysqli_fetch_array($resultx);
+    $exchange_rate=$rowx['exchange_rate'];
+
 
     $product_id=$_POST['product_id'];
     $user_id=$_POST['user_id'];
@@ -21,15 +26,18 @@ if(isset($_POST['product_view'])){
         $uom=$row['CATEG04'];
         $PRODN05=$row['PRODN05'];
         $rating=$row['PRODN11'];
+        
 
-        if($_SESSION['currency'] == 'Rupee'){
-            $price=$row['PRODN06'];
-            $symbol="₹";
-        }else if($_SESSION['currency'] == 'Doller'){
-            $price=$row['PRODN15'];
+        $price = $row['PRODN06'];
+        $symbol="₹";
+      
+       if($_SESSION['currency']=="USD"){
+            
+           $price = number_format(($row['PRODN06']*$exchange_rate), 2);
             $symbol="$";
-        }else if($_SESSION['currency'] == 'Pound'){
-            $price=$row['PRODN15'];
+
+        }else if($_SESSION['currency']=="Pound"){
+            $price = number_format(($row['PRODN06']*$exchange_rate), 2);
             $symbol="£";
         }
 
@@ -407,17 +415,37 @@ if(isset($_POST['cart_checkout'])){
             $query.=" And PRODN14>=10";
         }
         $data="";
+
+        $sqlx="select * from tbl_currency where currency_name='".$_SESSION['currency']."'";
+        $resultx=mysqli_query($con,$sqlx);
+        $rowx=mysqli_fetch_array($resultx);
+        $exchange_rate=$rowx['exchange_rate'];
+
+
         $data.='<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">';
         $sql="select * from tbl_products where PRODN08='Active' $query";
         $result=mysqli_query($con,$sql);
         while($row=mysqli_fetch_array($result)){
             $image='./admin/masters/prod_uploads/'.$row["PRODN07"];
-            $price=$row['PRODN06'];
+           
             $product_name=$row['PRODN01'];
             $product_id=$row['PRODTID'];
             $rating=$row['PRODN11'];
             $top_orders=$row['PRODN13'];
             $top_discount=$row['PRODN14'];
+
+            $price = $row['PRODN06'];
+            $symbol="₹";
+          
+           if($_SESSION['currency']=="USD"){
+                
+               $price = number_format(($row['PRODN06']*$exchange_rate), 2);
+                $symbol="$";
+
+            }else if($_SESSION['currency']=="Pound"){
+                $price = number_format(($row['PRODN06']*$exchange_rate), 2);
+                $symbol="£";
+            }
 
            
             if($top_browse=="top_order"){
@@ -474,7 +502,7 @@ if(isset($_POST['cart_checkout'])){
                                 <a href="product-tab.php?id='.$product_id.'">'.$product_name.'</a>
                             </h6>
                             <h6 class="product-price">
-                                <span>$'.$price.'<small>/piece</small></span>
+                                <span>'.$symbol.''.$price.'<small>/piece</small></span>
                             </h6>
                             <button class="product-add" title="Add to Cart">
                                 <i class="fas fa-shopping-basket"></i>

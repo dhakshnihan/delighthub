@@ -99,9 +99,9 @@
                                 <i class="icofont-money"></i>
                                     <select class="select_currency" name="currency" id="currency" onchange="currency_convertion()">
                                         <option value="please select">Please select currency</option>
-                                        <option value="Rupee" <?php echo ($_SESSION['currency'] == 'Rupee')?"selected":"" ?>>Rupee</option>
+                                        <option value="INR" <?php echo ($_SESSION['currency'] == 'Rupee')?"selected":"" ?>>Rupee</option>
                                         <option value="Pound" <?php echo ($_SESSION['currency'] == 'Pound')?"selected":"" ?>>pound</option>
-                                        <option value="Doller" <?php echo ($_SESSION['currency'] == 'Doller')?"selected":"" ?>>doller</option>
+                                        <option value="USD" <?php echo ($_SESSION['currency'] == 'USD')?"selected":"" ?>>doller</option>
                                     </select>
                             </div>
                         </div>

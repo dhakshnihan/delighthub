@@ -21,6 +21,12 @@
             </div>
             <ul class="cart-list">
                 <?php 
+
+                    $sqlx="select * from tbl_currency where currency_name='".$_SESSION['currency']."'";
+                    $resultx=mysqli_query($con,$sqlx);
+                    $rowx=mysqli_fetch_array($resultx);
+                    $exchange_rate=$rowx['exchange_rate'];
+
                      $grand_total_price=0;
                      $sql="select * from tbl_cart
                      left join tbl_products on fk_product=PRODTID
@@ -29,8 +35,8 @@
                      $result=mysqli_query($con,$sql);
                     while($row=mysqli_fetch_array($result)){
                         $image='./admin/masters/prod_uploads/'.$row["PRODN07"];
-                        $total_price=$row['total_price'];
-                        $unit_price=$row['PRODN06'];
+                        // $total_price=$row['total_price'];
+                        $price=$row['PRODN06'];
                         $items=$row['items'];
                         $uom=$row['uom'];
                         $pro=$row['PRODTID'];
@@ -41,12 +47,20 @@
                         }else{
                             $items=1;
                         }
+
+                       
+                        
+                        $total_price= number_format(($price*$items), 2);
+                        
+
                         if($category_uom=='Kgs'){
                             $uom_tag="Weight : $uom - $category_uom";
                             if($uom=='0.5'){
-                                $unit_price=($unit_price/2);
+                                $unit_price=number_format(($price/2),2);
+                                $total_price= number_format(($unit_price*$items), 2);
                             }else if($uom=='0.25'){
-                                $unit_price=($unit_price/4);
+                                $unit_price=number_format(($price/4),2);
+                                $total_price= number_format(($unit_price*$items), 2);
                             }
                             
                         }else if($category_uom=='Inches'){
@@ -54,6 +68,62 @@
                         }else{
                             $uom_tag="";
                         }
+                        
+                        $symbol="₹";
+
+                       
+                       if($_SESSION['currency']=="USD"){
+                            if($category_uom=='Kgs'){
+                                $uom_tag="Weight : $uom - $category_uom";
+                                if($uom=='0.5'){
+                                    //500grms caleculation
+                                    $unit_price=number_format((($price*$exchange_rate)/2),2);
+                                    $total_price= number_format(($unit_price*$items), 2);
+                                }else if($uom=='0.25'){
+                                      //250grms caleculation
+                                    $unit_price=number_format((($price*$exchange_rate)/4),2);
+                                    $total_price= number_format(($unit_price*$items), 2);
+                                }else{
+                                    //1kgs price caleculation
+                                  $unit_price=number_format(($price*$exchange_rate),2);
+                                  $total_price= number_format(($unit_price*$items), 2);
+                              }
+                                
+                            }else if($category_uom=='Inches'){
+                                $uom_tag="Size : $uom";
+                            }else{
+                                $uom_tag="";
+                            }
+                            $symbol="$";
+
+                        }else if($_SESSION['currency']=="Pound"){
+                            if($category_uom=='Kgs'){
+                                $uom_tag="Weight : $uom - $category_uom";
+                                if($uom=='0.5'){
+                                    //500grms caleculation
+                                    $unit_price=number_format((($price*$exchange_rate)/2),2);
+                                    $total_price= number_format(($unit_price*$items), 2);
+                                }else if($uom=='0.25'){
+                                    //250grms caleculation
+                                    $unit_price=number_format((($price*$exchange_rate)/4),2);
+                                    $total_price= number_format(($unit_price*$items), 2);
+                                }else{
+                                      //1kgs price caleculation
+                                    $unit_price=number_format(($price*$exchange_rate),2);
+                                    $total_price= number_format(($unit_price*$items), 2);
+                                }
+                              
+                            
+                            }else if($category_uom=='Inches'){
+                                $uom_tag="Size : $uom";
+                            }else{
+                                $uom_tag="";
+                            }
+                            $symbol="£";
+                        }
+
+                       
+                       
                 echo    '<li class="cart-item" id="row_'.$row['cart_id'].'">
                             <div class="cart-media">
                                 <a href="product-tab.php?id='.$pro.'"><img src="'.$image.'" alt="product" >
@@ -63,7 +133,7 @@
                             <div class="cart-info-group">
                                 <div class="cart-info ">
                                     <h6><a href="product-single.html">existing product name</a><button class="ms-4  cart-delete" onclick="cart_items_delete('.$cart_id.')"><i class="far fa-trash-alt" style="color: red;"></i></button></h6>
-                                    <p>Unit Price - $'.$unit_price.'<input type="hidden" class="unit_price" id="unit_price_'.$cart_id.'" value="'.$unit_price.'"></p>
+                                    <p>Unit Price - '.$symbol.''.$unit_price.'<input type="hidden" class="unit_price" id="unit_price_'.$cart_id.'" value="'.$unit_price.'"></p>
 
                                     <p>'.$uom_tag.'</p>
                                 </div>
@@ -121,10 +191,10 @@
                     if(input<10){
                         input++;
                             document.getElementById('input-quantity-'+cart_id).value  = input;
-                            document.getElementById('total_price_'+cart_id).value =unit_price*input;
+                            document.getElementById('total_price_'+cart_id).value =parseFloat(unit_price*input).toFixed(2);
                         
-                            document.getElementById('grand_total_price').value = (parseFloat(grand_total_price)+parseFloat(unit_price));
-                            grand_total_price_span.innerHTML =  (parseFloat(grand_total_price)+parseFloat(unit_price));
+                            document.getElementById('grand_total_price').value = (parseFloat(grand_total_price)+parseFloat(unit_price)).toFixed(2);
+                            grand_total_price_span.innerHTML =  (parseFloat(grand_total_price)+parseFloat(unit_price)).toFixed(2);
                     }
                 }
                 function cartdecrementValue(cart_id,unit_price)
@@ -138,9 +208,9 @@
                     if(input>1){
                         input--;
                             document.getElementById('input-quantity-'+cart_id).value  = input;
-                            document.getElementById('total_price_'+cart_id).value =unit_price*input;
-                            document.getElementById('grand_total_price').value = (parseFloat(grand_total_price)-parseFloat(unit_price));
-                            grand_total_price_span.innerHTML =  (parseFloat(grand_total_price)-parseFloat(unit_price));
+                            document.getElementById('total_price_'+cart_id).value = parseFloat(unit_price*input).toFixed(2);
+                            document.getElementById('grand_total_price').value = (parseFloat(grand_total_price)-parseFloat(unit_price)).toFixed(2);
+                            grand_total_price_span.innerHTML =  (parseFloat(grand_total_price)-parseFloat(unit_price)).toFixed(2);
                        
                     }
                   

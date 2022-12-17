@@ -257,6 +257,12 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                        
                             <?php 
 
+                                $sqlx="select * from tbl_currency where currency_name='".$_SESSION['currency']."'";
+                                $resultx=mysqli_query($con,$sqlx);
+                                $rowx=mysqli_fetch_array($resultx);
+                                $exchange_rate=$rowx['exchange_rate'];
+
+
                                 $sql="select * from  tbl_products where PRODN08='Active'";
                                 $result=mysqli_query($con,$sql);
                                 while($row=mysqli_fetch_array($result)){
@@ -265,16 +271,20 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                                     $product_name=$row['PRODN01'];
                                     $product_id=$row['PRODTID'];
                                     $rating=$row['PRODN11'];
-                                    if($_SESSION['currency'] == 'Rupee'){
-                                        $price=$row['PRODN06'];
-                                        $symbol="₹";
-                                    }else if($_SESSION['currency'] == 'Doller'){
-                                        $price=$row['PRODN15'];
+                                    
+                                    $price = $row['PRODN06'];
+                                    $symbol="₹";
+                                  
+                                   if($_SESSION['currency']=="USD"){
+                                        
+                                       $price = number_format(($row['PRODN06']*$exchange_rate), 2);
                                         $symbol="$";
-                                    }else if($_SESSION['currency'] == 'Pound'){
-                                        $price=$row['PRODN15'];
+
+                                    }else if($_SESSION['currency']=="Pound"){
+                                        $price = number_format(($row['PRODN06']*$exchange_rate), 2);
                                         $symbol="£";
                                     }
+
 
 
                                     $sqlx="select * from tbl_wishlist where fk_product_id='".$product_id."' and fk_user_id='".$_SESSION['user_id']."' and status='Active'";
@@ -329,7 +339,7 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                                                     <a href="product-tab.php?id='.$product_id.'">'.$product_name.'</a>
                                                 </h6>
                                                 <h6 class="product-price">
-                                                    <span>'.$symbol.''.$price.'<small>/piece</small></span>
+                                                    <span>'.$symbol.''.$price.'<small>/price</small></span>
                                                 </h6>';
                                         echo    '<button class="product-add" title="Add to Cart">
                                                     <i class="fas fa-shopping-basket"></i>

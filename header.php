@@ -209,9 +209,9 @@
                         </li>
                     </ul>
                     
-                    <form class="header-form">
-                        <input type="text" placeholder="Search anything...">
-                        <button><i class="fas fa-search"></i></button>
+                    <form  style="width:100%">
+                        <!-- <input type="text" placeholder="Search anything...">
+                        <button><i class="fas fa-search"></i></button> -->
                     </form>
 
                     <div class="header-widget-group">
@@ -568,9 +568,9 @@
             <button class="cart-btn" title="Cartlist">
                 <i class="fas fa-shopping-basket"></i>
                 <span>cartlist</span>
-                <sup>9+</sup>
+                <sup><?php echo $total_items; ?></sup>
             </button>
-            <a href="wishlist.html" title="Wishlist">
+            <a href="wishlist.php" title="Wishlist">
                 <i class="fas fa-heart"></i>
                 <span>wishlist</span>
                 <sup>0</sup>

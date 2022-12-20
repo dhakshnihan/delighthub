@@ -112,6 +112,7 @@
                                               $x=0;
                                             $array_cart_id=array();
                                             $checkout_grand_total_price=0;
+
                                             $sql="select * from tbl_cart 
                                             left join tbl_products on PRODTID=fk_product
                                             left join tbl_category on  PRODN10=CATEGTID
@@ -131,6 +132,55 @@
                                                 $array_cart_id[]=$row['cart_id'];
                                                 // print_r($array_cart_id);
 
+                                                if($uom=='0.5'){
+                                                    $checkout_unit_price=number_format(($row['PRODN06']),2);
+                                                    $checkout_total_price= number_format((($row['PRODN06']/2)*$items), 2);
+                                                }else if($uom=='0.25'){
+                                                    $checkout_unit_price=number_format(($row['PRODN06']),2);
+                                                    $checkout_total_price= number_format((($row['PRODN06']/4)*$items), 2);
+                                                }else {
+                                                    $checkout_unit_price=$row['PRODN06'];
+                                                    $checkout_total_price=$row['PRODN06']*$items;
+
+                                                }
+                                               
+
+                                                $symbol="₹";
+
+                                              
+                                               if($_SESSION['currency']=="USD"){
+                                                    if($uom=='0.5'){
+                                                        $checkout_unit_price=number_format(($row['PRODN06']*$exchange_rate),2);
+                                                        $checkout_total_price= number_format((($row['PRODN06']/2)*$items*$exchange_rate), 2);
+                                                    }else if($uom=='0.25'){
+                                                        $checkout_unit_price=number_format(($row['PRODN06']*$exchange_rate),2);
+                                                        $checkout_total_price= number_format((($row['PRODN06']/4)*$items*$exchange_rate), 2);
+                                                    }else{
+                                                        $checkout_unit_price=$row['PRODN06']*$exchange_rate;
+                                                        $checkout_total_price=$row['PRODN06']*$items*$exchange_rate;
+                                                    }
+                                                    
+                                                 
+                                                    $symbol="$";
+            
+                                                }else if($_SESSION['currency']=="Pound"){
+
+                                                    if($uom=='0.5'){
+                                                        $checkout_unit_price=number_format(($row['PRODN06']*$exchange_rate),2);
+                                                        $checkout_total_price= number_format((($row['PRODN06']/2)*$items*$exchange_rate), 2);
+                                                       
+                                                    }else if($uom=='0.25'){
+                                                        $checkout_unit_price=number_format(($row['PRODN06']*$exchange_rate),2);
+                                                        $checkout_total_price= number_format((($row['PRODN06']/4)*$items*$exchange_rate), 2);
+                                                      
+                                                    }else{
+                                                        $checkout_unit_price=$row['PRODN06']*$exchange_rate;
+                                                        $checkout_total_price=$row['PRODN06']*$items*$exchange_rate;
+                                                    }
+                                                   
+                                                    $symbol="£";
+                                                }
+
                                                 
                                             
                                                 $categoty_uom=$row['CATEG04'];
@@ -140,7 +190,7 @@
                                                            
                                                             <td class="table-image"><img src="'.$image.'" alt="product"></td>
                                                             <td class="table-name"><h6>'.$product_name.'</h6></td>
-                                                            <td class="table-price"><h6>$<input  class="checkout_total_price_'.$x.'" type="text" name="checkout_total_price[]" id="checkout_total_price_'.$x.'" value="'.$checkout_total_price.'" readonly><small>/kilo</small></h6>
+                                                            <td class="table-price"><h6>'.$symbol.'<input  class="checkout_total_price_'.$x.'" type="text" name="checkout_total_price[]" id="checkout_total_price_'.$x.'" value="'.$checkout_total_price.'" readonly><small>/kilo</small></h6>
                                                                 <input type="hidden" class="checkout_unit_price_'.$x.'" name="checkout_unit_price[]" id="checkout_unit_price_'.$x.'" value="'.$checkout_unit_price.'" readonly>
                                                                 
                                                             </td>';
@@ -205,39 +255,35 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="chekout-coupon">
+                                <!-- <div class="chekout-coupon">
                                     <button class="coupon-btn">Do you have a coupon code?</button>
                                     <form class="coupon-form">
                                         <input type="text" placeholder="Enter your coupon code">
                                         <button type="submit"><span>apply</span></button>
                                     </form>
                                    
-                                </div>
+                                </div> -->
                                 <div class="checkout-charge">
                                     <ul>
                                         <li>
                                             <span>Sub total</span>
-                                            <span id="checkout_grand_total_price_span">$<?php echo $checkout_grand_total_price;  ?></span>
+                                            <span id="checkout_grand_total_price_span"><?php echo $symbol.''.$checkout_grand_total_price;  ?></span>
                                         </li>
                                         <li>
                                             <span>delivery fee</span>
                                             <span>$00.00</span>
                                         </li>
-                                        <li>
-                                            <span>discount</span>
-                                            <span>$<?php echo round($discount_price,2); ?></span>
-                                        </li>
-                                        <li>
+                                        <!-- <li>
                                             <span>Total<small>(Incl. VAT)</small></span>
                                             <span>$<?php echo round($total,2); ?></span>
-                                        </li>
+                                        </li> -->
                                         <li>
                                         
                                         </li>
                                     </ul>
                                     <a class="cart-checkout-btn" href="address.php">
                                         <span class="checkout-label">Proceed to Checkout</span>
-                                        <span class="checkout-price">Rs <?php echo round($total,2); ?></span>
+                                        <span class="checkout-price" id="final_grand_total_price_span"><?php echo $symbol.''.$checkout_grand_total_price;  ?></span>
                                     </a>
                                 </div>
                             </div>
@@ -715,11 +761,16 @@
                         let checkout_quantity = document.getElementById('checkout_quantity_'+i.toString()).value;
                         let select_uom_kgs = document.getElementById('select_uom_kgs_'+i.toString()).value;
 
+                        // console.log(checkout_unit_priceelement);
+                        console.log(fixedpriceelement);
+                        // console.log(checkout_quantity);
+                        // console.log(select_uom_kgs);
                        
                        let cal= checkout_unit_priceelement.value=parseFloat(fixedpriceelement)*parseFloat(checkout_quantity)*parseFloat(select_uom_kgs);
                        sum = sum+cal;
                     }
-                    checkout_grand_total_price_span.innerHTML = sum;
+                    checkout_grand_total_price_span.innerHTML = parseFloat(sum).toFixed(2);
+                    final_grand_total_price_span.innerHTML = parseFloat(sum).toFixed(2);
                 }
 
                 function select_uom_kgs(cart_id,selected_value){

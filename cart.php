@@ -3,6 +3,7 @@
         =======================================-->
         <aside class="cart-sidebar">
             <?php 
+            error_reporting(0);
                
                 $sqlx="select *,count(* ) as total_items from tbl_cart
                 left join tbl_products on fk_product=PRODTID
@@ -61,7 +62,11 @@
                             }else if($uom=='0.25'){
                                 $unit_price=number_format(($price/4),2);
                                 $total_price= number_format(($unit_price*$items), 2);
-                            }
+                            }else{
+                                //1kgs price caleculation
+                              $unit_price=number_format(($price),2);
+                              $total_price= number_format(($unit_price), 2);
+                          }
                             
                         }else if($category_uom=='Inches'){
                             $uom_tag="Size : $uom";

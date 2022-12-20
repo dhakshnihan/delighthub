@@ -33,11 +33,11 @@ if(isset($_POST['product_view'])){
       
        if($_SESSION['currency']=="USD"){
             
-           $price = number_format(($row['PRODN06']*$exchange_rate), 2);
+           $price = round(($row['PRODN06']*$exchange_rate), 2);
             $symbol="$";
 
         }else if($_SESSION['currency']=="Pound"){
-            $price = number_format(($row['PRODN06']*$exchange_rate), 2);
+            $price = round(($row['PRODN06']*$exchange_rate), 2);
             $symbol="£";
         }
 
@@ -323,7 +323,7 @@ if(isset($_POST['product_view'])){
                                         </div>
                                         
                                     </div>
-                                    <div class="view-add-group">>';
+                                    <div class="view-add-group">';
                                     if($user_id>0 and $already_cart==0){
                                         $response.='<button class="product-add" title="Add to Cart" onclick="add_to_cart('.$product_id.','.$price.','.$user_id.')">
                                                         <i class="fas fa-shopping-basket"></i>
@@ -439,11 +439,11 @@ if(isset($_POST['cart_checkout'])){
           
            if($_SESSION['currency']=="USD"){
                 
-               $price = number_format(($row['PRODN06']*$exchange_rate), 2);
+               $price = round(($row['PRODN06']*$exchange_rate), 2);
                 $symbol="$";
 
             }else if($_SESSION['currency']=="Pound"){
-                $price = number_format(($row['PRODN06']*$exchange_rate), 2);
+                $price = round(($row['PRODN06']*$exchange_rate), 2);
                 $symbol="£";
             }
 

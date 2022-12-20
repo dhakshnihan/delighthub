@@ -50,78 +50,91 @@
                         }
 
                        
-                        
-                        $total_price= number_format(($price*$items), 2);
-                        
+                          //Rupess  caleculation part 
+                       
 
                         if($category_uom=='Kgs'){
                             $uom_tag="Weight : $uom - $category_uom";
                             if($uom=='0.5'){
-                                $unit_price=number_format(($price/2),2);
-                                $total_price= number_format(($unit_price*$items), 2);
+                                $unit_price=round(($price/2),2);
+                                $total_price= round(($unit_price*$items), 2);
                             }else if($uom=='0.25'){
-                                $unit_price=number_format(($price/4),2);
-                                $total_price= number_format(($unit_price*$items), 2);
+                                $unit_price=round(($price/4),2);
+                                $total_price= round(($unit_price*$items), 2);
                             }else{
                                 //1kgs price caleculation
-                              $unit_price=number_format(($price),2);
-                              $total_price= number_format(($unit_price), 2);
+                              $unit_price=round(($price),2);
+                              $total_price= round(($unit_price), 2);
                           }
                             
                         }else if($category_uom=='Inches'){
+                            $unit_price=round(($price),2);
+                            $total_price= round(($unit_price*$items), 2);
                             $uom_tag="Size : $uom";
                         }else{
+                            $unit_price=round(($price),2);
+                            $total_price= round(($unit_price*$items), 2);
                             $uom_tag="";
                         }
                         
                         $symbol="₹";
 
-                       
+                       //Doller caleculation part 
                        if($_SESSION['currency']=="USD"){
                             if($category_uom=='Kgs'){
                                 $uom_tag="Weight : $uom - $category_uom";
                                 if($uom=='0.5'){
                                     //500grms caleculation
-                                    $unit_price=number_format((($price*$exchange_rate)/2),2);
-                                    $total_price= number_format(($unit_price*$items), 2);
+                                    $unit_price=round((($price*$exchange_rate)/2),2);
+                                    $total_price= round(($unit_price*$items), 2);
                                 }else if($uom=='0.25'){
                                       //250grms caleculation
-                                    $unit_price=number_format((($price*$exchange_rate)/4),2);
-                                    $total_price= number_format(($unit_price*$items), 2);
+                                    $unit_price=round((($price*$exchange_rate)/4),2);
+                                    $total_price= round(($unit_price*$items), 2);
                                 }else{
                                     //1kgs price caleculation
-                                  $unit_price=number_format(($price*$exchange_rate),2);
-                                  $total_price= number_format(($unit_price*$items), 2);
+                                  $unit_price=round(($price*$exchange_rate),2);
+                                  $total_price= round(($unit_price*$items), 2);
                               }
                                 
                             }else if($category_uom=='Inches'){
+                                   // Inches price caleculation
+                                $unit_price=round(($price*$exchange_rate),2);
+                                $total_price= round(($unit_price*$items), 2);
                                 $uom_tag="Size : $uom";
                             }else{
+                                $unit_price=round(($price*$exchange_rate),2);
+                                $total_price= round(($unit_price*$items), 2);
                                 $uom_tag="";
                             }
                             $symbol="$";
 
+                              //Pound caleculation part 
                         }else if($_SESSION['currency']=="Pound"){
                             if($category_uom=='Kgs'){
                                 $uom_tag="Weight : $uom - $category_uom";
                                 if($uom=='0.5'){
                                     //500grms caleculation
-                                    $unit_price=number_format((($price*$exchange_rate)/2),2);
-                                    $total_price= number_format(($unit_price*$items), 2);
+                                    $unit_price=round((($price*$exchange_rate)/2),2);
+                                    $total_price= round(($unit_price*$items), 2);
                                 }else if($uom=='0.25'){
                                     //250grms caleculation
-                                    $unit_price=number_format((($price*$exchange_rate)/4),2);
-                                    $total_price= number_format(($unit_price*$items), 2);
+                                    $unit_price=round((($price*$exchange_rate)/4),2);
+                                    $total_price= round(($unit_price*$items), 2);
                                 }else{
                                       //1kgs price caleculation
-                                    $unit_price=number_format(($price*$exchange_rate),2);
-                                    $total_price= number_format(($unit_price*$items), 2);
+                                    $unit_price=round(($price*$exchange_rate),2);
+                                    $total_price= round(($unit_price*$items), 2);
                                 }
                               
                             
                             }else if($category_uom=='Inches'){
+                                $unit_price=round(($price*$exchange_rate),2);
+                                $total_price= round(($unit_price*$items), 2);
                                 $uom_tag="Size : $uom";
                             }else{
+                                $unit_price=round(($price*$exchange_rate),2);
+                                $total_price= round(($unit_price*$items), 2);
                                 $uom_tag="";
                             }
                             $symbol="£";
@@ -155,6 +168,7 @@
                                 </div>
                             </div>
                         </li>';
+                       
                         $grand_total_price=$grand_total_price+$total_price;
                         echo '<input type="hidden" id="grand_total_price_'.$cart_id.'" value="'.$grand_total_price.'" style="color: forestgreen;">';
                        
@@ -172,7 +186,7 @@
                  <a class="cart-checkout-btn" >
                      <button name="submit" onclick="cart_checkout()">
                         <span class="checkout-label">Proceed to Checkout</span>
-                        <span class="checkout-price" id="grand_total_price_span"><?php echo '$'.$grand_total_price; ?></span>  <?php echo '<input type="hidden" id="grand_total_price" value="'.$grand_total_price.'" >'; ?>
+                        <span class="checkout-price" id="grand_total_price_span"><?php echo $symbol.''.$grand_total_price; ?></span>  <?php echo '<input type="hidden" id="grand_total_price" value="'.$grand_total_price.'" >'; ?>
                      </button>
                   
                 </a> 

@@ -84,11 +84,11 @@ session_start();
             
             if($_SESSION['currency']=="USD"){
                 
-                $price = number_format(($row['PRODN06']*$exchange_rate), 2);
+                $price = round(($row['PRODN06']*$exchange_rate), 2);
                 $symbol="$";
 
             }else if($_SESSION['currency']=="Pound"){
-                $price = number_format(($row['PRODN06']*$exchange_rate), 2);
+                $price = round(($row['PRODN06']*$exchange_rate), 2);
                 $symbol="£";
             }
 

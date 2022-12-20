@@ -133,11 +133,11 @@
                                                 // print_r($array_cart_id);
 
                                                 if($uom=='0.5'){
-                                                    $checkout_unit_price=number_format(($row['PRODN06']),2);
-                                                    $checkout_total_price= number_format((($row['PRODN06']/2)*$items), 2);
+                                                    $checkout_unit_price=round(($row['PRODN06']),2);
+                                                    $checkout_total_price= round((($row['PRODN06']/2)*$items), 2);
                                                 }else if($uom=='0.25'){
-                                                    $checkout_unit_price=number_format(($row['PRODN06']),2);
-                                                    $checkout_total_price= number_format((($row['PRODN06']/4)*$items), 2);
+                                                    $checkout_unit_price=round(($row['PRODN06']),2);
+                                                    $checkout_total_price= round((($row['PRODN06']/4)*$items), 2);
                                                 }else {
                                                     $checkout_unit_price=$row['PRODN06'];
                                                     $checkout_total_price=$row['PRODN06']*$items;
@@ -150,14 +150,14 @@
                                               
                                                if($_SESSION['currency']=="USD"){
                                                     if($uom=='0.5'){
-                                                        $checkout_unit_price=number_format(($row['PRODN06']*$exchange_rate),2);
-                                                        $checkout_total_price= number_format((($row['PRODN06']/2)*$items*$exchange_rate), 2);
+                                                        $checkout_unit_price=round(($row['PRODN06']*$exchange_rate),2);
+                                                        $checkout_total_price= round((($row['PRODN06']/2)*$items*$exchange_rate), 2);
                                                     }else if($uom=='0.25'){
-                                                        $checkout_unit_price=number_format(($row['PRODN06']*$exchange_rate),2);
-                                                        $checkout_total_price= number_format((($row['PRODN06']/4)*$items*$exchange_rate), 2);
+                                                        $checkout_unit_price=round(($row['PRODN06']*$exchange_rate),2);
+                                                        $checkout_total_price= round((($row['PRODN06']/4)*$items*$exchange_rate), 2);
                                                     }else{
-                                                        $checkout_unit_price=$row['PRODN06']*$exchange_rate;
-                                                        $checkout_total_price=$row['PRODN06']*$items*$exchange_rate;
+                                                        $checkout_unit_price=round(($row['PRODN06']*$exchange_rate), 2);
+                                                        $checkout_total_price=round(($row['PRODN06']*$items*$exchange_rate), 2);
                                                     }
                                                     
                                                  
@@ -166,12 +166,12 @@
                                                 }else if($_SESSION['currency']=="Pound"){
 
                                                     if($uom=='0.5'){
-                                                        $checkout_unit_price=number_format(($row['PRODN06']*$exchange_rate),2);
-                                                        $checkout_total_price= number_format((($row['PRODN06']/2)*$items*$exchange_rate), 2);
+                                                        $checkout_unit_price=round(($row['PRODN06']*$exchange_rate),2);
+                                                        $checkout_total_price= round((($row['PRODN06']/2)*$items*$exchange_rate), 2);
                                                        
                                                     }else if($uom=='0.25'){
-                                                        $checkout_unit_price=number_format(($row['PRODN06']*$exchange_rate),2);
-                                                        $checkout_total_price= number_format((($row['PRODN06']/4)*$items*$exchange_rate), 2);
+                                                        $checkout_unit_price=round(($row['PRODN06']*$exchange_rate),2);
+                                                        $checkout_total_price= round((($row['PRODN06']/4)*$items*$exchange_rate), 2);
                                                       
                                                     }else{
                                                         $checkout_unit_price=$row['PRODN06']*$exchange_rate;
@@ -208,8 +208,9 @@
                                                         <?php
                                                      } else if($categoty_uom=='Inches'){
                                                         echo  '<td class="table-brand">';
-                                                        ?>
-                                                                    <select class="select_uom_inches_<?php echo $cart_id; ?>" id="select_uom_inches_<?php echo $cart_id; ?>" onchange="select_uom_inches(<?php echo $cart_id; ?>,this)">
+                                                        ?>          
+                                                                    <input type="hidden" class="select_uom_kgs_<?=$cart_id?>" id="select_uom_kgs_<?=$x; ?>" value="1">
+                                                                    <select class="select_uom_inches_<?php echo $cart_id; ?>" id="select_uom_inches_<?=$x; ?>" onchange="select_uom_inches(<?php echo $cart_id; ?>,this)">
                                                                         <option value="XL" <?php echo ($uom == 'XL')?"selected":"" ?>>XL</option>
                                                                         <option value="L" <?php echo ($uom == 'L')?"selected":"" ?>>L</option>
                                                                         <option value="M" <?php echo ($uom == 'M')?"selected":"" ?>>M</option>
@@ -219,6 +220,7 @@
                                                                 </td>
                                                       <?php
                                                      }else{
+                                                        echo '<input type="hidden" class="select_uom_kgs_'.$cart_id.'" id="select_uom_kgs_'.$x.'" value="1">';
                                                         echo  '<td class="table-brand">NA</td>';
                                                      }
                                                     
@@ -281,10 +283,23 @@
                                         
                                         </li>
                                     </ul>
-                                    <a class="cart-checkout-btn" href="address.php">
-                                        <span class="checkout-label">Proceed to Checkout</span>
-                                        <span class="checkout-price" id="final_grand_total_price_span"><?php echo $symbol.''.$checkout_grand_total_price;  ?></span>
-                                    </a>
+                                    <?php
+                                        $sqlxx="select * from tbl_address where fk_user_id='".$_SESSION['user_id']."'";
+                                        $resultxx=mysqli_query($con,$sqlxx);
+                                        $rowxx=mysqli_num_rows($resultxx);
+                                    if($rowxx>0){
+                                        echo '<a class="cart-checkout-btn" href="product_summary.php">
+                                                <span class="checkout-label">Proceed to Checkout</span>
+                                                <span class="checkout-price" id="final_grand_total_price_span">'.$symbol.''.$checkout_grand_total_price.'</span>
+                                            </a>';
+                                    }else{
+                                        echo '<a class="cart-checkout-btn" href="address.php">
+                                                <span class="checkout-label">Proceed to Checkout</span>
+                                                <span class="checkout-price" id="final_grand_total_price_span">'.$symbol.''.$checkout_grand_total_price.'</span>
+                                            </a>';
+                                    }
+                                 
+                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -658,10 +673,12 @@
                     var input = $("#checkout_quantity_"+cart_id).val();
                     var checkout_grand_total_price = $("#checkout_grand_total_price").val();
                     var select_uom_kgs=$("#select_uom_kgs_"+cart_id).val();
-                    input = isNaN(input) ? 0 : input;
-                    input++;
-                    document.getElementById('checkout_quantity_'+cart_id).value  = input;
-                    ReCalculate();
+                  
+                        input = isNaN(input) ? 0 : input;
+                        input++;
+                        document.getElementById('checkout_quantity_'+cart_id).value  = input;
+                        ReCalculate();
+                
 
                     // if(select_uom_kgs=="0.25"){
                     //     input = isNaN(input) ? 0 : input;
@@ -705,12 +722,14 @@
                     var input = $("#checkout_quantity_"+cart_id).val();
                     var checkout_grand_total_price = $("#checkout_grand_total_price").val();
                     var select_uom_kgs=$("#select_uom_kgs_"+cart_id).val();
-                    input = isNaN(input) ? 0 : input;
-                    if (input > 1){
-                        input--;
-                    }
-                    document.getElementById('checkout_quantity_'+cart_id).value  = input;
-                    ReCalculate();
+                  
+                        input = isNaN(input) ? 0 : input;
+                        if (input > 1){
+                            input--;
+                        }
+                        document.getElementById('checkout_quantity_'+cart_id).value  = input;
+                        ReCalculate();
+                 
                     // if(select_uom_kgs=="0.25"){
                     //     input = isNaN(input) ? 0 : input;
                     
@@ -750,27 +769,22 @@
                   
                 }
 
-
                 function ReCalculate(){
                     let children = document.getElementById('totalcount').value;
                     let sum=0;
-                    console.log(children);
+                   
                     for (i=0;i<children;i++){
                         let checkout_unit_priceelement = document.getElementById("checkout_total_price_"+i.toString());
                         let fixedpriceelement= document.getElementById('checkout_unit_price_'+i.toString()).value;
                         let checkout_quantity = document.getElementById('checkout_quantity_'+i.toString()).value;
                         let select_uom_kgs = document.getElementById('select_uom_kgs_'+i.toString()).value;
-
-                        // console.log(checkout_unit_priceelement);
-                        console.log(fixedpriceelement);
-                        // console.log(checkout_quantity);
-                        // console.log(select_uom_kgs);
-                       
-                       let cal= checkout_unit_priceelement.value=parseFloat(fixedpriceelement)*parseFloat(checkout_quantity)*parseFloat(select_uom_kgs);
+                      
+                      let cal= checkout_unit_priceelement.value=parseFloat(fixedpriceelement*checkout_quantity*select_uom_kgs);
+                      
                        sum = sum+cal;
                     }
-                    checkout_grand_total_price_span.innerHTML = parseFloat(sum).toFixed(2);
-                    final_grand_total_price_span.innerHTML = parseFloat(sum).toFixed(2);
+                    checkout_grand_total_price_span.innerHTML = sum;
+                    final_grand_total_price_span.innerHTML = sum;
                 }
 
                 function select_uom_kgs(cart_id,selected_value){
@@ -780,7 +794,6 @@
                     var selected_values=selected_value.value;
                     var checkout_unit_price=$("#checkout_unit_price_"+cart_id).val();
                     var input = $("#checkout_quantity_"+cart_id).val();
-                    // id="checkout_total_price_1"
                     var checkout_grand_total_price = $("#checkout_grand_total_price").val();
                     ReCalculate();
                    

@@ -65,12 +65,61 @@
                                             while($row=mysqli_fetch_array($result)){
                                                 $image='./admin/masters/prod_uploads/'.$row["PRODN07"];
                                                 $product_name=$row['PRODN01'];
-                                                $checkout_total_price=$row['total_price'];
-                                                $checkout_unit_price=$row['PRODN06'];
+                                                // $checkout_total_price=$row['total_price'];
+                                                // $checkout_unit_price=$row['PRODN06'];
                                                 $items=$row['items'];
                                                 $cart_id=$row['cart_id'];
                                                 $unit_price=$row['PRODN06'];
                                                 $uom=$row['uom'];
+                                                
+
+                                                if($uom=='0.5'){
+                                                    $checkout_unit_price=round(($row['PRODN06']),2);
+                                                    $checkout_total_price= round((($row['PRODN06']/2)*$items), 2);
+                                                }else if($uom=='0.25'){
+                                                    $checkout_unit_price=round(($row['PRODN06']),2);
+                                                    $checkout_total_price= round((($row['PRODN06']/4)*$items), 2);
+                                                }else {
+                                                    $checkout_unit_price=$row['PRODN06'];
+                                                    $checkout_total_price=$row['PRODN06']*$items;
+
+                                                }
+                                                $symbol="₹";
+
+                                              
+                                               if($_SESSION['currency']=="USD"){
+                                                    if($uom=='0.5'){
+                                                        $checkout_unit_price=round(($row['PRODN06']*$exchange_rate),2);
+                                                        $checkout_total_price= round((($row['PRODN06']/2)*$items*$exchange_rate), 2);
+                                                    }else if($uom=='0.25'){
+                                                        $checkout_unit_price=round(($row['PRODN06']*$exchange_rate),2);
+                                                        $checkout_total_price= round((($row['PRODN06']/4)*$items*$exchange_rate), 2);
+                                                    }else{
+                                                        $checkout_unit_price=$row['PRODN06']*$exchange_rate;
+                                                        $checkout_total_price=$row['PRODN06']*$items*$exchange_rate;
+                                                    }
+                                                    
+                                                 
+                                                    $symbol="$";
+            
+                                                }else if($_SESSION['currency']=="Pound"){
+
+                                                    if($uom=='0.5'){
+                                                        $checkout_unit_price=round(($row['PRODN06']*$exchange_rate),2);
+                                                        $checkout_total_price= round((($row['PRODN06']/2)*$items*$exchange_rate), 2);
+                                                       
+                                                    }else if($uom=='0.25'){
+                                                        $checkout_unit_price=round(($row['PRODN06']*$exchange_rate),2);
+                                                        $checkout_total_price= round((($row['PRODN06']/4)*$items*$exchange_rate), 2);
+                                                      
+                                                    }else{
+                                                        $checkout_unit_price=$row['PRODN06']*$exchange_rate;
+                                                        $checkout_total_price=$row['PRODN06']*$items*$exchange_rate;
+                                                    }
+                                                   
+                                                    $symbol="£";
+                                                }
+
                                                 if($uom=="0.5"){
                                                     $uom_value="500 gms";
                                                 }else if($uom=="0.25"){
@@ -78,6 +127,7 @@
                                                 }else{
                                                     $uom_value="1 Kgs";
                                                 }
+
                                                 $product_id=$row['PRODTID'];
                                               
                                             

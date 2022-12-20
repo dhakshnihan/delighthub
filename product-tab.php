@@ -65,11 +65,11 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                  
                   if($_SESSION['currency']=="USD"){
                        
-                      $price = number_format(($row['PRODN06']*$exchange_rate), 2);
+                      $price = round(($row['PRODN06']*$exchange_rate), 2);
                        $symbol="$";
 
                    }else if($_SESSION['currency']=="Pound"){
-                       $price = number_format(($row['PRODN06']*$exchange_rate), 2);
+                       $price = round(($row['PRODN06']*$exchange_rate), 2);
                        $symbol="£";
                    }
 
@@ -94,8 +94,8 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
 
                    
 
-              
-             echo'
+            if($uom=="Kgs"){
+                echo'
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="details-gallery">
@@ -200,6 +200,208 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                
             </div>
         </section>';
+            }else if($uom=="Inches"){
+                echo '<div class="row">
+                        <div class="col-lg-6">
+                            <div class="details-gallery">
+                                <div class="details-label-group">
+                                    <label class="details-label new">new</label>
+                                    <label class="details-label off">-10%</label>
+                                </div>
+                                <ul class="details-preview"> 
+                                    <li><img src='.$image.' alt="product"></li>
+                                    <li><img src='.$image.' alt="product"></li>
+                                    <li><img src='.$image.' alt="product"></li>
+                                
+                                </ul>
+                                <ul class="details-thumb">
+                                    <li><img src='.$image.' alt="product"></li>
+                                    <li><img src='.$image.' alt="product"></li>
+                                    <li><img src='.$image.' alt="product"></li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            
+                            <div class="details-content">
+                                <h3 class="details-name"><a href="#">'.$product_name.'</a></h3>
+                                <div class="details-meta">
+                                    <p>Product Code:<span>'. $product_id.'</span></p>
+                                </div>
+                                <div class="details-rating">';
+                                for ($i = 1; $i <= 5; $i++) {
+                                                            
+                                    if($i <= $rating) {
+                                        echo '<i class="active icofont-star"></i>';
+                                    }else{
+                                        echo '<i class=" icofont-star"></i>';
+                                    }
+                                }
+                                    
+                            echo '<a href="">('.$rating.')</a>
+                                </div>
+                                <h3 class="details-price">
+                                    <span><input type="hidden" value="'.$price.'" id="pricekg" class="pricekg">'.$symbol.''.$price.'<small>/per kilo</small></span>
+                                </h3>
+                                <span id="total_price" class="total_price" style="color:red"> '.$symbol.''.$price.' (Inclusive Of Tax)</span>
+                                <span id="uom_input_value"><input  title="UOM" type="hidden" id="uom" name="uom" value="S"></span>
+                                <div class="view-list-group">
+                                        
+                                        <ul class="view-tag-list">
+                                        <li>
+                                            <button type="button" class="btn btn-outline-success " id="myfunction_inches_value1" onclick="myfunction_inches_value1()">XL</button></li>
+                                            <li><button type="button" class="btn btn-outline-success " id="myfunction_inches_value2" onclick="myfunction_inches_value2()">L</button></li>
+                                            <li><button type="button" class="btn btn-outline-success " id="myfunction_inches_value3" onclick="myfunction_inches_value3()">M</button></li>
+                                            <li><button type="button" class="btn btn-outline-success " id="myfunction_inches_value4" onclick="myfunction_inches_value4()">S</button></li>
+                                        </ul>
+                                        
+                                    </div>
+                                    <span id="total_input_price"><input  title="Final Quantity" type="hidden" id="quantity" name="quantity" value="'.$price.'"></span>
+                                    <span id="total_input_hidden_price"><input  title="Quantity Number" type="hidden" id="quantity_hidden" name="quantity_hidden" value="'.$price.'"></span>
+                                    <div class="cart-action-group">
+                                            <div class="product-action">
+                                                <button class="action-minus" title="Quantity Minus" onclick="decrementValue(\''.$symbol.'\')" value="-"><i class="icofont-minus"></i></button>
+                                                <input type="text" name="quantity" value="1" maxlength="2" max="10" size="1" id="number" />
+                                                <button class="action-plus" title="Quantity Plus" onclick="incrementValue(\''.$symbol.'\')" value="+"><i class="icofont-plus"></i></button>
+                                            </div>
+                                            
+                                        </div>
+                            
+                                <div class="details-add-group">';
+                                
+                                    if(isset($_SESSION['email'])>0 and $already_cart==0){
+                                        echo '<button class="product-add" title="Add to Cart" onclick="add_to_cart('.$product_id.','.$price.','.$_SESSION['user_id'].')">
+                                            <i class="fas fa-shopping-basket"></i>
+                                            <span>add to cart</span>
+                                        </button><br/>';
+                                    }else if($already_cart>0){
+                                        echo    '<button class="product-add" title="Add to Cart" onclick="already_exist()">
+                                                    <i class="fas fa-shopping-basket"></i>
+                                                    <span>add to cart</span>
+                                                </button><br/>';
+                                    }else{
+                                        echo '<a class="product-add" title="Add to Cart" href="login.php">
+                                                <i class="fas fa-shopping-basket"></i>
+                                                <span>add to cart</span>
+                                            </a><br/>';
+                                    }
+                                    
+                                    echo '<div class="details-action-group">
+                                        <button class="details-wish wish '.$status.'"   value='.$product_id.' onclick="view_wish('.$product_id.')" title="Add Your Wishlist">
+                                            <i class="icofont-heart"></i>
+                                            <span>add to wish</span>
+                                        </button>
+                                    
+                                
+                                </div>
+
+                                    <p class="details-desc">'.$PRODN05.'</p>
+                                
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+            </section>';
+            }else{
+                echo '<div class="row">
+                <div class="col-lg-6">
+                    <div class="details-gallery">
+                        <div class="details-label-group">
+                            <label class="details-label new">new</label>
+                            <label class="details-label off">-10%</label>
+                        </div>
+                        <ul class="details-preview"> 
+                            <li><img src='.$image.' alt="product"></li>
+                            <li><img src='.$image.' alt="product"></li>
+                            <li><img src='.$image.' alt="product"></li>
+                        
+                        </ul>
+                        <ul class="details-thumb">
+                            <li><img src='.$image.' alt="product"></li>
+                            <li><img src='.$image.' alt="product"></li>
+                            <li><img src='.$image.' alt="product"></li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    
+                    <div class="details-content">
+                        <h3 class="details-name"><a href="#">'.$product_name.'</a></h3>
+                        <div class="details-meta">
+                            <p>Product Code:<span>'. $product_id.'</span></p>
+                        </div>
+                        <div class="details-rating">';
+                        for ($i = 1; $i <= 5; $i++) {
+                                                    
+                            if($i <= $rating) {
+                                echo '<i class="active icofont-star"></i>';
+                            }else{
+                                echo '<i class=" icofont-star"></i>';
+                            }
+                        }
+                            
+                    echo '<a href="">('.$rating.')</a>
+                        </div>
+                        <h3 class="details-price">
+                            <span><input type="hidden" value="'.$price.'" id="pricekg" class="pricekg">'.$symbol.''.$price.'<small>/per kilo</small></span>
+                        </h3>
+                        <span id="total_price" class="total_price" style="color:red"> '.$symbol.''.$price.' (Inclusive Of Tax)</span>
+                            <span id="total_input_price"><input  title="Final Quantity" type="hidden" id="quantity" name="quantity" value="'.$price.'"></span>
+                            <span id="total_input_hidden_price"><input  title="Quantity Number" type="hidden" id="quantity_hidden" name="quantity_hidden" value="'.$price.'"></span>
+                            <div class="cart-action-group">
+                                    <div class="product-action">
+                                        <button class="action-minus" title="Quantity Minus" onclick="decrementValue(\''.$symbol.'\')" value="-"><i class="icofont-minus"></i></button>
+                                        <input type="text" name="quantity" value="1" maxlength="2" max="10" size="1" id="number" />
+                                        <button class="action-plus" title="Quantity Plus" onclick="incrementValue(\''.$symbol.'\')" value="+"><i class="icofont-plus"></i></button>
+                                    </div>
+                                    
+                                </div>
+                    
+                        <div class="details-add-group">';
+                        
+                            if(isset($_SESSION['email'])>0 and $already_cart==0){
+                                echo '<button class="product-add" title="Add to Cart" onclick="add_to_cart('.$product_id.','.$price.','.$_SESSION['user_id'].')">
+                                    <i class="fas fa-shopping-basket"></i>
+                                    <span>add to cart</span>
+                                </button><br/>';
+                            }else if($already_cart>0){
+                                echo    '<button class="product-add" title="Add to Cart" onclick="already_exist()">
+                                            <i class="fas fa-shopping-basket"></i>
+                                            <span>add to cart</span>
+                                        </button><br/>';
+                            }else{
+                                echo '<a class="product-add" title="Add to Cart" href="login.php">
+                                        <i class="fas fa-shopping-basket"></i>
+                                        <span>add to cart</span>
+                                    </a><br/>';
+                            }
+                            
+                            echo '<div class="details-action-group">
+                                <button class="details-wish wish '.$status.'"   value='.$product_id.' onclick="view_wish('.$product_id.')" title="Add Your Wishlist">
+                                    <i class="icofont-heart"></i>
+                                    <span>add to wish</span>
+                                </button>
+                            
+                        
+                        </div>
+
+                            <p class="details-desc">'.$PRODN05.'</p>
+                        
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+    </section>';
+            }
+            
 
         ?>
         <!--=====================================
@@ -418,10 +620,24 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                     while($row=mysqli_fetch_array($result)){
                         // $image='/admin/masters/product_uploads/."'.$row['PRODN07'].'"';
                         $image='./admin/masters/prod_uploads/'.$row["PRODN07"];
-                        $price=$row['PRODN06'];
+                        // $price=$row['PRODN06'];
                         $product_name=$row['PRODN01'];
                         $product_id=$row['PRODTID'];
                         $rating=$row['PRODN11'];
+
+                        $price = $row['PRODN06'];
+                        $symbol="₹";
+                      
+                       if($_SESSION['currency']=="USD"){
+                            
+                           $price = round(($row['PRODN06']*$exchange_rate), 2);
+                            $symbol="$";
+
+                        }else if($_SESSION['currency']=="Pound"){
+                            $price = round(($row['PRODN06']*$exchange_rate), 2);
+                            $symbol="£";
+                        }
+
 
                     
 
@@ -458,7 +674,7 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                                     <a href="product-tab.php?id='.$product_id.'">'.$product_name.'</a>
                                 </h6>
                                 <h6 class="product-price">
-                                    <span>$'.$price.'<small>/piece</small></span>
+                                    <span>'.$symbol.''.$price.'<small>/piece</small></span>
                                 </h6>';
                         echo    '<button class="product-add" title="Add to Cart">
                                     <i class="fas fa-shopping-basket"></i>

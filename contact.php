@@ -59,33 +59,39 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <form class="contact-form">
+                        <form class="contact-form" action="contact.php" method="post">
                             <h4>Drop Your Thoughts</h4>
                             <div class="form-group">
                                 <div class="form-input-group">
-                                    <input class="form-control" type="text" placeholder="Your Name">
+                                    <input class="form-control" type="text"  name= "name" placeholder="Your Name">
                                     <i class="icofont-user-alt-3"></i>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="form-input-group">
-                                    <input class="form-control" type="text" placeholder="Your Email">
+                                    <input class="form-control" type="email" name="email"  placeholder="Your Email">
                                     <i class="icofont-email"></i>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="form-input-group">
-                                    <input class="form-control" type="text" placeholder="Your Subject">
+                                    <input class="form-control" type="text"  name="phone" placeholder="Your Mobile No">
                                     <i class="icofont-book-mark"></i>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="form-input-group">
-                                    <textarea class="form-control" placeholder="Your Message"></textarea>
+                                    <input class="form-control" type="text"  name="subject" placeholder="Your Subject">
+                                    <i class="icofont-book-mark"></i>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-input-group">
+                                    <textarea class="form-control"  name="message" placeholder="Your Message"></textarea>
                                     <i class="icofont-paragraph"></i>
                                 </div>
                             </div>
-                            <button type="submit" class="form-btn-group">
+                            <button type="submit"  name="submit" class="form-btn-group">
                                 <i class="fas fa-envelope"></i>
                                 <span>send message</span>
                             </button>
@@ -136,7 +142,34 @@
                     CONTACT PART END
         =======================================-->
 
+        <?php 
+ if(isset($_POST['submit'])){
+   
+  $to = "botsatirupathi@gmail.com"; // this is your Email address
+  $from = $_POST['email']; // this is the sender's Email address
 
+ 
+  $name = $_POST['name'];
+  $email = $_POST['email'];
+  $phone = $_POST['phone'];
+  $service = $_POST['subject'];
+  $content = $_POST['message'];
+  echo "Mail Sent. Thank you " . $name . ", we will contact you shortly.";
+
+  $subject = "Form submission";
+  $subject2 = "Copy of your form submission";
+  $message = $name . "\n " . $service . "\n" . $email . "\n " . $phone . " \n " . $content . "\n " . "\n\n" . $_POST['message'];
+  //$message2 = "Here is a copy of your message " . $name . "\n\n" . $_POST['message'];
+
+  $headers = "From:" . $from;
+  $headers2 = "From:" . $to;
+  mail($to,$subject,$message,$headers);
+  mail($from,$subject2,$message2,$headers2); // sends a copy of the message to the sender
+//   echo "Mail Sent. Thank you " . $name . ", we will contact you shortly.";
+   echo "<script type='text/javascript'>alert('Mail Sent. Thank you " . $name . ", we will contact you shortly.');</script>";
+  // You can also use header('Location: thank_you.php'); to redirect to another page.
+  }
+ ?>
         <!--=====================================
                     NEWSLETTER PART START
         =======================================-->

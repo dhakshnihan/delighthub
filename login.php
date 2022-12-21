@@ -8,21 +8,18 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <!-- AUTHOR META -->
-        <meta name="author" content="mironcoder">
-        <meta name="email" content="mironcoder@gmail.com">
-        <meta name="profile" content="https://themeforest.net/user/mironcoder">
+       
 
         <!-- TEMPLATE META -->
-        <meta name="name" content="Greeny">
-        <meta name="title" content="Greeny - eCommerce HTML Template">
-        <meta name="keywords" content="organic, food, shop, ecommerce, store, html, bootstrap, template, agriculture, vegetables, webshop, farm, grocery, natural, online store">
+        <meta name="name" content="delightshub">
+        <meta name="title" content="delightshub - eCommerce">
+        <meta name="keywords" content="organic, food, shop, ecommerce, store, agriculture, vegetables, webshop, farm, grocery, natural, online store">
         <!--=====================================
                     META-TAG PART END
         =======================================-->
 
         <!-- WEBPAGE TITLE -->
-        <title>Greeny - Login</title>
+        <title>delightshub - Login</title>
 
         <!--=====================================
                     CSS LINK PART START
@@ -103,11 +100,11 @@
                                     <li><a href="#" class="instagram"><i class="fab fa-instagram"></i>login with instagram</a></li>
                                 </ul> -->
                                 <figure class="figure">
-                                    <img src="Draft.jpg" class="figure-img img-fluid rounded" alt="..." width="600" height="650">
+                                    <img src="login.png" class="figure-img img-fluid rounded" alt="..." width="600" height="650">
                                     <!-- <figcaption class="figure-caption text-end">A caption for the above image.</figcaption> -->
                                   </figure>
                                 <div class="user-form-divider">
-                                    <p>or</p>
+                                    <p><img src="./images/Favicon.svg"></p>
                                 </div>
                                 <form class="user-form"  method="post" name="login">
                                     <div class="form-group">

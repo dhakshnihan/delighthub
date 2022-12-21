@@ -13,7 +13,7 @@
         <!--=====================================
                     BANNER PART START
         =======================================-->
-        <section class="inner-section single-banner" style="background: url(images/single-banner.jpg) no-repeat center;">
+        <section class="inner-section single-banner" style="background: url(images/All-Categories.jpg) no-repeat center;">
             <div class="container">
                 <h2>Product List</h2>
                 <ol class="breadcrumb">

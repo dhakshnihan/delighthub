@@ -294,20 +294,20 @@
 											</div>
 										</div>
 										<div class="form-group form-show-validation row">
-											<label for="brand_id" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right"> Brand<span class="required-label">*</span></label>
+											<label for="brand_id" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right"> Region<span class="required-label">*</span></label>
 											<div class="col-lg-4 col-md-9 col-sm-8">
 												<div class="select2-input">
 													<select id="brand_id" name="brand_id" class="form-control" required>
-															<option value="">Please select Brand</option>
+															<option value="">Please select Region</option>
 															<?php
-																$sql="select * from tbl_brands where BRAND02='Active'";
+																$sql="select * from tbl_region where status='Active'";
 															
 																$results=mysqli_query($con,$sql);
 																while($row=mysqli_fetch_array($results)){
-                                                                    if($brand_id==$row['BRANDTID']){
+                                                                    if($brand_id==$row['region_id']){
                                                                         $selected="selected";
                                                                     }
-																	echo '<option value="'.$row['BRANDTID'].'"  '.$selected.'>'.$row['BRAND01'].'</option>';
+																	echo '<option value="'.$row['region_id'].'"  '.$selected.'>'.$row['region_name'].'</option>';
 																}
 															?>
 													</select>

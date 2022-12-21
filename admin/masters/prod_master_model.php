@@ -258,17 +258,17 @@
 											</div>
 										</div>
 										<div class="form-group form-show-validation row">
-											<label for="brand_id" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right"> Brand<span class="required-label">*</span></label>
+											<label for="region_id" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right"> Region<span class="required-label">*</span></label>
 											<div class="col-lg-4 col-md-9 col-sm-8">
 												<div class="select2-input">
-													<select id="brand_id" name="brand_id" class="form-control" required>
-															<option value="">Please select Brand</option>
+													<select id="region_id" name="region_id" class="form-control" required>
+															<option value="">Please select Region</option>
 															<?php
-																$sql="select * from tbl_brands where BRAND02='Active'";
+																$sql="select * from tbl_region where status='Active'";
 																echo $sql;
 																$results=mysqli_query($con,$sql);
 																while($row=mysqli_fetch_array($results)){
-																	echo '<option value="'.$row['BRANDTID'].'">'.$row['BRAND01'].'</option>';
+																	echo '<option value="'.$row['region_id'].'">'.$row['region_name'].'</option>';
 																}
 															?>
 													</select>
@@ -285,6 +285,18 @@
 											<label for="name" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">Product Price <span class="required-label">*</span></label>
 											<div class="col-lg-4 col-md-9 col-sm-8">
 												<input type="number" class="form-control" id="prod_price" name="prod_price" placeholder="Enter Product Price" required>
+											</div>
+										</div>
+										<div class="form-group form-show-validation row">
+											<label for="name" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">Product Rating <span class="required-label">*</span></label>
+											<div class="col-lg-4 col-md-9 col-sm-8">
+												<input type="number" class="form-control" id="prod_rating" name="prod_rating" placeholder="Enter Product Rating" min="1" max="5" required>
+											</div>
+										</div>
+										<div class="form-group form-show-validation row">
+											<label for="name" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">Top Orders <span class="required-label">*</span></label>
+											<div class="col-lg-4 col-md-9 col-sm-8">
+												<input type="number" class="form-control" id="prod_top_orders" name="prod_top_orders" placeholder="Enter Product Rating"  required>
 											</div>
 										</div>
 										<div class="separator-solid"></div>

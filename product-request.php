@@ -72,7 +72,7 @@
         <!--=====================================
                     BANNER PART START
         =======================================-->
-        <section class="inner-section single-banner" style="background: url(images/single-banner.jpg) no-repeat center;">
+        <section class="inner-section single-banner" style="background: url(images/Request-Product.jpg) no-repeat center;">
             <div class="container">
                 <h2>Product Request</h2>
                 <ol class="breadcrumb">
@@ -94,8 +94,9 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="about-content">
-                            <h2>Our Motive is to Provide Best for Those Who Deserve</h2>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis exercitationem commodi aliquam necessitatibus vero reiciendis quaerat illo est fuga ea temporibus natus doloremque ipsum voluptas quod deserunt expedita reprehenderit pariatur quidem quisquam, recusandae animi non! Voluptas totam repudiandae rerum molestiae possimus quis numquam sapiente sunt architecto quisquam Aliquam odio optio</p>
+                            <h2>Request your favourite product from India and get it delivered in your doorstep.</h2>
+                            <p>If you’re looking to purchase products from India to be delivered overseas, you’ve come to the right place. We provide a comprehensive and reliable service to get your products from India to your destination of choice.
+We understand that ordering goods from India can be daunting, given the distance and the cost of international shipping. That’s why we’ve gone the extra mile to make the process as easy and cost-efficient as possible. Our team of experts will work with you to ensure that your goods are shipped safely and securely and that they arrive at their destination on time.</p>
                         </div>
                         <ul class="about-list">
                             <li>
@@ -221,7 +222,7 @@
                 <div class="row">
                     <div class="col-11 col-md-9 col-lg-7 col-xl-6 mx-auto">
                         <div class="section-heading">
-                            <h2>Why choose Delights Hub</h2>
+                            <h2>Why people choose Delight Hub</h2>
                         </div>
                     </div>
                 </div>
@@ -232,8 +233,8 @@
                                 <i class="icofont-fruits"></i>
                             </div>
                             <div class="choose-text">
-                                <h4>100% fresh organic food</h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing tempora pariatur provident animi error dignissimo cumque minus facere dolores cupiditate debitis</p>
+                                <h4>Finest Products </h4>
+                                <p>We deliver the finest products from India to customers around the world. Our mission is to provide premium quality products while ensuring top-notch customer service.</p>
                             </div>
                         </div>
                     </div>
@@ -243,8 +244,8 @@
                                 <i class="icofont-vehicle-delivery-van"></i>
                             </div>
                             <div class="choose-text">
-                                <h4>Delivery within one hour</h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing tempora pariatur provident animi error dignissimo cumque minus facere dolores cupiditate debitis</p>
+                                <h4>Low-Cost Shipping </h4>
+                                <p>We’ve established strategic partnerships with various logistics companies around the world to ensure that our customers receive the lowest shipping rates on their orders.</p>
                             </div>
                         </div>
                     </div>
@@ -254,8 +255,8 @@
                                 <i class="icofont-loop"></i>
                             </div>
                             <div class="choose-text">
-                                <h4>quickly return policy</h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing tempora pariatur provident animi error dignissimo cumque minus facere dolores cupiditate debitis</p>
+                                <h4>Door Step Delivery</h4>
+                                <p>We are proud to offer the finest Indian products to customers all over the world, with door step delivery.</p>
                             </div>
                         </div>
                     </div>
@@ -265,8 +266,8 @@
                                 <i class="icofont-support"></i>
                             </div>
                             <div class="choose-text">
-                                <h4>instant support team</h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing tempora pariatur provident animi error dignissimo cumque minus facere dolores cupiditate debitis</p>
+                                <h4>Hassle Free custom clearance/h4>
+                                <p>We are committed to delivering hassle-free custom clearance, ensuring that our customers receive their goods in a timely and reliable manner.</p>
                             </div>
                         </div>
                     </div>
@@ -286,13 +287,13 @@
                 <div class="card mb-3 mt-3">
                     <div class="row no-gutters">
                         <div class="col-md-4">
-                            <img src="https://source.unsplash.com/random/1280x720" class="card-img h-100" alt="Img1">
+                            <img src="./New/Group9.png" class="card-img h-100" alt="Img1">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title">Tender Authority </h5>
-                                <p class="class-text">#909888R00Ch</p>
-                                <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione possimus dolore distinctio esse nemo quasi, vel minima magni! Quas harum est cupiditate architecto, rem accusantium adipisci sed sunt aliquam odio.</p>
+                                <h5 class="card-title">Shop from the catalogue of India’s Bestsellers</h5>
+                                <p class="class-text">India's Bestsellers catalogue is a great way to shop for the best products from India. With a wide selection of products ranging from food and apparel to home decor and electronics, India's Bestsellers has something for everyone. Plus, all orders are shipped directly from India, making it an ideal choice for those looking to get their hands on authentic Indian products without having to travel to India.</p>
+                                
                             
                             </div>
                         </div>
@@ -302,14 +303,15 @@
                     <div class="row no-gutters">
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title"></h5>
-                                <p class="class-text float-right">#909888R00Ch</p>
-                                <p class="card-text float-right text-right">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione possimus dolore distinctio esse nemo quasi, vel minima magni! Quas harum est cupiditate architecto, rem accusantium adipisci sed sunt aliquam odio.</p>
+                                <h5 class="card-title">Fast shipping from India to USA in 7-10 working days</h5>
+                                <p class="class-text float-right"></p>
+                                <p class="card-text float-right text-right">At Delight Hub, we understand the importance of fast shipping from India to USA, and we are committed to ensuring that all of our customers receive their products in a timely manner. Our team of experienced logistics professionals are dedicated to providing exceptional service and ensuring that your products arrive in 7-10 working days.
+</p>
                                 
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <img src="https://source.unsplash.com/random/1280x720" class="card-img h-100" alt="Img1">
+                            <img src="./New/Group 10.png" class="card-img h-100" alt="Img1">
                         </div>
                     </div>
                 </div>
@@ -348,13 +350,13 @@
                 <div class="card mb-3 mt-3">
                     <div class="row no-gutters">
                         <div class="col-md-4">
-                            <img src="https://source.unsplash.com/random/1280x720" class="card-img h-100" alt="Img1">
+                            <img src="./New/Group.png" class="card-img h-100" alt="Img1">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title">Tender Authority </h5>
-                                <p class="class-text">#909888R00Ch</p>
-                                <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione possimus dolore distinctio esse nemo quasi, vel minima magni! Quas harum est cupiditate architecto, rem accusantium adipisci sed sunt aliquam odio.</p>
+                                <h5 class="card-title">Your favourite product right in your doorsteps. </h5>
+                                <p class="class-text">With the help of cutting-edge technology and innovative approaches to logistics, we are now able to deliver your favourite product right to your doorsteps from anywhere in the world.</p>
+                                <p class="card-text">Whether you are a business looking to expand your international reach or an individual looking for a convenient way to get your favourite Indian items delivered, we can make sure that your products will reach your destination in no time.</p>
                             
                             </div>
                         </div>
@@ -364,14 +366,14 @@
                     <div class="row no-gutters">
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title"></h5>
-                                <p class="class-text float-right">#909888R00Ch</p>
-                                <p class="card-text float-right text-right">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione possimus dolore distinctio esse nemo quasi, vel minima magni! Quas harum est cupiditate architecto, rem accusantium adipisci sed sunt aliquam odio.</p>
+                                <h5 class="card-title">No hassles of custom clearance in USA</h5>
+                                <p class="class-text float-right"></p>
+                                <p class="card-text float-right text-right">As one of India's leading companies delivering products overseas, we understand the importance of having a hustle-free custom clearance process at airports. This is why we have streamlined our airport custom clearance process to ensure that our customers’ goods pass through smoothly, quickly and with the least amount of hassle.</p>
                                 
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <img src="https://source.unsplash.com/random/1280x720" class="card-img h-100" alt="Img1">
+                            <img src="./New/Group12.png" class="card-img h-100" alt="Img1">
                         </div>
                     </div>
                 </div>

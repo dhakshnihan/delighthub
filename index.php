@@ -140,6 +140,34 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
             </div>
         </div>
 
+        <div class="banner-part banner-2 bann">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 col-lg-6">
+                        <div class="banner-img">
+                            <img src="images/home/category/58.png" alt="index">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6">
+                        <div class="banner-content">
+                            <h1>Request your favourite product from India and get it delivered in your doorstep.</h1>
+                            <p>We provide a comprehensive and reliable service to get your products from India to your destination of choice</p>
+                            <div class="banner-btn">
+                                <a class="btn btn-inline" href="shop-4column.html">
+                                    <i class="fas fa-shopping-basket"></i>
+                                    <span>shop now</span>
+                                </a>
+                                <a class="btn btn-outline" href="offer.html">
+                                    <i class="icofont-sale-discount"></i>
+                                    <span>get offer</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="banner-part banner-1 ban">
             <div class="container">
                 <div class="row align-items-center">

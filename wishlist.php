@@ -1,6 +1,7 @@
        <?php  include('header.php')?>
        <?php include('cart.php');?>
        <?php include ('productview.php');?>
+       <?php echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';  ?>
 
         <!--=====================================
                     BANNER PART START
@@ -35,38 +36,51 @@
                                         <th scope="col">Product</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Price</th>
-                                        <!-- <th scope="col">description</th> -->
-                                        <th scope="col">status</th>
                                         <th scope="col">shopping</th>
                                         <th scope="col">action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 <?php 
-                               
-                                 
+                                  $sqlx="select * from tbl_currency where currency_name='".$_SESSION['currency']."'";
+                                  $resultx=mysqli_query($con,$sqlx);
+                                  $rowx=mysqli_fetch_array($resultx);
+                                  $exchange_rate=$rowx['exchange_rate'];
 
+                                $sno=1;
                                  $sql="select * from tbl_wishlist left join tbl_products on PRODTID=fk_product_id where tbl_wishlist.status='Active'";
                                 
                                  $result= mysqli_query($con, $sql);
                                  while($row=mysqli_fetch_array($result))
                                  {
                                     $image='./admin/masters/prod_uploads/'.$row["PRODN07"];
-                                    $price=$row['PRODN06'];
                                     $product_name=$row['PRODN01'];
                                     $product_id=$row['PRODTID'];
-                                    
+                                    $wishlist_id=$row['wishlist_id'];
+                                    $price = $row['PRODN06'];
+                                    $symbol="₹";
+                                  
+                                   if($_SESSION['currency']=="USD"){
+                                        
+                                       $price = round(($row['PRODN06']*$exchange_rate), 2);
+                                        $symbol="$";
+
+                                    }else if($_SESSION['currency']=="Pound"){
+                                        $price = round(($row['PRODN06']*$exchange_rate), 2);
+                                        $symbol="£";
+                                    }
                                 echo'
                                 
                                     <tr>
-                                        <td class="table-serial"><h6>01</h6></td>
+                                        <td class="table-serial"><h6>'.$sno.'</h6></td>
                                         <td class="table-image"><img src='.$image.' alt="product"></td>
                                         <td class="table-name"><h6>'.$product_name.'</h6></td>
-                                        <td class="table-price"><h6>Rs '. $price.'<small>/kilo</small></h6></td>
-                                        <!-- <td class="table-desc"><p>Lorem ipsum nobis eaque excepturi nisi eveniet...<a href="product-video.html">read more</a></p></td> -->
-                                        <td class="table-status"><h6 class="stock-out">stock out</h6></td>
+                                        <td class="table-price"><h6>'.$symbol.''. $price.'<small>/kilo</small></h6></td>
                                         <td class="table-shop">
-                                            <button class="product-add" title="Add to Cart">add to cart</button>
+                                            <button class="product-add" title="Add to Cart">
+                                                <i class="fas fa-shopping-basket"></i>
+                                                <span title="Product View" href="#" class="add_cart" onclick="add_cart('.$product_id.')" data-bs-toggle="modal" data-id='.$product_id.' data-bs-target="#product-view">add cart</span>
+                                            </button>
                                             <div class="product-action">
                                                 <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
                                                 <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
@@ -74,12 +88,11 @@
                                             </div>
                                         </td>
                                         <td class="table-action">
-                                            <a class="view" href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#product-view"><i class="fas fa-eye"></i></a>
-                                            <a class="trash" href="#" title="Remove Wishlist"><i class="icofont-trash"></i></a>
+                                            <a class="view" title="Quick View" href="product-tab.php?id='.$product_id.'"><i class="fas fa-eye"></i></a>
+                                            <a class="trash" href="#" title="Remove Wishlist" onclick="wishlist_items_delete('.$product_id.')"><i class="icofont-trash"></i></a>
                                         </td>
-                                    </tr>
-                                   
-                                ';
+                                    </tr>';
+                                    $sno++;
                             }
 
                                 
@@ -92,7 +105,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-lg-12">
                         <div class="text-center mt-5">
                             <button class="btn btn-outline">
@@ -100,7 +113,7 @@
                             </button>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </section>
         <!--=====================================
@@ -312,6 +325,36 @@
         <!--=====================================
                     JS LINK PART END
         =======================================-->
+
+        <script>
+             function add_cart(product_id){
+        
+                // var product_id =$(this).data('id');
+                var user_id=$("#user_id").val();
+                $.ajax({
+                    url:"ajax.php",
+                    method:"post",
+                    data:{'product_view':'product_view',product_id:product_id,user_id:user_id},
+                    success:function(response){
+                        $(".product-view").html(response);
+                        $("#modal-content").modal('show'); 
+                    }
+                })
+            }
+            function wishlist_items_delete(product_id){
+                var user_id=$("#user_id").val();
+                alert(user_id);
+                         $.ajax({
+                            url:"ajax.php",
+                            method:"post",
+                            data:{'remove_wishlist':'remove_wishlist',user_id:user_id,product_id:product_id},
+                            success:function(response){
+                                // $("#row_" + cart_id).remove();
+                                // window.location ='wishlist.php';
+                            }
+                        })
+                }
+        </script>
     </body>
 </html>
 

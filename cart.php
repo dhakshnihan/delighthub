@@ -4,14 +4,18 @@
         <aside class="cart-sidebar">
             <?php 
             error_reporting(0);
-               
-                $sqlx="select *,count(* ) as total_items from tbl_cart
-                left join tbl_products on fk_product=PRODTID
-                left join tbl_category on  PRODN10=CATEGTID
-                where status='Active'";
-                $resultx=mysqli_query($con,$sqlx);
-                $rowx=mysqli_fetch_array($resultx);
-                $total_items=$rowx['total_items'];
+                $total_items=0;
+               if(isset($_SESSION['user_id'])>0){
+                    $sqlx="select *,count(* ) as total_items from tbl_cart
+                    left join tbl_products on fk_product=PRODTID
+                    left join tbl_category on  PRODN10=CATEGTID
+                    where status='Active' and  tbl_cart.fk_userid='".$_SESSION['user_id']."'";
+                    // echo $sqlx."test12345";
+                    $resultx=mysqli_query($con,$sqlx);
+                    $rowx=mysqli_fetch_array($resultx);
+                    $total_items=$rowx['total_items'];
+               }
+                
             ?>
             <div class="cart-header">
                 <div class="cart-total">
@@ -22,157 +26,159 @@
             </div>
             <ul class="cart-list">
                 <?php 
-
-                    $sqlx="select * from tbl_currency where currency_name='".$_SESSION['currency']."'";
-                    $resultx=mysqli_query($con,$sqlx);
-                    $rowx=mysqli_fetch_array($resultx);
-                    $exchange_rate=$rowx['exchange_rate'];
-
-                     $grand_total_price=0;
-                     $sql="select * from tbl_cart
-                     left join tbl_products on fk_product=PRODTID
-                     left join tbl_category on  PRODN10=CATEGTID
-                     where status='Active'";
-                     $result=mysqli_query($con,$sql);
-                    while($row=mysqli_fetch_array($result)){
-                        $image='./admin/masters/prod_uploads/'.$row["PRODN07"];
-                        // $total_price=$row['total_price'];
-                        $price=$row['PRODN06'];
-                        $items=$row['items'];
-                        $uom=$row['uom'];
-                        $pro=$row['PRODTID'];
-                        $category_uom=$row['CATEG04'];
-                        $cart_id=$row["cart_id"];
-                        if($items>0){
-
-                        }else{
-                            $items=1;
-                        }
-
-                       
-                          //Rupess  caleculation part 
-                       
-
-                        if($category_uom=='Kgs'){
-                            $uom_tag="Weight : $uom - $category_uom";
-                            if($uom=='0.5'){
-                                $unit_price=round(($price/2),2);
-                                $total_price= round(($unit_price*$items), 2);
-                            }else if($uom=='0.25'){
-                                $unit_price=round(($price/4),2);
-                                $total_price= round(($unit_price*$items), 2);
+                    if(isset($_SESSION['user_id'])){
+                        $sqlx="select * from tbl_currency where currency_name='".$_SESSION['currency']."'";
+                        $resultx=mysqli_query($con,$sqlx);
+                        $rowx=mysqli_fetch_array($resultx);
+                        $exchange_rate=$rowx['exchange_rate'];
+    
+                         $grand_total_price=0;
+                         $sql="select * from tbl_cart
+                         left join tbl_products on fk_product=PRODTID
+                         left join tbl_category on  PRODN10=CATEGTID
+                         where status='Active'";
+                         $result=mysqli_query($con,$sql);
+                        while($row=mysqli_fetch_array($result)){
+                            $image='./admin/masters/prod_uploads/'.$row["PRODN07"];
+                            // $total_price=$row['total_price'];
+                            $price=$row['PRODN06'];
+                            $items=$row['items'];
+                            $uom=$row['uom'];
+                            $pro=$row['PRODTID'];
+                            $category_uom=$row['CATEG04'];
+                            $cart_id=$row["cart_id"];
+                            if($items>0){
+    
                             }else{
-                                //1kgs price caleculation
-                              $unit_price=round(($price),2);
-                              $total_price= round(($unit_price), 2);
-                          }
-                            
-                        }else if($category_uom=='Inches'){
-                            $unit_price=round(($price),2);
-                            $total_price= round(($unit_price*$items), 2);
-                            $uom_tag="Size : $uom";
-                        }else{
-                            $unit_price=round(($price),2);
-                            $total_price= round(($unit_price*$items), 2);
-                            $uom_tag="";
-                        }
-                        
-                        $symbol="₹";
-
-                       //Doller caleculation part 
-                       if($_SESSION['currency']=="USD"){
+                                $items=1;
+                            }
+    
+                           
+                              //Rupess  caleculation part 
+                           
+    
                             if($category_uom=='Kgs'){
                                 $uom_tag="Weight : $uom - $category_uom";
                                 if($uom=='0.5'){
-                                    //500grms caleculation
-                                    $unit_price=round((($price*$exchange_rate)/2),2);
+                                    $unit_price=round(($price/2),2);
                                     $total_price= round(($unit_price*$items), 2);
                                 }else if($uom=='0.25'){
-                                      //250grms caleculation
-                                    $unit_price=round((($price*$exchange_rate)/4),2);
+                                    $unit_price=round(($price/4),2);
                                     $total_price= round(($unit_price*$items), 2);
                                 }else{
                                     //1kgs price caleculation
-                                  $unit_price=round(($price*$exchange_rate),2);
-                                  $total_price= round(($unit_price*$items), 2);
+                                  $unit_price=round(($price),2);
+                                  $total_price= round(($unit_price), 2);
                               }
                                 
                             }else if($category_uom=='Inches'){
-                                   // Inches price caleculation
-                                $unit_price=round(($price*$exchange_rate),2);
+                                $unit_price=round(($price),2);
                                 $total_price= round(($unit_price*$items), 2);
                                 $uom_tag="Size : $uom";
                             }else{
-                                $unit_price=round(($price*$exchange_rate),2);
+                                $unit_price=round(($price),2);
                                 $total_price= round(($unit_price*$items), 2);
                                 $uom_tag="";
                             }
-                            $symbol="$";
-
-                              //Pound caleculation part 
-                        }else if($_SESSION['currency']=="Pound"){
-                            if($category_uom=='Kgs'){
-                                $uom_tag="Weight : $uom - $category_uom";
-                                if($uom=='0.5'){
-                                    //500grms caleculation
-                                    $unit_price=round((($price*$exchange_rate)/2),2);
-                                    $total_price= round(($unit_price*$items), 2);
-                                }else if($uom=='0.25'){
-                                    //250grms caleculation
-                                    $unit_price=round((($price*$exchange_rate)/4),2);
-                                    $total_price= round(($unit_price*$items), 2);
-                                }else{
-                                      //1kgs price caleculation
+                            
+                            $symbol="₹";
+    
+                           //Doller caleculation part 
+                           if($_SESSION['currency']=="USD"){
+                                if($category_uom=='Kgs'){
+                                    $uom_tag="Weight : $uom - $category_uom";
+                                    if($uom=='0.5'){
+                                        //500grms caleculation
+                                        $unit_price=round((($price*$exchange_rate)/2),2);
+                                        $total_price= round(($unit_price*$items), 2);
+                                    }else if($uom=='0.25'){
+                                          //250grms caleculation
+                                        $unit_price=round((($price*$exchange_rate)/4),2);
+                                        $total_price= round(($unit_price*$items), 2);
+                                    }else{
+                                        //1kgs price caleculation
+                                      $unit_price=round(($price*$exchange_rate),2);
+                                      $total_price= round(($unit_price*$items), 2);
+                                  }
+                                    
+                                }else if($category_uom=='Inches'){
+                                       // Inches price caleculation
                                     $unit_price=round(($price*$exchange_rate),2);
                                     $total_price= round(($unit_price*$items), 2);
+                                    $uom_tag="Size : $uom";
+                                }else{
+                                    $unit_price=round(($price*$exchange_rate),2);
+                                    $total_price= round(($unit_price*$items), 2);
+                                    $uom_tag="";
                                 }
-                              
-                            
-                            }else if($category_uom=='Inches'){
-                                $unit_price=round(($price*$exchange_rate),2);
-                                $total_price= round(($unit_price*$items), 2);
-                                $uom_tag="Size : $uom";
-                            }else{
-                                $unit_price=round(($price*$exchange_rate),2);
-                                $total_price= round(($unit_price*$items), 2);
-                                $uom_tag="";
+                                $symbol="$";
+    
+                                  //Pound caleculation part 
+                            }else if($_SESSION['currency']=="Pound"){
+                                if($category_uom=='Kgs'){
+                                    $uom_tag="Weight : $uom - $category_uom";
+                                    if($uom=='0.5'){
+                                        //500grms caleculation
+                                        $unit_price=round((($price*$exchange_rate)/2),2);
+                                        $total_price= round(($unit_price*$items), 2);
+                                    }else if($uom=='0.25'){
+                                        //250grms caleculation
+                                        $unit_price=round((($price*$exchange_rate)/4),2);
+                                        $total_price= round(($unit_price*$items), 2);
+                                    }else{
+                                          //1kgs price caleculation
+                                        $unit_price=round(($price*$exchange_rate),2);
+                                        $total_price= round(($unit_price*$items), 2);
+                                    }
+                                  
+                                
+                                }else if($category_uom=='Inches'){
+                                    $unit_price=round(($price*$exchange_rate),2);
+                                    $total_price= round(($unit_price*$items), 2);
+                                    $uom_tag="Size : $uom";
+                                }else{
+                                    $unit_price=round(($price*$exchange_rate),2);
+                                    $total_price= round(($unit_price*$items), 2);
+                                    $uom_tag="";
+                                }
+                                $symbol="£";
                             }
-                            $symbol="£";
-                        }
-
-                       
-                       
-                echo    '<li class="cart-item" id="row_'.$row['cart_id'].'">
-                            <div class="cart-media">
-                                <a href="product-tab.php?id='.$pro.'"><img src="'.$image.'" alt="product" >
-                                  <button class="cart-delete" ><i class="fas fa-eye" style="background-color: #ffffff;color: #119744;"></i></button>
-                                </a>
-                            </div>
-                            <div class="cart-info-group">
-                                <div class="cart-info ">
-                                    <h6><a href="product-single.html">existing product name</a><button class="ms-4  cart-delete" onclick="cart_items_delete('.$cart_id.')"><i class="far fa-trash-alt" style="color: red;"></i></button></h6>
-                                    <p>Unit Price - '.$symbol.''.$unit_price.'<input type="hidden" class="unit_price" id="unit_price_'.$cart_id.'" value="'.$unit_price.'"></p>
-
-                                    <p>'.$uom_tag.'</p>
+    
+                           
+                           
+                    echo    '<li class="cart-item" id="row_'.$row['cart_id'].'">
+                                <div class="cart-media">
+                                    <a href="product-tab.php?id='.$pro.'"><img src="'.$image.'" alt="product" >
+                                      <button class="cart-delete" ><i class="fas fa-eye" style="background-color: #ffffff;color: #119744;"></i></button>
+                                    </a>
                                 </div>
-                                <div class="cart-info price" id="cart-price-'.$row["cart_id"].'">
-                                <input type="number" name="cart_id[]"  value="'.$row['cart_id'].'" style="display: none;"> 
-                                </div>
-                                <div class="cart-action-group">
-                                    <div class="product-action">
-                                        <button class="action-minus" title="Quantity Minus" onclick="cartdecrementValue('.$cart_id.','.$unit_price.')" value="-"><i class="icofont-minus"></i></button>
-                                        <input type="text" name="input-quantity[]"  value="'.$items.'" maxlength="2" max="10" size="1"  class="input_quantity_'.$cart_id.'"  id="input-quantity-'.$cart_id.'"  />
-                                        <button class="action-plus" title="Quantity Plus" onclick="cartincrementValue('.$cart_id.','.$unit_price.')" value="+"><i class="icofont-plus"></i></button>
+                                <div class="cart-info-group">
+                                    <div class="cart-info ">
+                                        <h6><a href="product-single.html">existing product name</a><button class="ms-4  cart-delete" onclick="cart_items_delete('.$cart_id.')"><i class="far fa-trash-alt" style="color: red;"></i></button></h6>
+                                        <p>Unit Price - '.$symbol.''.$unit_price.'<input type="hidden" class="unit_price" id="unit_price_'.$cart_id.'" value="'.$unit_price.'"></p>
+    
+                                        <p>'.$uom_tag.'</p>
                                     </div>
-                                    <h6><input type="text" name="total_price[] ms-4" id="total_price_'.$cart_id.'" value="'.$total_price.'" style="color: forestgreen;"></h6>
+                                    <div class="cart-info price" id="cart-price-'.$row["cart_id"].'">
+                                    <input type="number" name="cart_id[]"  value="'.$row['cart_id'].'" style="display: none;"> 
+                                    </div>
+                                    <div class="cart-action-group">
+                                        <div class="product-action">
+                                            <button class="action-minus" title="Quantity Minus" onclick="cartdecrementValue('.$cart_id.','.$unit_price.')" value="-"><i class="icofont-minus"></i></button>
+                                            <input type="text" name="input-quantity[]"  value="'.$items.'" maxlength="2" max="10" size="1"  class="input_quantity_'.$cart_id.'"  id="input-quantity-'.$cart_id.'"  />
+                                            <button class="action-plus" title="Quantity Plus" onclick="cartincrementValue('.$cart_id.','.$unit_price.')" value="+"><i class="icofont-plus"></i></button>
+                                        </div>
+                                        <h6><input type="text" name="total_price[] ms-4" id="total_price_'.$cart_id.'" value="'.$total_price.'" style="color: forestgreen;"></h6>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>';
-                       
-                        $grand_total_price=$grand_total_price+$total_price;
-                        echo '<input type="hidden" id="grand_total_price_'.$cart_id.'" value="'.$grand_total_price.'" style="color: forestgreen;">';
-                       
+                            </li>';
+                           
+                            $grand_total_price=$grand_total_price+$total_price;
+                            echo '<input type="hidden" id="grand_total_price_'.$cart_id.'" value="'.$grand_total_price.'" style="color: forestgreen;">';
+                           
+                        }
                     }
+                   
                 
                 ?>
                 

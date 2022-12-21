@@ -548,6 +548,12 @@ if(isset($_POST['cart_checkout'])){
         echo json_encode($data);
     }
 
+    if(isset($_POST['remove_wishlist'])){
+        $sql="delete from tbl_wishlist where fk_user_id='".$_POST['user_id']."' AND fk_product_id='".$_POST['product_id']."'";
+            // echo $sql;
+            mysqli_query($con,$sql);
+    }
+
     if(isset($_POST['currency_convertion'])){
         $_SESSION['currency']=$_POST['currency'];
     }

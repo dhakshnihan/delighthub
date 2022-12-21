@@ -99,9 +99,9 @@
                                 <i class="icofont-money"></i>
                                     <select class="select_currency" name="currency" id="currency" onchange="currency_convertion()">
                                         <option value="please select">Please select currency</option>
-                                        <option value="INR" <?php echo ($_SESSION['currency'] == 'Rupee')?"selected":"" ?>>Rupee</option>
-                                        <option value="Pound" <?php echo ($_SESSION['currency'] == 'Pound')?"selected":"" ?>>pound</option>
-                                        <option value="USD" <?php echo ($_SESSION['currency'] == 'USD')?"selected":"" ?>>doller</option>
+                                        <option value="INR" <?php echo (isset($_SESSION['currency']) == 'Rupee')?"selected":"" ?>>Rupee</option>
+                                        <option value="Pound" <?php echo (isset($_SESSION['currency']) == 'Pound')?"selected":"" ?>>pound</option>
+                                        <option value="USD" <?php echo (isset($_SESSION['currency']) == 'USD')?"selected":"" ?>>doller</option>
                                     </select>
                             </div>
                         </div>
@@ -250,14 +250,17 @@
                         <button class="header-widget header-cart" title="Cartlist">
                             <i class="fas fa-shopping-basket"></i>
                             <?php 
+                                $total_items=0;
+                                if(isset($_SESSION['user_id'])){
                
                                 $sqlx="select *,count(*) as total_items from tbl_cart
                                 left join tbl_products on fk_product=PRODTID
                                 left join tbl_category on  PRODN10=CATEGTID
-                                where status='Active'";
+                                where status='Active' and fk_userid='".$_SESSION['user_id']."'";
                                 $resultx=mysqli_query($con,$sqlx);
                                 $rowx=mysqli_fetch_array($resultx);
                                 $total_items=$rowx['total_items'];
+                                }
                             ?>
                             <sup><?php echo $total_items; ?></sup>
                             <!-- <span>total price<small>$345.00</small></span> -->
@@ -283,7 +286,25 @@
                 <button class="category-close"><i class="icofont-close"></i></button>
             </div>
             <ul class="category-list">
-                <li class="category-item">
+            <?php 
+                                                
+                $sql="select * from tbl_category where CATEG02='Active'";
+                $result=mysqli_query($con,$sql);
+                while($row=mysqli_fetch_array($result)){
+                    echo    '<li class="category-item">
+                                <a class="category-link dropdown-link" href="#">
+                                    <i class="flaticon"></i>
+                                    <span>'.$row['CATEG01'].'</span>
+                                </a><ul class="dropdown-list"> ';
+                                    $sqlx="select * from tbl_subcategory where SUBCAT03='Active' and SUBCAT02='".$row['CATEGTID']."'";
+                                    $resultx=mysqli_query($con,$sqlx);
+                                    while($rowx=mysqli_fetch_array($resultx)){
+                                        echo '<li><a href="#">'.$rowx['SUBCAT01'].'</a></li>';
+                                    }
+                                echo  '</ul></li>';
+                }
+            ?>
+                <!-- <li class="category-item">
                     <a class="category-link dropdown-link" href="#">
                         <i class="flaticon-vegetable"></i>
                         <span>vegetables</span>
@@ -414,7 +435,7 @@
                         <li><a href="#">saltfish</a></li>
                         <li><a href="#">pazza</a></li>
                     </ul>
-                </li>
+                </li> -->
             </ul>
             <div class="category-footer">
                 <p>All Rights Reserved by <a href="#">Delights Hub</a></p>
@@ -450,46 +471,46 @@
                         <i class="icofont-world"></i>
                         <select class="select">
                             <option value="english" selected>English</option>
-                            <option value="bangali">Bangali</option>
-                            <option value="arabic">Arabic</option>
+                            <!-- <option value="bangali">Bangali</option>
+                            <option value="arabic">Arabic</option> -->
                         </select>
                     </div>
-                    <div class="nav-select">
+                    <!-- <div class="nav-select">
                         <i class="icofont-money"></i>
                         <select class="select">
                             <option value="english" selected>Doller</option>
                             <option value="bangali">Pound</option>
                             <option value="arabic">Taka</option>
                         </select>
-                    </div>
+                    </div> -->
                 </div>
                 <ul class="nav-list">
                     <li>
-                        <a class="nav-link dropdown-link" href="#"><i class="icofont-home"></i>Home</a>
+                        <a class="nav-link dropdown-link" href="index.php"><i class="icofont-home"></i>Home</a>
                         
                     </li>
-                    <li>
+                    <!-- <li>
                         <a class="nav-link dropdown-link" href="#"><i class="icofont-food-cart"></i>shop</a>
-                        <!-- <ul class="dropdown-list">
+                        <ul class="dropdown-list">
                             <li><a href="shop-5column.html">shop 5 column</a></li>
                             <li><a href="shop-4column.html">shop 4 column</a></li>
                             <li><a href="shop-3column.html">shop 3 column</a></li>
                             <li><a href="shop-2column.html">shop 2 column</a></li>
                             <li><a href="shop-1column.html">shop 1 column</a></li>
-                        </ul> -->
-                    </li>
-                    <li>
+                        </ul>
+                    </li> -->
+                    <!-- <li>
                         <a class="nav-link dropdown-link" href="#"><i class="icofont-page"></i>product</a>
-                        <!-- <ul class="dropdown-list">
+                        <ul class="dropdown-list">
                             <li><a href="product-tab.html">product tab</a></li>
                             <li><a href="product-grid.html">product grid</a></li>
                             <li><a href="product-tab.php">product video</a></li>
                             <li><a href="product-simple.html">product simple</a></li>
-                        </ul> -->
-                    </li>
-                    <li>
+                        </ul>
+                    </li> -->
+                    <!-- <li>
                         <a class="nav-link dropdown-link" href="#"><i class="icofont-bag-alt"></i>my account</a>
-                        <!-- <ul class="dropdown-list">
+                        <ul class="dropdown-list">
                             <li><a href="profile.html">profile</a></li>
                             <li><a href="wallet.html">wallet</a></li>
                             <li><a href="wishlist.html">wishlist</a></li>
@@ -498,16 +519,16 @@
                             <li><a href="orderlist.html">order history</a></li>
                             <li><a href="invoice.html">order invoice</a></li>
                             <li><a href="email-template.html">email template</a></li>
-                        </ul> -->
-                    </li>
+                        </ul>
+                    </li> -->
                     <li>
                         <a class="nav-link dropdown-link" href="#"><i class="icofont-lock"></i>authentic</a>
-                        <!-- <ul class="dropdown-list">
-                            <li><a href="login.html">login</a></li>
-                            <li><a href="register.html">register</a></li>
-                            <li><a href="reset-password.html">reset password</a></li>
-                            <li><a href="change-password.html">change password</a></li>
-                        </ul> -->
+                        <ul class="dropdown-list">
+                            <li><a href="login.php">login</a></li>
+                            <li><a href="register.php">register</a></li>
+                            <!-- <li><a href="reset-password.html">reset password</a></li>
+                            <li><a href="change-password.html">change password</a></li> -->
+                        </ul>
                     </li>
                     <li>
                         <a class="nav-link dropdown-link" href="#"><i class="icofont-book-alt"></i>blogs</a>
@@ -556,8 +577,18 @@
         <!--=====================================
                     MOBILE-MENU PART START
         =======================================-->
+        <?php
+            $tot_wishlist=0;
+            if(isset($_SESSION['user_id'])){
+                $sql1="select count(*) as count_val from  tbl_wishlist where fk_user_id='".$_SESSION['user_id']."'";
+                $result1=mysqli_query($con,$sql1);
+                $row1=mysqli_fetch_array($result1);
+                $tot_wishlist=$row1['count_val'];
+            }
+          
+        ?>
         <div class="mobile-menu">
-            <a href="index.html" title="Home Page">
+            <a href="index.php" title="Home Page">
                 <i class="fas fa-home"></i>
                 <span>Home</span>
             </a>
@@ -573,7 +604,7 @@
             <a href="wishlist.php" title="Wishlist">
                 <i class="fas fa-heart"></i>
                 <span>wishlist</span>
-                <sup>0</sup>
+                <sup><?php echo $tot_wishlist; ?></sup>
             </a>
             <!-- <a href="compare.html" title="Compare List">
                 <i class="fas fa-random"></i>

@@ -231,7 +231,7 @@
 												<?php
 													$sno=1;
 													$sql="select * from tbl_products
-													left join tbl_brands on  PRODN03=BRANDTID 
+													left join tbl_region on  PRODN03=region_id 
 													left join tbl_subcategory on SUBCATID=PRODN04";
 													// echo $sql;
 													$results=mysqli_query($con,$sql);
@@ -242,7 +242,7 @@
 															<td>'.$sno.'</td>
 															<td>'.$row['PRODN01'].'</td>
 															<td>'.$row['PRODN02'].'</td>
-															<td>'.$row['BRAND01'].'</td>
+															<td>'.$row['region_name'].'</td>
 															<td>'.$row['SUBCAT01'].'</td>
 															<td>'.$row['PRODN05'].'</td>
 															<td>'.$row['PRODN06'].'</td>

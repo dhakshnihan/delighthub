@@ -36,7 +36,7 @@
                          $sql="select * from tbl_cart
                          left join tbl_products on fk_product=PRODTID
                          left join tbl_category on  PRODN10=CATEGTID
-                         where status='Active'";
+                         where status='Active' and tbl_cart.fk_userid='".$_SESSION['user_id']."'";
                          $result=mysqli_query($con,$sql);
                         while($row=mysqli_fetch_array($result)){
                             $image='./admin/masters/prod_uploads/'.$row["PRODN07"];

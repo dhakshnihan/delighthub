@@ -229,6 +229,20 @@ if(isset($_POST['product_view'])){
                                         </ul>
                                         
                                     </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="inputGroupSelect01">Brand</label>
+                                            </div>
+                                            <select class="custom-select" id="brand">
+                                                <option value="">Any</option>';
+
+                                            $sqlx="select * from tbl_brands where BRAND02='Active'";
+                                            $resultx=mysqli_query($con,$sqlx);
+                                            while($rowx=mysqli_fetch_array($resultx)){
+                                                $response.='<option value='.$rowx['BRAND01'].'>'.$rowx['BRAND01'].'</option>';
+                                            } 
+                                $response.='</select>
+                                        </div>
                                     <span id="total_price" class="total_price"> '.$symbol.''.$price.' (Inclusive Of Tax)</span>
 
                                     <span id="total_input_price"><input  title="Final Quantity" type="hidden" id="quantity" name="quantity" value="'.$price.'"></span>
@@ -323,6 +337,20 @@ if(isset($_POST['product_view'])){
                                         </div>
                                         
                                     </div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupSelect01">Brand</label>
+                                        </div>
+                                        <select class="custom-select" id="brand">
+                                            <option value="">Any</option>';
+
+                                        $sqlx="select * from tbl_brands where BRAND02='Active'";
+                                        $resultx=mysqli_query($con,$sqlx);
+                                        while($rowx=mysqli_fetch_array($resultx)){
+                                            $response.='<option value='.$rowx['BRAND01'].'>'.$rowx['BRAND01'].'</option>';
+                                        } 
+                            $response.='</select>
+                                    </div>
                                     <div class="view-add-group">';
                                     if($user_id>0 and $already_cart==0){
                                         $response.='<button class="product-add" title="Add to Cart" onclick="add_to_cart('.$product_id.','.$price.','.$user_id.')">
@@ -368,13 +396,12 @@ echo $response;
 if(isset($_POST['product_add_to_cart'])){
     $product_id=$_POST['product_id'];
     $user_id=$_POST['user_id'];
-    $total_price=$_POST['total_price'];
     $items=$_POST['items'];
     $uom=$_POST['uom'];
     $brand=$_POST['brand'];
     $_SESSION['product_id']=$product_id;
 
-    $sqlx="insert into tbl_cart (fk_product,total_price,items,uom,fk_userid,brand_name) value ('".$product_id."','".$total_price."','".$items."','".$uom."','".$user_id."','".$brand."')";
+    $sqlx="insert into tbl_cart (fk_product,items,uom,fk_userid,brand_name) value ('".$product_id."','".$items."','".$uom."','".$user_id."','".$brand."')";
     // echo $sqlx;
     mysqli_query($con,$sqlx);
 
@@ -383,15 +410,57 @@ if(isset($_POST['product_add_to_cart'])){
 //cart checkout update 
 if(isset($_POST['cart_checkout'])){
     $items=$_POST['items'];
-    $total_price=$_POST['total_price'];
+    $uom=$_POST['uom'];
     $cart_id=$_POST['cart_id'];
+
     
 
     for($x=0;$x<sizeof($cart_id);$x++){
-        $sql="update tbl_cart set total_price='".$total_price[$x]."',items='".$items[$x]."' where cart_id='".$cart_id[$x]."'";
-        echo $sql;
+        $sql="update tbl_cart set items='".$items[$x]."' where cart_id='".$cart_id[$x]."'";
+        // echo $sql;
         mysqli_query($con,$sql);
+
+      
     }
+  }
+
+  //add checkout and update cartlist  
+  if(isset($_POST['add_checkout'])){
+    $items=$_POST['items'];
+    $uom=$_POST['uom'];
+    $cart_id=$_POST['cart_id'];
+
+    
+
+    for($x=0;$x<sizeof($cart_id);$x++){
+        $checkout_id=date('dmYHis');
+
+        $sql="update tbl_cart set items='".$items[$x]."',uom='".$uom[$x]."',fk_checkout_id='".$checkout_id."' where cart_id='".$cart_id[$x]."'";
+        // echo $sql;
+        mysqli_query($con,$sql);
+
+       
+        $sqlxx="insert into tbl_checkout(checkout_id,fk_product,items,uom,fk_userid,brand_name,status) 
+        select $checkout_id,fk_product,items,uom,fk_userid,brand_name,status from tbl_cart where cart_id='".$cart_id[$x]."'";
+        
+        mysqli_query($con,$sqlxx);
+
+        // $order_id=date('dmYHis');
+        // $sqlx="insert into tbl_orders(order_id,fk_user_id,fk_cart_id) values ($order_id,'".$_POST['user_id']."','".$cart_id[$x]."')";
+        // // echo $sqlx;
+        // mysqli_query($con,$sqlx);
+    }
+  }
+  
+  //Add Orders 
+  if(isset($_POST['add_orders'])){
+        $order_id=date('dmYHis');
+        $sql="insert into tbl_orders(order_id,fk_user_id,fk_checkout_id) values ('".$order_id."','".$_POST['user_id']."','".$_POST['checkout_id']."')";
+        // echo $sql."test";
+        mysqli_query($con,$sql);
+
+        $sqlx="delete from tbl_cart where fk_checkout_id='".$_POST['checkout_id']."' and fk_userid='".$_POST['user_id']."'";
+        // mysqli_query($con,$sqlx);
   }
  
   //cart items delete 

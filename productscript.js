@@ -175,12 +175,13 @@
               var uom=$("#uom").val();
               var quantity=$("#quantity").val();
               var items=$("#number").val();
+              var brand=$("#brand").val();
              
          
                 $.ajax({
                     url:"ajax.php",
                     method:"post",
-                    data:{'product_add_to_cart':'product_add_to_cart',product_id:product_id,total_price:quantity,user_id:user_id,items:items,uom:uom},
+                    data:{'product_add_to_cart':'product_add_to_cart',product_id:product_id,total_price:quantity,user_id:user_id,items:items,uom:uom,brand:brand},
                     success:function(response){
                         window.location ='index.php';
                     }

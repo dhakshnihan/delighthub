@@ -60,7 +60,7 @@
                                             $sql="select * from tbl_cart 
                                             left join tbl_products on PRODTID=fk_product
                                             left join tbl_category on  PRODN10=CATEGTID
-                                            where PRODN08='Active'";
+                                            where PRODN08='Active' and tbl_cart.fk_userid='".$_SESSION['user_id']."'";
                                             $result=mysqli_query($con,$sql);
                                             while($row=mysqli_fetch_array($result)){
                                                 $image='./admin/masters/prod_uploads/'.$row["PRODN07"];
@@ -129,9 +129,10 @@
                                                 }
 
                                                 $product_id=$row['PRODTID'];
-                                              
-                                            
                                                 $categoty_uom=$row['CATEG04'];
+
+                                                echo '<input type="hidden" name="checkout_id" id="checkout_id" value="'.$row['fk_checkout_id'].'">';
+                                                echo '<input type="hidden" name="user_id" id="user_id" value="'.$_SESSION['user_id'].'">';
                                                 echo    '<tr>
                                                             <td class="table-serial"><h6>Pro0001</h6></td>
                                                             <td class="table-image"><img src="'.$image.'" alt="product"></td>
@@ -160,8 +161,8 @@
                                             }
 
                                             //total 10% discount price 
-                                            $discount_price = (10/100)*$checkout_grand_total_price;
-                                            $total=$checkout_grand_total_price- $discount_price;
+                                            // $discount_price = (10/100)*$checkout_grand_total_price;
+                                            // $total=$checkout_grand_total_price- $discount_price;
 
                                             ?>
                                             
@@ -173,19 +174,19 @@
                                     <ul>
                                         <li>
                                             <span>Sub total</span>
-                                            <span >$<?php echo $checkout_grand_total_price;  ?></span>
+                                            <span ><?php echo $symbol.''.round($checkout_grand_total_price,2);  ?></span>
                                         </li>
                                         <li>
                                             <span>delivery fee</span>
-                                            <span>$00.00</span>
+                                            <span>00.00</span>
                                         </li>
-                                        <li>
+                                        <!-- <li>
                                             <span>discount</span>
-                                            <span>$<?php echo round($discount_price,2); ?></span>
-                                        </li>
+                                            <span><?php echo round($discount_price,2); ?></span>
+                                        </li> -->
                                         <li>
                                             <span>Total<small>(Incl. VAT)</small></span>
-                                            <span>$<?php echo round($total,2); ?></span>
+                                            <span><?php echo  $symbol.''.round($checkout_grand_total_price,2); ?></span>
                                         </li>
                                     </ul>
                                 </div>
@@ -242,7 +243,7 @@
                                         <label for="checkout-check">By making this purchase you agree to our <a href="#">Terms and Conditions</a>.</label>
                                     </div>
                                     <div class="checkout-proced">
-                                        <a href="invoice.html" class="btn btn-inline">proced to Payment</a>
+                                        <button href="invoice.html" class="btn btn-inline" onclick="procced_orders()">proced to Payment</button>
                                     </div>
                             </div>
                         </div>
@@ -724,6 +725,20 @@
                         success:function(response){
                             // $("#row_" + cart_id).remove();
                             window.location ='checkout.php';
+                        }
+                    })
+                }
+
+                function procced_orders(){
+                    var checkout_id = $("#checkout_id").val();
+                    var user_id = $("#user_id").val();
+                    $.ajax({
+                        url:"ajax.php",
+                        method:"post",
+                        data:{'add_orders':'add_orders',checkout_id:checkout_id,user_id:user_id},
+                        success:function(response){
+                            // $("#row_" + cart_id).remove();
+                            window.location ='order_tracking.php';
                         }
                     })
                 }

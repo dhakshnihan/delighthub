@@ -109,6 +109,7 @@
                                         </thead>
                                         <tbody id="tbody">
                                             <?php 
+                                            echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'"';
                                               $x=0;
                                             $array_cart_id=array();
                                             $checkout_grand_total_price=0;
@@ -116,14 +117,14 @@
                                             $sql="select * from tbl_cart 
                                             left join tbl_products on PRODTID=fk_product
                                             left join tbl_category on  PRODN10=CATEGTID
-                                            where PRODN08='Active'";
+                                            where PRODN08='Active' and fk_userid='".$_SESSION['user_id']."'";
                                             $result=mysqli_query($con,$sql);
                                             $child= mysqli_num_rows($result);
                                             while($row=mysqli_fetch_array($result)){
                                                 $image='./admin/masters/prod_uploads/'.$row["PRODN07"];
                                                 $product_name=$row['PRODN01'];
-                                                $checkout_total_price=$row['total_price'];
-                                                $checkout_unit_price=$row['PRODN06'];
+                                                // $checkout_total_price=$row['total_price'];
+                                                // $checkout_unit_price=$row['PRODN06'];
                                                 $items=$row['items'];
                                                 $cart_id=$row['cart_id'];
                                                 $unit_price=$row['PRODN06'];
@@ -189,9 +190,9 @@
                                                             <td class="table-serial"><h6>Pro0001</h6></td>
                                                            
                                                             <td class="table-image"><img src="'.$image.'" alt="product"></td>
-                                                            <td class="table-name"><h6>'.$product_name.'</h6></td>
-                                                            <td class="table-price"><h6>'.$symbol.'<input  class="checkout_total_price_'.$x.'" type="text" name="checkout_total_price[]" id="checkout_total_price_'.$x.'" value="'.$checkout_total_price.'" readonly><small>/kilo</small></h6>
-                                                                <input type="hidden" class="checkout_unit_price_'.$x.'" name="checkout_unit_price[]" id="checkout_unit_price_'.$x.'" value="'.$checkout_unit_price.'" readonly>
+                                                            <td class="table-name"><h6>'.$product_name.'<input type="checkbox" id="cart_id_'.$cart_id.'" name="cart_id[]" value="'.$cart_id.'" style="display:none"></h6></td>
+                                                            <td class="table-price"><h6>'.$symbol.'<input  class="checkout_total_price_'.$cart_id.'" type="text" name="checkout_total_price[]" id="checkout_total_price_'.$x.'" value="'.$checkout_total_price.'" readonly><small>/kilo</small></h6>
+                                                                <input type="hidden" class="checkout_unit_price_'.$cart_id.'" name="checkout_unit_price[]" id="checkout_unit_price_'.$x.'" value="'.$checkout_unit_price.'" readonly>
                                                                 
                                                             </td>';
                                                      if($categoty_uom=='Kgs'){
@@ -209,8 +210,8 @@
                                                      } else if($categoty_uom=='Inches'){
                                                         echo  '<td class="table-brand">';
                                                         ?>          
-                                                                    <input type="hidden" class="select_uom_kgs_<?=$cart_id?>" id="select_uom_kgs_<?=$x; ?>" value="1">
-                                                                    <select class="select_uom_inches_<?php echo $cart_id; ?>" id="select_uom_inches_<?=$x; ?>" onchange="select_uom_inches(<?php echo $cart_id; ?>,this)">
+                                                                    <input type="hidden"  id="select_uom_kgs_<?=$x; ?>" value="1">
+                                                                    <select class="select_uom_kgs_<?php echo $cart_id; ?>" id="select_uom_inches_<?=$x; ?>" onchange="select_uom_inches(<?php echo $cart_id; ?>,this)">
                                                                         <option value="XL" <?php echo ($uom == 'XL')?"selected":"" ?>>XL</option>
                                                                         <option value="L" <?php echo ($uom == 'L')?"selected":"" ?>>L</option>
                                                                         <option value="M" <?php echo ($uom == 'M')?"selected":"" ?>>M</option>
@@ -220,7 +221,8 @@
                                                                 </td>
                                                       <?php
                                                      }else{
-                                                        echo '<input type="hidden" class="select_uom_kgs_'.$cart_id.'" id="select_uom_kgs_'.$x.'" value="1">';
+                                                        echo '<input type="hidden"  id="select_uom_kgs_'.$x.'" value="1">';
+                                                        echo '<input type="hidden" class="select_uom_kgs_'.$cart_id.'" value="NA">';
                                                         echo  '<td class="table-brand">NA</td>';
                                                      }
                                                     
@@ -284,20 +286,20 @@
                                         </li>
                                     </ul>
                                     <?php
-                                        $sqlxx="select * from tbl_address where fk_user_id='".$_SESSION['user_id']."'";
-                                        $resultxx=mysqli_query($con,$sqlxx);
-                                        $rowxx=mysqli_num_rows($resultxx);
-                                    if($rowxx>0){
-                                        echo '<a class="cart-checkout-btn" href="product_summary.php">
+                                    //     $sqlxx="select * from tbl_address where fk_user_id='".$_SESSION['user_id']."'";
+                                    //     $resultxx=mysqli_query($con,$sqlxx);
+                                    //     $rowxx=mysqli_num_rows($resultxx);
+                                    // if($rowxx>0){
+                                    //     echo '<a class="cart-checkout-btn" href="product_summary.php">
+                                    //             <span class="checkout-label">Proceed to Checkout</span>
+                                    //             <span class="checkout-price" id="final_grand_total_price_span">'.$symbol.''.$checkout_grand_total_price.'</span>
+                                    //         </a>';
+                                    // }else{
+                                        echo '<button class="cart-checkout-btn" onclick="proceed_checkout()">
                                                 <span class="checkout-label">Proceed to Checkout</span>
                                                 <span class="checkout-price" id="final_grand_total_price_span">'.$symbol.''.$checkout_grand_total_price.'</span>
-                                            </a>';
-                                    }else{
-                                        echo '<a class="cart-checkout-btn" href="address.php">
-                                                <span class="checkout-label">Proceed to Checkout</span>
-                                                <span class="checkout-price" id="final_grand_total_price_span">'.$symbol.''.$checkout_grand_total_price.'</span>
-                                            </a>';
-                                    }
+                                            </button>';
+                                    // }
                                  
                                     ?>
                                 </div>
@@ -851,6 +853,29 @@
                             window.location ='checkout.php';
                         }
                     })
+                }
+
+                function proceed_checkout(){
+                    var array_cart_id = new Array();
+                    var array_items = new Array();
+                    var array_uom = new Array();
+                    $("input[type='checkbox']").each(function(){
+                        array_cart_id.push($(this).val());
+                        array_items.push($(".checkout_quantity_"+$(this).val()).val());
+                        array_uom.push($(".select_uom_kgs_"+$(this).val()).val());
+                    });
+                  var user_id = $("#user_id").val();
+                //   alert(user_id);
+                    $.ajax({
+                        url:"ajax.php",
+                        method:"post",
+                        data:{'add_checkout':'add_checkout',cart_id:array_cart_id,items:array_items,uom:array_uom,user_id:user_id},
+                        success:function(response){
+                            // $("#row_" + cart_id).remove();
+                            window.location ='address.php';
+                        }
+                    })
+
                 }
 
         </script>

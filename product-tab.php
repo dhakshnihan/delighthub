@@ -153,6 +153,20 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                                     </ul>
                                     
                                 </div>
+                                <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01">Brand</label>
+                                </div>
+                                <select class="custom-select" id="brand">
+                                    <option value="">Any</option>';
+
+                                $sqlx="select * from tbl_brands where BRAND02='Active'";
+                                $resultx=mysqli_query($con,$sqlx);
+                                while($rowx=mysqli_fetch_array($resultx)){
+                                    echo '<option value='.$rowx['BRAND01'].'>'.$rowx['BRAND01'].'</option>';
+                                } 
+                                echo '</select>
+                            </div>
                                 <div class="cart-action-group">
                                         <div class="product-action">
                                             <button class="action-minus" title="Quantity Minus" onclick="decrementValue(\''.$symbol.'\')" value="-"><i class="icofont-minus"></i></button>
@@ -257,6 +271,20 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                                         </ul>
                                         
                                     </div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupSelect01">Brand</label>
+                                        </div>
+                                        <select class="custom-select" id="brand">
+                                            <option value="">Any</option>';
+        
+                                        $sqlx="select * from tbl_brands where BRAND02='Active'";
+                                        $resultx=mysqli_query($con,$sqlx);
+                                        while($rowx=mysqli_fetch_array($resultx)){
+                                            echo '<option value='.$rowx['BRAND01'].'>'.$rowx['BRAND01'].'</option>';
+                                        } 
+                                        echo '</select>
+                                    </div>
                                     <span id="total_input_price"><input  title="Final Quantity" type="hidden" id="quantity" name="quantity" value="'.$price.'"></span>
                                     <span id="total_input_hidden_price"><input  title="Quantity Number" type="hidden" id="quantity_hidden" name="quantity_hidden" value="'.$price.'"></span>
                                     <div class="cart-action-group">
@@ -353,6 +381,20 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                         <span id="total_price" class="total_price" style="color:red"> '.$symbol.''.$price.' (Inclusive Of Tax)</span>
                             <span id="total_input_price"><input  title="Final Quantity" type="hidden" id="quantity" name="quantity" value="'.$price.'"></span>
                             <span id="total_input_hidden_price"><input  title="Quantity Number" type="hidden" id="quantity_hidden" name="quantity_hidden" value="'.$price.'"></span>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01">Brand</label>
+                                </div>
+                                <select class="custom-select" id="brand">
+                                    <option value="">Any</option>';
+
+                                $sqlx="select * from tbl_brands where BRAND02='Active'";
+                                $resultx=mysqli_query($con,$sqlx);
+                                while($rowx=mysqli_fetch_array($resultx)){
+                                    echo '<option value='.$rowx['BRAND01'].'>'.$rowx['BRAND01'].'</option>';
+                                } 
+                                echo '</select>
+                            </div>
                             <div class="cart-action-group">
                                     <div class="product-action">
                                         <button class="action-minus" title="Quantity Minus" onclick="decrementValue(\''.$symbol.'\')" value="-"><i class="icofont-minus"></i></button>

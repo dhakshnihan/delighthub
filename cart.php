@@ -27,6 +27,8 @@
             <ul class="cart-list">
                 <?php 
                     if(isset($_SESSION['user_id'])){
+                        echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
+
                         $sqlx="select * from tbl_currency where currency_name='".$_SESSION['currency']."'";
                         $resultx=mysqli_query($con,$sqlx);
                         $rowx=mysqli_fetch_array($resultx);
@@ -36,7 +38,7 @@
                          $sql="select * from tbl_cart
                          left join tbl_products on fk_product=PRODTID
                          left join tbl_category on  PRODN10=CATEGTID
-                         where status='Active'";
+                         where status='Active' and tbl_cart.fk_userid='".$_SESSION['user_id']."'";
                          $result=mysqli_query($con,$sql);
                         while($row=mysqli_fetch_array($result)){
                             $image='./admin/masters/prod_uploads/'.$row["PRODN07"];
@@ -184,18 +186,21 @@
                 
             </ul>
             <div class="cart-footer">
-                <button class="coupon-btn">Do you have a coupon code?</button>
+                <!-- <button class="coupon-btn">Do you have a coupon code?</button>
                 <form class="coupon-form">
                     <input type="text" placeholder="Enter your coupon code">
                     <button type="submit"><span>apply</span></button>
-                </form>
-                 <a class="cart-checkout-btn" >
-                     <button name="submit" onclick="cart_checkout()">
-                        <span class="checkout-label">Proceed to Checkout</span>
-                        <span class="checkout-price" id="grand_total_price_span"><?php echo $symbol.''.$grand_total_price; ?></span>  <?php echo '<input type="hidden" id="grand_total_price" value="'.$grand_total_price.'" >'; ?>
-                     </button>
-                  
-                </a> 
+                </form> -->
+                <?php if($items>0){  ?>
+                      <a class="cart-checkout-btn" >
+                      <button name="submit" onclick="cart_checkout()">
+                         <span class="checkout-label">Proceed to Checkout</span>
+                         <span class="checkout-price" id="grand_total_price_span"><?php echo $symbol.''.$grand_total_price; ?></span>  <?php echo '<input type="hidden" id="grand_total_price" value="'.$grand_total_price.'" >'; ?>
+                      </button>
+                   
+                 </a> 
+              <?php  } ?>
+                
                 <!-- <button class="cart-checkout-btn" > <span class="checkout-label">Proceed to Checkout</span>
                     <span class="checkout-price"><?php echo $grand_total_price; echo '<input type="hidden" id="grand_total_price" value="'.$grand_total_price.'" >'; ?></span>
                 </button> -->
@@ -254,10 +259,12 @@
                         // alert(array_total_price);
                     })
 
+                    var user_id=$("#user_id").val();
+
                     $.ajax({
                             url:"ajax.php",
                             method:"post",
-                            data:{'cart_checkout':'cart_checkout',cart_id:arrNumber,total_price:array_total_price,items:array_items},
+                            data:{'cart_checkout':'cart_checkout',cart_id:arrNumber,total_price:array_total_price,items:array_items,user_id:user_id},
                             success:function(response){
                                 window.location ='checkout.php';
                             }

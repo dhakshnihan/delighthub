@@ -255,7 +255,10 @@
                         </ul>
 
 
-                        
+                        <a href="wishlist.php" class="header-widget" title="Wishlist">
+                            <i class="fas fa-heart"></i>
+                            <sup>0</sup>
+                        </a>
                         <button class="header-widget header-cart" title="Cartlist">
                             <i class="fas fa-shopping-basket"></i>
                             <?php 

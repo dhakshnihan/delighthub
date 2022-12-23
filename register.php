@@ -22,7 +22,7 @@
         =======================================-->
 
         <!-- WEBPAGE TITLE -->
-        <title>Greeny - Register</title>
+        <title>delightshub - Register</title>
 
         <!--=====================================
                     CSS LINK PART START

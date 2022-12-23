@@ -22,7 +22,7 @@
         =======================================-->
 
         <!-- WEBPAGE TITLE -->
-        <title>Greeny - Reset Password</title>
+        <title>delightshub - Reset Password</title>
 
         <!--=====================================
                     CSS LINK PART START
@@ -64,12 +64,12 @@
                                 <h2>worried?</h2>
                                 <p>No Problem! Just Follow The Simple Way</p>
                             </div>
-                            <form class="user-form">
+                            <form class="user-form" action="registration-ajax.php" method="POST">
                                 <div class="form-group">
                                     <input type="email" class="form-control" placeholder="Enter your email">
                                 </div>
                                 <div class="form-button">
-                                    <button type="submit">get reset link</button>
+                                    <button type="submit" name="reset" >get reset</button>
                                 </div>
                             </form>
                         </div>

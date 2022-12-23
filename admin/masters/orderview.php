@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php include("./../dbconnection.php"); ?>
-<!-- Mirrored from themekita.com/demo-atlantis-bootstrap/livepreview/examples/demo2/forms/formvalidation.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Nov 2022 13:09:45 GMT -->
+<!-- Mirrored from themekita.com/demo-atlantis-bootstrap/livepreview/examples/demo2/tables/datatables.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Nov 2022 13:09:46 GMT -->
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Forms - Atlantis Bootstrap 4 Admin Dashboard</title>
+	<title>Tables - Atlantis Bootstrap 4 Admin Dashboard</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" href="https://themekita.com/demo-atlantis-bootstrap/livepreview/examples/assets/img/icon.ico" type="image/x-icon"/>
 	
@@ -71,6 +71,13 @@
 								<i class="fa fa-search"></i>
 							</a>
 						</li>
+						
+						
+						<li class="nav-item">
+							<a href="#" class="nav-link quick-sidebar-toggler">
+								<i class="fa fa-th"></i>
+							</a>
+						</li>
 						<li class="nav-item dropdown hidden-caret">
 							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
 								<div class="avatar-sm">
@@ -106,7 +113,7 @@
 			</nav>
 			<!-- End Navbar -->
 		</div>
-		
+		<!-- Sidebar -->
 		<!-- Sidebar -->
 		<div class="sidebar sidebar-style-2" data-background-color="dark2">
 			<div class="sidebar-wrapper scrollbar scrollbar-inner">
@@ -124,20 +131,20 @@
 								</ul>
 							</div>
 						</li>
-						<li class="nav-item active submenu">
+						<li class="nav-item">
 							<a data-toggle="collapse" href="#masters">
 								<i class="fas fa-pen-square"></i>
 								<p>Masters</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse show" id="masters">
+							<div class="collapse" id="masters">
 								<ul class="nav nav-collapse">
-                                    <li>
+									<li>
 										<a href="brand_master_model.html">
 											<span class="sub-item">Product Brand</span>
 										</a>
 									</li>
-									<li class="active">
+                                    <li>
 										<a href="category_master_model.html">
 											<span class="sub-item">Product Category</span>
 										</a>
@@ -165,7 +172,7 @@
 								</ul>
 							</div>
 						</li>
-                        <li class="nav-item">
+						<li class="nav-item submenu">
 							<a data-toggle="collapse" href="#views">
 								<i class="fas fa-pen-square"></i>
 								<p>Views <Table></Table></p>
@@ -178,12 +185,12 @@
 											<span class="sub-item">Products View</span>
 										</a>
 									</li>
-									<li>
+                                    <li>
 										<a href="brand_master_view.php">
 											<span class="sub-item">Product Brands</span>
 										</a>
 									</li>
-									<li>
+                                    <li>
 										<a href="category_master_view.php">
 											<span class="sub-item">Product Category</span>
 										</a>
@@ -218,151 +225,81 @@
 		</div>
 		<!-- End Sidebar -->
 
-
 		<div class="main-panel">
 			<div class="container">
 				<div class="page-inner">
-					<!-- <div class="page-header">
-						<h4 class="page-title">Brand Master</h4>
-						
-					</div> -->
-					<div class="row">
+					<div class="page-header">
+						<h4 class="page-title">Product Brands</h4>
+					</div>
+					
+
 						<div class="col-md-12">
 							<div class="card">
-								<div class="card-header">
-									<div class="card-title">Orders Update Form</div>
-									<!-- <div class="card-category">Form validation with jQuery from <a href="https://jqueryvalidation.org/">jQuery Validate</a></div> -->
-								</div>
-								<!-- <form id="exampleValidation"> -->
-
-                                    <?php 
-                                        $sql="select * from tbl_orders where id='".$_GET['id']."'";
-                                        // echo $sql;
-                                        $results=mysqli_query($con,$sql);
-									    while($row=mysqli_fetch_array($results)){
-											$order_id=$row['order_id'];
-											$delivery_date=$row['delivery_date'];
-											$order_recieved=$row['order_recieved'];
-											$order_processed=$row['order_processed'];
-											$order_shipped=$row['order_shipped'];
-											$order_delivered=$row['order_delivered'];
-											$order_status=$row['status'];
-											$orderid=$row['id'];
-
+								<div class="card-body">
+									<div class="table-responsive">
+										<table id="add-row" class="display table table-striped table-hover" >
+											<thead>
+												<tr>
+													<th>S.No</th>
+													<th>Order ID</th>
+                                                    <th>Product Name</th>
+                                                    <th>Image</th>
+                                                    <th>Sizes</th>
+                                                    <th>Brand Name</th>
+                                                    <th>Items</th>
+												</tr>
+											</thead>
 											
-                                        }
-                                    ?>
-									<div class="card-body">
-										<div class="form-group form-show-validation row">
-											<label for="category_name" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">Order ID</label>  <span class="required-label">*</span></label>
-											<div class="col-lg-4 col-md-9 col-sm-8">
-												<input type="hidden" class="form-control" id="orderid" name="orderid" value="<?php echo $orderid; ?>" placeholder="Enter Category" readonly>
-												<input type="text" class="form-control" id="order_id" name="order_id" value="<?php echo $order_id; ?>" placeholder="Enter Category" readonly>
-											</div>
-										</div>
-                                        <div class="form-group form-show-validation row">
-											<label for="category_id" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">Delivery Date<span class="required-label">*</span></label>
-											<div class="col-lg-4 col-md-9 col-sm-8">
-												<input type="date" class="form-control" id="delivery_date" name="delivery_date" value="<?php echo $delivery_date; ?>" placeholder="Enter Delivery Date" >
-											</div>
-										</div>
-										<div class="form-group form-show-validation row">
-											<label for="order_recieved" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right"> Order Recieved<span class="required-label">*</span></label>
-											<div class="col-lg-4 col-md-9 col-sm-8">
-												<div class="select2-input">
-													<select name="order_recieved" id="order_recieved" class="form-control" required>
-															<option value="">Please select status</option>
-                                                            <option value="active" <?php echo ($order_recieved == 'active')?"selected":"" ?>>Active</option>
-                                                            <option value="inactive" <?php echo ($order_recieved == 'inactive')?"selected":"" ?>>InActive</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="form-group form-show-validation row">
-											<label for="order_processed" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right"> Order Processed<span class="required-label">*</span></label>
-											<div class="col-lg-4 col-md-9 col-sm-8">
-												<div class="select2-input">
-													<select name="order_processed" id="order_processed" class="form-control" required>
-															<option value="">Please select status</option>
-                                                            <option value="active" <?php echo ($order_processed == 'active')?"selected":"" ?>>Active</option>
-                                                            <option value="inactive" <?php echo ($order_processed == 'inactive')?"selected":"" ?>>InActive</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="form-group form-show-validation row">
-											<label for="order_shipped" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right"> Order Shipped<span class="required-label">*</span></label>
-											<div class="col-lg-4 col-md-9 col-sm-8">
-												<div class="select2-input">
-													<select name="order_shipped" id="order_shipped" class="form-control" required>
-															<option value="">Please select status</option>
-                                                            <option value="active" <?php echo ($order_shipped == 'active')?"selected":"" ?>>Active</option>
-                                                            <option value="inactive" <?php echo ($order_shipped == 'inactive')?"selected":"" ?>>InActive</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="form-group form-show-validation row">
-											<label for="order_delivered" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right"> Order Delivered<span class="required-label">*</span></label>
-											<div class="col-lg-4 col-md-9 col-sm-8">
-												<div class="select2-input">
-													<select name="order_delivered" id="order_delivered" class="form-control" required>
-															<option value="">Please select status</option>
-                                                            <option value="active" <?php echo ($order_delivered == 'active')?"selected":"" ?>>Active</option>
-                                                            <option value="inactive" <?php echo ($order_delivered == 'inactive')?"selected":"" ?>>InActive</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="form-group form-show-validation row">
-											<label for="order_status" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right"> Order Status<span class="required-label">*</span></label>
-											<div class="col-lg-4 col-md-9 col-sm-8">
-												<div class="select2-input">
-													<select name="order_status" id="order_status" class="form-control" required>
-															<option value="">Please select Order Status</option>
-                                                            <option value="Pending" <?php echo ($order_status == 'Pending')?"selected":"" ?>>Pending</option>
-                                                            <option value="order recieved" <?php echo ($order_status == 'order recieved')?"selected":"" ?>>Order Recieved</option>
-													</select>
-												</div>
-											</div>
-										</div>
-									<div class="card-action">
-										<div class="row">
-											<div class="col-md-12">
-												<input class="btn btn-success" type="submit" value="Submit" onclick="update_orders()">
-												<!-- <button class="btn btn-danger">Cancel</button> -->
-											</div>										
-										</div>
+											<tbody>
+												<?php
+													$sno=1;
+													$sql="select * from tbl_checkout
+                                                    left join tbl_orders on tbl_checkout.checkout_id=tbl_orders.fk_checkout_id
+                                                    left join tbl_products on tbl_checkout.fk_product=tbl_products.PRODTID
+                                                    where tbl_orders.id='".$_GET['id']."'";
+													// echo $sql;
+													$results=mysqli_query($con,$sql);
+													while($row=mysqli_fetch_array($results)){
+														
+                                                        $image="prod_uploads/".$row['PRODN07']."";
+														
+													echo '<tr>
+															<td>'.$sno.'</td>
+															<td>'.$row['order_id'].'</td>
+                                                            <td>'.$row['PRODN01'].'</td>
+                                                            <td> <img src='.$image.' alt="product" width="100px" height="100px"></td>
+                                                            <td>'.$row['uom'].'</td>
+                                                            <td>'.$row['brand_name'].'</td>
+                                                            <td>'.$row['items'].'</td>
+														</tr>';
+														$sno++;
+													}
+												?>
+												
+											</tbody>
+										</table>
 									</div>
-								<!-- </form> -->
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
             <script>
-                function update_orders(){  
-                    var orderid = $("#orderid").val();
-                    var delivery_date = $("#delivery_date").val();
-					var order_recieved = $("#order_recieved").val();
-                    var order_processed = $("#order_processed").val();
-                    var order_shipped = $("#order_shipped").val();
-					var order_delivered = $("#order_delivered").val();
-					var order_status = $("#order_status").val();
-					
-                        $.ajax({
-                            url:'controllerProdData.php',
-                            method:'POST',
-                            data:{'upodate_orders':'upodate_orders',orderid:orderid,delivery_date:delivery_date,order_recieved:order_recieved,order_processed:order_processed,order_shipped:order_shipped,
-								order_delivered:order_delivered,order_status:order_status},
-                            cache: false,
-                            success: function(respose){
-								alert("Record updated successfully.");
-								window.location="orders.php";
-                            }
-                         });
-                }
+
+				// function delete_brands(val){  
+                  
+                //         $.ajax({
+                //             url:'controllerProdData.php',
+                //             method:'POST',
+                //             data:{delete_brands:'delete_brands',brand_id:val},
+                //             cache: false,
+                //             success: function(respose){
+				// 				alert("Recoed Deleted successfully.");
+				// 				window.location="brand_master_view.php";
+                //             }
+                //          });
+                // }
 
             </script>
 			<footer class="footer">
@@ -865,66 +802,65 @@
 	<!-- jQuery UI -->
 	<script src="../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
 	<script src="../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
-	<!-- Moment JS -->
-	<script src="../assets/js/plugin/moment/moment.min.js"></script>
 	<!-- Bootstrap Toggle -->
 	<script src="../assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
 	<!-- jQuery Scrollbar -->
 	<script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
-	<!-- DateTimePicker -->
-	<script src="../assets/js/plugin/datepicker/bootstrap-datetimepicker.min.js"></script>
-	<!-- Select2 -->
-	<script src="../assets/js/plugin/select2/select2.full.min.js"></script>
-	<!-- jQuery Validation -->
-	<script src="../assets/js/plugin/jquery.validate/jquery.validate.min.js"></script>
+	<!-- Datatables -->
+	<script src="../assets/js/plugin/datatables/datatables.min.js"></script>
 	<!-- Atlantis JS -->
 	<script src="../assets/js/atlantis.min.js"></script>
 	<!-- Atlantis DEMO methods, don't include it in your project! -->
 	<script src="../assets/js/setting-demo2.js"></script>
-	<script>
-		$('#birth').datetimepicker({
-			format: 'MM/DD/YYYY'
-		});
+	<script >
+		$(document).ready(function() {
+			$('#basic-datatables').DataTable({
+			});
 
-		$('#state').select2({
-			theme: "bootstrap"
-		});
+			$('#multi-filter-select').DataTable( {
+				"pageLength": 5,
+				initComplete: function () {
+					this.api().columns().every( function () {
+						var column = this;
+						var select = $('<select class="form-control"><option value=""></option></select>')
+						.appendTo( $(column.footer()).empty() )
+						.on( 'change', function () {
+							var val = $.fn.dataTable.util.escapeRegex(
+								$(this).val()
+								);
 
-		/* validate */
+							column
+							.search( val ? '^'+val+'$' : '', true, false )
+							.draw();
+						} );
 
-		// validation when select change
-		$("#state").change(function(){
-			$(this).valid();
-		})
+						column.data().unique().sort().each( function ( d, j ) {
+							select.append( '<option value="'+d+'">'+d+'</option>' )
+						} );
+					} );
+				}
+			});
 
-		// validation when inputfile change
-		$("#uploadImg").on("change", function(){
-			$(this).parent('form').validate();
-		})
+			// Add Row
+			$('#add-row').DataTable({
+				"pageLength": 5,
+			});
 
-		$("#exampleValidation").validate({
-			validClass: "success",
-			rules: {
-				gender: {required: true},
-				confirmpassword: {
-					equalTo: "#password"
-				},
-				birth: {
-					date: true
-				},
-				uploadImg: {
-					required: true, 
-				},
-			},
-			highlight: function(element) {
-				$(element).closest('.form-group').removeClass('has-success').addClass('has-error');
-			},
-			success: function(element) {
-				$(element).closest('.form-group').removeClass('has-error').addClass('has-success');
-			},
+			var action = '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
+
+			$('#addRowButton').click(function() {
+				$('#add-row').dataTable().fnAddData([
+					$("#addName").val(),
+					$("#addPosition").val(),
+					$("#addOffice").val(),
+					action
+					]);
+				$('#addRowModal').modal('hide');
+
+			});
 		});
 	</script>
 </body>
 
-<!-- Mirrored from themekita.com/demo-atlantis-bootstrap/livepreview/examples/demo2/forms/formvalidation.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Nov 2022 13:09:45 GMT -->
+<!-- Mirrored from themekita.com/demo-atlantis-bootstrap/livepreview/examples/demo2/tables/datatables.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Nov 2022 13:09:46 GMT -->
 </html>

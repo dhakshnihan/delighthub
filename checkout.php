@@ -286,20 +286,21 @@
                                         </li>
                                     </ul>
                                     <?php
-                                    //     $sqlxx="select * from tbl_address where fk_user_id='".$_SESSION['user_id']."'";
-                                    //     $resultxx=mysqli_query($con,$sqlxx);
-                                    //     $rowxx=mysqli_num_rows($resultxx);
-                                    // if($rowxx>0){
-                                    //     echo '<a class="cart-checkout-btn" href="product_summary.php">
-                                    //             <span class="checkout-label">Proceed to Checkout</span>
-                                    //             <span class="checkout-price" id="final_grand_total_price_span">'.$symbol.''.$checkout_grand_total_price.'</span>
-                                    //         </a>';
-                                    // }else{
+                                        $sqlxx="select * from tbl_address where fk_user_id='".$_SESSION['user_id']."'";
+                                        $resultxx=mysqli_query($con,$sqlxx);
+                                        $rowxx=mysqli_num_rows($resultxx);
+                                    if($rowxx>0){
+                                        echo '<input type="hidden" name="address_exist" id="address_exist" value="0">';
+                                    }else{
+                                        echo '<input type="hidden" name="address_exist" id="address_exist" value="1">';
+                                    }
+                                        
+                                    
                                         echo '<button class="cart-checkout-btn" onclick="proceed_checkout()">
                                                 <span class="checkout-label">Proceed to Checkout</span>
                                                 <span class="checkout-price" id="final_grand_total_price_span">'.$symbol.''.$checkout_grand_total_price.'</span>
                                             </button>';
-                                    // }
+                                  
                                  
                                     ?>
                                 </div>
@@ -865,14 +866,19 @@
                         array_uom.push($(".select_uom_kgs_"+$(this).val()).val());
                     });
                   var user_id = $("#user_id").val();
+                  var address_exist = $("#address_exist").val();
                 //   alert(user_id);
                     $.ajax({
                         url:"ajax.php",
                         method:"post",
                         data:{'add_checkout':'add_checkout',cart_id:array_cart_id,items:array_items,uom:array_uom,user_id:user_id},
                         success:function(response){
-                            // $("#row_" + cart_id).remove();
-                            window.location ='address.php';
+                            if(address_exist==1){
+                                window.location ='address.php';
+                            }else{
+                                window.location='product_summary.php';
+                            }
+                           
                         }
                     })
 

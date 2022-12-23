@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include("./../dbconnection.php"); ?>
+<?php     include("./../dbconnection.php"); ?>
 <!-- Mirrored from themekita.com/demo-atlantis-bootstrap/livepreview/examples/demo2/forms/formvalidation.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Nov 2022 13:09:45 GMT -->
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -137,7 +137,7 @@
 											<span class="sub-item">Product Brand</span>
 										</a>
 									</li>
-									<li class="active">
+									<li>
 										<a href="category_master_model.html">
 											<span class="sub-item">Product Category</span>
 										</a>
@@ -147,12 +147,12 @@
 											<span class="sub-item">Product Sub Category</span>
 										</a>
 									</li>
-                                    <li>
+                                    <li >
 										<a href="prod_master_model.php">
 											<span class="sub-item">Products</span>
 										</a>
 									</li>
-									<li>
+                                    <li class="active">
 										<a href="blog_uploads_model.php">
 											<span class="sub-item">Blog Uploads</span>
 										</a>
@@ -165,7 +165,7 @@
 								</ul>
 							</div>
 						</li>
-                        <li class="nav-item">
+						<li class="nav-item">
 							<a data-toggle="collapse" href="#views">
 								<i class="fas fa-pen-square"></i>
 								<p>Views <Table></Table></p>
@@ -196,13 +196,13 @@
 								</ul>
 							</div>
 						</li>
-						<li class="nav-item active submenu">
+                        <li class="nav-item submenu">
 							<a data-toggle="collapse" href="#orders">
 								<i class="fas fa-pen-square"></i>
 								<p>Orders <Table></Table></p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse show" id="orders">
+							<div class="collapse" id="orders">
 								<ul class="nav nav-collapse">
                                     <li>
 										<a href="orders.php">
@@ -230,141 +230,49 @@
 						<div class="col-md-12">
 							<div class="card">
 								<div class="card-header">
-									<div class="card-title">Orders Update Form</div>
+									<div class="card-title">Blog Uploads</div>
 									<!-- <div class="card-category">Form validation with jQuery from <a href="https://jqueryvalidation.org/">jQuery Validate</a></div> -->
 								</div>
-								<!-- <form id="exampleValidation"> -->
-
-                                    <?php 
-                                        $sql="select * from tbl_orders where id='".$_GET['id']."'";
-                                        // echo $sql;
-                                        $results=mysqli_query($con,$sql);
-									    while($row=mysqli_fetch_array($results)){
-											$order_id=$row['order_id'];
-											$delivery_date=$row['delivery_date'];
-											$order_recieved=$row['order_recieved'];
-											$order_processed=$row['order_processed'];
-											$order_shipped=$row['order_shipped'];
-											$order_delivered=$row['order_delivered'];
-											$order_status=$row['status'];
-											$orderid=$row['id'];
-
-											
-                                        }
-                                    ?>
+								<form id="exampleValidation" action="controllerProdData.php" method="POST" enctype="multipart/form-data">
 									<div class="card-body">
 										<div class="form-group form-show-validation row">
-											<label for="category_name" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">Order ID</label>  <span class="required-label">*</span></label>
+											<label for="blog_name" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">Blog Name <span class="required-label">*</span></label>
 											<div class="col-lg-4 col-md-9 col-sm-8">
-												<input type="hidden" class="form-control" id="orderid" name="orderid" value="<?php echo $orderid; ?>" placeholder="Enter Category" readonly>
-												<input type="text" class="form-control" id="order_id" name="order_id" value="<?php echo $order_id; ?>" placeholder="Enter Category" readonly>
+												<input type="text" class="form-control" id="blog_name" name="blog_name" placeholder="Enter Blog Name" required>
 											</div>
 										</div>
-                                        <div class="form-group form-show-validation row">
-											<label for="category_id" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">Delivery Date<span class="required-label">*</span></label>
-											<div class="col-lg-4 col-md-9 col-sm-8">
-												<input type="date" class="form-control" id="delivery_date" name="delivery_date" value="<?php echo $delivery_date; ?>" placeholder="Enter Delivery Date" >
-											</div>
-										</div>
+									
 										<div class="form-group form-show-validation row">
-											<label for="order_recieved" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right"> Order Recieved<span class="required-label">*</span></label>
+											<label for="name" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">Blog Description <span class="required-label">*</span></label>
 											<div class="col-lg-4 col-md-9 col-sm-8">
-												<div class="select2-input">
-													<select name="order_recieved" id="order_recieved" class="form-control" required>
-															<option value="">Please select status</option>
-                                                            <option value="active" <?php echo ($order_recieved == 'active')?"selected":"" ?>>Active</option>
-                                                            <option value="inactive" <?php echo ($order_recieved == 'inactive')?"selected":"" ?>>InActive</option>
-													</select>
-												</div>
+											<textarea id="blog_desc"  class="form-control" name="blog_desc" rows="10" cols="70" required></textarea>
 											</div>
 										</div>
+										<div class="separator-solid"></div>
 										<div class="form-group form-show-validation row">
-											<label for="order_processed" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right"> Order Processed<span class="required-label">*</span></label>
+											<label class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right">Upload Image <span class="required-label">*</span></label>
 											<div class="col-lg-4 col-md-9 col-sm-8">
-												<div class="select2-input">
-													<select name="order_processed" id="order_processed" class="form-control" required>
-															<option value="">Please select status</option>
-                                                            <option value="active" <?php echo ($order_processed == 'active')?"selected":"" ?>>Active</option>
-                                                            <option value="inactive" <?php echo ($order_processed == 'inactive')?"selected":"" ?>>InActive</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="form-group form-show-validation row">
-											<label for="order_shipped" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right"> Order Shipped<span class="required-label">*</span></label>
-											<div class="col-lg-4 col-md-9 col-sm-8">
-												<div class="select2-input">
-													<select name="order_shipped" id="order_shipped" class="form-control" required>
-															<option value="">Please select status</option>
-                                                            <option value="active" <?php echo ($order_shipped == 'active')?"selected":"" ?>>Active</option>
-                                                            <option value="inactive" <?php echo ($order_shipped == 'inactive')?"selected":"" ?>>InActive</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="form-group form-show-validation row">
-											<label for="order_delivered" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right"> Order Delivered<span class="required-label">*</span></label>
-											<div class="col-lg-4 col-md-9 col-sm-8">
-												<div class="select2-input">
-													<select name="order_delivered" id="order_delivered" class="form-control" required>
-															<option value="">Please select status</option>
-                                                            <option value="active" <?php echo ($order_delivered == 'active')?"selected":"" ?>>Active</option>
-                                                            <option value="inactive" <?php echo ($order_delivered == 'inactive')?"selected":"" ?>>InActive</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="form-group form-show-validation row">
-											<label for="order_status" class="col-lg-3 col-md-3 col-sm-4 mt-sm-2 text-right"> Order Status<span class="required-label">*</span></label>
-											<div class="col-lg-4 col-md-9 col-sm-8">
-												<div class="select2-input">
-													<select name="order_status" id="order_status" class="form-control" required>
-															<option value="">Please select Order Status</option>
-                                                            <option value="Pending" <?php echo ($order_status == 'Pending')?"selected":"" ?>>Pending</option>
-                                                            <option value="order recieved" <?php echo ($order_status == 'order recieved')?"selected":"" ?>>Order Recieved</option>
-													</select>
+												<div class="input-file input-file-image">
+													<img class="img-upload-preview img-circle" width="100" height="100" src="" alt="preview">
+													<input type="file" class="form-control form-control-file" id="uploadImg" name="uploadImg" accept="image/*" required >
+													<label for="uploadImg" class="btn btn-primary btn-round btn-lg"><i class="fa fa-file-image"></i> Upload a Image</label>
 												</div>
 											</div>
 										</div>
 									<div class="card-action">
 										<div class="row">
 											<div class="col-md-12">
-												<input class="btn btn-success" type="submit" value="Submit" onclick="update_orders()">
+												<input class="btn btn-success" type="submit" value="Submit" name="blog_sumit" >
 												<!-- <button class="btn btn-danger">Cancel</button> -->
 											</div>										
 										</div>
 									</div>
-								<!-- </form> -->
+								</form>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
-            <script>
-                function update_orders(){  
-                    var orderid = $("#orderid").val();
-                    var delivery_date = $("#delivery_date").val();
-					var order_recieved = $("#order_recieved").val();
-                    var order_processed = $("#order_processed").val();
-                    var order_shipped = $("#order_shipped").val();
-					var order_delivered = $("#order_delivered").val();
-					var order_status = $("#order_status").val();
-					
-                        $.ajax({
-                            url:'controllerProdData.php',
-                            method:'POST',
-                            data:{'upodate_orders':'upodate_orders',orderid:orderid,delivery_date:delivery_date,order_recieved:order_recieved,order_processed:order_processed,order_shipped:order_shipped,
-								order_delivered:order_delivered,order_status:order_status},
-                            cache: false,
-                            success: function(respose){
-								alert("Record updated successfully.");
-								window.location="orders.php";
-                            }
-                         });
-                }
-
-            </script>
 			<footer class="footer">
 				<div class="container-fluid">
 					<nav class="pull-left">

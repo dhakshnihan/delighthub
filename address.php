@@ -4,9 +4,9 @@
 
   <!-- address edit form -->
   <div >
-            <div class="modal-dialog modal-dialog-centered"> 
-                <div class="modal-content">
-                    <button class="modal-close" data-bs-dismiss="modal"><i class="icofont-close"></i></button>
+            <div class="container"> 
+                <div class="row">
+                    <!-- <button class="modal-close" data-bs-dismiss="modal"><i class="icofont-close"></i></button> -->
                     <form id="frm-image-upload" action="address_ajax.php"  method="POST" enctype = "multipart/form-data" onsubmit="return validateform()">
                         <div class="user-form-card">
                             <div class="user-form-title">

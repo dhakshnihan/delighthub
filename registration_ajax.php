@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	error_reporting(0);
 	 require('dbconnection.php');
 	$errors = array();
 	if($_POST['type']=='registration'){

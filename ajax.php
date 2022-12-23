@@ -445,10 +445,6 @@ if(isset($_POST['cart_checkout'])){
         
         mysqli_query($con,$sqlxx);
 
-        // $order_id=date('dmYHis');
-        // $sqlx="insert into tbl_orders(order_id,fk_user_id,fk_cart_id) values ($order_id,'".$_POST['user_id']."','".$cart_id[$x]."')";
-        // // echo $sqlx;
-        // mysqli_query($con,$sqlx);
     }
   }
   

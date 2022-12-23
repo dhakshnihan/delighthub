@@ -211,7 +211,13 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                 <div class="col-sm-6 col-lg-3">
                     <div class="intro-wrap">
                         <div class="intro-icon">
-                            <i class="fas fa-truck"></i>
+                        <script src="https://cdn.lordicon.com/fudrjiwc.js"></script>
+<lord-icon
+    src="https://cdn.lordicon.com/jwkbctmp.json"
+    trigger="hover"
+    style="width:250px;height:250px">
+</lord-icon>
+                </script>
                         </div>
                         <div class="intro-content">
                             <h5>Doorstep Delivery </h5>

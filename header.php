@@ -12,21 +12,18 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <!-- AUTHOR META -->
-        <meta name="author" content="mironcoder">
-        <meta name="email" content="mironcoder@gmail.com">
-        <meta name="profile" content="">
+        
 
         <!-- TEMPLATE META -->
         <meta name="name" content="delighthub">
         <meta name="title" content="delighthub - eCommerce">
-        <meta name="keywords" content="organic, food, shop, ecommerce, store, html, bootstrap, template, agriculture, vegetables, webshop, farm, grocery, natural, online store">
+        <meta name="keywords" content="organic, food, shop, ecommerce, store, agriculture, vegetables, webshop, farm, grocery, natural, online store">
         <!--=====================================
                     META-TAG PART END
         =======================================-->
 
         <!-- WEBPAGE TITLE -->
-        <title>Category Home - Greeny</title>
+        <title>Category Home - DelightsHub</title>
 
         <!--=====================================
                     CSS LINK PART START
@@ -96,13 +93,25 @@
                                 </select>
                             </div>
                             <div class="header-select">
-                                <i class="icofont-money"></i>
-                                    <select class="select_currency" name="currency" id="currency" onchange="currency_convertion()">
-                                        <option value="please select">Please select currency</option>
-                                        <option value="INR" <?php echo (isset($_SESSION['currency']) == 'Rupee')?"selected":"" ?>>Rupee</option>
-                                        <option value="Pound" <?php echo (isset($_SESSION['currency']) == 'Pound')?"selected":"" ?>>pound</option>
-                                        <option value="USD" <?php echo (isset($_SESSION['currency']) == 'USD')?"selected":"" ?>>doller</option>
-                                    </select>
+                               
+                                 <i class="icofont-money"></i>
+                                 <?php 
+                                  $select='';  
+                                  if(strlen($_SESSION['currency'])>0){
+
+                                       
+                                  $select=$_SESSION['currency'];
+
+
+                                  }
+                                  
+                                 
+                                 ?>
+                                    <select class="select" name="currency" id="currency" onchange="currency_convertion()">
+                                    <option value="INR" <?php echo $select ?> >Rupee</option>
+                                        <option value="Pound" <?php echo $select ?>>pound</option>
+                                        <option value="USD" <?php echo $select ?>>doller</option>
+                                </select>
                             </div>
                         </div>
                     </div>

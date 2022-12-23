@@ -70,7 +70,7 @@
                         </div>
                         <div class="login-account">
                             <span class="msg">Don't have an account yet ?</span>
-                            <a href="#" id="show-signup" class="link">Sign Up</a>
+                            <a href="registration.php" id="show-signup" class="link">Sign Up</a>
                         </div>
                     </div>
                 </form>

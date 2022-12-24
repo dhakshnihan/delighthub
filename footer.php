@@ -1,6 +1,7 @@
 <!--=====================================
                      FOOTER PART START
         =======================================-->
+        <button class="btn btn-inline bt-lg">hshgfhgfh</button>
         <footer class="footer-part">
             <div class="container">
                 <div class="row">

@@ -125,11 +125,11 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                             <h1>Bringing the Real Taste of India – directly from India to Your Home!</h1>
                             <p>Experience the unique flavours of Indian spices and aromas from Kashmiri saffron to cardamom and every other spice in between.</p>
                             <div class="banner-btn">
-                                <a class="btn btn-inline" href="shop-4column.html">
+                                <a class="btn btn-inline" href="product-items.php">
                                     <i class="fas fa-shopping-basket"></i>
                                     <span>shop now</span>
                                 </a>
-                                <a class="btn btn-outline" href="offer.html">
+                                <a class="btn btn-outline" href="#">
                                     <i class="icofont-sale-discount"></i>
                                     <span>get offer</span>
                                 </a>
@@ -153,11 +153,11 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                             <h1>Request your favourite product from India and get it delivered in your doorstep.</h1>
                             <p>We provide a comprehensive and reliable service to get your products from India to your destination of choice</p>
                             <div class="banner-btn">
-                                <a class="btn btn-inline" href="shop-4column.html">
+                                <a class="btn btn-inline" href="product-items.php">
                                     <i class="fas fa-shopping-basket"></i>
                                     <span>shop now</span>
                                 </a>
-                                <a class="btn btn-outline" href="offer.html">
+                                <a class="btn btn-outline" href="#">
                                     <i class="icofont-sale-discount"></i>
                                     <span>get offer</span>
                                 </a>
@@ -176,11 +176,11 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                             <h1>Delivering India’s Spirit Devotional and Festival Items to Your Home.</h1>
                             <p>It’s a joy to us to bring the festival and devotional items to you we have many options from trinkets to statues, there is something for everyone.</p>
                             <div class="banner-btn">
-                                <a class="btn btn-inline" href="shop-4column.html">
+                                <a class="btn btn-inline" href="product-items.php">
                                     <i class="fas fa-shopping-basket"></i>
                                     <span>shop now</span>
                                 </a>
-                                <a class="btn btn-outline" href="offer.html">
+                                <a class="btn btn-outline" href="#">
                                     <i class="icofont-sale-discount"></i>
                                     <span>get offer</span>
                                 </a>
@@ -211,13 +211,7 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                 <div class="col-sm-6 col-lg-3">
                     <div class="intro-wrap">
                         <div class="intro-icon">
-                        <script src="https://cdn.lordicon.com/fudrjiwc.js"></script>
-<lord-icon
-    src="https://cdn.lordicon.com/jwkbctmp.json"
-    trigger="hover"
-    style="width:250px;height:250px">
-</lord-icon>
-                </script>
+                        <img src="./images/top/1_doorstep_delivery.gif" >
                         </div>
                         <div class="intro-content">
                             <h5>Doorstep Delivery </h5>
@@ -228,7 +222,10 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                 <div class="col-sm-6 col-lg-3">
                     <div class="intro-wrap">
                         <div class="intro-icon">
-                            <i class="fas fa-sync-alt"></i>
+                            <!-- <i class="fas fa-sync-alt"></i> -->
+                            <img src="./images/top/2_easyrefund.gif" >
+
+                           
                         </div>
                         <div class="intro-content">
                             <h5>Instant Refund Policy</h5>
@@ -239,7 +236,8 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                 <div class="col-sm-6 col-lg-3">
                     <div class="intro-wrap">
                         <div class="intro-icon">
-                            <i class="fas fa-headset"></i>
+                            <!-- <i class="fas fa-headset"></i> -->
+                            <img src="./images/top/3_Support _System.gif" >
                         </div>
                         <div class="intro-content">
                             <h5>quick support system</h5>
@@ -250,7 +248,8 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                 <div class="col-sm-6 col-lg-3">
                     <div class="intro-wrap">
                         <div class="intro-icon">
-                            <i class="fas fa-lock"></i>
+                            <!-- <i class="fas fa-lock"></i> -->
+                            <img src="./images/top/4_secure_payment.gif" >
                         </div>
                         <div class="intro-content">
                             <h5>Secure Payment Gateways</h5>
@@ -519,7 +518,7 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
             <div class="brand-slider slider-arrow">
                 <div class="brand-wrap">
                     <div class="brand-media">
-                        <img src="./admin/masters/brand_uploads/7 day fast-shipping.svg" alt="brand">
+                    <img src="./images/choose/truck-delivery-flat.gif">
                         <div class="brand-overlay">
                             <!-- <a href="#"><i class="fas fa-link"></i></a> -->
                         </div>
@@ -531,7 +530,7 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                 </div>
                 <div class="brand-wrap">
                     <div class="brand-media">
-                        <img src="./admin/masters/brand_uploads/door_step_delivery.svg" alt="brand">
+                    <img src="./images/choose/Doorstepdelivery.gif" >
                         <div class="brand-overlay">
                             <!-- <a href="brand-single.html"><i class="fas fa-link"></i></a> -->
                         </div>
@@ -543,7 +542,7 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                 </div>
                 <div class="brand-wrap">
                     <div class="brand-media">
-                        <img src="./admin/masters/brand_uploads/Finest Indian Products.svg" alt="brand">
+                    <img src="./images/choose/237-star-indian finest products.gif" >
                         <div class="brand-overlay">
                             <!-- <a href="brand-single.html"><i class="fas fa-link"></i></a> -->
                         </div>
@@ -555,40 +554,40 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                 </div>
                 <div class="brand-wrap">
                     <div class="brand-media">
-                        <img src="./admin/masters/brand_uploads/Hassle_Custom.svg" alt="brand">
+                    <img src="./images/choose/Easy_Custom _Clearance.gif" >
                         <div class="brand-overlay">
                             <!-- <a href="brand-single.html"><i class="fas fa-link"></i></a> -->
                         </div>
                     </div>
                     <div class="brand-meta">
-                        <h4>Hassle Custom</h4>
+                        <h4>Easy Custom Clearance</h4>
                        
                     </div>
                 </div>
                 <div class="brand-wrap">
                     <div class="brand-media">
-                        <img src="./admin/masters/brand_uploads/Request_product_now.svg" alt="brand">
+                    <img src="./images/choose/Low cost shipping.gif" >
                         <div class="brand-overlay">
                             <!-- <a href="brand-single.html"><i class="fas fa-link"></i></a> -->
                         </div>
                     </div>
                     <div class="brand-meta">
-                        <h4>Request Product Now</h4>
+                        <h4>Low Cost Shipping</h4>
                         
                     </div>
                 </div>
-                <div class="brand-wrap">
+                <!-- <div class="brand-wrap">
                     <div class="brand-media">
                         <img src="./admin/masters/brand_uploads/Low-cost shipping.svg" alt="brand">
                         <div class="brand-overlay">
-                            <!-- <a href="brand-single.html"><i class="fas fa-link"></i></a> -->
+                            <a href="brand-single.html"><i class="fas fa-link"></i></a> 
                         </div>
                     </div>
                     <div class="brand-meta">
                         <h4>Low cost shipping</h4>
                         
                     </div>
-                </div>
+                </div> -->
             </div>
             <!-- <div class="row">
                 <div class="col-lg-12">

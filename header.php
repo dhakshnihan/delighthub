@@ -41,7 +41,10 @@
         <link rel="stylesheet" href="vendor/slickslider/slick.min.css">
         <link rel="stylesheet" href="vendor/niceselect/nice-select.min.css">
         <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
-
+        <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+      
+        <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+        <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
         <!-- CUSTOM -->
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/home-category.css">
@@ -73,6 +76,7 @@
         <div class="backdrop"></div>
         <a class="backtop fas fa-arrow-up" href="#"></a>
         
+        
         <!--=====================================
                     HEADER TOP PART START
         =======================================-->
@@ -97,20 +101,26 @@
                                  <i class="icofont-money"></i>
                                  <?php 
                                   $select='';  
-                                  if(strlen($_SESSION['currency'])>0){
-
-                                       
-                                  $select=$_SESSION['currency'];
-
-
+                                  $selected_value="";
+                                  if(isset($_SESSION['currency'])=="INR"){
+                                     $select="selected";
+                                     $selected_value=$_SESSION['currency'];
+                                  }
+                                   if(isset($_SESSION['currency'])=="Pound"){
+                                    $select="selected";
+                                    $selected_value=$_SESSION['currency'];
+                                  }
+                                   if(isset($_SESSION['currency'])=="USD"){
+                                    $select="selected";
+                                    $selected_value=$_SESSION['currency'];
                                   }
                                   
                                  
                                  ?>
                                     <select class="select" name="currency" id="currency" onchange="currency_convertion()">
-                                    <option value="INR" <?php echo $select ?> >Rupee</option>
-                                        <option value="Pound" <?php echo $select ?>>pound</option>
-                                        <option value="USD" <?php echo $select ?>>doller</option>
+                                    <option value="INR" <?php echo ($selected_value == "INR")?$select:"" ?> >Rupee</option>
+                                        <option value="Pound" <?php echo ($selected_value == "Pound")?$select:"" ?>>pound</option>
+                                        <option value="USD" <?php echo ($selected_value == "USD")?$select:"" ?>>doller</option>
                                 </select>
                             </div>
                         </div>

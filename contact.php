@@ -1,6 +1,74 @@
 
-              <?php include('header.php');?>
+    <?php include('header.php');?>
     <?php include('cart.php');?>
+    
+    
+    <style>
+#snackbar {
+  visibility: hidden;
+ 
+  margin-left: 34rem;
+  max-width: fit-content;
+  background-color: #119744;
+  color: #fff;
+  /* text-align: center; */
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 35rem;
+  font-size: 17px;
+}
+#snackbar1 {
+  visibility: hidden;
+ 
+  margin-left: 34rem;
+  max-width: fit-content;
+  background-color: red;
+  color: #fff;
+  /* text-align: center; */
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30rem;
+  font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+#snackbar1.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+</style>
+
         <!--=====================================
                     BANNER PART START
         =======================================-->
@@ -24,13 +92,13 @@
         <section class="inner-section contact-part">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6 col-lg-4">
+                    <!-- <div class="col-md-6 col-lg-4">
                         <div class="contact-card">
                             <i class="icofont-location-pin"></i>
                             <h4>head office</h4>
                             <p>1Hd- 50, 010 Avenue, NY 90001 United States</p>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="col-md-6 col-lg-4">
                         <div class="contact-card active">
                             <i class="icofont-phone"></i>
@@ -59,38 +127,40 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <form class="contact-form" action="contact.php" method="post">
+                        <form class="contact-form" name="myForm" action="#" method="post" onsubmit="return validateForm()">
                             <h4>Drop Your Thoughts</h4>
                             <div class="form-group">
                                 <div class="form-input-group">
-                                    <input class="form-control" type="text"  name= "name" placeholder="Your Name">
+                                    <input class="form-control" type="text"  name= "name"  id="name" placeholder="Your Name">
                                     <i class="icofont-user-alt-3"></i>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="form-input-group">
-                                    <input class="form-control" type="email" name="email"  placeholder="Your Email">
+                                    <input class="form-control" type="email" name="email"  id="email" placeholder="Your Email">
                                     <i class="icofont-email"></i>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="form-input-group">
-                                    <input class="form-control" type="text"  name="phone" placeholder="Your Mobile No">
+                                    <input class="form-control" type="text"  name="phone"  id="phone" placeholder="Your Mobile No">
                                     <i class="icofont-book-mark"></i>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="form-input-group">
-                                    <input class="form-control" type="text"  name="subject" placeholder="Your Subject">
+                                    <input class="form-control" type="text"  name="subject"  id="subject" placeholder="Your Subject">
                                     <i class="icofont-book-mark"></i>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="form-input-group">
-                                    <textarea class="form-control"  name="message" placeholder="Your Message"></textarea>
+                                    <textarea class="form-control"  name="message"  id="message" placeholder="Your Message"></textarea>
                                     <i class="icofont-paragraph"></i>
                                 </div>
                             </div>
+                            <div id="snackbar">successfully Send Mail....!</div>
+                                    <div id="snackbar1">Error occured !</div>
                             <button type="submit"  name="submit" class="form-btn-group">
                                 <i class="fas fa-envelope"></i>
                                 <span>send message</span>
@@ -141,34 +211,60 @@
         <!--=====================================
                     CONTACT PART END
         =======================================-->
+        <script>
+function validateForm() {
+  let x = document.forms["myForm"]["name"].value;
+  let y = document.forms["myForm"]["email"].value;
+  let z = document.forms["myForm"]["phone"].value;
+  let s = document.forms["myForm"]["subject"].value;
+  let t = document.forms["myForm"]["message"].value;
+  var x1 = document.getElementById("snackbar");
+  var y1= document.getElementById("snackbar1");
+
+
+
+  if (x == "" || y == "" || z == "" || s == "" || t== "") 
+  
+  {
+    y1.className = "show";
+            setTimeout(function(){ y1.className = y1.className.replace("show", ""); }, 3000);
+    return false;
+  }
+  else{
+    x1.className = "show";
+            setTimeout(function(){ x1.className = x1.className.replace("show", ""); }, 7000);
+  }
+}
+</script>
 
         <?php 
- if(isset($_POST['submit'])){
-   
-  $to = "botsatirupathi@gmail.com"; // this is your Email address
-  $from = $_POST['email']; // this is the sender's Email address
+            if(isset($_POST['submit'])){
+            
+            $to = "botsatirupathi@gmail.com"; // this is your Email address
+            $from = $_POST['email']; // this is the sender's Email address
 
- 
-  $name = $_POST['name'];
-  $email = $_POST['email'];
-  $phone = $_POST['phone'];
-  $service = $_POST['subject'];
-  $content = $_POST['message'];
-  echo "Mail Sent. Thank you " . $name . ", we will contact you shortly.";
+            
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $phone = $_POST['phone'];
+            $service = $_POST['subject'];
+            $content = $_POST['message'];
+            // echo "Mail Sent. Thank you " . $name . ", we will contact you shortly.";
 
-  $subject = "Form submission";
-  $subject2 = "Copy of your form submission";
-  $message = $name . "\n " . $service . "\n" . $email . "\n " . $phone . " \n " . $content . "\n " . "\n\n" . $_POST['message'];
-  //$message2 = "Here is a copy of your message " . $name . "\n\n" . $_POST['message'];
+            $subject = "Form submission";
+            $subject2 = "Copy of your form submission";
+            $message = $name . "\n " . $service . "\n" . $email . "\n " . $phone . " \n " . $content . "\n " . "\n\n" . $_POST['message'];
+            $message2 = "Here is a copy of your message " . $name . "\n\n" . $_POST['message'];
 
-  $headers = "From:" . $from;
-  $headers2 = "From:" . $to;
-  mail($to,$subject,$message,$headers);
-  mail($from,$subject2,$message2,$headers2); // sends a copy of the message to the sender
-//   echo "Mail Sent. Thank you " . $name . ", we will contact you shortly.";
-   echo "<script type='text/javascript'>alert('Mail Sent. Thank you " . $name . ", we will contact you shortly.');</script>";
-  // You can also use header('Location: thank_you.php'); to redirect to another page.
-  }
+            $headers = "From:" . $from;
+            $headers2 = "From:" . $to;
+            mail($to,$subject,$message,$headers);
+            mail($from,$subject2,$message2,$headers2); // sends a copy of the message to the sender
+            // echo "Mail Sent. Thank you " . $message2 . ", we will contact you shortly.";
+            // echo "<script type='text/javascript'>alert('Mail Sent. Thank you " . $name . ", we will contact you shortly.');</script>";
+            // You can also use header('Location: thank_you.php'); to redirect to another page.
+            echo '<script type="text/javascript">toastr.success("Send Mail Successfully...!!")</script>';
+            }
  ?>
         <!--=====================================
                     NEWSLETTER PART START
@@ -301,13 +397,14 @@
                     JS LINK PART START
         =======================================-->
         <!-- VENDOR -->
-        <script src="vendor/bootstrap/jquery-1.12.4.min.js"></script>
+        <!-- <script src="vendor/bootstrap/jquery-1.12.4.min.js"></script> -->
         <script src="vendor/bootstrap/popper.min.js"></script>
         <script src="vendor/bootstrap/bootstrap.min.js"></script>
         <script src="vendor/countdown/countdown.min.js"></script>
         <script src="vendor/niceselect/nice-select.min.js"></script>
         <script src="vendor/slickslider/slick.min.js"></script>
         <script src="vendor/venobox/venobox.min.js"></script>
+       
 
         <!-- CUSTOM -->
         <script src="js/nice-select.js"></script>

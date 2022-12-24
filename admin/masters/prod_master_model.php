@@ -152,6 +152,16 @@
 											<span class="sub-item">Products</span>
 										</a>
 									</li>
+									<li>
+										<a href="blog_uploads_model.php">
+											<span class="sub-item">Blog Uploads</span>
+										</a>
+									</li>
+									<li>
+										<a href="coupon_genrate.php">
+											<span class="sub-item">Offer_Coupons</span>
+										</a>
+									</li>
 								</ul>
 							</div>
 						</li>
@@ -181,6 +191,22 @@
 									<li>
 										<a href="sub_category_master_view.php">
 											<span class="sub-item">Product Sub Category</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="nav-item submenu">
+							<a data-toggle="collapse" href="#orders">
+								<i class="fas fa-pen-square"></i>
+								<p>Orders <Table></Table></p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="orders">
+								<ul class="nav nav-collapse">
+                                    <li>
+										<a href="orders.php">
+											<span class="sub-item">Orders</span>
 										</a>
 									</li>
 								</ul>

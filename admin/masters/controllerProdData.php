@@ -141,4 +141,40 @@ error_reporting(0);
 
         echo $data;
     }
+    
+
+
+    //orders update section 
+    if(isset($_POST['upodate_orders'])){
+        $sql="update tbl_orders set delivery_date='".$_POST['delivery_date']."',order_recieved='".$_POST['order_recieved']."',order_processed='".$_POST['order_processed']."',
+        order_shipped='".$_POST['order_shipped']."',order_delivered='".$_POST['order_delivered']."',status='".$_POST['order_status']."' where id='".$_POST['orderid']."'";
+        // echo $sql;
+        mysqli_query($con,$sql);
+    }
+
+    //orders view 
+
+    if(isset($_POST['blog_sumit'])){
+      
+        $filename = $_FILES['uploadImg']['name'];
+    
+        $uploadPath = "blog_uploads/";
+        $targetPath = $uploadPath . basename( $_FILES['uploadImg']['name']);
+		  
+		  $tempPath=$_FILES["uploadImg"]["tmp_name"]; 
+		  // Setup our new file path
+		
+		  // File is uploaded to temp dir
+		  if(move_uploaded_file($tempPath, $targetPath)) {
+            $sql="insert into tbl_blogs(blog_name,blog_decs,blog_image) values ('".$_POST['blog_name']."','".$_POST['blog_desc']."','".$filename."')";
+            // echo $sql;
+            mysqli_query($con,$sql);
+
+            echo "<script>
+                alert('Updated successfully.');
+                window.location='blog_views.php';
+            </script>";
+		  }
+          
+    }
 ?>

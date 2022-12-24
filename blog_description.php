@@ -5,12 +5,13 @@
         <!--=====================================
                     BANNER PART START
         =======================================-->
-        <section class="inner-section single-banner" style="background: url(images/Blog-Details.jpg) no-repeat center;">
+        <section class="inner-section single-banner" style="background: url(images/single-banner.jpg) no-repeat center;">
             <div class="container">
-                <h2>blog grid</h2>
+                <h2>blog Discription</h2>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Blog grid</li>
+                    <li class="breadcrumb-item"><a href="index.php">Home</a></li> 
+                    <li class="breadcrumb-item"><a href="blog-grid.php">blog Grid</a></li> 
+                    <li class="breadcrumb-item active" aria-current="page">Blog Discription</li>
                 </ol>
             </div>
         </section>
@@ -29,15 +30,15 @@
                         <div class="row">
                             
                             <?php
-                                $sql="select * from tbl_blogs where status='Active'";
+                                $sql="select * from tbl_blogs where status='Active' and blog_id='".$_GET['blog_id']."'";
                                 $result=mysqli_query($con,$sql);
                                 while($row=mysqli_fetch_array($result)){
                                     $bloag_image='./admin/masters/blog_uploads/'.$row["blog_image"];
-                                    $blog_decs=substr($row['blog_decs'], 0, 200);
-                                    $blog_decs_end=substr($row['blog_decs'], 200, 5000);
+                                    $blog_decs=$row['blog_decs'];
+                                   
                                     $blog_id=$row['blog_id'];
 
-                                echo '<div class="col-md-4 col-lg-4"><div class="blog-card">
+                                echo '<div class="col-md-12 col-lg-12"><div class="blog-card">
                                             <div class="blog-media">
                                                 <a class="blog-img" href="#">
                                                     <img src="'.$bloag_image.'" alt="blog">
@@ -57,11 +58,8 @@
                                                 <h4 class="blog-title">
                                                     <a href="blog-details.html">'.$row['blog_name'].'</a>
                                                 </h4>
-                                                <p class="blog-desc">'.$blog_decs.'...</p>
-                                                <a class="blog-btn" href="blog_description.php?blog_id='.$blog_id.'">
-                                                    <span>read more</span>
-                                                    <i class="icofont-arrow-right"></i>
-                                                </a>
+                                                <p class="blog-desc">'.$blog_decs.'</p>
+                                               
                                             </div>
                                         </div>
                                     </div>';                                                                        

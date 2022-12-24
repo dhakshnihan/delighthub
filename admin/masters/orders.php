@@ -159,7 +159,11 @@
 											<span class="sub-item">Products</span>
 										</a>
 									</li>
-
+									<li>
+										<a href="blog_uploads_model.php">
+											<span class="sub-item">Blog Uploads</span>
+										</a>
+									</li>
 									<li>
 										<a href="coupon_genrate.php">
 											<span class="sub-item">Offer_Coupons</span>
@@ -171,7 +175,7 @@
 						<li class="nav-item submenu">
 							<a data-toggle="collapse" href="#views">
 								<i class="fas fa-pen-square"></i>
-								<p>Views <Table></Table></p>
+								<p>Views </p>
 								<span class="caret"></span>
 							</a>
 							<div class="collapse" id="views">
@@ -200,14 +204,14 @@
 							</div>
 						</li>
                         <li class="nav-item active submenu">
-							<a data-toggle="collapse" href="#views">
+							<a data-toggle="collapse" href="#orders">
 								<i class="fas fa-pen-square"></i>
 								<p>Orders <Table></Table></p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse show" id="views">
+							<div class="collapse show" id="orders">
 								<ul class="nav nav-collapse">
-                                    <li>
+                                    <li class="active">
 										<a href="orders.php">
 											<span class="sub-item">Orders</span>
 										</a>
@@ -273,9 +277,8 @@
                                                             <td>'.$row['order_status'].'</td>
 															<td>
 																<div class="form-button-action">
-																	<a href="./brand_master_edit.php?id='.$row['order_id'].'" class="btn btn-success btn-sm">Edit</a>
-																	
-																	<button onclick="delete_brands('.$row['order_id'].')" class="btn btn-info btn-sm">View!</button>
+																	<a href="./orders_edit.php?id='.$row['id'].'" class="btn btn-success btn-sm">Edit</a>
+																	<a href="./orderview.php?id='.$row['id'].'" class="btn btn-info btn-sm">View</a>
 																</div>
 															</td>
 														</tr>';

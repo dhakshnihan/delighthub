@@ -698,123 +698,42 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
             <div class="row">
                 <div class="col-lg-12">
                     <div class="blog-slider slider-arrow">
-                        <div class="blog-card">
-                            <div class="blog-media">
-                                <a class="blog-img" href="#">
-                                    <img src="New/Indian_Sweets.png" alt="blog">
-                                </a>
-                            </div>
-                            <div class="blog-content">
-                                <ul class="blog-meta">
-                                    <li>
-                                        <i class="fas fa-user"></i>
-                                        <span>admin</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-calendar-alt"></i>
-                                        <span>february 02, 2021</span>
-                                    </li>
-                                </ul>
-                                <h4 class="blog-title">
-                                    <a href="blog-details.html">The Sweet Delights of India: Exploring the World of Indian Sweets </a>
-                                </h4>
-                                <p class="blog-desc">
-                                India is a land of sweet delicacies. Indian sweets are known for their rich flavours and exotic ingredients. They are not just desserts, but an integral part of festivals, celebrations, and special occasions.
-                                Indian sweets are usually made with sugar, milk, ghee, cream, and nuts like almonds, cashews, and pistachios....
-                                </p>
-                                <a class="blog-btn" href="#">
-                                    <span>read more</span>
-                                    <i class="icofont-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="blog-card">
-                            <div class="blog-media">
-                                <a class="blog-img" href="#">
-                                    <img src="New/Indian_Spices.png" alt="blog">
-                                </a>
-                            </div>
-                            <div class="blog-content">
-                                <ul class="blog-meta">
-                                    <li>
-                                        <i class="fas fa-user"></i>
-                                        <span>admin</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-calendar-alt"></i>
-                                        <span>february 02, 2021</span>
-                                    </li>
-                                </ul>
-                                <h4 class="blog-title">
-                                    <a href="blog-details.html">Exploring the Rich Tastes and Fragrances of Indian Spices</a>
-                                </h4>
-                                <p class="blog-desc">
-                                The Indian subcontinent is renowned for its exotic spices, which have been used to create unique and flavorful dishes for centuries. From the hot, spicy flavours of chili peppers to the sweet and fragrant aromas of cardamom and cinnamon, Indian spices bring a distinct flavour to any dish. ...
-                                </p>
-                                <a class="blog-btn" href="#">
-                                    <span>read more</span>
-                                    <i class="icofont-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="blog-card">
-                            <div class="blog-media">
-                                <a class="blog-img" href="#">
-                                    <img src="New/Indian_Dressing_Styles.png" alt="blog">
-                                </a>
-                            </div>
-                            <div class="blog-content">
-                                <ul class="blog-meta">
-                                    <li>
-                                        <i class="fas fa-user"></i>
-                                        <span>admin</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-calendar-alt"></i>
-                                        <span>february 02, 2021</span>
-                                    </li>
-                                </ul>
-                                <h4 class="blog-title">
-                                    <a href="blog-details.html">The Timeless Charm of Indian Dressing Styles</a>
-                                </h4>
-                                <p class="blog-desc">
-                                The traditional Indian dress is an integral part of Indian culture and is steeped in history. It is seen as a way of expressing the Indian identity and the culture of the country. The traditional Indian dress has evolved over centuries and is a reflection of the changing times....
-                                </p>
-                                <a class="blog-btn" href="#">
-                                    <span>read more</span>
-                                    <i class="icofont-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="blog-card">
-                            <div class="blog-media">
-                                <a class="blog-img" href="#">
-                                    <img src="New/Indian_Spices.png" alt="blog">
-                                </a>
-                            </div>
-                            <div class="blog-content">
-                                <ul class="blog-meta">
-                                    <li>
-                                        <i class="fas fa-user"></i>
-                                        <span>admin</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-calendar-alt"></i>
-                                        <span>february 02, 2021</span>
-                                    </li>
-                                </ul>
-                                <h4 class="blog-title">
-                                    <a href="blog-details.html">Exploring the Rich Tastes and Fragrances of Indian Spices</a>
-                                </h4>
-                                <p class="blog-desc">
-                                The Indian subcontinent is renowned for its exotic spices, which have been used to create unique and flavorful dishes for centuries. From the hot, spicy flavours of chili peppers to the sweet and fragrant aromas of cardamom and cinnamon, Indian spices bring a distinct flavour to any dish. ...
-                                </p>
-                                <a class="blog-btn" href="#">
-                                    <span>read more</span>
-                                    <i class="icofont-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div>
+                        <?php
+                            $sql="select * from tbl_blogs where status='Active'";
+                            $result=mysqli_query($con,$sql);
+                            while($row=mysqli_fetch_array($result)){
+                                $bloag_image='./admin/masters/blog_uploads/'.$row["blog_image"];
+                               echo '<div class="blog-card">
+                                        <div class="blog-media">
+                                            <a class="blog-img" href="#">
+                                                <img src="'.$bloag_image.'" alt="blog">
+                                            </a>
+                                        </div>
+                                        <div class="blog-content">
+                                            <ul class="blog-meta">
+                                                <li>
+                                                    <i class="fas fa-user"></i>
+                                                    <span>admin</span>
+                                                </li>
+                                                <li>
+                                                    <i class="fas fa-calendar-alt"></i>
+                                                    <span>'.$row['blog_date'].'</span>
+                                                </li>
+                                            </ul>
+                                            <h4 class="blog-title">
+                                                <a href="blog-details.html">'.$row['blog_name'].'</a>
+                                            </h4>
+                                            <p class="blog-desc">'.$row['blog_decs'].'</p>
+                                            <a class="blog-btn" href="#">
+                                                <span>read more</span>
+                                                <i class="icofont-arrow-right"></i>
+                                            </a>
+                                        </div>
+                                    </div>';
+                            }
+                                
+                        ?>
+                       
                     </div>
                 </div>
             </div>

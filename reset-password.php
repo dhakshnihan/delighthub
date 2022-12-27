@@ -64,14 +64,14 @@
                                 <h2>worried?</h2>
                                 <p>No Problem! Just Follow The Simple Way</p>
                             </div>
-                            <form class="user-form" action="registration-ajax.php" method="POST">
+                            <!-- <form class="user-form" action="registration-ajax.php" method="POST"> -->
                                 <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Enter your email">
+                                    <input type="email" class="form-control" id="email" placeholder="Enter your email">
                                 </div>
                                 <div class="form-button">
-                                    <button type="submit" name="reset" >get reset</button>
+                                    <button type="submit" name="reset" onclick="reset()">get reset</button>
                                 </div>
-                            </form>
+                            <!-- </form> -->
                         </div>
                         <div class="user-form-remind">
                             <p>Go Back To<a href="login.php">login here</a></p>
@@ -110,5 +110,27 @@
         <!--=====================================
                     JS LINK PART END
         =======================================-->
+
+        <script>
+            function reset(){
+               
+                var email=$("#email").val();
+                $.ajax({
+                    url:"registration_ajax.php",
+                    method:"POST",
+                    data:{'reset':'reset',email:email},
+                    success:function(response){
+                        var data = jQuery.parseJSON(response);
+                        // console.log(data);
+                        if(data.value=="OK"){
+                           window.location='reset_change_password.php';
+                        }else{
+                            window.location='reset-password.php';
+                        }
+                     
+                    }
+                })
+            }
+        </script>
     </body>
 </html>

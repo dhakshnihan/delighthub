@@ -50,17 +50,16 @@
         <link rel="stylesheet" href="css/user-auth.css">
 </head>
 <body>
-    
+
 <section class="user-form-part">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
                         <div class="user-form-logo">
-                            <a href="index.php"><img src="images/logo.png" alt="logo"></a>
+                            <a href="index.html"><img src="images/logo.png" alt="logo"></a>
                         </div>
                         <!-- <div class="col-md-4 offset-md-4 form"> -->
                 
-                            <!-- <h2 class="text-center">Code Verification</h2> -->
                             <!-- <h2 class="text-center">Code Verification</h2> -->
                             <?php 
                             if(isset($_SESSION['info'])){
@@ -71,24 +70,18 @@
                                 <?php
                             }
                             ?>
-                            <?php
-                            if(count($errors) > 0){
-                                ?>
-                                <div class="alert alert-danger text-center">
-                                    <?php
-                                    foreach($errors as $showerror){
-                                        echo $showerror;
-                                    }
-                                    ?>
-                                </div>
-                                <?php
-                            }
-                            ?>
                             <div class="form-group">
                                 <input class="form-control" type="number" name="otp" id="otp" placeholder="Enter verification code" required>
                             </div>
+                            <div class="form-group">
+                                <input class="form-control" type="password" name="password" id="password" placeholder="Enter password" required>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="password" name="cpassword" id="cpassword" placeholder="Enter confirm password" required>
+                            </div>
                             <div class="form-button">
-                                <button  class="form-control button" id="submit"type="submit" name="check" value="Submit" onclick="verify_otp()">Submit</button>
+                            <button type="submit" name="reset" onclick="otp_and_reset_password()">Reset</button>
+                            <!-- <input class="form-control button" id="submit"type="submit" name="check" value="Submit" onclick="otp_and_reset_password()"> -->
                             </div>
 
                         <!-- </div> -->
@@ -96,7 +89,7 @@
                         <div class="user-form-footer">
                             <p>Delights Hub | &COPY; Copyright by <a href="#">Delights Hub</a></p>
                         </div>
-                    <!-- </div> -->
+                    </div>
                 </div>
             </div>
         </section>
@@ -114,24 +107,17 @@
                         <?php
                     }
                     ?>
-                    <?php
-                    if(count($errors) > 0){
-                        ?>
-                        <div class="alert alert-danger text-center">
-                            <?php
-                            foreach($errors as $showerror){
-                                echo $showerror;
-                            }
-                            ?>
-                        </div>
-                        <?php
-                    }
-                    ?>
                     <div class="form-group">
                         <input class="form-control" type="number" name="otp" id="otp" placeholder="Enter verification code" required>
                     </div>
                     <div class="form-group">
-                        <input class="form-control button" id="submit"type="submit" name="check" value="Submit" onclick="verify_otp()">
+                        <input class="form-control" type="password" name="password" id="password" placeholder="Enter password" required>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="password" name="cpassword" id="cpassword" placeholder="Enter cpassword" required>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control button" id="submit"type="submit" name="check" value="Submit" onclick="otp_and_reset_password()">
                     </div>
 
             </div>
@@ -160,14 +146,16 @@
                     JS LINK PART END
         =======================================-->
 <script>
-function verify_otp(){
+function otp_and_reset_password(){
 	
 	 var otp = $("#otp").val();
-        if ( otp.length>0) {
+     var password = $("#password").val();
+     var cpassword = $("#cpassword").val();
+        if ( otp.length>0 && password.length>0 && cpassword.length>0) {
             $.ajax({
                 type: "POST",
                 url: "registration_ajax.php",
-                data: {type:'check-otp',otp:otp},
+                data: {'otp_and_reset_password':'otp_and_reset_password',otp:otp,cpassword:cpassword,password:password},
                 success: function(result){
                     var data = jQuery.parseJSON(result);
                     if(data.value=="OK"){

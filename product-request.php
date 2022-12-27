@@ -266,7 +266,7 @@ We understand that ordering goods from India can be daunting, given the distance
                                 <i class="icofont-support"></i>
                             </div>
                             <div class="choose-text">
-                                <h4>Hassle Free custom clearance/h4>
+                                <h4>Hassle Free custom clearance</h4>
                                 <p>We are committed to delivering hassle-free custom clearance, ensuring that our customers receive their goods in a timely and reliable manner.</p>
                             </div>
                         </div>
@@ -386,63 +386,66 @@ We understand that ordering goods from India can be daunting, given the distance
 
 
  <!--=====================================
-                    INTRO PART START
-        =======================================-->
-        <section class="intro-part">
-            <div class="container">
-                <div class="row intro-content">
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="intro-wrap">
-                            <div class="intro-icon">
-                                <i class="fas fa-truck"></i>
-                            </div>
-                            <div class="intro-content">
-                                <h5>free home delivery</h5>
-                                <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
-                            </div>
+                INTRO PART START
+    =======================================-->
+    <section class="intro-part">
+        <div class="container">
+            <div class="row intro-content">
+                <div class="col-sm-6 col-lg-3">
+                    <div class="intro-wrap">
+                        <div class="intro-icon">
+                        <img src="./images/top/1_doorstep_delivery.gif" >
+                        </div>
+                        <div class="intro-content">
+                            <h5>Doorstep Delivery </h5>
+                            <p>Goodness Delivered Right to Your Doorstep!.</p>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="intro-wrap">
-                            <div class="intro-icon">
-                                <i class="fas fa-sync-alt"></i>
-                            </div>
-                            <div class="intro-content">
-                                <h5>instant return policy</h5>
-                                <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
-                            </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="intro-wrap">
+                        <div class="intro-icon">
+                            <!-- <i class="fas fa-sync-alt"></i> -->
+                            <img src="./images/top/2_easyrefund.gif" >
+
+                           
+                        </div>
+                        <div class="intro-content">
+                            <h5>Instant Refund Policy</h5>
+                            <p>We Make Returns Easy - Get Your Money Back Instantly!.</p>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="intro-wrap">
-                            <div class="intro-icon">
-                                <i class="fas fa-headset"></i>
-                            </div>
-                            <div class="intro-content">
-                                <h5>quick support system</h5>
-                                <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
-                            </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="intro-wrap">
+                        <div class="intro-icon">
+                            <!-- <i class="fas fa-headset"></i> -->
+                            <img src="./images/top/3_Support _System.gif" >
+                        </div>
+                        <div class="intro-content">
+                            <h5>quick support system</h5>
+                            <p>Get Help You Need, Fast with Quick Support System!.</p>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="intro-wrap">
-                            <div class="intro-icon">
-                                <i class="fas fa-lock"></i>
-                            </div>
-                            <div class="intro-content">
-                                <h5>secure payment way</h5>
-                                <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
-                            </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="intro-wrap">
+                        <div class="intro-icon">
+                            <!-- <i class="fas fa-lock"></i> -->
+                            <img src="./images/top/4_secure_payment.gif" >
+                        </div>
+                        <div class="intro-content">
+                            <h5>Secure Payment Gateways</h5>
+                            <p>Pay for your Favourite Products Securely .</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-        <!--=====================================
-                    INTRO PART END
-        =======================================-->
-
-
+        </div>
+    </section>
+    <!--=====================================
+                INTRO PART END
+    =======================================-->
 
 
         <!--=====================================

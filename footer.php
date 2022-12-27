@@ -1,7 +1,7 @@
 <!--=====================================
                      FOOTER PART START
         =======================================-->
-        <button class="btn btn-inline bt-lg">hshgfhgfh</button>
+        
         <footer class="footer-part">
             <div class="container">
                 <div class="row">
@@ -27,15 +27,15 @@
                                 <li>
                                     <i class="icofont-ui-email"></i>
                                     <p>
-                                        <span>support@greeny.com</span>
-                                        <span>carrer@greeny.com</span>
+                                        <span>support@delightshub.com</span>
+                                        <!-- <span>carrer@greeny.com</span> -->
                                     </p>
                                 </li>
                                 <li>
                                     <i class="icofont-ui-touch-phone"></i>
                                     <p>
-                                        <span>+120 279 532 13</span>
-                                        <span>+120 279 532 14</span>
+                                        <span>+91-9700150035</span>
+                                        <!-- <span>+120 279 532 14</span> -->
                                     </p>
                                 </li>
                                 <li>

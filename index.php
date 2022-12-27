@@ -703,6 +703,7 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                             $result=mysqli_query($con,$sql);
                             while($row=mysqli_fetch_array($result)){
                                 $bloag_image='./admin/masters/blog_uploads/'.$row["blog_image"];
+                                $blog_id=$row['blog_id'];
                                echo '<div class="blog-card">
                                         <div class="blog-media">
                                             <a class="blog-img" href="#">

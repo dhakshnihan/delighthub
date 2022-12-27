@@ -12,7 +12,6 @@
                 <h2>Product Summary</h2>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item"><a href="shop-4column.html">shop grid</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Product Summary</li>
                 </ol>
             </div>
@@ -137,7 +136,7 @@
                                                             <td class="table-serial"><h6>Pro0001</h6></td>
                                                             <td class="table-image"><img src="'.$image.'" alt="product"></td>
                                                             <td class="table-name"><h6>'.$product_name.'</h6></td>
-                                                            <td class="table-price"><h6>$'.$checkout_total_price.'</h6>
+                                                            <td class="table-price"><h6>'.$symbol.''.$checkout_total_price.'</h6>
                                                               
                                                             </td>';
                                                  if($categoty_uom=='Kgs'){

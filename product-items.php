@@ -102,7 +102,7 @@
                                 <?php 
                                     $sql="select * from tbl_category where CATEG02='Active'";
                                     $result=mysqli_query($con,$sql);
-                                    echo "<option value=''>Filter Category</option>";
+                                    echo "<option value=''>ALL</option>";
                                     while($row=mysqli_fetch_array($result)){
                                         echo "<option value=".$row['CATEGTID'].">".$row['CATEG01']."</option>";
                                     }
@@ -115,7 +115,7 @@
                                 <?php 
                                     $sql="select * from tbl_brands where BRAND02='Active'";
                                     $result=mysqli_query($con,$sql);
-                                    echo "<option value=''>Filter Brand</option>";
+                                    echo "<option value=''>ALL</option>";
                                     while($row=mysqli_fetch_array($result)){
                                         echo "<option value=".$row['BRANDTID'].">".$row['BRAND01']."</option>";
                                     }
@@ -128,7 +128,7 @@
                                 <?php 
                                     $sql="select * from tbl_region where status='Active'";
                                     $result=mysqli_query($con,$sql);
-                                    echo "<option value=''>Filter Region</option>";
+                                    echo "<option value=''>ALL</option>";
                                     while($row=mysqli_fetch_array($result)){
                                         echo "<option value=".$row['region_id'].">".$row['region_name']."</option>";
                                     }
@@ -492,9 +492,12 @@
                
                 function clearData() {
                     
-                    document.getElementById("filter_category").value = "";
+                   
                     document.getElementById("filter_region").value = "";
                     document.getElementById("filter_brand").value = "";
+                    document.getElementById("filter_category").value = "";
+                   
+
                     $("#feat2").prop("checked", false);
                     $("#feat1").prop("checked", false);
                     $("#feat3").prop("checked", false);

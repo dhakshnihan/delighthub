@@ -60,7 +60,7 @@
                 $password = mysqli_real_escape_string($con, $password);
                 // Check user is exist in the database
                 $query    = "SELECT * FROM `tbl_users` WHERE email='$email'
-                            AND password='" . md5($password) . "'";
+                            AND password='" . md5($password) . "' and status='verified'";
                 $result = mysqli_query($con, $query) or die(mysql_error());
                 $rows = mysqli_num_rows($result);
                 $users= mysqli_fetch_array($result);
@@ -74,7 +74,7 @@
                     header("Location: index.php");
                 } else {
                     echo "<div class='form'>
-                        <h3>Incorrect Username/password.</h3><br/>
+                        <h3>Incorrect Email/password.</h3><br/>
                         <p class='link'>Click here to <a href='login.php'>Login</a> again.</p>
                         </div>";
                 }

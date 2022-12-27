@@ -9,7 +9,7 @@ session_start();
 
         $data="";
         $query="";
-        $results_per_page = 2;  
+        $results_per_page = 8;  
 
         if (!isset ($_POST['page_no']) ) {  
             $page_no = 1;  

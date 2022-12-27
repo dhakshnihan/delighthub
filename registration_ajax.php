@@ -32,7 +32,7 @@
 				$message = "Your verification code is $code \n";
 				$message .= "Your  Email ID: $email";
 				$sender = "From: info@strongbuildetenders.com";
-				// $result_mail = mail($email, $subject, $message, $sender);
+				$result_mail = mail($email, $subject, $message, $sender);
 				 $info = "We've sent a verification code to your Email - $email";
 				 $_SESSION['info'] = $info;
 				// if($result_mail == true){
@@ -73,6 +73,24 @@
 			'value' => $value
 		);
 		echo json_encode($data);
+    }
+
+	 if(isset($_POST['change-password'])){
+        $_SESSION['info'] = "";
+        
+        $password = mysqli_real_escape_string($con, $_POST['password']);
+        $cpassword = mysqli_real_escape_string($con, $_POST['cpassword']);
+        if($password !== $cpassword){
+            $errors['password'] = "Confirm password not matched!";
+        }else{
+            $email = $_SESSION['email']; //getting this email using session
+           
+            $update_pass = "UPDATE tbl_users SET  password= '".md5($_POST['password'])."',confirm_password= '".md5($_POST['cpassword'])."' WHERE id = '".$_POST['user_id']."'";
+            $run_query = mysqli_query($con, $update_pass);
+
+			header('Location: login.php');
+           
+        }
     }
     
 

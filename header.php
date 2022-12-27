@@ -263,11 +263,20 @@
                                
                             </li>
                         </ul>
-
+                        <?php 
+                        $count_val=0;
+                         if(isset($_SESSION['user_id'])){
+                             $sql="select count(*) as count_val from tbl_wishlist left join tbl_products on PRODTID=fk_product_id where fk_user_id='".$_SESSION['user_id']."' and tbl_wishlist.status='Active'";
+                                
+                             $result= mysqli_query($con, $sql);
+                            $row=mysqli_fetch_array($result);
+                            $count_val=$row['count_val'];
+                         }
+                        ?>
 
                         <a href="wishlist.php" class="header-widget" title="Wishlist">
                             <i class="fas fa-heart"></i>
-                            <sup>0</sup>
+                            <sup><?php echo $count_val; ?></sup>
                         </a>
                         <button class="header-widget header-cart" title="Cartlist">
                             <i class="fas fa-shopping-basket"></i>

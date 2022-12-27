@@ -48,7 +48,7 @@
                                   $exchange_rate=$rowx['exchange_rate'];
 
                                 $sno=1;
-                                 $sql="select * from tbl_wishlist left join tbl_products on PRODTID=fk_product_id where tbl_wishlist.status='Active'";
+                                 $sql="select * from tbl_wishlist left join tbl_products on PRODTID=fk_product_id where fk_user_id='".$_SESSION['user_id']."' and tbl_wishlist.status='Active'";
                                 
                                  $result= mysqli_query($con, $sql);
                                  while($row=mysqli_fetch_array($result))
@@ -343,14 +343,14 @@
             }
             function wishlist_items_delete(product_id){
                 var user_id=$("#user_id").val();
-                alert(user_id);
+                // alert(user_id);
                          $.ajax({
                             url:"ajax.php",
                             method:"post",
                             data:{'remove_wishlist':'remove_wishlist',user_id:user_id,product_id:product_id},
                             success:function(response){
                                 // $("#row_" + cart_id).remove();
-                                // window.location ='wishlist.php';
+                                window.location ='wishlist.php';
                             }
                         })
                 }

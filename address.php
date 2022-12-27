@@ -53,7 +53,7 @@
                              
                                 <div class="col-lg-6">
                                     <div class="form-group ">
-                                        <input type="text" class="form-control" id="zip" name="zip" value="" placeholder="Enter Zip code">  
+                                        <input type="text" class="form-control" id="zip" name="zip" value="" placeholder="Enter Zip code" onchange="getLocation(this.value)">  
                                     </div>
                                 </div>
                                     </div>
@@ -69,7 +69,7 @@
                                         <div class="col-lg-6">
                                             <div>Choose Image :</div>
                                             <div>
-                                                <input type="file" class="file-image" name="file_image"  value="" onchange="loadImageFile(event)" accept="image/jpeg">
+                                                <input type="file" class="file-image" name="file_image" id="file_image"  value="" onchange="loadImageFile(event)" accept="image/jpeg">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
@@ -87,6 +87,7 @@
                                         <img id="SignFile" width="150" height="150" src=""/>
                                         </div>
                                     </div>  
+                                    <span id="address_type"><input  type="hidden" id="address_value" name="address_value" value=""></span>
                                     <div class="view-list-group">
                                     
                                     <ul class="view-tag-list">
@@ -133,7 +134,28 @@
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
         <script>
+            function getLocation(zip_code){
+                $.ajax({
+                    url:"zip_code.php",
+                    method:"POST",
+                    data:{zip_code:zip_code},
+                    success:function(response){
+                        var data = jQuery.parseJSON(response);
+                        // console.log(data);
+                        if(data.length>0){
+                            city.value =  data[0]['City'];
+                            state.value = data[0]['State'];
+                            country.value = data[0]['County'];
 
+                        }
+
+                        // var obj = JSON.parse(data);
+                        //     alert(obj);
+                        // var products = document.getElementById("city");
+                        //  city.innerHTML = data;
+                    }
+                })
+            }
             
         function validateform(){  
                 var first_name = $("#first_name").val();
@@ -144,8 +166,11 @@
                 var zip=$("#zip").val();
                 var state=$("#state").val();
                 var country=$("#country").val();
+                var file_image=$("#file_image").val();
+                var file_sign=$("#file_sign").val();
                 var address_value=$("#address_value").val();
-                if ( first_name.length>0 && last_name.length>0 && address.length>0 && landmark.length>0 && city.length>0 && zip.length>0 && state.length>0 && country.length>0  && address_value.length>0) {
+                if ( first_name.length>0 && last_name.length>0 && address.length>0 && landmark.length>0 && city.length>0 && zip.length>0 && state.length>0 && country.length>0  
+                && file_sign.length>0 && file_image.length>0 && address_value.length>0) {
                 form.submit();
                     return true;  
                 }else{
@@ -155,6 +180,7 @@
         }  
 
         function myfunction_home(){
+             address_type.innerHTML = '<input  type="hidden" id="address_value" name="address_value" value="Home">';
             
                 var myfunction_address_ofc = document.getElementById("myfunction_address_ofc");
                 var myfunction_address_home = document.getElementById("myfunction_address_home");
@@ -162,6 +188,7 @@
                 myfunction_address_home.classList.remove("active");
         }
         function myfunction_ofc(){
+            address_type.innerHTML = '<input  type="hidden" id="address_value" name="address_value" value="Office">';
             
                 var myfunction_address_home = document.getElementById("myfunction_address_home");
                 var myfunction_address_ofc = document.getElementById("myfunction_address_ofc");
@@ -200,6 +227,7 @@
                         }
                     }
                 };
+
 
         </script>
 

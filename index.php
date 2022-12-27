@@ -724,7 +724,7 @@ echo '<input type="hidden" id="user_id" value="'.$_SESSION['user_id'].'">';
                                                 <a href="blog-details.html">'.$row['blog_name'].'</a>
                                             </h4>
                                             <p class="blog-desc">'.$row['blog_decs'].'</p>
-                                            <a class="blog-btn" href="#">
+                                            <a class="blog-btn" href="blog_description.php?blog_id='.$blog_id.'">
                                                 <span>read more</span>
                                                 <i class="icofont-arrow-right"></i>
                                             </a>

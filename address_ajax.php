@@ -12,7 +12,7 @@ include("dbconnection.php");
            if (move_uploaded_file($_FILES["file_sign"]["tmp_name"], $target_file_sign)) {
 
                $sql="insert into tbl_address (fk_user_id,first_name,last_name,address,address_type,landmark,city,zip,state,country,image,sign) values ('".$_POST['user_id']."','".$_POST['first_name']."','".$_POST['last_name']."',
-               '".$_POST['address']."','".$_POST['address_type']."','".$_POST['landmark']."','".$_POST['city']."','".$_POST['zip']."','".$_POST['state']."','".$_POST['country']."','".$file_image."','".$file_sign."')";
+               '".$_POST['address']."','".$_POST['address_value']."','".$_POST['landmark']."','".$_POST['city']."','".$_POST['zip']."','".$_POST['state']."','".$_POST['country']."','".$file_image."','".$file_sign."')";
                mysqli_query($con,$sql);
 
                echo "<script>

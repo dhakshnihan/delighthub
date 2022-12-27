@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <!--=====================================
+    <!--=====================================
                     META TAG PART START
         =======================================-->
         <!-- REQUIRE META -->
@@ -57,30 +57,29 @@
                 <div class="row justify-content-center">
                     <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
                         <div class="user-form-logo">
-                            <a href="index.html"><img src="images/logo.png" alt="logo"></a>
+                            <a href="index.php"><img src="images/logo.png" alt="logo"></a>
                         </div>
                         <div class="user-form-card">
                             <div class="user-form-title">
                                 <h2>any issue?</h2>
                                 <p>Make sure your current password is strong</p>
                             </div>
-                            <form class="user-form">
+                            <form action="registration_ajax.php" method="POST" autocomplete="off">
+                            
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Old password">
+                                    <input class="form-control" type="hidden" name="user_id" value="<?php echo $_GET['user_id']; ?>">
+                                     <input class="form-control" type="password" name="password" placeholder="Create new password" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Current password">
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="reapet password">
+                                    <input class="form-control" type="password" name="cpassword" placeholder="Confirm your password" required>
                                 </div>
                                 <div class="form-button">
-                                    <button type="submit">change password</button>
+                                    <button type="submit" name="change-password">change password</button>
                                 </div>
                             </form>
                         </div>
                         <div class="user-form-remind">
-                            <p>Go Back To<a href="login.html">login here</a></p>
+                            <p>Go Back To<a href="login.php">login here</a></p>
                         </div>
                         <div class="user-form-footer">
                             <p>Greeny | &COPY; Copyright by <a href="#">Mironcoder</a></p>

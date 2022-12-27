@@ -271,13 +271,19 @@
                              $result= mysqli_query($con, $sql);
                             $row=mysqli_fetch_array($result);
                             $count_val=$row['count_val'];
+                            echo '<a href="wishlist.php" class="header-widget" title="Wishlist">
+                                    <i class="fas fa-heart"></i>
+                                    <sup>'.$count_val.'</sup>
+                                </a>';
+                         }else{
+                            echo '<a href="login.php" class="header-widget" title="Wishlist">
+                                    <i class="fas fa-heart"></i>
+                                    <sup>'.$count_val.'</sup>
+                                </a>';
                          }
                         ?>
 
-                        <a href="wishlist.php" class="header-widget" title="Wishlist">
-                            <i class="fas fa-heart"></i>
-                            <sup><?php echo $count_val; ?></sup>
-                        </a>
+                       
                         <button class="header-widget header-cart" title="Cartlist">
                             <i class="fas fa-shopping-basket"></i>
                             <?php 
@@ -294,7 +300,6 @@
                                 }
                             ?>
                             <sup><?php echo $total_items; ?></sup>
-                            <!-- <span>total price<small>$345.00</small></span> -->
                         </button>
                     </div>
                 </div>

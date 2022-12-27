@@ -80,7 +80,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="footer-bottom">
-                            <p class="footer-copytext">&copy;  All Copyrights Reserved by <a target="_blank" href="#">Delights Hub</a></p>
+                            <p class="footer-copytext">&copy;  All Copyrights Reserved by <a target="_blank" href="https://rinixweb.com/">rinixweb</a></p>
                             <div class="footer-card">
                                 <a href="#"><img src="images/payment/jpg/01.jpg" alt="payment"></a>
                                 <a href="#"><img src="images/payment/jpg/02.jpg" alt="payment"></a>

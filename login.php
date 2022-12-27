@@ -128,7 +128,7 @@
                             <p>Don't have any account?<a href="register.php">register here</a></p>
                         </div>
                         <div class="user-form-footer">
-                            <p>Delights Hub | &COPY; Copyright by <a href="#">Delights Hub</a></p>
+                            <p>Delights Hub | &COPY; Copyright by <a href="https://rinixweb.com/">Rinixweb</a></p>
                         </div>
                     </div>
                 </div>

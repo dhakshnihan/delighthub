@@ -118,7 +118,7 @@
                             <p>Already Have An Account?<a href="login.php">login here</a></p>
                         </div>
                         <div class="user-form-footer">
-                            <p>Delight Hub | &COPY; Copyright by <a href="#">Delights Hub</a></p>
+                            <p>Delight Hub | &COPY; Copyright by <a href="https://rinixweb.com/">Rinixweb</a></p>
                         </div>
                     </div>
                 </div>
